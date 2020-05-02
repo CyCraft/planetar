@@ -123,10 +123,10 @@ function build (builds) {
   return Promise.all(builds.map(genConfig).map(buildEntry)).catch(buildUtils.logError)
 }
 
-const pkg = require('../package.json')
-const pkgDependencies = Object.keys(pkg.dependencies || [])
-
 function genConfig (opts) {
+  const pkg = require('../package.json')
+  const pkgDependencies = Object.keys(pkg.dependencies || [])
+
   Object.assign(opts.rollup.input, {
     plugins: rollupPlugins,
     external: ['vue', 'quasar'].concat(pkgDependencies),

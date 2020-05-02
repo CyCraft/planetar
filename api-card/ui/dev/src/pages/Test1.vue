@@ -1,6 +1,6 @@
 <template>
   <q-page padding>
-    <ApiCard />
+    <ApiCard title="EfInput" />
   </q-page>
 </template>
 

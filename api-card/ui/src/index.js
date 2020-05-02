@@ -1,6 +1,6 @@
 import { version } from '../package.json'
 
-import ApiCard from './components/ApiCard'
+import ApiCard from './components/ApiCard.vue'
 
 export { version, ApiCard }
 
