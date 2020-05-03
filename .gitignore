@@ -1,0 +1,8 @@
+.DS_Store
+.thumbs.db
+node_modules
+
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
