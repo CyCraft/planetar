@@ -27,11 +27,6 @@
 .p-input.q-field--focused
   .q-field__control:before
     background-color: white
-  // .q-field__control:after
-  //   height: inherit
-  //   border-radius: inherit
-  //   border: 2px solid transparent
-  //   transition: border-color 0.36s cubic-bezier(0.4, 0, 0.2, 1)
 </style>
 
 <style lang="sass" scoped>
@@ -54,7 +49,16 @@ export default {
     QIcon,
   },
   props: {
-    isSearch: { type: Boolean },
+    /**
+     * When `true`, shows a search icon.
+     * @category content
+     * @type {boolean}
+     */
+    isSearch: {
+      type: Boolean,
+      category: 'content',
+      desc: 'When `true`, shows a search icon.',
+    },
   },
   computed: {
     propsToPass () {

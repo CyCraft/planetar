@@ -1,7 +1,21 @@
 <template>
   <QInput class="p-input" v-bind="propsToPass" v-on="$listeners">
     <template v-slot:append v-if="isSearch">
-      <QIcon :name="`img:${require('../../../../../assets/icons/feather/search.svg')}`" />
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="feather feather-search"
+      >
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
     </template>
   </QInput>
 </template>
@@ -27,11 +41,6 @@
 .p-input.q-field--focused
   .q-field__control:before
     background-color: white
-  // .q-field__control:after
-  //   height: inherit
-  //   border-radius: inherit
-  //   border: 2px solid transparent
-  //   transition: border-color 0.36s cubic-bezier(0.4, 0, 0.2, 1)
 </style>
 
 <style lang="sass" scoped>
@@ -54,7 +63,16 @@ export default {
     QIcon,
   },
   props: {
-    isSearch: { type: Boolean },
+    /**
+     * When `true`, shows a search icon.
+     * @category content
+     * @type {boolean}
+     */
+    isSearch: {
+      type: Boolean,
+      category: 'content',
+      desc: 'When `true`, shows a search icon.',
+    },
   },
   computed: {
     propsToPass () {

@@ -1,14 +1,14 @@
 <template>
-  <div class="api-card" :id="kebabCase(title) + `-api`">
+  <div class="api-card" :id="kebabCase(fileName) + `-api`">
     <div class="_top">
-      <div class="t-h4 mr-md">{{ title }} API</div>
+      <div class="t-h4 mr-md">{{ fileName }} API</div>
       <!-- <PInput v-model="searchValue" :isSearch="true" /> -->
     </div>
     <div class="_bottom">
       <PList class="_tabs" v-model="activeTab" :items="categoryPListItems" />
       <QTabPanels class="_tab-panels" v-model="activeTab" animated vertical>
         <QTabPanel v-for="(schema, category) in schemaPerCategory" :name="category" :key="category">
-          <div>{{ category }}</div>
+          <CategoryPanel :schema="schema" />
         </QTabPanel>
       </QTabPanels>
     </div>
@@ -48,13 +48,14 @@
 </style>
 
 <script>
-import PInput from './atoms/PInput'
-import PList from './atoms/PList'
+import PInput from './atoms/PInput.vue'
+import PList from './atoms/PList.vue'
+import CategoryPanel from './atoms/CategoryPanel.vue'
 import { QTabPanels, QTabPanel } from 'quasar'
 import { isArray } from 'is-what'
 import { kebabCase } from 'case-anything'
 import sort from 'fast-sort'
-import { parse } from 'vue-docgen-api'
+import { propsToSchema } from '../helpers/parseComponent'
 
 export default {
   name: 'ApiCard',
@@ -63,47 +64,44 @@ export default {
     PList,
     QTabPanels,
     QTabPanel,
+    CategoryPanel,
   },
   props: {
-    title: { type: String, required: true },
     /**
      * Relative from the `src` folder.
      * @example 'components/atoms/MyBtn.vue'
      */
     filePath: { type: String, required: true },
-    propsSchema: {
-      type: Array,
-      // required: true,
-      default: () => [
-        { category: 'events' },
-        { category: 'methods' },
-        { category: 'style' },
-        { category: 'content' },
-      ],
-    },
   },
   created () {
     const { parseComponent, filePath } = this
-    const doc = parse(`src/${filePath}`)
-    console.log(`doc → `, doc)
-    // import(
-    //   /* webpackChunkName: "components" */
-    //   /* webpackMode: "lazy-once" */
-    //   `${filePath}`
-    // ).then(componentString => {
-    //   this.component = componentString.default
-    // })
     import(
-      /* webpackChunkName: "components-source" */
+      /* webpackChunkName: "component" */
       /* webpackMode: "lazy-once" */
-      `!raw-loader!src/${filePath}`
-    ).then(componentString => {
-      parseComponent(componentString.default)
+      `src/${filePath}`
+    ).then(componentExport => {
+      this.propsSchema = propsToSchema(componentExport.default.props)
     })
+    // import(
+    //   /* webpackChunkName: "component-source" */
+    //   /* webpackMode: "lazy-once" */
+    //   `!raw-loader!src/${filePath}`
+    // ).then(componentString => {
+    //   parseComponent(componentString.default)
+    // })
   },
   data () {
-    const { propsSeparateTab } = this
-    return { searchValue: '', activeTab: '', component: null, tabs: [], parts: {} }
+    const { propsSeparateTab, filePath } = this
+    const fileName = filePath
+      .split('/')
+      .slice(-1)[0]
+      .replace('.vue', '')
+    return {
+      fileName,
+      searchValue: '',
+      activeTab: '',
+      propsSchema: {},
+    }
   },
   computed: {
     /**
@@ -121,17 +119,14 @@ export default {
         if (!category) return carry
         const categoryArray = category.split('|')
         categoryArray.forEach(c => {
-          if (!carry[c]) carry[c] = { schema: [], name: c }
+          if (!carry[c]) carry[c] = []
           blueprint.sortFieldsOnInheritedOrNot = inheritedProp
-          carry[c].schema.push(blueprint)
+          carry[c].push(blueprint)
         })
         return carry
       }, {})
-      Object.entries(perCat).forEach(([catKey, { schema }]) => {
-        perCat[catKey].schema = sort(schema).by([
-          { desc: 'sortFieldsOnInheritedOrNot' },
-          { asc: 'label' },
-        ])
+      Object.entries(perCat).forEach(([catKey, schema]) => {
+        perCat[catKey] = sort(schema).by([{ desc: 'sortFieldsOnInheritedOrNot' }, { asc: 'label' }])
       })
       return perCat
     },
@@ -141,13 +136,13 @@ export default {
     categoryPListItems () {
       const { schemaPerCategory } = this
       let categoryNames = Object.keys(schemaPerCategory)
-      for (const specialCategory of ['methods', 'events']) {
+      ;['methods', 'events'].forEach(specialCategory => {
         const index = categoryNames.indexOf(specialCategory)
         if (index > -1) {
           categoryNames.splice(index, 1)
           categoryNames.unshift(specialCategory)
         }
-      }
+      })
       const categoryNamesMap = categoryNames.map(c => ({ name: c }))
       const indexFirstNonSpecialCat = categoryNames.findIndex(
         c => !['methods', 'events'].includes(c)
@@ -160,26 +155,25 @@ export default {
   },
   methods: {
     kebabCase,
-    parseComponent (componentCodeString) {
-      const { parseSection } = this
-      const template = parseSection('template', componentCodeString)
-      const script = parseSection('script', componentCodeString)
-      const style = parseSection('style', componentCodeString)
+    // parseComponent (componentCodeString) {
+    //   const { parseSection } = this
+    //   const template = parseSection('template', componentCodeString)
+    //   const script = parseSection('script', componentCodeString)
+    //   const style = parseSection('style', componentCodeString)
+    //   this.parts = {
+    //     template,
+    //     script,
+    //     style,
+    //   }
+    //   this.tabs = ['template', 'script', 'style'].filter(type => this.parts[type])
+    // },
+    // parseSection (section, componentCodeString) {
+    //   const string = `(<${section}(.*)?>[\\w\\W]*<\\/${section}>)`,
+    //     regex = new RegExp(string, 'g'),
+    //     parsed = regex.exec(componentCodeString) || []
 
-      this.parts = {
-        template,
-        script,
-        style,
-      }
-      this.tabs = ['template', 'script', 'style'].filter(type => this.parts[type])
-    },
-    parseSection (section, componentCodeString) {
-      const string = `(<${section}(.*)?>[\\w\\W]*<\\/${section}>)`,
-        regex = new RegExp(string, 'g'),
-        parsed = regex.exec(componentCodeString) || []
-
-      return parsed[1] || ''
-    },
+    //   return parsed[1] || ''
+    // },
   },
 }
 </script>
