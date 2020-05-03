@@ -1,6 +1,6 @@
 <template>
   <q-page padding>
-    <ApiCard title="EfInput" />
+    <ApiCard title="PInput" filePath="components/PInput.vue" />
   </q-page>
 </template>
 

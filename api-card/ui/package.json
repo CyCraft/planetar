@@ -46,5 +46,12 @@
   },
   "browserslist": [
     "last 1 version, not dead, ie >= 11"
-  ]
+  ],
+  "dependencies": {
+    "case-anything": "^1.1.1",
+    "fast-sort": "^2.1.1",
+    "is-what": "^3.8.0",
+    "raw-loader": "^4.0.1",
+    "vue-docgen-api": "^4.19.2"
+  }
 }

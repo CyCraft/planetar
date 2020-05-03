@@ -7,13 +7,9 @@ module.exports = function (ctx) {
   return {
     // app boot file (/src/boot)
     // --> boot files are part of "main.js"
-    boot: [
-      'register.js'
-    ],
+    boot: ['register.js'],
 
-    css: [
-      'app.sass'
-    ],
+    css: ['app.sass'],
 
     extras: [
       // 'ionicons-v4',
@@ -24,7 +20,7 @@ module.exports = function (ctx) {
       // 'roboto-font-latin-ext', // this or either 'roboto-font', NEVER both!
 
       'roboto-font', // optional, you are not bound to it
-      'material-icons' // optional, you are not bound to it
+      'material-icons', // optional, you are not bound to it
     ],
 
     framework: {
@@ -44,7 +40,7 @@ module.exports = function (ctx) {
       directives: [],
 
       // Quasar plugins
-      plugins: []
+      plugins: [],
     },
 
     supportIE: false,
@@ -57,14 +53,14 @@ module.exports = function (ctx) {
 
       chainWebpack (chain) {
         chain.resolve.alias.merge({
-          'ui': path.resolve(__dirname, '../src/index.js')
+          ui: path.resolve(__dirname, '../src/index.js'),
         })
-      }
+      },
     },
 
     devServer: {
       // port: 8080,
-      open: true // opens browser window automatically
-    }
+      open: true, // opens browser window automatically
+    },
   }
 }
