@@ -17,10 +17,10 @@
 </template>
 
 <style lang="sass">
-@import '../../../../../styles/colors'
-@import '../../../../../styles/typography'
-@import '../../../../../styles/margin-padding'
-@import '../../../../../styles/shadows'
+@import '../../../../styles/colors'
+@import '../../../../styles/typography'
+@import '../../../../styles/margin-padding'
+@import '../../../../styles/shadows'
 
 /* global styles */
 .p-list
@@ -31,10 +31,10 @@
 </style>
 
 <style lang="sass" scoped>
-@import '../../../../../styles/colors'
-@import '../../../../../styles/typography'
-@import '../../../../../styles/margin-padding'
-@import '../../../../../styles/shadows'
+@import '../../../../styles/colors'
+@import '../../../../styles/typography'
+@import '../../../../styles/margin-padding'
+@import '../../../../styles/shadows'
 
 .p-list
   ._item

@@ -3,19 +3,19 @@
 </template>
 
 <style lang="sass">
-@import '../../../../../styles/colors'
-@import '../../../../../styles/typography'
-@import '../../../../../styles/margin-padding'
-@import '../../../../../styles/shadows'
+@import '../../../../styles/colors'
+@import '../../../../styles/typography'
+@import '../../../../styles/margin-padding'
+@import '../../../../styles/shadows'
 
 /* global styles */
 </style>
 
 <style lang="sass" scoped>
-@import '../../../../../styles/colors'
-@import '../../../../../styles/typography'
-@import '../../../../../styles/margin-padding'
-@import '../../../../../styles/shadows'
+@import '../../../../styles/colors'
+@import '../../../../styles/typography'
+@import '../../../../styles/margin-padding'
+@import '../../../../styles/shadows'
 </style>
 
 <script>

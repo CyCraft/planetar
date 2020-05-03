@@ -21,10 +21,10 @@
 </template>
 
 <style lang="sass">
-@import '../../../../../styles/colors'
-@import '../../../../../styles/typography'
-@import '../../../../../styles/margin-padding'
-@import '../../../../../styles/shadows'
+@import '../../../../styles/colors'
+@import '../../../../styles/typography'
+@import '../../../../styles/margin-padding'
+@import '../../../../styles/shadows'
 
 /* global styles */
 .p-input
@@ -44,10 +44,10 @@
 </style>
 
 <style lang="sass" scoped>
-@import '../../../../../styles/colors'
-@import '../../../../../styles/typography'
-@import '../../../../../styles/margin-padding'
-@import '../../../../../styles/shadows'
+@import '../../../../styles/colors'
+@import '../../../../styles/typography'
+@import '../../../../styles/margin-padding'
+@import '../../../../styles/shadows'
 
 .t-input
   min-width: 150px

@@ -1,62 +1,14 @@
 <template>
-  <div class="api-card" :id="kebabCase(fileName) + `-api`">
-    <div class="_top">
-      <div class="t-h4 mr-md">{{ fileName }} API</div>
-      <!-- <PInput v-model="searchValue" :isSearch="true" /> -->
-    </div>
-    <div class="_bottom">
-      <PList class="_tabs" v-model="activeTab" :items="categoryPListItems" />
-      <QTabPanels class="_tab-panels" v-model="activeTab" animated vertical>
-        <QTabPanel v-for="(schema, category) in schemaPerCategory" :name="category" :key="category">
-          <CategoryPanel :schema="schema" />
-        </QTabPanel>
-      </QTabPanels>
-    </div>
-  </div>
+  <div class="component-name"></div>
 </template>
 
 <style lang="sass" scoped>
-@import '../../../styles/colors'
-@import '../../../styles/typography'
-@import '../../../styles/margin-padding'
-@import '../../../styles/shadows'
+// $
 
-.api-card
-  +shadow-3()
-  min-width: 400px
-  min-height: 400px
-  max-height: 50vh
-  border-radius: 18px
-  overflow: hidden
-  display: flex
-  flex-direction: column
-  ._top
-    display: flex
-    justify-content: space-between
-    padding: $md
-    padding-top: $lg
-    border-bottom: 1px solid $c-stone-dark
-  ._bottom
-    flex: 1
-    min-height: 0 // required to force _bottom to stop at parent max-height
-    display: flex
-    ._tabs
-      border-right: 1px solid $c-stone-dark
-      overflow-y: scroll
-    ._tab-panels
-      flex: 1
+// .component-name
 </style>
 
 <script>
-import PInput from './atoms/PInput.vue'
-import PList from './atoms/PList.vue'
-import CategoryPanel from './atoms/CategoryPanel.vue'
-import { QTabPanels, QTabPanel } from 'quasar'
-import { isArray } from 'is-what'
-import { kebabCase } from 'case-anything'
-import sort from 'fast-sort'
-import { propsToSchema } from '../helpers/parseComponent'
-
 export default {
   name: 'ApiCard',
   components: {
@@ -64,14 +16,14 @@ export default {
     PList,
     QTabPanels,
     QTabPanel,
-    CategoryPanel,
+    CategoryPanel
   },
   props: {
     /**
      * Relative from the `src` folder.
      * @example 'components/atoms/MyBtn.vue'
      */
-    filePath: { type: String, required: true },
+    filePath: { type: String, required: true }
   },
   created () {
     const { parseComponent, filePath } = this
@@ -80,11 +32,8 @@ export default {
       /* webpackMode: "lazy-once" */
       `src/${filePath}`
     ).then(componentExport => {
-      console.log(`componentExport → `, componentExport)
       this.propsSchema = propsToSchema(componentExport.default.props)
     })
-    const docs = require(`!!./my-loader!src/${filePath}`)
-    console.log(`docs → `, docs)
     // import(
     //   /* webpackChunkName: "component-source" */
     //   /* webpackMode: "lazy-once" */
@@ -103,7 +52,7 @@ export default {
       fileName,
       searchValue: '',
       activeTab: '',
-      propsSchema: {},
+      propsSchema: {}
     }
   },
   computed: {
@@ -112,12 +61,18 @@ export default {
      */
     schemaPerCategory () {
       const { propsSchema } = this
-      const schema = !isArray(propsSchema) ? Object.values(propsSchema) : propsSchema
+      const schema = !isArray(propsSchema)
+        ? Object.values(propsSchema)
+        : propsSchema
       const perCat = schema.reduce((carry, blueprint) => {
         const { category, inheritedProp, fieldClasses } = blueprint
         // If it's an inheritedProp, add a specific indentifier
         if (inheritedProp) {
-          fieldClasses.push(inheritedProp === true ? 'inherited-prop' : 'inherited-prop-modified')
+          fieldClasses.push(
+            inheritedProp === true
+              ? 'inherited-prop'
+              : 'inherited-prop-modified'
+          )
         }
         if (!category) return carry
         const categoryArray = category.split('|')
@@ -129,7 +84,10 @@ export default {
         return carry
       }, {})
       Object.entries(perCat).forEach(([catKey, schema]) => {
-        perCat[catKey] = sort(schema).by([{ desc: 'sortFieldsOnInheritedOrNot' }, { asc: 'label' }])
+        perCat[catKey] = sort(schema).by([
+          { desc: 'sortFieldsOnInheritedOrNot' },
+          { asc: 'label' }
+        ])
       })
       return perCat
     },
@@ -151,13 +109,16 @@ export default {
         c => !['methods', 'events'].includes(c)
       )
       if (indexFirstNonSpecialCat > 0) {
-        categoryNamesMap.splice(indexFirstNonSpecialCat, 0, { name: 'props', isDivider: true })
+        categoryNamesMap.splice(indexFirstNonSpecialCat, 0, {
+          name: 'props',
+          isDivider: true
+        })
       }
       return categoryNamesMap
-    },
+    }
   },
   methods: {
-    kebabCase,
+    kebabCase
     // parseComponent (componentCodeString) {
     //   const { parseSection } = this
     //   const template = parseSection('template', componentCodeString)
@@ -177,6 +138,6 @@ export default {
 
     //   return parsed[1] || ''
     // },
-  },
+  }
 }
 </script>
