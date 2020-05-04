@@ -21,10 +21,10 @@
 </template>
 
 <style lang="sass">
-@import '../../../../styles/colors'
-@import '../../../../styles/typography'
-@import '../../../../styles/margin-padding'
-@import '../../../../styles/shadows'
+@import '../styles/colors'
+@import '../styles/typography'
+@import '../styles/margin-padding'
+@import '../styles/shadows'
 
 /* global styles */
 .p-input
@@ -44,24 +44,16 @@
 </style>
 
 <style lang="sass" scoped>
-@import '../../../../styles/colors'
-@import '../../../../styles/typography'
-@import '../../../../styles/margin-padding'
-@import '../../../../styles/shadows'
-
-.t-input
+.p-input
   min-width: 150px
 </style>
 
 <script>
-import { QInput, QIcon } from 'quasar'
+import { QInput } from 'quasar'
 
 export default {
   name: 'PInput',
-  components: {
-    QInput,
-    QIcon,
-  },
+  components: { QInput },
   props: {
     /**
      * When `true`, shows a search icon.
@@ -71,8 +63,8 @@ export default {
     isSearch: {
       type: Boolean,
       category: 'content',
-      desc: 'When `true`, shows a search icon.',
-    },
+      desc: 'When `true`, shows a search icon.'
+    }
   },
   computed: {
     propsToPass () {
@@ -81,8 +73,8 @@ export default {
       const outlined = true
       const dense = true
       return { ...$attrs, type, outlined, dense }
-    },
+    }
   },
-  methods: {},
+  methods: {}
 }
 </script>

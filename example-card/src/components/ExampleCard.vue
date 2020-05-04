@@ -27,20 +27,20 @@ export default {
   },
   created () {
     const { parseComponent, filePath } = this
-    import(
-      /* webpackChunkName: "component" */
-      /* webpackMode: "lazy-once" */
-      `src/${filePath}`
-    ).then(componentExport => {
-      this.propsSchema = propsToSchema(componentExport.default.props)
-    })
     // import(
-    //   /* webpackChunkName: "component-source" */
+    //   /* webpackChunkName: "component" */
     //   /* webpackMode: "lazy-once" */
-    //   `!raw-loader!src/${filePath}`
-    // ).then(componentString => {
-    //   parseComponent(componentString.default)
+    //   `src/${filePath}`
+    // ).then(componentExport => {
+    //   this.propsSchema = propsToSchema(componentExport.default.props)
     // })
+    import(
+      /* webpackChunkName: "component-source" */
+      /* webpackMode: "lazy-once" */
+      `!raw-loader!src/${filePath}`
+    ).then(componentString => {
+      parseComponent(componentString.default)
+    })
   },
   data () {
     const { propsSeparateTab, filePath } = this

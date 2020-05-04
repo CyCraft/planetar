@@ -134,7 +134,7 @@ function genConfig (opts) {
 
   Object.assign(opts.rollup.output, {
     banner: buildConf.banner,
-    globals: { vue: 'Vue', quasar: 'Quasar' },
+    globals: { vue: 'Vue', quasar: 'Quasar', 'quasar-ui-easy-forms': 'EasyForms' },
   })
 
   return opts

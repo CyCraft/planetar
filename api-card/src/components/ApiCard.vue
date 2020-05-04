@@ -7,7 +7,7 @@
     <div class="_bottom">
       <PList class="_tabs" v-model="activeTab" :items="categoryPListItems" />
       <QTabPanels class="_tab-panels" v-model="activeTab" animated vertical>
-        <QTabPanel v-for="(schema, category) in schemaPerCategory" :name="category" :key="category">
+        <QTabPanel v-for="(schema, category) in categorySchemaMap" :name="category" :key="category">
           <CategoryPanel :schema="schema" />
         </QTabPanel>
       </QTabPanels>
@@ -48,14 +48,31 @@
 </style>
 
 <script>
-import PInput from './atoms/PInput.vue'
-import PList from './atoms/PList.vue'
+import PInput from '../../../atoms/PInput.vue'
+import PList from '../../../atoms/PList.vue'
 import CategoryPanel from './atoms/CategoryPanel.vue'
 import { QTabPanels, QTabPanel } from 'quasar'
-import { isArray } from 'is-what'
+import { isArray, isFullString } from 'is-what'
 import { kebabCase } from 'case-anything'
-import sort from 'fast-sort'
-import { propsToSchema } from '../helpers/parseComponent'
+import { propToPropSchema } from '../helpers/vueDocgenToEasyForms'
+import '../types/vueDocgen.js'
+
+function getCategoryPListItems (categorySchemaMap) {
+  const fixedCategoryNames = ['description', 'slots', 'events', 'methods']
+  // fixed cats
+  const fixedCategories = fixedCategoryNames
+    .filter(c => isArray(categorySchemaMap[c]) && categorySchemaMap[c].length)
+    .map(c => ({ name: c }))
+  // divider
+  if (fixedCategories.length) {
+    fixedCategories.push({ name: 'props', isDivider: true })
+  }
+  // prop cats
+  const propCategories = Object.keys(categorySchemaMap)
+    .filter(c => !fixedCategoryNames.includes(c))
+    .map(c => ({ name: c }))
+  return fixedCategories.concat(propCategories)
+}
 
 export default {
   name: 'ApiCard',
@@ -74,24 +91,9 @@ export default {
     filePath: { type: String, required: true },
   },
   created () {
-    const { parseComponent, filePath } = this
-    import(
-      /* webpackChunkName: "component" */
-      /* webpackMode: "lazy-once" */
-      `src/${filePath}`
-    ).then(componentExport => {
-      console.log(`componentExport → `, componentExport)
-      this.propsSchema = propsToSchema(componentExport.default.props)
-    })
-    const docs = require(`!!./my-loader!src/${filePath}`)
-    console.log(`docs → `, docs)
-    // import(
-    //   /* webpackChunkName: "component-source" */
-    //   /* webpackMode: "lazy-once" */
-    //   `!raw-loader!src/${filePath}`
-    // ).then(componentString => {
-    //   parseComponent(componentString.default)
-    // })
+    const { filePath, parseVueDocgenData } = this
+    const vueDocgenData = require(`!!./vue-docgen-loader!src/${filePath.replace('.vue', '')}.vue`)
+    parseVueDocgenData(vueDocgenData)
   },
   data () {
     const { propsSeparateTab, filePath } = this
@@ -103,80 +105,39 @@ export default {
       fileName,
       searchValue: '',
       activeTab: '',
-      propsSchema: {},
+      /**
+       * @type {{ [category: string]: object[] }}
+       */
+      categorySchemaMap: {},
+      /**
+       * @type {{ name: string, isDivider?: boolean }[]}
+       */
+      categoryPListItems: [],
     }
   },
-  computed: {
-    /**
-     * @type {{ [category: string]: any }}
-     */
-    schemaPerCategory () {
-      const { propsSchema } = this
-      const schema = !isArray(propsSchema) ? Object.values(propsSchema) : propsSchema
-      const perCat = schema.reduce((carry, blueprint) => {
-        const { category, inheritedProp, fieldClasses } = blueprint
-        // If it's an inheritedProp, add a specific indentifier
-        if (inheritedProp) {
-          fieldClasses.push(inheritedProp === true ? 'inherited-prop' : 'inherited-prop-modified')
-        }
-        if (!category) return carry
-        const categoryArray = category.split('|')
-        categoryArray.forEach(c => {
-          if (!carry[c]) carry[c] = []
-          blueprint.sortFieldsOnInheritedOrNot = inheritedProp
-          carry[c].push(blueprint)
-        })
-        return carry
-      }, {})
-      Object.entries(perCat).forEach(([catKey, schema]) => {
-        perCat[catKey] = sort(schema).by([{ desc: 'sortFieldsOnInheritedOrNot' }, { asc: 'label' }])
-      })
-      return perCat
-    },
-    /**
-     * @type {{ name: string, isDivider?: boolean }[]}
-     */
-    categoryPListItems () {
-      const { schemaPerCategory } = this
-      let categoryNames = Object.keys(schemaPerCategory)
-      ;['methods', 'events'].forEach(specialCategory => {
-        const index = categoryNames.indexOf(specialCategory)
-        if (index > -1) {
-          categoryNames.splice(index, 1)
-          categoryNames.unshift(specialCategory)
-        }
-      })
-      const categoryNamesMap = categoryNames.map(c => ({ name: c }))
-      const indexFirstNonSpecialCat = categoryNames.findIndex(
-        c => !['methods', 'events'].includes(c)
-      )
-      if (indexFirstNonSpecialCat > 0) {
-        categoryNamesMap.splice(indexFirstNonSpecialCat, 0, { name: 'props', isDivider: true })
-      }
-      return categoryNamesMap
-    },
-  },
+  computed: {},
   methods: {
     kebabCase,
-    // parseComponent (componentCodeString) {
-    //   const { parseSection } = this
-    //   const template = parseSection('template', componentCodeString)
-    //   const script = parseSection('script', componentCodeString)
-    //   const style = parseSection('style', componentCodeString)
-    //   this.parts = {
-    //     template,
-    //     script,
-    //     style,
-    //   }
-    //   this.tabs = ['template', 'script', 'style'].filter(type => this.parts[type])
-    // },
-    // parseSection (section, componentCodeString) {
-    //   const string = `(<${section}(.*)?>[\\w\\W]*<\\/${section}>)`,
-    //     regex = new RegExp(string, 'g'),
-    //     parsed = regex.exec(componentCodeString) || []
-
-    //   return parsed[1] || ''
-    // },
+    /**
+     * @param {ComponentDoc} vueDocgenData
+     */
+    parseVueDocgenData (vueDocgenData = {}) {
+      const { categorySchemaMap } = this
+      const { description, props = [], methods = [], slots = [], events = [] } = vueDocgenData
+      if (isFullString(description)) {
+        this.$set(categorySchemaMap, 'description', [{ subLabel: description }])
+      }
+      props.forEach(prop => {
+        const schemaInfo = propToPropSchema(prop)
+        const { categories, schema } = schemaInfo
+        categories.forEach(category => {
+          if (!(category in categorySchemaMap)) this.$set(categorySchemaMap, category, [])
+          categorySchemaMap[category].push(schema)
+        })
+      })
+      this.categoryPListItems = getCategoryPListItems(categorySchemaMap)
+      if (!this.activeTab) this.activeTab = this.categoryPListItems[0].name
+    },
   },
 }
 </script>

@@ -21,12 +21,15 @@
 <script>
 import vue from 'vue'
 import { EasyForm } from 'quasar-ui-easy-forms'
-import { QInput, QToggle, QSelect } from 'quasar'
+// import { PInput, PToggle, PSelect } from '../../../../atoms'
+import PInput from '../../../../atoms/PInput.vue'
+import PSelect from '../../../../atoms/PSelect.vue'
+import PToggle from '../../../../atoms/PToggle.vue'
 
 // used in EasyForm
-vue.component('QInput', QInput)
-vue.component('QToggle', QToggle)
-vue.component('QSelect', QSelect)
+vue.component('PInput', PInput)
+vue.component('PToggle', PToggle)
+vue.component('PSelect', PSelect)
 
 export default {
   name: 'CategoryPanel',

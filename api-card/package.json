@@ -1,6 +1,6 @@
 {
-  "name": "quasar-ui-api-card",
-  "version": "0.0.1",
+  "name": "@planetar/api-card",
+  "version": "0.0.0",
   "author": "Luca Ban - Mesqueeb",
   "description": "Planetar Api Card",
   "license": "MIT",
@@ -54,7 +54,5 @@
     "url": "https://github.com/mesqueeb/planetar"
   },
   "bugs": "https://github.com/mesqueeb/planetar/issues",
-  "browserslist": [
-    "last 1 version, not dead, ie >= 11"
-  ]
+  "browserslist": ["last 1 version, not dead, ie >= 11"]
 }

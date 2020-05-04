@@ -49,13 +49,16 @@
 @import '../../../../styles/margin-padding'
 @import '../../../../styles/shadows'
 
-.t-input
+.p-input
   min-width: 150px
 </style>
 
 <script>
 import { QInput, QIcon } from 'quasar'
 
+/**
+ * This is the main input field.
+ */
 export default {
   name: 'PInput',
   components: {
@@ -69,9 +72,8 @@ export default {
      * @type {boolean}
      */
     isSearch: {
-      type: Boolean,
-      category: 'content',
-      desc: 'When `true`, shows a search icon.',
+      type: [Boolean],
+      default: false,
     },
   },
   computed: {

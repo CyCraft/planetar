@@ -6,7 +6,7 @@
       :class="[
         '_item',
         item.isDivider ? '_is-divider' : '',
-        item.name === value ? '_is-active' : '',
+        item.name === value ? '_is-active' : ''
       ]"
       :clickable="!item.isDivider"
       @click="() => $emit('input', item.name)"
@@ -17,10 +17,10 @@
 </template>
 
 <style lang="sass">
-@import '../../../../styles/colors'
-@import '../../../../styles/typography'
-@import '../../../../styles/margin-padding'
-@import '../../../../styles/shadows'
+@import '../styles/colors'
+@import '../styles/typography'
+@import '../styles/margin-padding'
+@import '../styles/shadows'
 
 /* global styles */
 .p-list
@@ -31,10 +31,10 @@
 </style>
 
 <style lang="sass" scoped>
-@import '../../../../styles/colors'
-@import '../../../../styles/typography'
-@import '../../../../styles/margin-padding'
-@import '../../../../styles/shadows'
+@import '../styles/colors'
+@import '../styles/typography'
+@import '../styles/margin-padding'
+@import '../styles/shadows'
 
 .p-list
   ._item
@@ -57,7 +57,7 @@ export default {
   components: {
     QList,
     QItem,
-    QItemSection,
+    QItemSection
   },
   props: {
     /**
@@ -67,14 +67,14 @@ export default {
     /**
      * Must be used with v-model!
      */
-    value: { type: String, default: '' },
+    value: { type: String, default: '' }
   },
   computed: {
     propsToPass () {
       const { $attrs } = this
       return { ...$attrs }
-    },
+    }
   },
-  methods: {},
+  methods: {}
 }
 </script>
