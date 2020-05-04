@@ -1,6 +1,6 @@
 {
   "name": "@planetar/api-card",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "author": "Luca Ban - Mesqueeb",
   "description": "Planetar Api Card",
   "license": "MIT",
@@ -39,9 +39,9 @@
     "fs-extra": "^8.1.0",
     "node-sass": "^4.0.0",
     "open": "^6.4.0",
-    "postcss": "^7.0.18",
+    "postcss": "^7.0.28",
     "postcss-rtl": "^1.5.0",
-    "quasar": "^1.0.0",
+    "quasar": "^1.10.3",
     "rimraf": "^3.0.0",
     "rollup": "^1.21.3",
     "rollup-plugin-vue": "^5.1.6",
@@ -54,5 +54,7 @@
     "url": "https://github.com/mesqueeb/planetar"
   },
   "bugs": "https://github.com/mesqueeb/planetar/issues",
-  "browserslist": ["last 1 version, not dead, ie >= 11"]
+  "browserslist": [
+    "last 1 version, not dead, ie >= 11"
+  ]
 }
