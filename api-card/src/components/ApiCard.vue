@@ -8,7 +8,12 @@
       <PList class="_tabs" v-model="activeTab" :items="categoryPListItems" />
       <QTabPanels class="_tab-panels" v-model="activeTab" animated vertical>
         <QTabPanel v-for="(schema, category) in categorySchemaMap" :name="category" :key="category">
-          <CategoryPanel :schema="schema" />
+          <CategoryPanel
+            :schema="schema"
+            :value="value"
+            :mode="value ? 'edit' : 'view'"
+            v-on="$listeners"
+          />
         </QTabPanel>
       </QTabPanels>
     </div>
@@ -89,11 +94,16 @@ export default {
      * @example 'components/atoms/MyBtn.vue'
      */
     filePath: { type: String, required: true },
+    /**
+     * Relative from the `src` folder.
+     * @example 'components/atoms/MyBtn.vue'
+     */
+    value: { type: Object },
   },
   created () {
     const { filePath, parseVueDocgenData } = this
-    const vueDocgenData = require(`!!./vue-docgen-loader!src/${filePath.replace('.vue', '')}.vue`)
-    parseVueDocgenData(vueDocgenData)
+    import(`!!./vue-docgen-loader!src/${filePath.replace('.vue', '')}.vue`)
+      .then(vueDocgenData => parseVueDocgenData(vueDocgenData)) // prettier-ignore
   },
   data () {
     const { propsSeparateTab, filePath } = this
