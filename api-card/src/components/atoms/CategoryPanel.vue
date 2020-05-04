@@ -1,5 +1,5 @@
 <template>
-  <EasyForm :schema="schema" />
+  <EasyForm class="p-category-panel" :schema="schema" v-bind="$attrs" v-on="$listeners" />
 </template>
 
 <style lang="sass">
@@ -9,6 +9,21 @@
 @import '../../../../styles/shadows'
 
 /* global styles */
+.p-category-panel
+  .easy-field:not(.easy-field--no-label)
+    grid-template-columns: 150px 1fr
+    grid-gap: 6px
+    padding: 1em
+    .easy-field__label
+      +t-subtitle2
+      justify-self: start
+      align-self: start
+      margin-bottom: 4px
+    .easy-field__sub-label
+      +t-body2
+      grid-column: 2 / 3
+    .easy-field__component
+      grid-column: 2 / 3
 </style>
 
 <style lang="sass" scoped>
