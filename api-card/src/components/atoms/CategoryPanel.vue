@@ -1,5 +1,5 @@
 <template>
-  <EasyForm class="p-category-panel" :schema="schema" v-bind="$attrs" v-on="$listeners" />
+  <EasyForm class="planetar-category-panel" :schema="schema" v-bind="$attrs" v-on="$listeners" />
 </template>
 
 <style lang="sass">
@@ -9,7 +9,7 @@
 @import '../../../../styles/shadows'
 
 /* global styles */
-.p-category-panel
+.planetar-category-panel
   .easy-field:not(.easy-field--no-label)
     grid-template-columns: 150px 1fr
     grid-gap: 6px

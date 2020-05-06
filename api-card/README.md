@@ -1,7 +1,7 @@
 # Component ApiCard
 
-[![npm](https://img.shields.io/npm/v/quasar-ui-api-card.svg?label=quasar-ui-api-card)](https://www.npmjs.com/package/quasar-ui-api-card)
-[![npm](https://img.shields.io/npm/dt/quasar-ui-api-card.svg)](https://www.npmjs.com/package/quasar-ui-api-card)
+[![npm](https://img.shields.io/npm/v/@planetar/api-card.svg?label=@planetar/api-card)](https://www.npmjs.com/package/@planetar/api-card)
+[![npm](https://img.shields.io/npm/dt/@planetar/api-card.svg)](https://www.npmjs.com/package/@planetar/api-card)
 
 # Component ApiCard
 
@@ -11,19 +11,19 @@
 
 ```js
 import Vue from 'vue'
-import Plugin from 'quasar-ui-api-card'
-import 'quasar-ui-api-card/dist/index.css'
+import Plugin from '@planetar/api-card'
+import '@planetar/api-card/dist/index.css'
 
 Vue.use(Plugin)
 ```
 
+Then use as `<ApiCard />`
+
 **OR**:
 
 ```html
-<style src="quasar-ui-api-card/dist/index.css"></style>
-
 <script>
-  import { Component as ApiCard } from 'quasar-ui-api-card'
+  import { ApiCard } from '@planetar/api-card'
 
   export default {
     components: {
@@ -37,78 +37,22 @@ Vue.use(Plugin)
 
 Exports `window.apiCard`.
 
-Add the following tag(s) after the Quasar ones:
+Add the following tag(s):
 
 ```html
 <head>
-  <!-- AFTER the Quasar stylesheet tags: -->
+  <!-- at the bottom of head -->
   <link
-    href="https://cdn.jsdelivr.net/npm/quasar-ui-api-card/dist/index.min.css"
+    href="https://cdn.jsdelivr.net/npm/@planetar/api-card/dist/index.min.css"
     rel="stylesheet"
     type="text/css"
   />
 </head>
 <body>
-  <!-- at end of body, AFTER Quasar script(s): -->
-  <script src="https://cdn.jsdelivr.net/npm/quasar-ui-api-card/dist/index.umd.min.js"></script>
+  <!-- at end  bottom of body -->
+  <script src="https://cdn.jsdelivr.net/npm/@planetar/api-card/dist/index.umd.min.js"></script>
 </body>
 ```
-
-If you need the RTL variant of the CSS, then go for the following (instead of the above stylesheet link):
-
-```html
-<link
-  href="https://cdn.jsdelivr.net/npm/quasar-ui-api-card/dist/index.rtl.min.css"
-  rel="stylesheet"
-  type="text/css"
-/>
-```
-
-# Setup
-
-```bash
-$ yarn
-```
-
-# Developing
-
-```bash
-# start dev in SPA mode
-$ yarn dev
-
-# start dev in UMD mode
-$ yarn dev:umd
-
-# start dev in SSR mode
-$ yarn dev:ssr
-
-# start dev in Cordova iOS mode
-$ yarn dev:ios
-
-# start dev in Cordova Android mode
-$ yarn dev:android
-
-# start dev in Electron mode
-$ yarn dev:electron
-```
-
-# Building package
-
-```bash
-$ yarn build
-```
-
-# Adding Testing Components
-
-in the `ui/dev/src/pages` you can add Vue files to test your component/directive. When using `yarn dev` to build the UI, any pages in that location will automatically be picked up by dynamic routing and added to the test page.
-
-# Adding Assets
-
-If you have a component that has assets, like language or icon-sets, you will need to provide these for UMD. In the `ui/build/script.javascript.js` file, you will find a couple of commented out commands that call `addAssets`. Uncomment what you need and add your assets to have them be built and put into the `ui/dist` folder.
-
-# Donate
-
-If you appreciate the work that went into this, please consider [donating to Quasar](https://donate.quasar.dev).
 
 # License
 

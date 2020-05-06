@@ -6,7 +6,7 @@
       class="bg-stone c-grey-3"
       active-color="primary"
       indicator-color="stone"
-      align="start"
+      align="left"
       narrow-indicator
     >
       <QTab
@@ -47,6 +47,8 @@
 
 .p-tabs
   min-width: 150px
+  display: flex
+  flex-direction: column
 </style>
 
 <script>

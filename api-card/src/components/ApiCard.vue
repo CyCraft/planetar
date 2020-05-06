@@ -1,5 +1,5 @@
 <template>
-  <div class="api-card" :id="kebabCase(fileName) + `-api`">
+  <div class="planetar-api-card" :id="kebabCase(fileName) + `-api`">
     <div class="_top">
       <div class="t-h4 mr-md">{{ fileName }} API</div>
       <!-- <PInput v-model="searchValue" :isSearch="true" /> -->
@@ -26,7 +26,7 @@
 @import '../../../styles/margin-padding'
 @import '../../../styles/shadows'
 
-.api-card
+.planetar-api-card
   +shadow-3()
   min-width: 400px
   min-height: 400px
