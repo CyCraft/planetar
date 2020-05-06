@@ -1,21 +1,27 @@
 <template>
-  <QInput class="p-input" v-bind="propsToPass" v-on="$listeners">
+  <QInput
+    :class="['p-input', { 'animate-blink': isBlinking }]"
+    v-bind="propsToPass"
+    v-on="$listeners"
+  >
     <template v-slot:append v-if="isSearch">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="feather feather-search"
-      >
-        <circle cx="11" cy="11" r="8"></circle>
-        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-      </svg>
+      <QIcon class="c-primary">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="feather feather-search"
+        >
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </QIcon>
     </template>
   </QInput>
 </template>
@@ -41,6 +47,18 @@
 .p-input.q-field--focused
   .q-field__control:before
     background-color: white
+
+.animate-blink
+  animation: blink 1.3s infinite
+@keyframes blink
+  from
+    opacity: 1.0
+  80%
+    opacity: 1.0
+  93%
+    opacity: 0
+  to
+    opacity: 1.0
 </style>
 
 <style lang="sass" scoped>
@@ -70,8 +88,19 @@ export default {
      * When `true`, shows a search icon.
      * @category content
      * @type {boolean}
+     * @example true
      */
     isSearch: {
+      type: [Boolean],
+      default: false,
+    },
+    /**
+     * This would make the button blink
+     * @category animation
+     * @type {boolean}
+     * @example true
+     */
+    isBlinking: {
       type: [Boolean],
       default: false,
     },
