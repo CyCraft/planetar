@@ -1,6 +1,6 @@
 <template>
   <q-page padding>
-    <ExampleCard />
+    <ExampleCard filePath="examples/PInput/Search.vue" />
   </q-page>
 </template>
 

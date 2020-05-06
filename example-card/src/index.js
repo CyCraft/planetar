@@ -1,6 +1,6 @@
 import { version } from '../package.json'
 
-import ExampleCard from './components/ExampleCard'
+import ExampleCard from './components/ExampleCard.vue'
 
 export { version, ExampleCard }
 
