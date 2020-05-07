@@ -7,7 +7,12 @@
     <div class="_bottom">
       <PList class="_tabs" v-model="activeTab" :items="categoryPListItems" />
       <QTabPanels class="_tab-panels" v-model="activeTab" animated vertical>
-        <QTabPanel v-for="(schema, category) in categorySchemaMap" :name="category" :key="category">
+        <QTabPanel
+          v-for="(schema, category) in categorySchemaMap"
+          :name="category"
+          :key="category"
+          class="_tab-panel"
+        >
           <CategoryPanel
             :schema="schema"
             :value="value"
@@ -50,6 +55,8 @@
       overflow-y: scroll
     ._tab-panels
       flex: 1
+    ._tab-panel
+      padding: 0
 </style>
 
 <script>
@@ -60,6 +67,7 @@ import { QTabPanels, QTabPanel } from 'quasar'
 import { isArray, isFullString } from 'is-what'
 import { kebabCase } from 'case-anything'
 import { propToPropSchema } from '../helpers/vueDocgenToEasyForms'
+import { noRequiredPropExampleErrorMsg } from '../helpers/errors'
 import '../types/vueDocgen.js'
 
 function getCategoryPListItems (categorySchemaMap) {
@@ -132,12 +140,14 @@ export default {
      * @param {ComponentDoc} vueDocgenData
      */
     parseVueDocgenData (vueDocgenData = {}) {
-      const { categorySchemaMap } = this
+      console.log(`vueDocgenData → `, vueDocgenData)
+      const { categorySchemaMap, setExampleAsDefaultValue } = this
       const { description, props = [], methods = [], slots = [], events = [] } = vueDocgenData
       if (isFullString(description)) {
         this.$set(categorySchemaMap, 'description', [{ subLabel: description }])
       }
-      props.forEach(prop => {
+      props.forEach((prop) /* PropDescriptor */ => {
+        if (prop.required) setExampleAsDefaultValue(prop)
         const schemaInfo = propToPropSchema(prop)
         const { categories, schema } = schemaInfo
         categories.forEach(category => {
@@ -147,6 +157,21 @@ export default {
       })
       this.categoryPListItems = getCategoryPListItems(categorySchemaMap)
       if (!this.activeTab) this.activeTab = this.categoryPListItems[0].name
+      this.$emit('ready')
+    },
+    /**
+     * @param {PropDescriptor} prop
+     */
+    setExampleAsDefaultValue (prop) {
+      const { name, tags } = prop
+      try {
+        const { example } = tags
+        const defaultValue = example[0].description
+        const model = { ...this.value, [name]: eval(defaultValue) }
+        this.$emit('input', model)
+      } catch (error) {
+        console.error(noRequiredPropExampleErrorMsg)
+      }
     },
   },
 }

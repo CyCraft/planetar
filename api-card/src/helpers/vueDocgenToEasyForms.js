@@ -31,12 +31,12 @@ export function propToPropSchema (vueDocgenProp) {
   }
   // get the documentation I want to use from the custom tags
   const _inheritedProp = customTags.inheritedProp || [{ description: false }]
-  const _examples = customTags.examples || []
-  const _category = customTags.category || [{ description: 'general' }]
+  const _examples = customTags.example || []
+  const _categories = customTags.category || [{ description: 'general' }]
   // format the custom tags for usage
   const inheritedProp = _inheritedProp[0].description
   const examples = _examples.map(e => e.description)
-  const categories = _category.map(c => c.description)
+  const categories = _categories.map(c => c.description)
 
   // whatever the prop is, default to an 'input' EasyField
   const events = {}
@@ -90,19 +90,18 @@ export function propToPropSchema (vueDocgenProp) {
     parseInput = stringToJs
     parseValue = JSON.stringify
     autogrow = true
-    if (isArray(examples)) subLabel += `\nExamples: \`${examples.join('` | `')}\``
   }
+  if (examples.length) subLabel += `\nExamples: \`${examples.join('` | `')}\``
   // Don't allow editing props that accept functions.
+  // todo: be able to parse functions
   if (typeIs('function')) disable = true
   // Create the EasyField schema for the prop
   const schema = {
     id: propName,
     component,
     type: inputType,
-    // schema,
     label: propName,
     subLabel,
-    placeholder: !isArray(examples) ? '' : examples.join(', '),
     inheritedProp,
     options,
     outlined,

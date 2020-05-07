@@ -10,10 +10,12 @@
 
 /* global styles */
 .planetar-category-panel
+  .easy-form__form
+    grid-gap: 6px !important
+  .easy-field
+    padding: 1em
   .easy-field:not(.easy-field--no-label)
     grid-template-columns: 150px 1fr
-    grid-gap: 6px
-    padding: 1em
     .easy-field__label
       +t-subtitle2
       justify-self: start
@@ -22,6 +24,10 @@
     .easy-field__sub-label
       +t-body2
       grid-column: 2 / 3
+      br
+        +mt($sm)
+        display: block
+        content: ""
     .easy-field__component
       grid-column: 2 / 3
 </style>

@@ -86,6 +86,33 @@ export default {
       type: [Number],
       default: 0,
     },
+    /**
+     * A string literal test prop
+     * @category testprops
+     * @type {'a' | 'b'}
+     */
+    stringLiteral: {
+      type: [String],
+      default: 'a',
+    },
+    /**
+     * A function test prop
+     * @category testprops
+     * @type {(a: number) => {awesome: number}}
+     */
+    fn: {
+      type: [Function],
+      default: a => ({ awesome: a }),
+    },
+    /**
+     * A complicated object test prop
+     * @category testprops
+     * @type {{name: string, id: string, items: string[]}}
+     * @example {name: 'Mexcelsior', id: 'm', items: ['a', 'b']}
+     */
+    complicatedObject: {
+      type: [Object],
+    },
   },
   data () {
     const openTab = this.initialTabIndex
