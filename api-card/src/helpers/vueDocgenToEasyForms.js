@@ -91,7 +91,7 @@ export function propToPropSchema (vueDocgenProp) {
     parseValue = JSON.stringify
     autogrow = true
   }
-  if (examples.length) subLabel += `\nExamples: \`${examples.join('` | `')}\``
+  if (examples.length) subLabel += `\n\nExamples: \`${examples.join('` | `')}\``
   // Don't allow editing props that accept functions.
   // todo: be able to parse functions
   if (typeIs('function')) disable = true
