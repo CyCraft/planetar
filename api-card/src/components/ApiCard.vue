@@ -2,13 +2,13 @@
   <div class="planetar-api-card" :id="kebabCase(fileName) + `-api`">
     <div class="_top">
       <div class="t-h4 mr-md">{{ fileName }} API</div>
-      <!-- <PInput v-model="searchValue" :isSearch="true" /> -->
+      <PInput v-model="searchValue" :isSearch="true" :debounce="300" />
     </div>
     <div class="_bottom">
       <PList class="_tabs" v-model="activeTab" :items="categoryPListItems" />
       <QTabPanels class="_tab-panels" v-model="activeTab" animated vertical>
         <QTabPanel
-          v-for="(schema, category) in categorySchemaMap"
+          v-for="(schema, category) in categorySchemaMapFiltered"
           :name="category"
           :key="category"
           class="_tab-panel"
@@ -64,7 +64,7 @@ import PInput from '../../../atoms/PInput.vue'
 import PList from '../../../atoms/PList.vue'
 import CategoryPanel from './atoms/CategoryPanel.vue'
 import { QTabPanels, QTabPanel } from 'quasar'
-import { isArray, isFullString } from 'is-what'
+import { isArray, isFullString, isString } from 'is-what'
 import { kebabCase } from 'case-anything'
 import { propToPropSchema } from '../helpers/vueDocgenToEasyForms'
 import { noRequiredPropExampleErrorMsg } from '../helpers/errors'
@@ -75,7 +75,7 @@ function getCategoryPListItems (categorySchemaMap) {
   // fixed cats
   const fixedCategories = fixedCategoryNames
     .filter(c => isArray(categorySchemaMap[c]) && categorySchemaMap[c].length)
-    .map(c => ({ name: c }))
+    .map((c, i) => ({ name: c, tag: i === 0 ? undefined : categorySchemaMap[c].length }))
   // divider
   if (fixedCategories.length) {
     fixedCategories.push({ name: 'props', isDivider: true })
@@ -83,8 +83,17 @@ function getCategoryPListItems (categorySchemaMap) {
   // prop cats
   const propCategories = Object.keys(categorySchemaMap)
     .filter(c => !fixedCategoryNames.includes(c))
-    .map(c => ({ name: c }))
+    .map(c => ({ name: c, tag: categorySchemaMap[c].length }))
   return fixedCategories.concat(propCategories)
+}
+
+/**
+ * @param {string} hay
+ * @param {string} needle
+ * @returns {boolean}
+ */
+function checkIfContains (hay, needle) {
+  return isString(hay) && hay.toLowerCase().includes(needle.toLowerCase())
 }
 
 export default {
@@ -127,13 +136,36 @@ export default {
        * @type {{ [category: string]: object[] }}
        */
       categorySchemaMap: {},
-      /**
-       * @type {{ name: string, isDivider?: boolean }[]}
-       */
-      categoryPListItems: [],
     }
   },
-  computed: {},
+  computed: {
+    categorySchemaMapFiltered () {
+      const { categorySchemaMap, searchValue: s } = this
+      if (!s) return categorySchemaMap
+      return Object.entries(categorySchemaMap).reduce((carry, [category, schema]) => {
+        const searchIncludesCategory = checkIfContains(category, s)
+        if (category === 'description' || searchIncludesCategory) {
+          carry[category] = schema
+          return carry
+        }
+        const check = ({ label, subLabel }) =>
+          checkIfContains(label, s) || checkIfContains(subLabel, s)
+        const schemaFiltered = schema.filter(check)
+        console.log(`schemaFiltered → `, schemaFiltered)
+        if (schemaFiltered.length) {
+          carry[category] = schemaFiltered
+        }
+        return carry
+      }, {})
+    },
+    /**
+     * @type {{ name: string, isDivider?: boolean }[]}
+     */
+    categoryPListItems () {
+      const { categorySchemaMapFiltered } = this
+      return getCategoryPListItems(categorySchemaMapFiltered)
+    },
+  },
   methods: {
     kebabCase,
     /**
@@ -155,7 +187,6 @@ export default {
           categorySchemaMap[category].push(schema)
         })
       })
-      this.categoryPListItems = getCategoryPListItems(categorySchemaMap)
       if (!this.activeTab) this.activeTab = this.categoryPListItems[0].name
       this.$emit('ready')
     },

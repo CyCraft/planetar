@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import ApiCard from './ApiCard'
+import ApiCard from './ApiCard.vue'
 export default {
   name: 'ApiComponentExample',
   components: { ApiCard },

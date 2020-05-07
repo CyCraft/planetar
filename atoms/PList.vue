@@ -12,6 +12,9 @@
       @click="() => $emit('input', item.name)"
     >
       <QItemSection>{{ item.name }}</QItemSection>
+      <QItemSection side v-if="item.tag">
+        <QBadge color="sail">{{ item.tag }}</QBadge>
+      </QItemSection>
     </QItem>
   </QList>
 </template>
@@ -50,18 +53,19 @@
 </style>
 
 <script>
-import { QList, QItem, QItemSection } from 'quasar'
+import { QList, QItem, QItemSection, QBadge } from 'quasar'
 
 export default {
   name: 'PList',
   components: {
     QList,
     QItem,
-    QItemSection
+    QItemSection,
+    QBadge
   },
   props: {
     /**
-     * @type {{ name: string, isDivider?: boolean }[]}
+     * @type {{ name: string, tag?: string, isDivider?: boolean }[]}
      */
     items: { type: Array, required: true },
     /**
