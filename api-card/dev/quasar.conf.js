@@ -51,6 +51,24 @@ module.exports = function (ctx) {
     build: {
       vueRouterMode: 'history',
 
+      extendWebpack (cfg) {
+        cfg.resolve.extensions.push('.ts', '.tsx')
+        cfg.module.rules.push({
+          test: /\.ts(x?)$/,
+          use: [
+            {
+              loader: 'babel-loader',
+            },
+            {
+              loader: 'ts-loader',
+              options: {
+                appendTsSuffixTo: [/\.vue$/],
+              },
+            },
+          ],
+          include: [path.join(__dirname, 'src')],
+        })
+      },
       chainWebpack (chain) {
         chain.resolve.alias.merge({
           ui: path.resolve(__dirname, '../src/index.js'),

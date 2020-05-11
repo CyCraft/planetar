@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+        "downlevelIteration": true,
+        "module": "esnext",
+        "target": "es6",
+        "jsx": "preserve",
+        "allowSyntheticDefaultImports": true,
+        "importHelpers": true,
+        "esModuleInterop": true,
+        "allowJs": true,
+        "sourceMap": true,
+        "strict": true,
+        "experimentalDecorators": true,
+        "moduleResolution": "node",
+        "baseUrl": "src",
+        "lib": ["ES2015", "ES2016", "ES2017", "ES2018", "ES2019", "ES2020"]
+    },
+    "include": [
+        "node_modules/vue-tsx-support/enable-check.d.ts",
+        "node_modules/vue-tsx-support/options/allow-unknown-props.d.ts",
+        "src/**/*.ts",
+        "src/**/*.tsx",
+        "src/**/*.vue"
+    ]
+}
