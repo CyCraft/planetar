@@ -25,7 +25,7 @@
   .easy-field
     padding: 1em
   .easy-field:not(.easy-field--no-label)
-    grid-template-columns: 150px 1fr
+    grid-template-columns: minmax(150px, min-content) 1fr
     .easy-field__label
       +t-subtitle2
       justify-self: start
