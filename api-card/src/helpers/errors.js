@@ -3,8 +3,8 @@ Eg.
 \`\`\`js
 props: {
   /*
-  * @example ['First Tab', 'Second Tab']
-  */
+   * @example ['First Tab', 'Second Tab']
+   */
   labels: { type: Array, required: true },
 }
 \`\`\``

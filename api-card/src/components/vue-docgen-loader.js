@@ -17,6 +17,7 @@ function loaderDocgen (source) {
 
 async function asyncLoader (source) {
   const file = this.request.split('!').pop()
+  // if (!file.match(/\.vue|\.tsx|\.jsx/)) return
   try {
     const docs = await parse(file)
     return `
@@ -26,7 +27,7 @@ async function asyncLoader (source) {
           module.exports = ${generate(toAst(docs))}
       `
   } catch (error) {
-    throw error
+    console.error('[vue-docgen-simple-loader]', error)
   }
 }
 module.exports = loaderDocgen

@@ -1,5 +1,5 @@
-import { isUndefined, isFunction, isArray } from 'is-what'
-
+import { isUndefined, isFunction, isArray, isString } from 'is-what'
+import { evaluateString } from './evaluateString'
 // export interface PropDescriptor extends Descriptor {
 // 	type?: { name: string; func?: boolean }
 // 	description?: string
@@ -17,6 +17,7 @@ import { isUndefined, isFunction, isArray } from 'is-what'
 export function propToPropSchema (vueDocgenProp) {
   // get the documentation I want to use from the vueDocgenProp
   const {
+    required,
     description,
     type = { name: 'any' },
     defaultValue = {},
@@ -25,16 +26,28 @@ export function propToPropSchema (vueDocgenProp) {
     name: propName,
   } = vueDocgenProp
   // format the top level tags
-  const types = type.name.split('|')
+  const types = isString(type.name) ? type.name.split('|').map(s => s.trim()) : ['any']
   function typeIs (_type) {
-    return types.includes(_type) && _type.length === 1
+    const propType = types[0]
+    const yes = propType === _type && types.length === 1
+    if (yes) return yes
+    if (_type === 'object') {
+      return propType[0] === '{' && propType[propType.length - 1] === '}'
+    }
+    return yes
   }
   // get the documentation I want to use from the custom tags
+  const _typeTags = customTags.type || []
+  const typeTags = _typeTags.map(t => t.type.name)
+
   const _inheritedProp = customTags.inheritedProp || [{ description: false }]
-  const _examples = customTags.example || []
-  const _categories = customTags.category || [{ description: 'general' }]
-  // format the custom tags for usage
   const inheritedProp = _inheritedProp[0].description
+
+  const _examples = customTags.example || []
+  const _categories =
+    customTags.category ||
+    (!inheritedProp ? [{ description: 'general' }] : [{ description: 'inheritedProp' }])
+  // format the custom tags for usage
   const examples = _examples.map(e => e.description)
   const categories = _categories.map(c => c.description)
 
@@ -43,7 +56,6 @@ export function propToPropSchema (vueDocgenProp) {
   let component = 'PInput'
   let subLabel = description
   let options,
-    standout,
     disable,
     parseInput,
     parseValue,
@@ -51,18 +63,33 @@ export function propToPropSchema (vueDocgenProp) {
     debounce,
     span,
     emitValue,
-    inputType
-  let outlined = true
+    inputType,
+    _default
   let fieldClasses = []
-  const _df = defaultValue.value
-  let _default = _df === true || undefined
+
+  if (typeTags.length) {
+    subLabel += `\n\nType: \`${typeTags[0]}\``
+  }
+
+  _default = defaultValue.value
+  const requiresNewline = defaultValue && defaultValue.value && defaultValue.value.includes('\n')
+  if (requiresNewline) {
+    inputType = 'textarea'
+    autogrow = true
+  }
+  const _df = evaluateString(defaultValue.value)
   // If it has a default, write it in the description
-  if (!isUndefined(_df))
-    subLabel += `\n\nDefault: \`${isFunction(_df) ? JSON.stringify(_df()) : _df}\``
+  if (!isUndefined(_df)) {
+    if (requiresNewline) {
+      subLabel += `\n\nDefault:\n\`\`\`\n${defaultValue.value}\n\`\`\``
+    } else {
+      subLabel += `\n\nDefault: \`${defaultValue.value}\``
+    }
+  }
   // if the prop is a Boolean, show this as a 'toggle' EasyField
   if (types.includes('boolean')) {
     component = 'PToggle'
-    _default = _df === true
+    _default = eval(_default)
   }
   // if it's a Number field
   if (typeIs('number')) {
@@ -83,20 +110,15 @@ export function propToPropSchema (vueDocgenProp) {
     typeIs('function') ||
     (isArray(types) && ['array', 'object'].some(t => types.includes(t)) && types.length === 2)
   ) {
-    // events.blur = (e, val) => console.log(stringToJs(val))
-    outlined = false
-    standout = true
     debounce = 500
-    parseInput = stringToJs
-    parseValue = JSON.stringify
     autogrow = true
   }
   if (examples.length) subLabel += `\n\nExamples: \`${examples.join('` | `')}\``
-  // Don't allow editing props that accept functions.
-  // todo: be able to parse functions
-  if (typeIs('function')) disable = true
+  // remove any "undefined" from the string
+  if (subLabel) subLabel = subLabel.replace('undefined\n\n', '')
   // Create the EasyField schema for the prop
   const schema = {
+    required,
     id: propName,
     component,
     type: inputType,
@@ -104,8 +126,6 @@ export function propToPropSchema (vueDocgenProp) {
     subLabel,
     inheritedProp,
     options,
-    outlined,
-    standout,
     disable,
     parseInput,
     parseValue,
@@ -119,6 +139,13 @@ export function propToPropSchema (vueDocgenProp) {
     default: _default,
     // defaults
     hasMarkdown: true,
+    isCode: true,
   }
-  return { categories, schema }
+  // remove undefined
+  const schemaNoUndefined = Object.entries(schema).reduce((carry, [key, value]) => {
+    if (value === undefined) return carry
+    return { ...carry, [key]: value }
+  }, {})
+
+  return { categories, schema: schemaNoUndefined }
 }

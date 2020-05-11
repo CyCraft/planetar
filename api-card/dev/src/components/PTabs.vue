@@ -1,7 +1,7 @@
 <template>
   <div class="p-tabs">
     <QTabs
-      v-model="openTab"
+      v-model="activeTab"
       dense
       class="bg-stone c-grey-3"
       active-color="primary"
@@ -12,19 +12,25 @@
       <QTab
         v-for="(label, index) in tabLabels"
         :key="label + index"
-        :name="index"
+        :name="String(index)"
         :label="label"
         no-caps
       />
     </QTabs>
-    <QTabPanels v-model="openTab" animated class="flex-1" v-bind="propsToPass" v-on="$listeners">
+    <QTabPanels v-model="activeTab" animated class="flex-1" v-bind="propsToPass" v-on="$listeners">
       <QTabPanel
         v-for="(label, index) in tabLabels"
         :key="label + index"
-        :name="index"
+        :name="String(index)"
         class="no-padding full-height"
       >
-        <slot :name="index" />
+        <!--
+          @slot Tab Panels are automatically added by adding them with their "index" number of each label passed in the 'tabLabels' prop.
+          @example <div v-slot:0>first panel</div><div v-slot:1>second panel</div>
+        -->
+        <slot :name="String(index)">
+          {{ defaultContent[index] }}
+        </slot>
       </QTabPanel>
     </QTabPanels>
   </div>
@@ -55,7 +61,7 @@
 import { QTabs, QTab, QTabPanels, QTabPanel } from 'quasar'
 
 /**
- * This is the main input field.
+ * This is a wrapper around QTabs and QTabPanels to automatically generate the QTabs above the panels.
  */
 export default {
   name: 'PTabs',
@@ -67,6 +73,16 @@ export default {
   },
   props: {
     /**
+     * The active tab index as string. To use with v-model. You can also use the initialTabIndex.
+     * @category model
+     * @type {string}
+     * @example '0'
+     */
+    value: {
+      type: [String],
+      default: '0',
+    },
+    /**
      * The labels of the tabs.
      * @category content
      * @type {string[]}
@@ -74,13 +90,14 @@ export default {
      */
     tabLabels: {
       type: [Array],
-      default: () => [],
       required: true,
+      // default: () => [],
     },
     /**
      * The tab index which should be opened initially.
      * @category content
      * @type {number}
+     * @example 0
      */
     initialTabIndex: {
       type: [Number],
@@ -96,12 +113,37 @@ export default {
       default: 'a',
     },
     /**
+     * A primitive literal test prop
+     * @category testprops
+     * @type {null | '' | 0}
+     */
+    primitiveLiteral: {
+      type: [Number, null, String],
+    },
+    /**
+     * A number literal test prop
+     * @category testprops
+     * @type {0 | 1 | 2}
+     */
+    numberLiteral: {
+      type: [Number],
+    },
+    /**
+     * An object literal test prop
+     * @category testprops
+     * @type {{a: 1} | {b: 1}}
+     */
+    objectLiteral: {
+      type: [Object],
+    },
+    /**
      * A function test prop
      * @category testprops
      * @type {(a: number) => {awesome: number}}
+     * @example a => ({ awesome: a })
      */
     fn: {
-      type: [Function],
+      type: Function,
       default: a => ({ awesome: a }),
     },
     /**
@@ -112,13 +154,35 @@ export default {
      */
     complicatedObject: {
       type: [Object],
+      default: () => ({ name: '', id: '', items: [] }),
+    },
+    /**
+     * @category content
+     * @type {{[index: string]: string}}
+     */
+    defaultContent: {
+      type: Object,
+      default: () => ({ '0': 'hi!' }),
     },
   },
   data () {
-    const openTab = this.initialTabIndex
-    return { openTab }
+    const innerActiveTab = String(this.value) || String(this.initialTabIndex)
+    return { innerActiveTab }
   },
   computed: {
+    activeTab: {
+      get () {
+        return this.innerActiveTab
+      },
+      set (newTab) {
+        this.innerActiveTab = String(newTab)
+        /**
+         * Triggers when the tab changes
+         * @property {string|number} newValue new tab index as string
+         */
+        this.$emit('input', String(newTab))
+      },
+    },
     propsToPass () {
       const { $attrs } = this
       return { ...$attrs }

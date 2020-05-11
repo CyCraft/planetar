@@ -1,7 +1,7 @@
 <template>
   <div class="p-tabs">
     <QTabs
-      v-model="openTab"
+      v-model="activeTab"
       dense
       class="bg-stone c-grey-3"
       active-color="primary"
@@ -18,7 +18,7 @@
       />
     </QTabs>
     <QTabPanels
-      v-model="openTab"
+      v-model="activeTab"
       animated
       class="flex-1"
       v-bind="propsToPass"
@@ -30,6 +30,9 @@
         :name="index"
         class="no-padding full-height"
       >
+        <!--
+          @slot Tab Panels are automatically added by adding them with their "index" number of each label passed in the 'tabLabels' prop. Eg. `<div v-slot:0>first panel</div><div v-slot:1>second panel</div>`
+        -->
         <slot :name="index" />
       </QTabPanel>
     </QTabPanels>
@@ -94,8 +97,8 @@ export default {
     }
   },
   data () {
-    const openTab = this.initialTabIndex
-    return { openTab }
+    const activeTab = this.initialTabIndex
+    return { activeTab }
   },
   computed: {
     propsToPass () {

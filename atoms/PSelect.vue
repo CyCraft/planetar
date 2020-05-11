@@ -34,7 +34,7 @@
 import { QSelect } from 'quasar'
 
 export default {
-  name: 'PInput',
+  name: 'PSelect',
   components: { QSelect },
   props: {},
   computed: {

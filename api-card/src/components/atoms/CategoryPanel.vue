@@ -1,5 +1,11 @@
 <template>
-  <EasyForm class="planetar-category-panel" :schema="schema" v-bind="$attrs" v-on="$listeners" />
+  <EasyForm
+    class="planetar-category-panel"
+    :schema="schema"
+    v-bind="$attrs"
+    v-on="$listeners"
+    :key="String($attrs.value.value)"
+  />
 </template>
 
 <style lang="sass">
@@ -10,6 +16,10 @@
 
 /* global styles */
 .planetar-category-panel
+  pre, code
+    background-color: transparentize($c-stone, 0.3)
+    padding: 0.2em 0.6em
+    border-radius: 4px
   .easy-form__form
     grid-gap: 6px !important
   .easy-field
@@ -30,13 +40,6 @@
         content: ""
     .easy-field__component
       grid-column: 2 / 3
-</style>
-
-<style lang="sass" scoped>
-@import '../../../../styles/colors'
-@import '../../../../styles/typography'
-@import '../../../../styles/margin-padding'
-@import '../../../../styles/shadows'
 </style>
 
 <script>

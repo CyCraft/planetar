@@ -1,5 +1,9 @@
 <template>
-  <QInput class="p-input" v-bind="propsToPass" v-on="$listeners">
+  <QInput
+    :class="['p-input', isCode ? '_is-code' : '']"
+    v-bind="propsToPass"
+    v-on="$listeners"
+  >
     <template v-slot:append v-if="isSearch">
       <QIcon class="c-primary">
         <svg
@@ -39,10 +43,25 @@
   .q-field__control:hover:before
     border-color: $c-blue-ribbon
     background-color: white
+  &.q-field--focused
+    .q-field__control:before
+      background-color: white
+    .q-field__control:after
+      border-color: $c-blue-ribbon
 
-.p-input.q-field--focused
+
+.p-input._is-code
+  .q-field__native
+    color: white // the text colour
   .q-field__control:before
-    background-color: white
+    border: 2px solid $c-lucy-black
+    background-color: $c-lucy-black
+    transition: border-color 0.36s cubic-bezier(0.4, 0, 0.2, 1)
+  .q-field__control:hover:before
+    border-color: $c-sail-dark
+  &.q-field--focused
+    .q-field__control:after
+      border-color: $c-sail-dark
 </style>
 
 <style lang="sass" scoped>
@@ -58,15 +77,18 @@ export default {
   components: { QInput, QIcon },
   props: {
     /**
-     * When `true`, shows a search icon.
-     * @category content
+     * When `true` it will have a dark background.
+     * @category state
      * @type {boolean}
      */
-    isSearch: {
-      type: Boolean,
-      category: 'content',
-      desc: 'When `true`, shows a search icon.'
-    }
+    isCode: { type: Boolean },
+    /**
+     * When `true`, shows a search icon.
+     * @category content
+     * @category state
+     * @type {boolean}
+     */
+    isSearch: { type: Boolean }
   },
   computed: {
     propsToPass () {

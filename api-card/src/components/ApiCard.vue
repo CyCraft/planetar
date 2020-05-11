@@ -13,12 +13,7 @@
           :key="category"
           class="_tab-panel"
         >
-          <CategoryPanel
-            :schema="schema"
-            :value="value"
-            :mode="value ? 'edit' : 'view'"
-            v-on="$listeners"
-          />
+          <CategoryPanel v-model="propsObject" :schema="schema" :mode="value ? 'edit' : 'view'" />
         </QTabPanel>
       </QTabPanels>
     </div>
@@ -66,12 +61,23 @@ import CategoryPanel from './atoms/CategoryPanel.vue'
 import { QTabPanels, QTabPanel } from 'quasar'
 import { isArray, isFullString, isString } from 'is-what'
 import { kebabCase } from 'case-anything'
+import { mergeAndConcat } from 'merge-anything'
 import { propToPropSchema } from '../helpers/vueDocgenToEasyForms'
 import { noRequiredPropExampleErrorMsg } from '../helpers/errors'
 import '../types/vueDocgen.js'
 
+const FIXED_CATS = {
+  description: 'description',
+  slots: 'slots',
+  events: 'events',
+  methods: 'methods',
+}
+const fixedCategoryNames = Object.values(FIXED_CATS)
+const fixedCatToCustomTag = cat => ({
+  tags: { category: [{ description: cat, title: 'category' }] },
+})
+
 function getCategoryPListItems (categorySchemaMap) {
-  const fixedCategoryNames = ['description', 'slots', 'events', 'methods']
   // fixed cats
   const fixedCategories = fixedCategoryNames
     .filter(c => isArray(categorySchemaMap[c]) && categorySchemaMap[c].length)
@@ -96,6 +102,19 @@ function checkIfContains (hay, needle) {
   return isString(hay) && hay.toLowerCase().includes(needle.toLowerCase())
 }
 
+function dynamicImportComponent (filePath, extension) {
+  if (extension === 'vue') {
+    return import(`!!./vue-docgen-loader!src/${filePath.replace('.vue', '')}.vue`)
+  }
+  if (extension === 'jsx') {
+    return import(`!!./vue-docgen-loader!src/${filePath.replace('.jsx', '')}.jsx`)
+  }
+  if (extension === 'tsx') {
+    return import(`!!./vue-docgen-loader!src/${filePath.replace('.tsx', '')}.tsx`)
+  }
+  throw new Error('incorrect filePath. Your filepath must end in .vue, .jsx or .tsx')
+}
+
 export default {
   name: 'ApiCard',
   components: {
@@ -112,14 +131,15 @@ export default {
      */
     filePath: { type: String, required: true },
     /**
-     * Relative from the `src` folder.
-     * @example 'components/atoms/MyBtn.vue'
+     * The props object to be synced with whatever can be written in the API Card input fields
+     * This object will be evaluated before emited via $emit('input', parse(value))
      */
-    value: { type: Object },
+    value: { type: Object, required: true },
   },
   created () {
     const { filePath, parseVueDocgenData } = this
-    import(`!!./vue-docgen-loader!src/${filePath.replace('.vue', '')}.vue`)
+    const extension = filePath.split('.').slice(-1)[0]
+    dynamicImportComponent(filePath, extension)
       .then(vueDocgenData => parseVueDocgenData(vueDocgenData)) // prettier-ignore
   },
   data () {
@@ -128,6 +148,8 @@ export default {
       .split('/')
       .slice(-1)[0]
       .replace('.vue', '')
+      .replace('.jsx', '')
+      .replace('.tsx', '')
     return {
       fileName,
       searchValue: '',
@@ -139,19 +161,26 @@ export default {
     }
   },
   computed: {
+    propsObject: {
+      get () {
+        return this.value
+      },
+      set (newValue) {
+        this.$emit('input', newValue)
+      },
+    },
     categorySchemaMapFiltered () {
       const { categorySchemaMap, searchValue: s } = this
       if (!s) return categorySchemaMap
       return Object.entries(categorySchemaMap).reduce((carry, [category, schema]) => {
         const searchIncludesCategory = checkIfContains(category, s)
-        if (category === 'description' || searchIncludesCategory) {
+        if (category === FIXED_CATS.description || searchIncludesCategory) {
           carry[category] = schema
           return carry
         }
         const check = ({ label, subLabel }) =>
           checkIfContains(label, s) || checkIfContains(subLabel, s)
         const schemaFiltered = schema.filter(check)
-        console.log(`schemaFiltered → `, schemaFiltered)
         if (schemaFiltered.length) {
           carry[category] = schemaFiltered
         }
@@ -173,33 +202,45 @@ export default {
      */
     parseVueDocgenData (vueDocgenData = {}) {
       console.log(`vueDocgenData → `, vueDocgenData)
-      const { categorySchemaMap, setExampleAsDefaultValue } = this
+      const { categorySchemaMap, getExample, value } = this
+      const modelToEmit = { ...value }
       const { description, props = [], methods = [], slots = [], events = [] } = vueDocgenData
       if (isFullString(description)) {
-        this.$set(categorySchemaMap, 'description', [{ subLabel: description }])
+        this.$set(categorySchemaMap, FIXED_CATS.description, [{ subLabel: description }])
       }
-      props.forEach((prop) /* PropDescriptor */ => {
-        if (prop.required) setExampleAsDefaultValue(prop)
+      const fixedCats = [
+        ...slots.map(s => mergeAndConcat(s, fixedCatToCustomTag(FIXED_CATS.slots))),
+        ...events.map(e => mergeAndConcat(e, fixedCatToCustomTag(FIXED_CATS.events))),
+        ...methods.map(m => mergeAndConcat(m, fixedCatToCustomTag(FIXED_CATS.methods))),
+      ]
+      ;[...props, ...fixedCats].forEach((prop /* PropDescriptor */) => {
         const schemaInfo = propToPropSchema(prop)
         const { categories, schema } = schemaInfo
+        if (schema.default !== undefined) {
+          modelToEmit[schema.id] = schema.default
+        }
+        if (prop.required && schema.default === undefined) {
+          modelToEmit[schema.id] = getExample(prop)
+        }
         categories.forEach(category => {
           if (!(category in categorySchemaMap)) this.$set(categorySchemaMap, category, [])
           categorySchemaMap[category].push(schema)
         })
       })
       if (!this.activeTab) this.activeTab = this.categoryPListItems[0].name
+      this.$emit('input', modelToEmit)
       this.$emit('ready')
     },
     /**
      * @param {PropDescriptor} prop
+     * @returns {*}
      */
-    setExampleAsDefaultValue (prop) {
+    getExample (prop) {
       const { name, tags } = prop
       try {
         const { example } = tags
         const defaultValue = example[0].description
-        const model = { ...this.value, [name]: eval(defaultValue) }
-        this.$emit('input', model)
+        return defaultValue
       } catch (error) {
         console.error(noRequiredPropExampleErrorMsg)
       }
