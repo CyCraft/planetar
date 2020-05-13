@@ -153,7 +153,7 @@ export default {
      * @example {name: 'Mexcelsior', id: 'm', items: ['a', 'b']}
      */
     complicatedObject: {
-      type: [Object],
+      type: Object,
       default: () => ({ name: '', id: '', items: [] }),
     },
     /**
