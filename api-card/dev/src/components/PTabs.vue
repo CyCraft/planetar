@@ -62,6 +62,7 @@ import { QTabs, QTab, QTabPanels, QTabPanel } from 'quasar'
 
 /**
  * This is a wrapper around QTabs and QTabPanels to automatically generate the QTabs above the panels.
+ * @example {defaultContent: { '0': '🍍' }}
  */
 export default {
   name: 'PTabs',

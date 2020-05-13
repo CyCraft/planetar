@@ -65,6 +65,7 @@ import { mergeAndConcat } from 'merge-anything'
 import { propToPropSchema } from '../helpers/vueDocgenToEasyForms'
 import { noRequiredPropExampleErrorMsg } from '../helpers/errors'
 import '../types/vueDocgen.js'
+import { evaluateString } from '../helpers/evaluateString'
 
 const FIXED_CATS = {
   description: 'description',
@@ -204,7 +205,14 @@ export default {
       console.log(`vueDocgenData → `, vueDocgenData)
       const { categorySchemaMap, getExample, value } = this
       const modelToEmit = { ...value }
-      const { description, props = [], methods = [], slots = [], events = [] } = vueDocgenData
+      const {
+        description,
+        props = [],
+        methods = [],
+        slots = [],
+        events = [],
+        tags: componentJSDocTags,
+      } = vueDocgenData
       if (isFullString(description)) {
         this.$set(categorySchemaMap, FIXED_CATS.description, [{ subLabel: description }])
       }
@@ -228,6 +236,14 @@ export default {
         })
       })
       if (!this.activeTab) this.activeTab = this.categoryPListItems[0].name
+      // use top level example props for generating api-card example
+      const { examples = [] } = componentJSDocTags
+      if (examples.length) {
+        try {
+          const propsForApiCardExample = evaluateString(examples[0].content)
+          Object.entries(propsForApiCardExample).forEach(([k, v]) => (modelToEmit[k] = v))
+        } catch (error) {}
+      }
       this.$emit('input', modelToEmit)
       this.$emit('ready')
     },
