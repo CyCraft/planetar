@@ -1,5 +1,5 @@
 <template>
-  <div class="p-tabs">
+  <div class="test-tabs">
     <QTabs
       v-model="activeTab"
       dense
@@ -51,7 +51,7 @@
 @import '../../../../styles/margin-padding'
 @import '../../../../styles/shadows'
 
-.p-tabs
+.test-tabs
   min-width: 150px
   display: flex
   flex-direction: column
@@ -65,7 +65,7 @@ import { QTabs, QTab, QTabPanels, QTabPanel } from 'quasar'
  * @example {defaultContent: { '0': '🍍' }}
  */
 export default {
-  name: 'PTabs',
+  name: 'TestTabs',
   components: {
     QTabs,
     QTab,

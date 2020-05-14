@@ -72,16 +72,21 @@ export default {
     }
   },
   watch: {
-    // model (newValue) {
-    //   this.$set(this.props, 'value', newValue)
-    // },
+    model (newValue) {
+      const newVal = JSON.stringify(newValue)
+      if (this.propsStringified.value === newVal) return
+      this.$set(this.propsStringified, 'value', newVal)
+    },
+    propsToBind ({ value }) {
+      this.model = value
+    },
   },
   computed: {
     propsToBind () {
-      const { propsStringified, previewStyle, model } = this
+      const { propsStringified, previewStyle } = this
       const style = previewStyle
       const propsEvaluated = evaluateObject(propsStringified)
-      return { style, ...propsEvaluated, value: model }
+      return { style, ...propsEvaluated }
     },
   },
   methods: {

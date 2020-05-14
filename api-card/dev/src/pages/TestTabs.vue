@@ -1,6 +1,6 @@
 <template>
   <q-page padding>
-    <ApiComponentExample filePath="components/PTabs.vue" />
+    <ApiComponentExample filePath="components/TestTabs.vue" />
   </q-page>
 </template>
 
