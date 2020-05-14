@@ -1,6 +1,7 @@
 <template>
   <QInput
     :class="['test-input', { 'animate-blink': isBlinking }]"
+    :color="color"
     v-bind="propsToPass"
     v-on="$listeners"
     v-model="model"
@@ -34,21 +35,6 @@
 @import '../../../../styles/shadows'
 
 /* global styles */
-.test-input
-  .q-field__control
-    border-radius: 8px
-  .q-field__control:before
-    border: 2px solid $c-stone-light
-    background-color: $c-stone-light
-    transition: border-color 0.36s cubic-bezier(0.4, 0, 0.2, 1)
-  .q-field__control:hover:before
-    border-color: $c-blue-ribbon
-    background-color: white
-
-.test-input.q-field--focused
-  .q-field__control:before
-    background-color: white
-
 .animate-blink
   animation: blink 1.3s infinite
 @keyframes blink
@@ -92,6 +78,10 @@ export default {
     value: {
       type: String,
     },
+    /**
+     * @type {'primary' | 'secondary'}
+     */
+    color: { type: String },
     /**
      * When `true`, shows a search icon.
      * @category content

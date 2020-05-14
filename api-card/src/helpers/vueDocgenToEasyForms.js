@@ -101,12 +101,19 @@ export function propToPropSchema (vueDocgenProp) {
     inputType = 'number'
     parseInput = Number
   }
+  const valuesCalculated = values.length
+    ? values.map(JSON.stringify)
+    : typeTags.length
+    ? typeTags[0]
+        .split('|')
+        .map(t => t.trim())
+        .filter(t => t[0] === `'` && t[t.length - 1] === `'`)
+    : []
   // if the prop has a fixed set of possible values, show this as an 'option' EasyField
-  const propHasValues = isArray(values) && values.length
+  const propHasValues = isArray(valuesCalculated) && valuesCalculated.length > 1
   if (propHasValues) {
     component = 'PSelect'
-    emitValue = true
-    options = values.map(v => ({ label: v, value: v }))
+    options = valuesCalculated
   }
   // Create a special input for defining arrays and/or objects
   if (
