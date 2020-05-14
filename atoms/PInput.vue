@@ -72,6 +72,9 @@
 <script>
 import { QInput, QIcon } from 'quasar'
 
+/**
+ * This is the main input field. Uses <QInput /> under the hood.
+ */
 export default {
   name: 'PInput',
   components: { QInput, QIcon },
