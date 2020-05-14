@@ -15,6 +15,7 @@ import { evaluateString } from './evaluateString'
  * @returns {{categories: string[], schema: object}} EasyForm schema blueprint
  */
 export function propToPropSchema (vueDocgenProp) {
+  console.log(`vueDocgenProp → `, vueDocgenProp)
   // get the documentation I want to use from the vueDocgenProp
   const {
     required,
@@ -51,9 +52,13 @@ export function propToPropSchema (vueDocgenProp) {
   const examples = _examples.map(e => e.description)
   const categories = _categories.map(c => c.description)
 
+  const isSlot = categories.includes('slots')
+  const isEvent = categories.includes('events')
+  const isMethod = categories.includes('methods')
+
   // whatever the prop is, default to an 'input' EasyField
   const events = {}
-  let component = 'PInput'
+  let component = isSlot || isEvent || isMethod ? undefined : 'PInput'
   let subLabel = description
   let options,
     disable,
