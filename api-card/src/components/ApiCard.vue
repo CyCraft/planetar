@@ -105,13 +105,13 @@ function checkIfContains (hay, needle) {
 
 function dynamicImportComponent (filePath, extension) {
   if (extension === 'vue') {
-    return import(`!!./vue-docgen-loader!src/${filePath.replace('.vue', '')}.vue`)
+    return import(`!!@planetar/vue-simple-docgen-loader!src/${filePath.replace('.vue', '')}.vue`)
   }
   if (extension === 'jsx') {
-    return import(`!!./vue-docgen-loader!src/${filePath.replace('.jsx', '')}.jsx`)
+    return import(`!!@planetar/vue-simple-docgen-loader!src/${filePath.replace('.jsx', '')}.jsx`)
   }
   if (extension === 'tsx') {
-    return import(`!!./vue-docgen-loader!src/${filePath.replace('.tsx', '')}.tsx`)
+    return import(`!!@planetar/vue-simple-docgen-loader!src/${filePath.replace('.tsx', '')}.tsx`)
   }
   throw new Error('incorrect filePath. Your filepath must end in .vue, .jsx or .tsx')
 }

@@ -1,0 +1,24 @@
+{
+  "name": "@planetar/vue-simple-docgen-loader",
+  "version": "0.1.0",
+  "description": "Fork of @vue-styleguidist/vue-simple-docgen-loader",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "elevatebart",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vue-styleguidist/vue-styleguidist.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vue-styleguidist/vue-styleguidist/issues"
+  },
+  "homepage": "https://vue-styleguidist.github.io",
+  "dependencies": {
+    "escodegen": "^1.14.1",
+    "to-ast": "^1.0.0",
+    "vue-docgen-api": "^4.22.3"
+  }
+}
