@@ -1,8 +1,10 @@
 <template>
   <QInput
-    :class="['p-input', { 'animate-blink': isBlinking }]"
+    :class="['test-input', { 'animate-blink': isBlinking }]"
+    :color="color"
     v-bind="propsToPass"
     v-on="$listeners"
+    v-model="model"
   >
     <template v-slot:append v-if="isSearch">
       <QIcon class="c-primary">
@@ -33,21 +35,6 @@
 @import '../../../../styles/shadows'
 
 /* global styles */
-.p-input
-  .q-field__control
-    border-radius: 8px
-  .q-field__control:before
-    border: 2px solid $c-stone-light
-    background-color: $c-stone-light
-    transition: border-color 0.36s cubic-bezier(0.4, 0, 0.2, 1)
-  .q-field__control:hover:before
-    border-color: $c-blue-ribbon
-    background-color: white
-
-.p-input.q-field--focused
-  .q-field__control:before
-    background-color: white
-
 .animate-blink
   animation: blink 1.3s infinite
 @keyframes blink
@@ -67,7 +54,7 @@
 @import '../../../../styles/margin-padding'
 @import '../../../../styles/shadows'
 
-.p-input
+.test-input
   min-width: 150px
 </style>
 
@@ -78,12 +65,23 @@ import { QInput, QIcon } from 'quasar'
  * This is the main input field.
  */
 export default {
-  name: 'PInput',
+  name: 'TestInput',
   components: {
     QInput,
     QIcon,
   },
   props: {
+    /**
+     * To be used with v-model
+     * @category model
+     */
+    value: {
+      type: String,
+    },
+    /**
+     * @type {'primary' | 'secondary'}
+     */
+    color: { type: String },
     /**
      * When `true`, shows a search icon.
      * @category content
@@ -105,6 +103,17 @@ export default {
       default: false,
     },
   },
+  data () {
+    return { innerValue: '' }
+  },
+  watch: {
+    value: {
+      immediate: true,
+      handler (newValue) {
+        this.innerValue = newValue
+      },
+    },
+  },
   computed: {
     propsToPass () {
       const { $attrs, isSearch } = this
@@ -112,6 +121,15 @@ export default {
       const outlined = true
       const dense = true
       return { ...$attrs, type, outlined, dense }
+    },
+    model: {
+      get () {
+        return this.innerValue
+      },
+      set (v) {
+        this.innerValue = v
+        this.$emit('input', v)
+      },
     },
   },
   methods: {},

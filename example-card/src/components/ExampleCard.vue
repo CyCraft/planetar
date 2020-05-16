@@ -1,11 +1,11 @@
 <template>
   <PTabs
     class="planetar-example-card"
-    :id="kebabCase(fileName) + `-example`"
+    :id="kebabCase(fileName) + `-example-card`"
     :tabLabels="tabLabels"
   >
     <template v-for="(tabLabel, index) in tabLabels" v-slot:[index]>
-      <div class="ma-lg" v-if="tabLabel === 'example' && exampleComponent">
+      <div class="pa-lg" v-if="tabLabel === 'example' && exampleComponent">
         <component :is="exampleComponent" />
       </div>
       <div
@@ -35,8 +35,12 @@
 <script>
 import { kebabCase } from 'case-anything'
 import PTabs from '../../../atoms/PTabs.vue'
-import { prismHighlight } from '../helpers/prism'
-import { getTagHtmlFromCodeString } from '../helpers/regexp'
+import { codeToHtml } from '../helpers/htmlHelpers'
+import {
+  getTagHtmlFromCodeString,
+  jsDocBlockNoIndentation
+} from '../helpers/regexp'
+import { dynamicImport } from '../helpers/dynamicImport'
 
 export default {
   name: 'ExampleCard',
@@ -46,22 +50,19 @@ export default {
      * Relative from the `src` folder.
      * @example 'examples/MyBtn/Example1.vue'
      */
-    filePath: { type: String, required: true }
+    filePath: { type: String, required: true },
+    /**
+     * When `true` the JSDoc above the default export will be stripped from displayed source code in the script tab.
+     */
+    stripJSDocDescription: { type: Boolean, default: false }
   },
   created () {
     const { parseComponent, filePath } = this
-    import(
-      /* webpackChunkName: "component" */
-      /* webpackMode: "lazy-once" */
-      `src/${filePath.replace('.vue', '')}.vue`
-    ).then(componentExport => {
+    const extension = filePath.split('.').slice(-1)[0]
+    dynamicImport(filePath, extension, 'component').then(componentExport => {
       this.exampleComponent = componentExport.default
     })
-    import(
-      /* webpackChunkName: "component-source" */
-      /* webpackMode: "lazy-once" */
-      `!raw-loader!src/${filePath.replace('.vue', '')}.vue`
-    ).then(componentString => {
+    dynamicImport(filePath, extension, 'string').then(componentString => {
       parseComponent(componentString.default)
     })
   },
@@ -71,6 +72,8 @@ export default {
       .split('/')
       .slice(-1)[0]
       .replace('.vue', '')
+      .replace('.jsx', '')
+      .replace('.tsx', '')
     return {
       fileName,
       activeTab: 'example',
@@ -86,17 +89,36 @@ export default {
   computed: {},
   methods: {
     kebabCase,
-    prismHighlight,
     parseComponent (componentCodeString) {
+      const { stripJSDocDescription } = this
       const template = getTagHtmlFromCodeString('template', componentCodeString)
-      const script = getTagHtmlFromCodeString('script', componentCodeString)
+      let script = getTagHtmlFromCodeString('script', componentCodeString)
       const style = getTagHtmlFromCodeString('style', componentCodeString)
-      this.parts.template = prismHighlight(template, 'html')
-      this.parts.script = prismHighlight(script, 'html')
-      this.parts.style = prismHighlight(style, 'html')
-      this.tabLabels.push(
-        ...['template', 'script', 'style'].filter(type => this.parts[type])
-      )
+      const notAVueFile = !template && !script && !style
+      if (notAVueFile) {
+        script = componentCodeString
+        if (stripJSDocDescription) {
+          script = script.replace(jsDocBlockNoIndentation, '')
+        }
+        this.parts.script = codeToHtml(script, 'js')
+        this.tabLabels.push('script')
+        return
+      }
+      if (template) {
+        this.parts.template = codeToHtml(template, 'html')
+        this.tabLabels.push('template')
+      }
+      if (script) {
+        if (stripJSDocDescription) {
+          script = script.replace(jsDocBlockNoIndentation, '')
+        }
+        this.parts.script = codeToHtml(script, 'html')
+        this.tabLabels.push('script')
+      }
+      if (style) {
+        this.parts.style = codeToHtml(style, 'html')
+        this.tabLabels.push('style')
+      }
     }
   }
 }

@@ -7,12 +7,9 @@ module.exports = function (ctx) {
   return {
     // app boot file (/src/boot)
     // --> boot files are part of "main.js"
-    boot: [
-      'register.js'
-    ],
+    boot: ['register.js'],
 
-    css: [
-    ],
+    css: [],
 
     extras: [
       // 'ionicons-v4',
@@ -54,16 +51,34 @@ module.exports = function (ctx) {
     build: {
       vueRouterMode: 'history',
 
+      extendWebpack (cfg) {
+        cfg.resolve.extensions.push('.ts', '.tsx')
+        cfg.module.rules.push({
+          test: /\.ts(x?)$/,
+          use: [
+            {
+              loader: 'babel-loader'
+            },
+            {
+              loader: 'ts-loader',
+              options: {
+                appendTsSuffixTo: [/\.vue$/]
+              }
+            }
+          ],
+          include: [path.join(__dirname, 'src')]
+        })
+      },
       chainWebpack (chain) {
         chain.resolve.alias.merge({
-          'ui': path.resolve(__dirname, '../src/index.js')
+          ui: path.resolve(__dirname, '../src/index.js')
         })
       }
     },
 
     devServer: {
       // port: 8080,
-      open: true // opens browser window automatically
+      open: 'firefox' // opens browser window automatically
     }
   }
 }

@@ -10,3 +10,5 @@ export function getTagHtmlFromCodeString (tagName, codeString = '') {
 
   return parsed[1] || ''
 }
+
+export const jsDocBlockNoIndentation = /\n\/\*\*([\s\S]*?)\n \*\//g

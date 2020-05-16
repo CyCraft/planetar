@@ -55,8 +55,6 @@ export default {
   },
   created () {
     const { filePath } = this
-    const extensions = ['.vue', '.jsx', '.tsx']
-    if (extensions.every(ext => !filePath.includes(ext))) return
     const extension = filePath.split('.').slice(-1)[0]
     dynamicImportComponent(filePath, extension).then(componentExport => {
       this.exampleComponent = componentExport.default
