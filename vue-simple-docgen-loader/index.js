@@ -14,8 +14,8 @@ function loaderDocgen (source) {
 }
 
 async function asyncLoader (source) {
+  const file = this.request.split('!').pop()
   try {
-    const file = this.request.split('!').pop()
     if (!file.match(/\.vue|\.tsx|\.jsx/)) {
       throw new Error('Your file needs to be .vue|.jsx|.tsx')
     }
@@ -27,7 +27,10 @@ async function asyncLoader (source) {
       module.exports = ${generate(toAst(docs))}
   `
   } catch (error) {
-    console.error(`[vue-docgen-loader] error during import of file: ${file} error:`, error)
+    console.error(
+      `[vue-docgen-loader] error during import of file: ${file}\nerror:`,
+      error
+    )
     return `module.exports = {}`
   }
 }
