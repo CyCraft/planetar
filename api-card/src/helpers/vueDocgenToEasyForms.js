@@ -92,7 +92,7 @@ export function propToPropSchema (vueDocgenProp) {
     }
   }
   // if the prop is a Boolean, show this as a 'toggle' EasyField
-  if (types.includes('boolean')) {
+  if (types.includes('boolean') || (typeTags.length && typeTags.include('boolean'))) {
     component = 'PToggle'
     _default = eval(_default)
   }
