@@ -1,6 +1,6 @@
 {
   "name": "@planetar/example-card",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "Luca Ban - Mesqueeb",
   "description": "Example Card based on a Vue file with automatic source extraction",
   "license": "MIT",
@@ -38,9 +38,7 @@
     "url": "https://github.com/mesqueeb/planetar"
   },
   "bugs": "https://github.com/mesqueeb/planetar/issues",
-  "browserslist": [
-    "last 1 version, not dead, ie >= 11"
-  ],
+  "browserslist": ["last 1 version, not dead, ie >= 11"],
   "dependencies": {
     "@planetar/vue-simple-docgen-loader": "^0.1.1",
     "case-anything": "^1.1.1",

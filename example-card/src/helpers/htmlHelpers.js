@@ -11,25 +11,18 @@ export function prismHighlight (str, lang) {
 export function codeToHtml (str, lang) {
   if (lang === 'vue') lang = 'html'
   const highlightedCode = prismHighlight(str, lang)
-  return `<pre class="language-${lang}"><code>${highlightedCode}</code></pre>`
+  return `<pre class="language-${lang}"><code class="language-${lang}">${highlightedCode}</code></pre>`
 }
 
-export function replacer (
-  matchedString,
-  matchedGroup1, // unused
-  lang,
-  matchedGroup3, // unused
-  matchedGroup4, // unused
-  content
-) {
+export function replacer (matchedString, lang, content) {
   const htmlHighlighted = prismHighlight(content, lang)
-  const recreatedBlock = `<pre class="language-${lang}"><code>${htmlHighlighted}</code></pre>`
+  const recreatedBlock = `<pre class="language-${lang}"><code class="language-${lang}">${htmlHighlighted}</code></pre>`
   return recreatedBlock
 }
 
 export function mdToHtml (mdString) {
   const html = snarkdown(mdString)
-  const codeBlock = /<pre(.+?)language-(\w+?)(\s*)"(.*?)><code>([\s\S]+?)<\/code><\/pre>/g
+  const codeBlock = /<pre.+?><code.+?language-(\w+?)".*?>([\s\S]+?)<\/code><\/pre>/g
   const htmlWithHighlighting = html
     .replace(/&quot;/g, '"')
     .replace(/&lt;/g, '<')
