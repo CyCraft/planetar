@@ -75,6 +75,9 @@ export function propToPropSchema (vueDocgenProp) {
   if (typeTags.length) {
     subLabel += `\n\nType: \`${typeTags[0]}\``
   }
+  if (!typeTags.length && types.length) {
+    subLabel += `\n\nType: \`${types.join(', ')}\``
+  }
 
   _default = defaultValue.value
   const requiresNewline = defaultValue && defaultValue.value && defaultValue.value.includes('\n')
