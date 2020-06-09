@@ -13,7 +13,11 @@
           :key="category"
           class="_tab-panel"
         >
-          <CategoryPanel v-model="propsObject" :schema="schema" :mode="value ? 'edit' : 'view'" />
+          <CategoryPanel
+            v-model="propsObject"
+            :schema="schema"
+            :mode="isPlainObject(value) ? 'edit' : 'view'"
+          />
         </QTabPanel>
       </QTabPanels>
     </div>
@@ -59,7 +63,7 @@ import PInput from '../../../atoms/PInput.vue'
 import PList from '../../../atoms/PList.vue'
 import CategoryPanel from './atoms/CategoryPanel.vue'
 import { QTabPanels, QTabPanel } from 'quasar'
-import { isArray, isFullString, isString } from 'is-what'
+import { isArray, isFullString, isString, isPlainObject } from 'is-what'
 import { kebabCase } from 'case-anything'
 import { mergeAndConcat } from 'merge-anything'
 import { propToPropSchema } from '../helpers/vueDocgenToEasyForms'
@@ -134,8 +138,9 @@ export default {
     /**
      * The props object to be synced with whatever can be written in the API Card input fields
      * This object will be evaluated before emited via $emit('input', parse(value))
+     * If `undefined` no edit controls will be shown, and the ApiCard will just work like a static information card.
      */
-    value: { type: Object, required: true },
+    value: { type: [Object, undefined], default: undefined },
   },
   created () {
     const { filePath, parseVueDocgenData } = this
@@ -197,6 +202,7 @@ export default {
     },
   },
   methods: {
+    isPlainObject,
     kebabCase,
     /**
      * @param {ComponentDoc} vueDocgenData

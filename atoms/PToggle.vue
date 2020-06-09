@@ -8,11 +8,13 @@ import { QToggle } from 'quasar'
 export default {
   name: 'PToggle',
   components: { QToggle },
-  props: {},
+  props: {
+    readonly: { type: Boolean, default: false }
+  },
   computed: {
     propsToPass () {
-      const { $attrs } = this
-      return { ...$attrs }
+      const { $attrs, readonly } = this
+      return { disable: readonly, ...$attrs }
     }
   },
   methods: {}

@@ -1,10 +1,11 @@
 <template>
   <EasyForm
     class="planetar-category-panel"
-    :schema="schema"
+    :schema="schemaCalculated"
+    :mode="mode"
     v-bind="$attrs"
     v-on="$listeners"
-    :key="String($attrs.value.value)"
+    :key="isPlainObject($attrs.value) ? String($attrs.value.value) : '_'"
   />
 </template>
 
@@ -45,6 +46,7 @@
 <script>
 import vue from 'vue'
 import { EasyForm } from 'quasar-ui-easy-forms'
+import { isPlainObject } from 'is-what'
 // import { PInput, PToggle, PSelect } from '../../../../atoms'
 import PInput from '../../../../atoms/PInput.vue'
 import PSelect from '../../../../atoms/PSelect.vue'
@@ -60,11 +62,20 @@ export default {
   components: { EasyForm },
   props: {
     schema: { type: Array, required: true },
+    /**
+     * @type {'edit' | 'view' | 'raw'}
+     */
+    mode: { type: String, default: 'edit' },
   },
   data () {
     return {}
   },
-  computed: {},
-  methods: {},
+  computed: {
+    schemaCalculated () {
+      if (this.mode === 'edit') return this.schema
+      return this.schema.map(s => ({ ...s, component: undefined }))
+    },
+  },
+  methods: { isPlainObject },
 }
 </script>
