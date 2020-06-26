@@ -1,7 +1,7 @@
 <template>
   <div class="planetar-api-component-example column flex-center">
     <template v-if="exampleComponent && apiCardReady">
-      <div class="t-h6 mb-lg" @click="togglePreviewStyle">Interactive preview</div>
+      <div class="t-h6 mb-lg cursor-ew-resize" @click="togglePreviewStyle">Interactive preview</div>
       <component :is="exampleComponent" v-bind="propsToBind" v-model="model" />
     </template>
     <div class="t-h6 my-lg">Info card</div>
@@ -13,6 +13,11 @@
     />
   </div>
 </template>
+
+<style lang="sass">
+.cursor-ew-resize
+  cursor: cursor-ew-resize
+</style>
 
 <script>
 import ApiCard from './ApiCard.vue'

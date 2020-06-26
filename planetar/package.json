@@ -1,8 +1,8 @@
 {
-  "name": "@planetar/example-card",
-  "version": "0.1.2",
+  "name": "planetar",
+  "version": "0.0.1",
   "author": "Luca Ban - Mesqueeb",
-  "description": "Example Card based on a Vue file with automatic source extraction",
+  "description": "A framework that creates a centralised landing page of your design system ready for your apps and websites. 🪐",
   "license": "MIT",
   "module": "dist/index.esm.js",
   "main": "dist/index.common.js",
@@ -18,24 +18,21 @@
   },
   "homepage": "https://github.com/mesqueeb/planetar",
   "dependencies": {
-    "@planetar/vue-simple-docgen-loader": "^0.1.1",
-    "case-anything": "^1.1.1",
-    "prismjs": "^1.20.0",
-    "raw-loader": "^4.0.1",
-    "snarkdown": "github:mesqueeb/snarkdown#dist"
+    "@planetar/api-card": "^0.1.9",
+    "@planetar/example-card": "^0.1.2"
   },
   "devDependencies": {
     "@rollup/plugin-buble": "^0.20.0",
-    "@rollup/plugin-commonjs": "^11.1.0",
-    "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-node-resolve": "^6.0.0",
+    "@rollup/plugin-commonjs": "^13.0.0",
+    "@rollup/plugin-json": "^4.0.0",
+    "@rollup/plugin-node-resolve": "^8.0.0",
     "chalk": "^2.4.2",
     "fs-extra": "^8.1.0",
     "open": "^6.4.0",
-    "quasar": "^1.12.8",
+    "quasar": "^1.0.0",
     "rimraf": "^3.0.0",
     "rollup": "^1.21.3",
-    "rollup-plugin-vue": "^5.1.9",
+    "rollup-plugin-vue": "^5.0.1",
     "uglify-es": "^3.3.9",
     "vue-template-compiler": "^2.6.11",
     "zlib": "^1.0.5"

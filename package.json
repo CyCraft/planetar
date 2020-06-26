@@ -1,15 +1,8 @@
 {
-  "name": "planetar",
-  "version": "0.0.0",
-  "description": "A framework that creates a centralised landing page of your design system ready for your apps and websites. 🪐",
-  "main": "dist/index.js",
   "scripts": {
     "commit": "git-cz",
+    "update-all": "cd api-card && npm update && cd .. && cd example-card && npm update && cd .. && cd atoms && npm update && cd .. && cd vue-simple-docgen-loader && npm update && cd ..",
     "test": "ava"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mesqueeb/planetar.git"
   },
   "author": "Luca Ban - Mesqueeb",
   "license": "MIT",
