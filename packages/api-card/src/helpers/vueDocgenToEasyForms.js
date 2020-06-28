@@ -25,6 +25,7 @@ export function propToPropSchema (vueDocgenProp) {
     values = [],
     tags: customTags = {},
     name: propName,
+    properties = [],
   } = vueDocgenProp
   // format the top level tags
   const types = isString(type.name) ? type.name.split('|').map(s => s.trim()) : ['any']
@@ -57,7 +58,6 @@ export function propToPropSchema (vueDocgenProp) {
   const isMethod = categories.includes('methods')
 
   // whatever the prop is, default to an 'input' EasyField
-  const events = {}
   let component = isSlot || isEvent || isMethod ? undefined : 'PInput'
   let subLabel = description
   let options,
@@ -72,11 +72,18 @@ export function propToPropSchema (vueDocgenProp) {
     _default
   let fieldClasses = []
 
-  if (typeTags.length) {
+  if (typeTags.length && !isEvent) {
     subLabel += `\n\nType: \`${typeTags[0]}\``
   }
-  if (!typeTags.length && types.length) {
+  if (!typeTags.length && types.length && !isEvent) {
     subLabel += `\n\nType: \`${types.join(', ')}\``
+  }
+
+  if (properties.length && isEvent) {
+    subLabel += `\n\nParams:`
+    properties.forEach(({ description, name, type }) => {
+      subLabel += `\n- **${name}** - ${description}<br />Type: \`${type.names.join(' | ')}\``
+    })
   }
 
   _default = defaultValue.value
@@ -147,7 +154,6 @@ export function propToPropSchema (vueDocgenProp) {
     autogrow,
     fieldClasses,
     debounce,
-    events,
     span,
     emitValue,
     // if the prop is `true` by default, set to true

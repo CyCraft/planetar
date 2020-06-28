@@ -39,6 +39,8 @@
         +mt($sm)
         display: block
         content: ""
+      li
+        +mb($md)
     .easy-field__component
       grid-column: 2 / 3
 </style>
