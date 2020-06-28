@@ -52,5 +52,6 @@
   "bugs": "https://github.com/mesqueeb/planetar/issues",
   "browserslist": [
     "last 1 version, not dead, ie >= 11"
-  ]
+  ],
+  "gitHead": "85718ffe30117650d9cb9d3daef9ee5eb8a0b945"
 }
