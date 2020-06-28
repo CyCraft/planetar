@@ -29,10 +29,10 @@
 </template>
 
 <style lang="sass">
-@import '@planetar/styles/colors'
-@import '@planetar/styles/typography'
-@import '@planetar/styles/margin-padding'
-@import '@planetar/styles/shadows'
+@import 'node_modules/@planetar/styles/colors'
+@import 'node_modules/@planetar/styles/typography'
+@import 'node_modules/@planetar/styles/margin-padding'
+@import 'node_modules/@planetar/styles/shadows'
 
 /* global styles */
 .animate-blink
@@ -49,10 +49,10 @@
 </style>
 
 <style lang="sass" scoped>
-@import '@planetar/styles/colors'
-@import '@planetar/styles/typography'
-@import '@planetar/styles/margin-padding'
-@import '@planetar/styles/shadows'
+@import 'node_modules/@planetar/styles/colors'
+@import 'node_modules/@planetar/styles/typography'
+@import 'node_modules/@planetar/styles/margin-padding'
+@import 'node_modules/@planetar/styles/shadows'
 
 .test-input
   min-width: 150px
