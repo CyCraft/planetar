@@ -6,11 +6,12 @@
   "license": "MIT",
   "scripts": {},
   "homepage": "https://github.com/mesqueeb/planetar",
-  "dependencies": {},
   "repository": {
     "type": "git",
     "url": "https://github.com/mesqueeb/planetar"
   },
   "bugs": "https://github.com/mesqueeb/planetar/issues",
-  "browserslist": ["last 1 version, not dead, ie >= 11"]
+  "browserslist": [
+    "last 1 version, not dead, ie >= 11"
+  ]
 }
