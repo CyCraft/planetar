@@ -1,0 +1,10 @@
+{
+  "version": "v1",
+  "packages": {
+    "snarkdown": {
+      "signature": "086153534691273564fd4f3b05baf620",
+      "file": true,
+      "replaced": "github:mesqueeb/snarkdown#dist"
+    }
+  }
+}

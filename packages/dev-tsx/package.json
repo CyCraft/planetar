@@ -1,0 +1,38 @@
+{
+  "name": "dev-tsx",
+  "version": "0.0.0",
+  "description": "project used internally when developing for planetar",
+  "productName": "dev",
+  "author": "Luca Ban - mesqueeb",
+  "private": true,
+  "scripts": {
+    "dev": "quasar dev",
+    "dev:ssr": "quasar dev -m ssr",
+    "dev:ios": "quasar dev -m ios",
+    "dev:android": "quasar dev -m android",
+    "dev:electron": "quasar dev -m electron"
+  },
+  "dependencies": {
+    "@planetar/api-card": "^0.1.9",
+    "@planetar/atoms": "^0.0.0",
+    "@planetar/example-card": "^0.1.2",
+    "@quasar/extras": "^1.8.1",
+    "is-what": "^3.9.1",
+    "quasar": "^1.12.8",
+    "vue-strict-prop": "^0.3.6"
+  },
+  "devDependencies": {
+    "@quasar/app": "^1.8.6",
+    "@vue/babel-preset-jsx": "^1.1.2",
+    "ts-loader": "^7.0.4",
+    "vue-tsx-support": "^2.3.3"
+  },
+  "engines": {
+    "node": ">= 8.9.0",
+    "npm": ">= 5.6.0",
+    "yarn": ">= 1.6.0"
+  },
+  "browserslist": [
+    "last 1 version, not dead, ie >= 11"
+  ]
+}
