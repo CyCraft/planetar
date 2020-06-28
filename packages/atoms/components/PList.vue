@@ -20,10 +20,10 @@
 </template>
 
 <style lang="sass">
-@import '../styles/colors'
-@import '../styles/typography'
-@import '../styles/margin-padding'
-@import '../styles/shadows'
+@import '@planetar/styles/colors'
+@import '@planetar/styles/typography'
+@import '@planetar/styles/margin-padding'
+@import '@planetar/styles/shadows'
 
 /* global styles */
 .p-list
@@ -34,10 +34,10 @@
 </style>
 
 <style lang="sass" scoped>
-@import '../styles/colors'
-@import '../styles/typography'
-@import '../styles/margin-padding'
-@import '../styles/shadows'
+@import '@planetar/styles/colors'
+@import '@planetar/styles/typography'
+@import '@planetar/styles/margin-padding'
+@import '@planetar/styles/shadows'
 
 .p-list
   ._item

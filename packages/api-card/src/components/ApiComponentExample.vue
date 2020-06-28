@@ -16,7 +16,7 @@
 
 <style lang="sass">
 .cursor-ew-resize
-  cursor: cursor-ew-resize
+  cursor: ew-resize
 </style>
 
 <script>

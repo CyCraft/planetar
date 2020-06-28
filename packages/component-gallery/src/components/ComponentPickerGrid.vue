@@ -41,10 +41,10 @@
 </template>
 
 <style lang="sass" scoped>
-@import '../../../styles/colors'
-@import '../../../styles/typography'
-@import '../../../styles/margin-padding'
-@import '../../../styles/shadows'
+@import '@planetar/styles/colors'
+@import '@planetar/styles/typography'
+@import '@planetar/styles/margin-padding'
+@import '@planetar/styles/shadows'
 
 .component-picker
   ._grid-md

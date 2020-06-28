@@ -8,9 +8,15 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "@planetar/styles": "^0.0.0",
     "quasar": "^1.12.8"
   },
-  "keywords": ["Planetar", "Style-guide", "Vuejs", "Vue"],
+  "keywords": [
+    "Planetar",
+    "Style-guide",
+    "Vuejs",
+    "Vue"
+  ],
   "license": "MIT",
   "homepage": "https://github.com/mesqueeb/planetar#readme",
   "bugs": {

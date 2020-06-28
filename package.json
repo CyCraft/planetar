@@ -1,11 +1,20 @@
 {
   "scripts": {
     "commit": "git-cz",
-    "dev": "cd packages/dev && npm run dev",
-    "dev-tsx": "cd packages/dev-tsx && npm run dev",
+    "dev": "npm run start-dev && cd packages/dev && npm run dev",
+    "dev-tsx": "npm run start-dev && cd packages/dev-tsx && npm run dev",
     "test": "lerna run test",
-    "build": "lerna run build",
+    "build": "npm run start-build && lerna run build",
+    "build-api-card": "npm run start-build && cd packages/api-card && npm run build",
+    "build-example-card": "npm run start-build && cd packages/example-card && npm run build",
+    "build-component-gallery": "npm run start-build && cd packages/component-gallery && npm run build",
     "install-dependencies": "lerna bootstrap",
+    "replace-dist-src": "replace-in-files --string='\"module\": \"dist/index.esm.js\"' --replacement='\"module\": \"src/index.js\"' 'packages/(api-card|example-card|component-gallery)/package.json'",
+    "replace-src-dist": "replace-in-files --string='\"module\": \"src/index.js\"' --replacement='\"module\": \"dist/index.esm.js\"' 'packages/(api-card|example-card|component-gallery)/package.json'",
+    "replace-node_modules-": "replace-in-files --string=\"@import 'node_modules/@planetar\" --replacement=\"@import '@planetar\" 'packages/**/*.vue'",
+    "replace--node_modules": "replace-in-files --string=\"@import '@planetar\" --replacement=\"@import 'node_modules/@planetar\" 'packages/**/*.vue'",
+    "start-dev": "npm run replace-dist-src && npm run replace-node_modules-",
+    "start-build": "npm run replace-src-dist && npm run replace--node_modules",
     "reset-dependencies": "lerna clean -y && npm run install-dependencies"
   },
   "author": "Luca Ban - Mesqueeb",
@@ -19,7 +28,8 @@
     "@types/webpack-env": "^1.15.2",
     "commitizen": "^4.1.2",
     "cz-conventional-changelog": "^3.2.0",
-    "lerna": "^3.22.0"
+    "lerna": "^3.22.0",
+    "replace-in-files-cli": "^0.3.1"
   },
   "config": {
     "commitizen": {

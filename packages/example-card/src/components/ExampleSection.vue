@@ -12,10 +12,10 @@
 
 <style lang="sass">
 /* global styles */
-@import '../../../styles/colors'
-@import '../../../styles/typography'
-@import '../../../styles/margin-padding'
-@import '../../../styles/shadows'
+@import '@planetar/styles/colors'
+@import '@planetar/styles/typography'
+@import '@planetar/styles/margin-padding'
+@import '@planetar/styles/shadows'
 </style>
 
 <script>

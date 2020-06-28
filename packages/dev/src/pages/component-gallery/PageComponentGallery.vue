@@ -13,4 +13,7 @@ import Vue from 'vue'
 import EfButton from '../../components/atoms/EfButton.vue'
 
 Vue.component('EfButton', EfButton)
+export default {
+  name: 'PageComponentGallery'
+}
 </script>

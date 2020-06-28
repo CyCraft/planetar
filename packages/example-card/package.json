@@ -4,21 +4,16 @@
   "author": "Luca Ban - Mesqueeb",
   "description": "Example Card based on a Vue file with automatic source extraction",
   "license": "MIT",
-  "module": "dist/index.esm.js",
+  "module": "src/index.js",
   "main": "dist/index.common.js",
   "scripts": {
-    "dev": "cd dev && yarn dev && cd ..",
-    "dev:umd": "yarn build && node build/script.open-umd.js",
-    "dev:ssr": "cd dev && yarn 'dev:ssr' && cd ..",
-    "dev:ios": "cd dev && yarn 'dev:ios' && cd ..",
-    "dev:android": "cd dev && yarn 'dev:android' && cd ..",
-    "dev:electron": "cd dev && yarn 'dev:electron' && cd ..",
     "build": "node build/index.js",
     "build:js": "node build/script.javascript.js"
   },
   "homepage": "https://github.com/mesqueeb/planetar",
   "dependencies": {
     "@planetar/atoms": "^0.0.0",
+    "@planetar/styles": "^0.0.0",
     "@planetar/vue-simple-docgen-loader": "^0.1.1",
     "case-anything": "^1.1.1",
     "prismjs": "^1.20.0",

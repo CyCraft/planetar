@@ -63,7 +63,7 @@ const builds = [
         input: pathResolve('entry/index.umd.js')
       },
       output: {
-        name: 'Planetar',
+        name: 'componentGallery',
         file: pathResolve('../dist/index.umd.js'),
         format: 'umd'
       }
@@ -113,7 +113,7 @@ function addAssets (builds, type, injectName) {
           output: {
             file: addExtension(pathResolve(`../dist/${type}/${file}`), 'umd'),
             format: 'umd',
-            name: `Planetar.${injectName}.${name}`
+            name: `componentGallery.${injectName}.${name}`
           }
         },
         build: {
@@ -130,9 +130,12 @@ function build (builds) {
 }
 
 function genConfig (opts) {
+  const pkg = require('../package.json')
+  const pkgDependencies = Object.keys(pkg.dependencies || [])
+
   Object.assign(opts.rollup.input, {
     plugins: rollupPlugins,
-    external: ['vue', 'quasar']
+    external: ['vue', 'quasar'].concat(pkgDependencies)
   })
 
   Object.assign(opts.rollup.output, {
