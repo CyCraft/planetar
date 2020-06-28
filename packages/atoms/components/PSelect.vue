@@ -3,10 +3,10 @@
 </template>
 
 <style lang="sass">
-@import 'node_modules/@planetar/styles/colors'
-@import 'node_modules/@planetar/styles/typography'
-@import 'node_modules/@planetar/styles/margin-padding'
-@import 'node_modules/@planetar/styles/shadows'
+@import '@planetar/styles/colors'
+@import '@planetar/styles/typography'
+@import '@planetar/styles/margin-padding'
+@import '@planetar/styles/shadows'
 
 /* global styles */
 .p-select

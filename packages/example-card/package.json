@@ -4,7 +4,7 @@
   "author": "Luca Ban - Mesqueeb",
   "description": "Example Card based on a Vue file with automatic source extraction",
   "license": "MIT",
-  "module": "dist/index.esm.js",
+  "module": "src/index.js",
   "main": "dist/index.common.js",
   "scripts": {
     "build": "node build/index.js",
