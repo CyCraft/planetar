@@ -1,6 +1,6 @@
 <template>
   <div class="component-expose">
-    <router-link class="_back t-button" :to="$router.currentRoute.path">
+    <router-link class="_back" :to="$router.currentRoute.path">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -17,12 +17,13 @@
       </svg>
       back</router-link
     >
-    <ApiComponentExample class="ma-lg" :filePath="`components/${filePath}`" />
     <ExampleSection
       v-for="exampleFilePath in exampleFilePaths"
       :key="exampleFilePath"
       :filePath="`components/examples/${exampleFilePath}`"
     />
+    <ApiComponentExample v-if="interactivePreview" :filePath="`components/${filePath}`" />
+    <ApiCard v-if="!interactivePreview" :filePath="`components/${filePath}`" />
   </div>
 </template>
 
@@ -33,7 +34,14 @@
 @import '@planetar/styles/shadows'
 
 .component-expose
+  > *
+    +mb($xxxl)
+  > *:first-child
+    +mb($xl)
+  > *:last-child
+    +mb(0)
   ._back
+    +t-button
     display: flex
     align-items: center
     text-decoration: none
@@ -41,7 +49,7 @@
 </style>
 
 <script>
-import { ApiComponentExample } from '@planetar/api-card'
+import { ApiCard, ApiComponentExample } from '@planetar/api-card'
 import { ExampleSection } from '@planetar/example-card'
 import { getComponentPaths } from '../helpers/listOfComponents'
 export default {
@@ -53,35 +61,34 @@ export default {
      * @example ['./atoms/MyButton.vue']
      * @example require.context('src/components', true, /^\.\/.*(\.vue)$/).keys()
      */
-    componentFilesList: { type: Array, required: true }
+    componentFilesList: { type: Array, required: true },
+    /**
+     * If you don't want an interactive preview you can set this to false
+     */
+    interactivePreview: { type: Boolean, default: true },
   },
-  components: { ApiComponentExample, ExampleSection },
+  components: { ApiCard, ApiComponentExample, ExampleSection },
   computed: {
     filePath () {
       const r = this.$route
       return r.query.filePath
     },
     exampleFilePaths () {
-      const { componentFilesList } = this
-      const { atomExamples, moleculeExamples } = getComponentPaths(
-        componentFilesList
-      )
+      const { componentFilesList, filePath } = this
+      const { atomExamples, moleculeExamples } = getComponentPaths(componentFilesList)
       const examplePaths = atomExamples
         .concat(moleculeExamples)
         .map(p => p.replace('examples/', ''))
       const examplePathArrays = examplePaths.map(p => p.split('/'))
-      const componentPathArray = this.filePath.split('/')
+      const componentPathArray = filePath.split('/')
       const [folder, component] = componentPathArray
       const componentExamples = examplePathArrays
         .filter(([_folder, _component]) => {
-          return (
-            _folder === folder &&
-            _component.split('.')[0] === component.split('.')[0]
-          )
+          return _folder === folder && _component.split('.')[0] === component.split('.')[0]
         })
         .map(pathArray => pathArray.join('/'))
       return componentExamples
-    }
-  }
+    },
+  },
 }
 </script>

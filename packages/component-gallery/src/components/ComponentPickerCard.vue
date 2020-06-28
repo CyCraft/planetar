@@ -1,6 +1,6 @@
 <template>
-  <q-card
-    class="component-picker-card pa-lg cursor-pointer"
+  <div
+    class="component-picker-card"
     @click="
       () =>
         $router.push({
@@ -14,7 +14,7 @@
     <div class="text-h6 text-wrap-all">{{
       filePath.replace(/atoms\/|molecules\/|\.vue|\.jsx|\.tsx/g, '')
     }}</div>
-  </q-card>
+  </div>
 </template>
 
 <style lang="sass" scoped>
@@ -23,7 +23,12 @@
 @import '@planetar/styles/margin-padding'
 @import '@planetar/styles/shadows'
 
-// .component-picker-card
+.component-picker-card
+  +shadow-1()
+  +pa($lg)
+  border-radius: 18px
+  background: white
+  cursor: pointer
 </style>
 
 <script>

@@ -68,7 +68,7 @@ export default {
   name: 'TestInput',
   components: {
     QInput,
-    QIcon
+    QIcon,
   },
   props: {
     /**
@@ -76,7 +76,7 @@ export default {
      * @category model
      */
     value: {
-      type: String
+      type: String,
     },
     /**
      * @type {'primary' | 'secondary'}
@@ -90,7 +90,7 @@ export default {
      */
     isSearch: {
       type: [Boolean],
-      default: false
+      default: false,
     },
     /**
      * This would make the button blink
@@ -100,8 +100,8 @@ export default {
      */
     isBlinking: {
       type: [Boolean],
-      default: false
-    }
+      default: false,
+    },
   },
   data () {
     return { innerValue: '' }
@@ -111,8 +111,8 @@ export default {
       immediate: true,
       handler (newValue) {
         this.innerValue = newValue
-      }
-    }
+      },
+    },
   },
   computed: {
     propsToPass () {
@@ -128,10 +128,14 @@ export default {
       },
       set (v) {
         this.innerValue = v
-        this.$emit('input', v)
-      }
-    }
+        /**
+         * @param {number | string} value The input value
+         * @param {Vue} this The emitting vue component's instance
+         */
+        this.$emit('input', v, this)
+      },
+    },
   },
-  methods: {}
+  methods: {},
 }
 </script>

@@ -15,11 +15,7 @@
       Other
     </div>
     <div class="_grid-md py-lg" v-if="atomsOther.length">
-      <ComponentPickerCard
-        v-for="filePath in atomsOther"
-        :key="filePath"
-        :filePath="filePath"
-      />
+      <ComponentPickerCard v-for="filePath in atomsOther" :key="filePath" :filePath="filePath" />
     </div>
     <div
       class="py-lg column no-wrap flex-center"
@@ -31,11 +27,7 @@
     <!-- molecules -->
     <div class="t-h3 my-md" v-if="molecules.length">Molecules</div>
     <div class="_grid-md py-lg" v-if="molecules.length">
-      <ComponentPickerCard
-        v-for="filePath in molecules"
-        :key="filePath"
-        :filePath="filePath"
-      />
+      <ComponentPickerCard v-for="filePath in molecules" :key="filePath" :filePath="filePath" />
     </div>
   </div>
 </template>
@@ -86,19 +78,19 @@ export default {
      * @type {string[]}
      * @example ['Button']
      */
-    include: { type: Array }
+    include: { type: Array },
   },
   data () {
     const { componentFilesList, formElementPrefix, exclude, include } = this
     const { atoms, molecules } = getComponentPaths(componentFilesList)
 
-    function filePathExcluded (filePath = '') {
-      if (!exclude || !exclude.length) return false
-      return exclude.every(excl => !filePath.includes(excl))
-    }
     function filePathIncluded (filePath = '') {
       if (!include || !include.length) return true
       return include.some(incl => filePath.includes(incl))
+    }
+    function filePathExcluded (filePath = '') {
+      if (!exclude || !exclude.length) return false
+      return include.some(excl => filePath.includes(excl))
     }
     function filePathOk (filePath = '') {
       return filePathIncluded(filePath) && !filePathExcluded(filePath)
@@ -116,10 +108,10 @@ export default {
     return {
       atomsFormElements,
       atomsOther,
-      molecules: _molecules
+      molecules: _molecules,
     }
   },
   methods: {},
-  computed: {}
+  computed: {},
 }
 </script>

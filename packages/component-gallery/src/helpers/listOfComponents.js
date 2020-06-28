@@ -14,18 +14,14 @@ export function getComponentPaths (componentFilesList) {
 
   const atoms = components.filter(filePath => filePath.startsWith('atoms/'))
   const molecules = components.filter(
-    filePath =>
-      filePath.startsWith('molecules/') || filePath.includes('/molecules/')
+    filePath => filePath.startsWith('molecules/') || filePath.includes('/molecules/')
   )
   const atomExamples = components.filter(
-    filePath =>
-      filePath.startsWith('examples/atoms/') ||
-      filePath.includes('/examples/atoms/')
+    filePath => filePath.startsWith('examples/atoms/') || filePath.includes('/examples/atoms/')
   )
   const moleculeExamples = components.filter(
     filePath =>
-      filePath.startsWith('examples/molecules/') ||
-      filePath.includes('/examples/molecules/')
+      filePath.startsWith('examples/molecules/') || filePath.includes('/examples/molecules/')
   )
   return { atoms, atomExamples, molecules, moleculeExamples }
 }

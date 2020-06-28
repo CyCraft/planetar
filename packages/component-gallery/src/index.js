@@ -4,13 +4,7 @@ import ComponentExpose from './components/ComponentExpose.vue'
 import ComponentPickerGrid from './components/ComponentPickerGrid.vue'
 import ComponentPickerCard from './components/ComponentPickerCard.vue'
 
-export {
-  version,
-  ComponentGallery,
-  ComponentExpose,
-  ComponentPickerGrid,
-  ComponentPickerCard
-}
+export { version, ComponentGallery, ComponentExpose, ComponentPickerGrid, ComponentPickerCard }
 
 export default {
   install (Vue) {
@@ -18,5 +12,5 @@ export default {
     Vue.component(ComponentExpose.name, ComponentExpose)
     Vue.component(ComponentPickerGrid.name, ComponentPickerGrid)
     Vue.component(ComponentPickerCard.name, ComponentPickerCard)
-  }
+  },
 }
