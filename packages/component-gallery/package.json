@@ -1,6 +1,6 @@
 {
   "name": "@planetar/component-gallery",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Luca Ban - Mesqueeb",
   "description": "Planetar Component Gallery",
   "license": "MIT",
@@ -12,15 +12,17 @@
   },
   "homepage": "https://github.com/mesqueeb/planetar",
   "dependencies": {
-    "@planetar/api-card": "^0.1.11",
-    "@planetar/example-card": "^0.1.4",
-    "@planetar/styles": "^0.0.1"
+    "@planetar/api-card": "^0.1.12",
+    "@planetar/example-card": "^0.1.5",
+    "@planetar/styles": "^0.0.2"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/mesqueeb/planetar"
   },
   "bugs": "https://github.com/mesqueeb/planetar/issues",
-  "browserslist": ["last 1 version, not dead, ie >= 11"],
+  "browserslist": [
+    "last 1 version, not dead, ie >= 11"
+  ],
   "gitHead": "85718ffe30117650d9cb9d3daef9ee5eb8a0b945"
 }

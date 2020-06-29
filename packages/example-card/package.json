@@ -1,6 +1,6 @@
 {
   "name": "@planetar/example-card",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "author": "Luca Ban - Mesqueeb",
   "description": "Example Card based on a Vue file with automatic source extraction",
   "license": "MIT",
@@ -12,9 +12,9 @@
   },
   "homepage": "https://github.com/mesqueeb/planetar",
   "dependencies": {
-    "@planetar/atoms": "^0.0.1",
-    "@planetar/styles": "^0.0.1",
-    "@planetar/utils": "^0.0.0",
+    "@planetar/atoms": "^0.0.2",
+    "@planetar/styles": "^0.0.2",
+    "@planetar/utils": "^0.0.1",
     "case-anything": "^1.1.1",
     "prismjs": "^1.20.0",
     "snarkdown": "github:mesqueeb/snarkdown#dist"
@@ -24,6 +24,8 @@
     "url": "https://github.com/mesqueeb/planetar"
   },
   "bugs": "https://github.com/mesqueeb/planetar/issues",
-  "browserslist": ["last 1 version, not dead, ie >= 11"],
+  "browserslist": [
+    "last 1 version, not dead, ie >= 11"
+  ],
   "gitHead": "85718ffe30117650d9cb9d3daef9ee5eb8a0b945"
 }
