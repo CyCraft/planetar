@@ -33,7 +33,7 @@
 </template>
 
 <style lang="sass" scoped>
-@import '@planetar/styles'
+@import 'node_modules/@planetar/styles'
 
 .component-picker
   ._grid-md

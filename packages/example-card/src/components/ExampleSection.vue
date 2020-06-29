@@ -8,7 +8,7 @@
 
 <style lang="sass">
 /* global styles */
-@import '@planetar/styles'
+@import 'node_modules/@planetar/styles'
 </style>
 
 <script>
