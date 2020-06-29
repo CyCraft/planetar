@@ -8,13 +8,11 @@ export * from '@planetar/api-card'
 export * from '@planetar/example-card'
 export * from '@planetar/component-gallery'
 
-export { version } from '../package.json'
-
 export default {
   install (Vue) {
     Vue.use(Atoms)
     Vue.use(ApiCard)
     Vue.use(ExampleCard)
     Vue.use(ComponentGallery)
-  }
+  },
 }
