@@ -16,7 +16,7 @@
 <style lang="sass">
 /* global styles */
 @import '../helpers/prismTheme.scss'
-@import 'node_modules/@planetar/styles'
+@import '@planetar/styles'
 
 .planetar-example-card
   border: thin solid $c-stone-dark

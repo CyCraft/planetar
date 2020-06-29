@@ -23,7 +23,7 @@
 </template>
 
 <style lang="sass">
-@import 'node_modules/@planetar/styles'
+@import '@planetar/styles'
 
 /* global styles */
 .p-input
