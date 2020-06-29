@@ -1,28 +1,21 @@
 <template>
   <div :id="kebabCase(fileName) + `-example`">
     <div class="t-h6 mb-md">{{ spaceCase(fileName) }}</div>
-    <div
-      class="mb-lg"
-      v-if="exampleDescription"
-      v-html="exampleDescription"
-    ></div>
+    <div class="mb-lg" v-if="exampleDescription" v-html="exampleDescription"></div>
     <ExampleCard :filePath="filePath" :stripJSDocDescription="true" />
   </div>
 </template>
 
 <style lang="sass">
 /* global styles */
-@import '@planetar/styles/colors'
-@import '@planetar/styles/typography'
-@import '@planetar/styles/margin-padding'
-@import '@planetar/styles/shadows'
+@import '@planetar/styles'
 </style>
 
 <script>
 import { kebabCase, spaceCase } from 'case-anything'
 import ExampleCard from './ExampleCard.vue'
 import { mdToHtml } from '../helpers/htmlHelpers'
-import { dynamicImport } from '../helpers/dynamicImport'
+import { dynamicImport } from '@planetar/utils'
 
 export default {
   name: 'ExampleSection',
@@ -32,7 +25,7 @@ export default {
      * Relative from the `src` folder.
      * @example 'examples/MyBtn/Example1.vue'
      */
-    filePath: { type: String, required: true }
+    filePath: { type: String, required: true },
   },
   created () {
     const { parseComponent, filePath, parseDescription } = this
@@ -49,7 +42,7 @@ export default {
       .replace('.tsx', '')
     return {
       fileName,
-      exampleDescription: ''
+      exampleDescription: '',
     }
   },
   computed: {},
@@ -60,7 +53,7 @@ export default {
       const { description: descriptionMd } = vueDocgen
       const descriptionHtml = mdToHtml(descriptionMd)
       this.exampleDescription = descriptionHtml
-    }
-  }
+    },
+  },
 }
 </script>

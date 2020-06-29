@@ -17,13 +17,7 @@
         no-caps
       />
     </QTabs>
-    <QTabPanels
-      v-model="activeTab"
-      animated
-      class="flex-1"
-      v-bind="propsToPass"
-      v-on="$listeners"
-    >
+    <QTabPanels v-model="activeTab" animated class="flex-1" v-bind="propsToPass" v-on="$listeners">
       <QTabPanel
         v-for="(label, index) in tabLabels"
         :key="label + index"
@@ -43,19 +37,13 @@
 </template>
 
 <style lang="sass">
-@import '@planetar/styles/colors'
-@import '@planetar/styles/typography'
-@import '@planetar/styles/margin-padding'
-@import '@planetar/styles/shadows'
+@import '@planetar/styles'
 
 /* global styles */
 </style>
 
 <style lang="sass" scoped>
-@import '@planetar/styles/colors'
-@import '@planetar/styles/typography'
-@import '@planetar/styles/margin-padding'
-@import '@planetar/styles/shadows'
+@import '@planetar/styles'
 
 .test-tabs
   min-width: 150px
@@ -76,7 +64,7 @@ export default {
     QTabs,
     QTab,
     QTabPanels,
-    QTabPanel
+    QTabPanel,
   },
   props: {
     /**
@@ -87,7 +75,7 @@ export default {
      */
     value: {
       type: [String],
-      default: '0'
+      default: '0',
     },
     /**
      * The labels of the tabs.
@@ -97,7 +85,7 @@ export default {
      */
     tabLabels: {
       type: [Array],
-      required: true
+      required: true,
       // default: () => [],
     },
     /**
@@ -108,7 +96,7 @@ export default {
      */
     initialTabIndex: {
       type: [Number],
-      default: 0
+      default: 0,
     },
     /**
      * A string literal test prop
@@ -117,7 +105,7 @@ export default {
      */
     stringLiteral: {
       type: [String],
-      default: 'a'
+      default: 'a',
     },
     /**
      * A primitive literal test prop
@@ -125,7 +113,7 @@ export default {
      * @type {null | '' | 0}
      */
     primitiveLiteral: {
-      type: [Number, null, String]
+      type: [Number, null, String],
     },
     /**
      * A number literal test prop
@@ -133,7 +121,7 @@ export default {
      * @type {0 | 1 | 2}
      */
     numberLiteral: {
-      type: [Number]
+      type: [Number],
     },
     /**
      * An object literal test prop
@@ -141,7 +129,7 @@ export default {
      * @type {{a: 1} | {b: 1}}
      */
     objectLiteral: {
-      type: [Object]
+      type: [Object],
     },
     /**
      * A function test prop
@@ -151,7 +139,7 @@ export default {
      */
     fn: {
       type: Function,
-      default: a => ({ awesome: a })
+      default: a => ({ awesome: a }),
     },
     /**
      * A complicated object test prop
@@ -161,7 +149,7 @@ export default {
      */
     complicatedObject: {
       type: Object,
-      default: () => ({ name: '', id: '', items: [] })
+      default: () => ({ name: '', id: '', items: [] }),
     },
     /**
      * @category content
@@ -169,8 +157,8 @@ export default {
      */
     defaultContent: {
       type: Object,
-      default: () => ({ '0': 'hi!' })
-    }
+      default: () => ({ '0': 'hi!' }),
+    },
   },
   data () {
     const innerActiveTab = String(this.value) || String(this.initialTabIndex)
@@ -188,13 +176,13 @@ export default {
          * @property {string|number} newValue new tab index as string
          */
         this.$emit('input', String(newTab))
-      }
+      },
     },
     propsToPass () {
       const { $attrs } = this
       return { ...$attrs }
-    }
+    },
   },
-  methods: {}
+  methods: {},
 }
 </script>

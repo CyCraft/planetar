@@ -8,11 +8,7 @@
       <div class="pa-lg" v-if="tabLabel === 'example' && exampleComponent">
         <component :is="exampleComponent" />
       </div>
-      <div
-        v-else-if="parts[tabLabel]"
-        class="_planetar-code"
-        v-html="parts[tabLabel]"
-      />
+      <div v-else-if="parts[tabLabel]" class="_planetar-code" v-html="parts[tabLabel]" />
     </template>
   </PTabs>
 </template>
@@ -20,10 +16,7 @@
 <style lang="sass">
 /* global styles */
 @import '../helpers/prismTheme.scss'
-@import '@planetar/styles/colors'
-@import '@planetar/styles/typography'
-@import '@planetar/styles/margin-padding'
-@import '@planetar/styles/shadows'
+@import '@planetar/styles'
 
 .planetar-example-card
   border: thin solid $c-stone-dark
@@ -36,11 +29,8 @@
 import { kebabCase } from 'case-anything'
 import { PTabs } from '@planetar/atoms'
 import { codeToHtml } from '../helpers/htmlHelpers'
-import {
-  getTagHtmlFromCodeString,
-  jsDocBlockNoIndentation
-} from '../helpers/regexp'
-import { dynamicImport } from '../helpers/dynamicImport'
+import { getTagHtmlFromCodeString, jsDocBlockNoIndentation } from '../helpers/regexp'
+import { dynamicImport } from '@planetar/utils'
 
 export default {
   name: 'ExampleCard',
@@ -54,7 +44,7 @@ export default {
     /**
      * When `true` the JSDoc above the default export will be stripped from displayed source code in the script tab.
      */
-    stripJSDocDescription: { type: Boolean, default: false }
+    stripJSDocDescription: { type: Boolean, default: false },
   },
   created () {
     const { parseComponent, filePath } = this
@@ -82,8 +72,8 @@ export default {
       parts: {
         template: '',
         script: '',
-        style: ''
-      }
+        style: '',
+      },
     }
   },
   computed: {},
@@ -119,7 +109,7 @@ export default {
         this.parts.style = codeToHtml(style, 'html')
         this.tabLabels.push('style')
       }
-    }
-  }
+    },
+  },
 }
 </script>

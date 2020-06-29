@@ -3,10 +3,7 @@
 </template>
 
 <style lang="sass">
-@import '@planetar/styles/colors'
-@import '@planetar/styles/typography'
-@import '@planetar/styles/margin-padding'
-@import '@planetar/styles/shadows'
+@import '@planetar/styles'
 
 /* global styles */
 .p-select
@@ -43,8 +40,8 @@ export default {
       const outlined = true
       const dense = true
       return { ...$attrs, outlined, dense }
-    }
+    },
   },
-  methods: {}
+  methods: {},
 }
 </script>

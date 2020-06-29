@@ -5,7 +5,7 @@ const rollup = require('rollup')
 const uglify = require('uglify-es')
 const buble = require('@rollup/plugin-buble')
 const json = require('@rollup/plugin-json')
-const nodeResolve = require('@rollup/plugin-node-resolve')
+const { nodeResolve } = require('@rollup/plugin-node-resolve')
 const commonjs = require('@rollup/plugin-commonjs')
 const VuePlugin = require('rollup-plugin-vue')
 
@@ -16,63 +16,63 @@ const rollupPlugins = [
   commonjs(),
   nodeResolve({
     extensions: ['.js'],
-    preferBuiltins: false
+    preferBuiltins: false,
   }),
   VuePlugin(),
   json(),
   buble({
-    objectAssign: 'Object.assign'
-  })
+    objectAssign: 'Object.assign',
+  }),
 ]
 
 const builds = [
   {
     rollup: {
       input: {
-        input: resolve(`entry/index.esm.js`)
+        input: resolve(`entry/index.esm.js`),
       },
       output: {
         file: resolve(`../dist/index.esm.js`),
-        format: 'es'
-      }
+        format: 'es',
+      },
     },
     build: {
       // unminified: true,
-      minified: true
-    }
+      minified: true,
+    },
   },
   {
     rollup: {
       input: {
-        input: resolve(`entry/index.common.js`)
+        input: resolve(`entry/index.common.js`),
       },
       output: {
         file: resolve(`../dist/index.common.js`),
-        format: 'cjs'
-      }
+        format: 'cjs',
+      },
     },
     build: {
       // unminified: true,
-      minified: true
-    }
+      minified: true,
+    },
   },
   {
     rollup: {
       input: {
-        input: resolve(`entry/index.umd.js`)
+        input: resolve(`entry/index.umd.js`),
       },
       output: {
         name: 'exampleCard',
         file: resolve(`../dist/index.umd.js`),
-        format: 'umd'
-      }
+        format: 'umd',
+      },
     },
     build: {
       unminified: true,
       minified: true,
-      minExt: true
-    }
-  }
+      minExt: true,
+    },
+  },
 ]
 
 // Add your asset folders here
@@ -99,32 +99,28 @@ function addAssets (builds, type, injectName) {
   files
     .filter(file => file.endsWith('.js'))
     .forEach(file => {
-      const name = file
-        .substr(0, file.length - 3)
-        .replace(/-([a-z])/g, g => g[1].toUpperCase())
+      const name = file.substr(0, file.length - 3).replace(/-([a-z])/g, g => g[1].toUpperCase())
       builds.push({
         rollup: {
           input: {
             input: resolve(`../src/components/${type}/${file}`),
-            plugins
+            plugins,
           },
           output: {
             file: addExtension(resolve(`../dist/${type}/${file}`), 'umd'),
             format: 'umd',
-            name: `exampleCard.${injectName}.${name}`
-          }
+            name: `exampleCard.${injectName}.${name}`,
+          },
         },
         build: {
-          minified: true
-        }
+          minified: true,
+        },
       })
     })
 }
 
 function build (builds) {
-  return Promise.all(builds.map(genConfig).map(buildEntry)).catch(
-    buildUtils.logError
-  )
+  return Promise.all(builds.map(genConfig).map(buildEntry)).catch(buildUtils.logError)
 }
 
 function genConfig (opts) {
@@ -133,12 +129,12 @@ function genConfig (opts) {
 
   Object.assign(opts.rollup.input, {
     plugins: rollupPlugins,
-    external: ['vue', 'quasar'].concat(pkgDependencies)
+    external: ['vue', 'quasar'].concat(pkgDependencies),
   })
 
   Object.assign(opts.rollup.output, {
     banner: buildConf.banner,
-    globals: { vue: 'Vue', quasar: 'Quasar' }
+    globals: { vue: 'Vue', quasar: 'Quasar' },
   })
 
   return opts
@@ -146,9 +142,7 @@ function genConfig (opts) {
 
 function addExtension (filename, ext = 'min') {
   const insertionPoint = filename.lastIndexOf('.')
-  return `${filename.slice(0, insertionPoint)}.${ext}${filename.slice(
-    insertionPoint
-  )}`
+  return `${filename.slice(0, insertionPoint)}.${ext}${filename.slice(insertionPoint)}`
 }
 
 function buildEntry (config) {
@@ -161,9 +155,7 @@ function buildEntry (config) {
           ? injectVueRequirement(output[0].code)
           : output[0].code
 
-      return config.build.unminified
-        ? buildUtils.writeFile(config.rollup.output.file, code)
-        : code
+      return config.build.unminified ? buildUtils.writeFile(config.rollup.output.file, code) : code
     })
     .then(code => {
       if (!config.build.minified) {
@@ -172,8 +164,8 @@ function buildEntry (config) {
 
       const minified = uglify.minify(code, {
         compress: {
-          pure_funcs: ['makeMap']
-        }
+          pure_funcs: ['makeMap'],
+        },
       })
 
       if (minified.error) {
@@ -195,9 +187,7 @@ function buildEntry (config) {
 }
 
 function injectVueRequirement (code) {
-  const index = code.indexOf(
-    `Vue = Vue && Vue.hasOwnProperty('default') ? Vue['default'] : Vue`
-  )
+  const index = code.indexOf(`Vue = Vue && Vue.hasOwnProperty('default') ? Vue['default'] : Vue`)
 
   if (index === -1) {
     return code

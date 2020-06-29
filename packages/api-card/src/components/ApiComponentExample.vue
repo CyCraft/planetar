@@ -21,32 +21,8 @@
 
 <script>
 import ApiCard from './ApiCard.vue'
+import { dynamicImport } from '@planetar/utils'
 import { evaluateObject } from '../helpers/evaluateString'
-
-function dynamicImportComponent (filePath, extension) {
-  if (extension === 'vue') {
-    return import(
-      /* webpackChunkName: "component" */
-      /* webpackMode: "lazy-once" */
-      `src/${filePath.replace('.vue', '')}.vue`
-    )
-  }
-  if (extension === 'jsx') {
-    return import(
-      /* webpackChunkName: "component" */
-      /* webpackMode: "lazy-once" */
-      `src/${filePath.replace('.jsx', '')}.jsx`
-    )
-  }
-  if (extension === 'tsx') {
-    return import(
-      /* webpackChunkName: "component" */
-      /* webpackMode: "lazy-once" */
-      `src/${filePath.replace('.tsx', '')}.tsx`
-    )
-  }
-  throw new Error('incorrect filePath. Your filepath must end in .vue, .jsx or .tsx')
-}
 
 export default {
   name: 'ApiComponentExample',
@@ -61,7 +37,7 @@ export default {
   created () {
     const { filePath } = this
     const extension = filePath.split('.').slice(-1)[0]
-    dynamicImportComponent(filePath, extension).then(componentExport => {
+    dynamicImport(filePath, extension, 'component').then(componentExport => {
       this.exampleComponent = componentExport.default
     })
   },

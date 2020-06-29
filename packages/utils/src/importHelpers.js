@@ -1,20 +1,19 @@
 /**
- * Dynamically import components as component or the raw code as string.
+ * Dynamically import components as component; raw code as string; or Vue Docgen JSON.
+ * Supports `.vue`, `.jsx` & `.tsx` files.
  *
- * @param {string} filePath
- * @param {string} extension
+ * @param {string} filePath Relative from the project's 'src' folder.
+ * @param {string} extension The extension without `.`, eg. `'vue'`
  * @param {'component' | 'string' | 'vue-docgen'} importType
- * @returns Either the component to bind with `<component is="" />` or the raw code.
+ * @example dynamicImport('examples/MyBtn/Example1.vue', 'vue', 'component')
+ *   .then(componentExport => doSomething(componentExport))
+ * @example <component :is="importedComponent" />
+ * @returns {Promise<any>}
  */
 export function dynamicImport (filePath, extension, importType) {
   if (extension === 'vue') {
     if (importType === 'vue-docgen') {
-      return import(
-        `!!@planetar/vue-simple-docgen-loader!src/${filePath.replace(
-          '.vue',
-          ''
-        )}.vue`
-      )
+      return import(`!!@planetar/vue-simple-docgen-loader!src/${filePath.replace('.vue', '')}.vue`)
     }
     if (importType === 'string') {
       return import(
@@ -31,12 +30,7 @@ export function dynamicImport (filePath, extension, importType) {
   }
   if (extension === 'jsx') {
     if (importType === 'vue-docgen') {
-      return import(
-        `!!@planetar/vue-simple-docgen-loader!src/${filePath.replace(
-          '.jsx',
-          ''
-        )}.jsx`
-      )
+      return import(`!!@planetar/vue-simple-docgen-loader!src/${filePath.replace('.jsx', '')}.jsx`)
     }
     if (importType === 'string') {
       return import(
@@ -53,12 +47,7 @@ export function dynamicImport (filePath, extension, importType) {
   }
   if (extension === 'tsx') {
     if (importType === 'vue-docgen') {
-      return import(
-        `!!@planetar/vue-simple-docgen-loader!src/${filePath.replace(
-          '.tsx',
-          ''
-        )}.tsx`
-      )
+      return import(`!!@planetar/vue-simple-docgen-loader!src/${filePath.replace('.tsx', '')}.tsx`)
     }
     if (importType === 'string') {
       return import(
@@ -73,7 +62,5 @@ export function dynamicImport (filePath, extension, importType) {
       `src/${filePath.replace('.tsx', '')}.tsx`
     )
   }
-  throw new Error(
-    'incorrect filePath. Your filepath must end in .vue, .jsx or .tsx'
-  )
+  throw new Error('incorrect filePath. Your filepath must end in .vue, .jsx or .tsx')
 }

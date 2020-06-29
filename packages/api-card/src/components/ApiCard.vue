@@ -25,10 +25,7 @@
 </template>
 
 <style lang="sass" scoped>
-@import '@planetar/styles/colors'
-@import '@planetar/styles/typography'
-@import '@planetar/styles/margin-padding'
-@import '@planetar/styles/shadows'
+@import '@planetar/styles'
 
 .planetar-api-card
   +shadow-3()
@@ -66,6 +63,7 @@ import { isArray, isFullString, isString, isPlainObject } from 'is-what'
 import { kebabCase } from 'case-anything'
 import { mergeAndConcat } from 'merge-anything'
 import { propToPropSchema } from '../helpers/vueDocgenToEasyForms'
+import { dynamicImport } from '@planetar/utils'
 import { noRequiredPropExampleErrorMsg } from '../helpers/errors'
 import '../types/vueDocgen.js'
 import { evaluateString } from '../helpers/evaluateString'
@@ -106,19 +104,6 @@ function checkIfContains (hay, needle) {
   return isString(hay) && hay.toLowerCase().includes(needle.toLowerCase())
 }
 
-function dynamicImportComponent (filePath, extension) {
-  if (extension === 'vue') {
-    return import(`!!@planetar/vue-simple-docgen-loader!src/${filePath.replace('.vue', '')}.vue`)
-  }
-  if (extension === 'jsx') {
-    return import(`!!@planetar/vue-simple-docgen-loader!src/${filePath.replace('.jsx', '')}.jsx`)
-  }
-  if (extension === 'tsx') {
-    return import(`!!@planetar/vue-simple-docgen-loader!src/${filePath.replace('.tsx', '')}.tsx`)
-  }
-  throw new Error('incorrect filePath. Your filepath must end in .vue, .jsx or .tsx')
-}
-
 export default {
   name: 'ApiCard',
   components: {
@@ -144,7 +129,7 @@ export default {
   created () {
     const { filePath, parseVueDocgenData } = this
     const extension = filePath.split('.').slice(-1)[0]
-    dynamicImportComponent(filePath, extension)
+    dynamicImport(filePath, extension, 'vue-docgen')
       .then(vueDocgenData => parseVueDocgenData(vueDocgenData)) // prettier-ignore
   },
   data () {

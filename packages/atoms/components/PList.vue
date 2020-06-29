@@ -6,7 +6,7 @@
       :class="[
         '_item',
         item.isDivider ? '_is-divider' : '',
-        item.name === value ? '_is-active' : ''
+        item.name === value ? '_is-active' : '',
       ]"
       :clickable="!item.isDivider"
       @click="() => $emit('input', item.name)"
@@ -20,10 +20,7 @@
 </template>
 
 <style lang="sass">
-@import '@planetar/styles/colors'
-@import '@planetar/styles/typography'
-@import '@planetar/styles/margin-padding'
-@import '@planetar/styles/shadows'
+@import '@planetar/styles'
 
 /* global styles */
 .p-list
@@ -34,10 +31,7 @@
 </style>
 
 <style lang="sass" scoped>
-@import '@planetar/styles/colors'
-@import '@planetar/styles/typography'
-@import '@planetar/styles/margin-padding'
-@import '@planetar/styles/shadows'
+@import '@planetar/styles'
 
 .p-list
   ._item
@@ -61,7 +55,7 @@ export default {
     QList,
     QItem,
     QItemSection,
-    QBadge
+    QBadge,
   },
   props: {
     /**
@@ -71,14 +65,14 @@ export default {
     /**
      * Must be used with v-model!
      */
-    value: { type: String, default: '' }
+    value: { type: String, default: '' },
   },
   computed: {
     propsToPass () {
       const { $attrs } = this
       return { ...$attrs }
-    }
+    },
   },
-  methods: {}
+  methods: {},
 }
 </script>

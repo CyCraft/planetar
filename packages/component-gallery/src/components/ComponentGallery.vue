@@ -16,10 +16,7 @@
 </template>
 
 <style lang="sass" scoped>
-@import '@planetar/styles/colors'
-@import '@planetar/styles/typography'
-@import '@planetar/styles/margin-padding'
-@import '@planetar/styles/shadows'
+@import '@planetar/styles'
 
 // .component-gallery
 </style>

@@ -5,7 +5,7 @@
       () =>
         $router.push({
           path: $router.currentRoute.path,
-          query: { filePath }
+          query: { filePath },
         })
     "
     :clickable="true"
@@ -18,10 +18,7 @@
 </template>
 
 <style lang="sass" scoped>
-@import '@planetar/styles/colors'
-@import '@planetar/styles/typography'
-@import '@planetar/styles/margin-padding'
-@import '@planetar/styles/shadows'
+@import '@planetar/styles'
 
 .component-picker-card
   +shadow-1()
@@ -35,12 +32,12 @@
 export default {
   name: 'ComponentPickerCard',
   props: {
-    filePath: { type: String }
+    filePath: { type: String },
   },
   data () {
     return {}
   },
   computed: {},
-  methods: {}
+  methods: {},
 }
 </script>

@@ -17,13 +17,7 @@
         no-caps
       />
     </QTabs>
-    <QTabPanels
-      v-model="activeTab"
-      animated
-      class="flex-1"
-      v-bind="propsToPass"
-      v-on="$listeners"
-    >
+    <QTabPanels v-model="activeTab" animated class="flex-1" v-bind="propsToPass" v-on="$listeners">
       <QTabPanel
         v-for="(label, index) in tabLabels"
         :key="label + index"
@@ -40,19 +34,13 @@
 </template>
 
 <style lang="sass">
-@import '@planetar/styles/colors'
-@import '@planetar/styles/typography'
-@import '@planetar/styles/margin-padding'
-@import '@planetar/styles/shadows'
+@import '@planetar/styles'
 
 /* global styles */
 </style>
 
 <style lang="sass" scoped>
-@import '@planetar/styles/colors'
-@import '@planetar/styles/typography'
-@import '@planetar/styles/margin-padding'
-@import '@planetar/styles/shadows'
+@import '@planetar/styles'
 
 .p-tabs
   min-width: 150px
@@ -72,7 +60,7 @@ export default {
     QTabs,
     QTab,
     QTabPanels,
-    QTabPanel
+    QTabPanel,
   },
   props: {
     /**
@@ -84,7 +72,7 @@ export default {
     tabLabels: {
       type: [Array],
       default: () => [],
-      required: true
+      required: true,
     },
     /**
      * The tab index which should be opened initially.
@@ -93,8 +81,8 @@ export default {
      */
     initialTabIndex: {
       type: [Number],
-      default: 0
-    }
+      default: 0,
+    },
   },
   data () {
     const activeTab = this.initialTabIndex
@@ -104,8 +92,8 @@ export default {
     propsToPass () {
       const { $attrs } = this
       return { ...$attrs }
-    }
+    },
   },
-  methods: {}
+  methods: {},
 }
 </script>

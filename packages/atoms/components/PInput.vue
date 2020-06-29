@@ -1,9 +1,5 @@
 <template>
-  <QInput
-    :class="['p-input', isCode ? '_is-code' : '']"
-    v-bind="propsToPass"
-    v-on="$listeners"
-  >
+  <QInput :class="['p-input', isCode ? '_is-code' : '']" v-bind="propsToPass" v-on="$listeners">
     <template v-slot:append v-if="isSearch">
       <QIcon class="c-primary">
         <svg
@@ -27,10 +23,7 @@
 </template>
 
 <style lang="sass">
-@import '@planetar/styles/colors'
-@import '@planetar/styles/typography'
-@import '@planetar/styles/margin-padding'
-@import '@planetar/styles/shadows'
+@import '@planetar/styles'
 
 /* global styles */
 .p-input
@@ -91,7 +84,7 @@ export default {
      * @category state
      * @type {boolean}
      */
-    isSearch: { type: Boolean }
+    isSearch: { type: Boolean },
   },
   computed: {
     propsToPass () {
@@ -100,8 +93,8 @@ export default {
       const outlined = true
       const dense = true
       return { ...$attrs, type, outlined, dense }
-    }
+    },
   },
-  methods: {}
+  methods: {},
 }
 </script>
