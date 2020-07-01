@@ -32,8 +32,7 @@ import TestInput from '../../components/TestInput'
  *       this.exampleComponent = componentExport.default
  *     })
  *     dynamicImport(filePath, extension, 'string').then(componentString => {
- *       console.log(`componentString → `, componentString)
- *       parseComponent(componentString.default)
+ *       parseComponent(componentString)
  *     })
  *   },
  *   data () {
@@ -111,8 +110,8 @@ export default {
   data () {
     return {
       isSearch: true,
-      model: ''
+      model: '',
     }
-  }
+  },
 }
 </script>

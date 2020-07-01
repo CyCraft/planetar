@@ -53,7 +53,7 @@ export default {
       this.exampleComponent = componentExport.default
     })
     dynamicImport(filePath, extension, 'string').then(componentString => {
-      parseComponent(componentString.default)
+      parseComponent(componentString)
     })
   },
   data () {
@@ -61,9 +61,7 @@ export default {
     const fileName = filePath
       .split('/')
       .slice(-1)[0]
-      .replace('.vue', '')
-      .replace('.jsx', '')
-      .replace('.tsx', '')
+      .replace(/\.vue|\.tsx|\.jsx/, '')
     return {
       fileName,
       activeTab: 'example',
