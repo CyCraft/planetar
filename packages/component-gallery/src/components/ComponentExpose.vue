@@ -28,7 +28,7 @@
 </template>
 
 <style lang="sass" scoped>
-@import 'node_modules/@planetar/styles'
+@import '@planetar/styles'
 
 .component-expose
   > *

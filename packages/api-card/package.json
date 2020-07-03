@@ -4,7 +4,7 @@
   "author": "Luca Ban - Mesqueeb",
   "description": "Planetar Api Card",
   "license": "MIT",
-  "module": "dist/index.esm.js",
+  "module": "src/index.js",
   "main": "dist/index.common.js",
   "scripts": {
     "build": "node build/index.js",
