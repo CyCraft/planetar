@@ -218,7 +218,7 @@ export default {
           modelToEmit[schema.id] = schema.default
         }
         if (schema.default === undefined) {
-          modelToEmit[schema.id] = getExample(prop)
+          modelToEmit[schema.id] = getExample(prop, prop.required)
         }
         categories.forEach(category => {
           if (!(category in categorySchemaMap)) this.$set(categorySchemaMap, category, [])
@@ -239,15 +239,17 @@ export default {
     },
     /**
      * @param {PropDescriptor} prop
+     * @param {boolean} isRequired if not required it will not throw an error
      * @returns {*}
      */
-    getExample (prop) {
+    getExample (prop, isRequired) {
       const { name, tags } = prop
       try {
         const { example } = tags
         const defaultValue = example[0].description
         return defaultValue
       } catch (error) {
+        if (!isRequired) return
         console.error(noRequiredPropExampleErrorMsg)
       }
     },
