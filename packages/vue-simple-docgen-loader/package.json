@@ -19,7 +19,7 @@
   "dependencies": {
     "escodegen": "^1.14.3",
     "to-ast": "^1.0.0",
-    "vue-docgen-api": "^4.25.0"
+    "vue-docgen-api": "^4.26.0"
   },
   "gitHead": "85718ffe30117650d9cb9d3daef9ee5eb8a0b945"
 }

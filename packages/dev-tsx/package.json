@@ -16,15 +16,15 @@
     "@planetar/api-card": "^0.1.13",
     "@planetar/atoms": "^0.0.2",
     "@planetar/example-card": "^0.1.6",
-    "@quasar/extras": "^1.8.1",
+    "@quasar/extras": "^1.8.2",
     "is-what": "^3.9.1",
     "quasar": "^1.12.8",
     "vue-strict-prop": "^0.3.6"
   },
   "devDependencies": {
-    "@quasar/app": "^1.8.6",
+    "@quasar/app": "^1.9.6",
     "@vue/babel-preset-jsx": "^1.1.2",
-    "ts-loader": "^7.0.4",
+    "ts-loader": "^7.0.5",
     "vue-tsx-support": "^2.3.3"
   },
   "engines": {
