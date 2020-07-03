@@ -217,7 +217,7 @@ export default {
         if (schema.default !== undefined) {
           modelToEmit[schema.id] = schema.default
         }
-        if (prop.required && schema.default === undefined) {
+        if (schema.default === undefined) {
           modelToEmit[schema.id] = getExample(prop)
         }
         categories.forEach(category => {
