@@ -15,7 +15,7 @@
     "build-example-card": "npm run start-build && cd packages/example-card && npm run build",
     "build-component-gallery": "npm run start-build && cd packages/component-gallery && npm run build",
     "install-dependencies": "lerna bootstrap",
-    "publish": "npm run build && git add -u && git commit -m \"chore: build\" && lerna publish",
+    "publish": "lerna publish",
     "with-compile-step--publish": "npm run build && git add -u && git commit -m \"chore: build\" && lerna publish && npm run start-dev && git add -u && git commit -m \"chore: post-build\"",
     "replace-dist-src": "replace-in-files --string='\"module\": \"dist/index.esm.js\"' --replacement='\"module\": \"src/index.js\"' 'packages/(api-card|example-card|component-gallery)/package.json'",
     "replace-src-dist": "replace-in-files --string='\"module\": \"src/index.js\"' --replacement='\"module\": \"dist/index.esm.js\"' 'packages/(api-card|example-card|component-gallery)/package.json'",
