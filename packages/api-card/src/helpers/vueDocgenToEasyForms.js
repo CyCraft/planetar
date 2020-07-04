@@ -10,6 +10,10 @@ import { evaluateString } from './evaluateString'
 // 	name: string
 // }
 
+function parseExample (example) {
+  return `\`${example}\``
+}
+
 /**
  * @param {object} vueDocgenProp
  * @returns {{categories: string[], schema: object}} EasyForm schema blueprint
@@ -135,7 +139,13 @@ export function propToPropSchema (vueDocgenProp) {
     debounce = 500
     autogrow = true
   }
-  if (examples.length) subLabel += `\n\nExamples: \`${examples.join('` | `')}\``
+  if (examples.length) {
+    const examplesParsed =
+      examples.length === 1
+        ? parseExample(examples[0])
+        : examples.map(e => `\n- ${parseExample(e)}`).join('')
+    subLabel += `\n\nExample${examples.length === 1 ? '' : 's'}: ${examplesParsed}`
+  }
   // remove any "undefined" from the string
   if (subLabel) subLabel = subLabel.replace('undefined\n\n', '')
   // Create the EasyField schema for the prop

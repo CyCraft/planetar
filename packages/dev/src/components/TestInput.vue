@@ -96,6 +96,27 @@ export default {
       type: [Boolean],
       default: false,
     },
+    /**
+     * An array
+     * @category model
+     * @type {string[]}
+     * @example ['a']
+     */
+    anArray: {
+      type: Array,
+      default: () => [],
+    },
+    /**
+     * An array
+     * @category model
+     * @type {string[]}
+     * @example ['a']
+     * @example ['b']
+     */
+    anotherArray: {
+      type: Array,
+      default: () => [],
+    },
   },
   data () {
     return { innerValue: '' }
