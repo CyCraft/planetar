@@ -1,112 +1,123 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@400;500;600;700&display=swap")
 @import 'colors'
 
-=font-globals()
+// $thin: 100
+// $extra-light: 200
+// $light: 300
+$regular: 400
+$medium: 500
+$semi-bold: 600
+$bold: 700
+// $extra-bold: 800
+// $black: 900
+// $extra-black: 950
+
+=header-globals()
   font-family: 'Poppins', sans-serif
-  color: $c-primary
 
 =t-h1()
-  +font-globals
-  font-weight: bold
+  +header-globals
+  font-weight: $bold
   font-size: 56px
   line-height: 64px
   letter-spacing: 0.01em
 
 =t-h2()
-  +font-globals
-  font-weight: 600
+  +header-globals
+  font-weight: $semi-bold
   font-size: 40px
   line-height: 56px
 
 =t-h3()
-  +font-globals
-  font-weight: bold
+  +header-globals
+  font-weight: $bold
   font-size: 36px
   line-height: 40px
   letter-spacing: 0.01em
 
 =t-h4()
-  +font-globals
-  font-weight: 600
+  +header-globals
+  font-weight: $semi-bold
   font-size: 32px
   line-height: 40px
 
 =t-h5()
-  +font-globals
-  font-weight: 600
+  +header-globals
+  font-weight: $semi-bold
   font-size: 24px
   line-height: 30px
   letter-spacing: 0.01em
 
 =t-h6()
-  +font-globals
-  font-weight: 600
+  +header-globals
+  font-weight: $semi-bold
   font-size: 20px
   line-height: 24px
 
 =t-subtitle1()
-  +font-globals
-  font-weight: 600
+  +header-globals
+  font-weight: $semi-bold
   font-size: 16px
   line-height: 20px
 
 =t-subtitle2()
-  +font-globals
-  font-weight: 500
+  +header-globals
+  font-weight: $medium
   font-size: 14px
   line-height: 20px
   letter-spacing: 0.005em
 
 =t-body1()
-  +font-globals
   font-family: 'Open Sans', sans-serif
-  font-weight: normal
+  font-weight: $regular
   font-size: 16px
   line-height: 24px
 
 =t-body2()
-  +font-globals
-  font-family: 'Open Sans', sans-serif
-  font-weight: normal
+  font-weight: $regular
   font-size: 14px
   line-height: 20px
   letter-spacing: 0.01em
 
 =t-button()
-  +font-globals
-  font-weight: 600
+  +header-globals
+  font-weight: $semi-bold
   font-size: 14px
   line-height: 24px
   letter-spacing: 0.01em
 
 =t-caption()
-  +font-globals
-  font-weight: normal
+  +header-globals
+  font-weight: $regular
   font-size: 12px
   line-height: 16px
   letter-spacing: 0.02em
 
-=t-caption-semibold()
-  +font-globals
-  font-weight: 600
+=t-caption-semi-bold()
+  +header-globals
+  font-weight: $semi-bold
   font-size: 12px
   line-height: 16px
   letter-spacing: 0.02em
 
 =t-overline()
-  +font-globals
-  font-weight: 600
+  +header-globals
+  font-weight: $semi-bold
   font-size: 12px
   line-height: 16px
   letter-spacing: 0.08em
   text-transform: uppercase
 
 =t-micro()
-  +font-globals
-  font-weight: normal
+  +header-globals
+  font-weight: $regular
   font-size: 10px
   line-height: 14px
   letter-spacing: 0.02em
+
+body
+  +t-body1
+  color: $c-primary
 
 .t-h1
   +t-h1
