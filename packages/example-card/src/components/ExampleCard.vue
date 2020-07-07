@@ -46,17 +46,17 @@ export default {
      */
     stripJSDocDescription: { type: Boolean, default: false },
   },
-  created () {
+  created() {
     const { parseComponent, filePath } = this
     const extension = filePath.split('.').slice(-1)[0]
-    dynamicImport(filePath, extension, 'component').then(componentExport => {
+    dynamicImport(filePath, extension, 'component').then((componentExport) => {
       this.exampleComponent = componentExport.default
     })
-    dynamicImport(filePath, extension, 'string').then(componentString => {
+    dynamicImport(filePath, extension, 'string').then((componentString) => {
       parseComponent(componentString)
     })
   },
-  data () {
+  data() {
     const { propsSeparateTab, filePath } = this
     const fileName = filePath
       .split('/')
@@ -77,7 +77,8 @@ export default {
   computed: {},
   methods: {
     kebabCase,
-    parseComponent (componentCodeString) {
+    parseComponent(componentCodeString) {
+      debuff
       const { stripJSDocDescription } = this
       const template = getTagHtmlFromCodeString('template', componentCodeString)
       let script = getTagHtmlFromCodeString('script', componentCodeString)

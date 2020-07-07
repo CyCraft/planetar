@@ -10,19 +10,19 @@
  * @example <component :is="importedComponent" />
  * @returns {Promise<any>}
  */
-export function dynamicImport (filePath, extension, importType) {
+export function dynamicImport(filePath, extension, importType) {
   if (extension === 'vue') {
     if (importType === 'vue-docgen') {
       return import(`!!@planetar/vue-simple-docgen-loader!src/${filePath.replace('.vue', '')}.vue`)
     }
     if (importType === 'string') {
-      new Promise((resolve, reject) => {
+      return new Promise((resolve, reject) => {
         return import(
           /* webpackChunkName: "component-source-code" */
           /* webpackMode: "lazy-once" */
           `!raw-loader!src/${filePath.replace('.vue', '')}.vue`
         )
-          .then(raw => resolve(raw.default))
+          .then((raw) => resolve(raw.default))
           .catch(reject)
       })
     }
@@ -37,13 +37,13 @@ export function dynamicImport (filePath, extension, importType) {
       return import(`!!@planetar/vue-simple-docgen-loader!src/${filePath.replace('.jsx', '')}.jsx`)
     }
     if (importType === 'string') {
-      new Promise((resolve, reject) => {
+      return new Promise((resolve, reject) => {
         return import(
           /* webpackChunkName: "component-source-code" */
           /* webpackMode: "lazy-once" */
           `!raw-loader!src/${filePath.replace('.jsx', '')}.jsx`
         )
-          .then(raw => resolve(raw.default))
+          .then((raw) => resolve(raw.default))
           .catch(reject)
       })
     }
@@ -58,13 +58,13 @@ export function dynamicImport (filePath, extension, importType) {
       return import(`!!@planetar/vue-simple-docgen-loader!src/${filePath.replace('.tsx', '')}.tsx`)
     }
     if (importType === 'string') {
-      new Promise((resolve, reject) => {
+      return new Promise((resolve, reject) => {
         return import(
           /* webpackChunkName: "component-source-code" */
           /* webpackMode: "lazy-once" */
           `!raw-loader!src/${filePath.replace('.tsx', '')}.tsx`
         )
-          .then(raw => resolve(raw.default))
+          .then((raw) => resolve(raw.default))
           .catch(reject)
       })
     }
