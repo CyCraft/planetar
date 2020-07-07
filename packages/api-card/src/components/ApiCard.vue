@@ -75,14 +75,14 @@ const FIXED_CATS = {
   methods: 'methods',
 }
 const fixedCategoryNames = Object.values(FIXED_CATS)
-const fixedCatToCustomTag = cat => ({
+const fixedCatToCustomTag = (cat) => ({
   tags: { category: [{ description: cat, title: 'category' }] },
 })
 
-function getCategoryPListItems (categorySchemaMap) {
+function getCategoryPListItems(categorySchemaMap) {
   // fixed cats
   const fixedCategories = fixedCategoryNames
-    .filter(c => isArray(categorySchemaMap[c]) && categorySchemaMap[c].length)
+    .filter((c) => isArray(categorySchemaMap[c]) && categorySchemaMap[c].length)
     .map((c, i) => ({ name: c, tag: i === 0 ? undefined : categorySchemaMap[c].length }))
   // divider
   if (fixedCategories.length) {
@@ -90,8 +90,8 @@ function getCategoryPListItems (categorySchemaMap) {
   }
   // prop cats
   const propCategories = Object.keys(categorySchemaMap)
-    .filter(c => !fixedCategoryNames.includes(c))
-    .map(c => ({ name: c, tag: categorySchemaMap[c].length }))
+    .filter((c) => !fixedCategoryNames.includes(c))
+    .map((c) => ({ name: c, tag: categorySchemaMap[c].length }))
   return fixedCategories.concat(propCategories)
 }
 
@@ -100,7 +100,7 @@ function getCategoryPListItems (categorySchemaMap) {
  * @param {string} needle
  * @returns {boolean}
  */
-function checkIfContains (hay, needle) {
+function checkIfContains(hay, needle) {
   return isString(hay) && hay.toLowerCase().includes(needle.toLowerCase())
 }
 
@@ -126,13 +126,13 @@ export default {
      */
     value: { type: [Object, undefined], default: undefined },
   },
-  created () {
+  created() {
     const { filePath, parseVueDocgenData } = this
     const extension = filePath.split('.').slice(-1)[0]
     dynamicImport(filePath, extension, 'vue-docgen')
       .then(vueDocgenData => parseVueDocgenData(vueDocgenData)) // prettier-ignore
   },
-  data () {
+  data() {
     const { propsSeparateTab, filePath } = this
     const fileName = filePath
       .split('/')
@@ -152,14 +152,14 @@ export default {
   },
   computed: {
     propsObject: {
-      get () {
+      get() {
         return this.value
       },
-      set (newValue) {
+      set(newValue) {
         this.$emit('input', newValue)
       },
     },
-    categorySchemaMapFiltered () {
+    categorySchemaMapFiltered() {
       const { categorySchemaMap, searchValue: s } = this
       if (!s) return categorySchemaMap
       return Object.entries(categorySchemaMap).reduce((carry, [category, schema]) => {
@@ -180,7 +180,7 @@ export default {
     /**
      * @type {{ name: string, isDivider?: boolean }[]}
      */
-    categoryPListItems () {
+    categoryPListItems() {
       const { categorySchemaMapFiltered } = this
       return getCategoryPListItems(categorySchemaMapFiltered)
     },
@@ -191,7 +191,7 @@ export default {
     /**
      * @param {ComponentDoc} vueDocgenData
      */
-    parseVueDocgenData (vueDocgenData = {}) {
+    parseVueDocgenData(vueDocgenData = {}) {
       console.log(`vueDocgenData → `, vueDocgenData)
       const { categorySchemaMap, getExample, value } = this
       const modelToEmit = { ...value }
@@ -207,9 +207,9 @@ export default {
         this.$set(categorySchemaMap, FIXED_CATS.description, [{ subLabel: description }])
       }
       const fixedCats = [
-        ...slots.map(s => mergeAndConcat(s, fixedCatToCustomTag(FIXED_CATS.slots))),
-        ...events.map(e => mergeAndConcat(e, fixedCatToCustomTag(FIXED_CATS.events))),
-        ...methods.map(m => mergeAndConcat(m, fixedCatToCustomTag(FIXED_CATS.methods))),
+        ...slots.map((s) => mergeAndConcat(s, fixedCatToCustomTag(FIXED_CATS.slots))),
+        ...events.map((e) => mergeAndConcat(e, fixedCatToCustomTag(FIXED_CATS.events))),
+        ...methods.map((m) => mergeAndConcat(m, fixedCatToCustomTag(FIXED_CATS.methods))),
       ]
       ;[...props, ...fixedCats].forEach((prop /* PropDescriptor */) => {
         const schemaInfo = propToPropSchema(prop)
@@ -220,7 +220,7 @@ export default {
         if (schema.default === undefined) {
           modelToEmit[schema.id] = getExample(prop, prop.required)
         }
-        categories.forEach(category => {
+        categories.forEach((category) => {
           if (!(category in categorySchemaMap)) this.$set(categorySchemaMap, category, [])
           categorySchemaMap[category].push(schema)
         })
@@ -242,7 +242,7 @@ export default {
      * @param {boolean} isRequired if not required it will not throw an error
      * @returns {*}
      */
-    getExample (prop, isRequired) {
+    getExample(prop, isRequired) {
       const { name, tags } = prop
       try {
         const { example } = tags

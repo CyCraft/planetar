@@ -13,14 +13,12 @@
 </template>
 
 <script lang="ts">
-import {
-  defineComponent, PropType, computed, ref, toRef, Ref
-} from '@vue/composition-api'
+import { defineComponent, PropType, computed, ref, toRef, Ref } from '@vue/composition-api'
 import { Todo, Meta } from './models'
 
-function useClickCount () {
+function useClickCount() {
   const clickCount = ref(0)
-  function increment () {
+  function increment() {
     clickCount.value += 1
     return clickCount.value
   }
@@ -28,7 +26,7 @@ function useClickCount () {
   return { clickCount, increment }
 }
 
-function useDisplayTodo (todos: Ref<Todo[]>) {
+function useDisplayTodo(todos: Ref<Todo[]>) {
   const todoCount = computed(() => todos.value.length)
   return { todoCount }
 }
@@ -36,24 +34,21 @@ function useDisplayTodo (todos: Ref<Todo[]>) {
 export default defineComponent({
   name: 'CompositionComponent',
   props: {
-    title: {
-      type: String,
-      required: true
-    },
+    title: { type: String, required: true },
     todos: {
       type: (Array as unknown) as PropType<Todo[]>,
-      default: () => []
+      default: () => [],
     },
     meta: {
       type: (Object as unknown) as PropType<Meta>,
-      required: true
+      required: true,
     },
     active: {
-      type: Boolean
-    }
+      type: Boolean,
+    },
   },
-  setup (props) {
+  setup(props) {
     return { ...useClickCount(), ...useDisplayTodo(toRef(props, 'todos')) }
-  }
+  },
 })
 </script>
