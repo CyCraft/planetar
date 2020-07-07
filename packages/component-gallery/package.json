@@ -1,6 +1,6 @@
 {
   "name": "@planetar/component-gallery",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "author": "Luca Ban - Mesqueeb",
   "description": "Planetar Component Gallery",
   "license": "MIT",
@@ -13,7 +13,7 @@
   "homepage": "https://github.com/mesqueeb/planetar",
   "dependencies": {
     "@planetar/api-card": "^0.1.17",
-    "@planetar/example-card": "^0.1.10",
+    "@planetar/example-card": "^0.1.11",
     "@planetar/styles": "^0.0.3"
   },
   "repository": {
