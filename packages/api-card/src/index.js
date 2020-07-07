@@ -6,7 +6,7 @@ import ApiComponentExample from './components/ApiComponentExample.vue'
 export { version, ApiCard, ApiComponentExample }
 
 export default {
-  install (Vue) {
+  install(Vue) {
     Vue.component(ApiCard.name, ApiCard)
     Vue.component(ApiComponentExample.name, ApiComponentExample)
   },
