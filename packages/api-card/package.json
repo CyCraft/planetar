@@ -1,6 +1,6 @@
 {
   "name": "@planetar/api-card",
-  "version": "0.1.16",
+  "version": "0.1.17",
   "author": "Luca Ban - Mesqueeb",
   "description": "Planetar Api Card",
   "license": "MIT",
@@ -15,7 +15,7 @@
   "dependencies": {
     "@planetar/atoms": "^0.0.5",
     "@planetar/styles": "^0.0.3",
-    "@planetar/utils": "^0.0.3",
+    "@planetar/utils": "^0.0.4",
     "case-anything": "^1.1.1",
     "fast-sort": "^2.2.0",
     "is-what": "^3.9.1",
