@@ -78,7 +78,6 @@ export default {
   methods: {
     kebabCase,
     parseComponent(componentCodeString) {
-      debuff
       const { stripJSDocDescription } = this
       const template = getTagHtmlFromCodeString('template', componentCodeString)
       let script = getTagHtmlFromCodeString('script', componentCodeString)
