@@ -1,6 +1,6 @@
 {
   "name": "@planetar/example-card",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "author": "Luca Ban - Mesqueeb",
   "description": "Example Card based on a Vue file with automatic source extraction",
   "license": "MIT",

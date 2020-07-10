@@ -1,6 +1,6 @@
 {
   "name": "planetar",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "author": "Luca Ban - Mesqueeb",
   "description": "A framework that creates a centralised landing page of your design system ready for your apps and websites. 🪐",
   "license": "MIT",
@@ -11,8 +11,8 @@
   "dependencies": {
     "@planetar/api-card": "^0.1.17",
     "@planetar/atoms": "^0.0.5",
-    "@planetar/component-gallery": "^0.0.8",
-    "@planetar/example-card": "^0.1.11"
+    "@planetar/component-gallery": "^0.0.9",
+    "@planetar/example-card": "^0.1.12"
   },
   "repository": {
     "type": "git",
