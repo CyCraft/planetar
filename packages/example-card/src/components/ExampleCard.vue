@@ -5,10 +5,15 @@
     :tabLabels="tabLabels"
   >
     <template v-for="(tabLabel, index) in tabLabels" v-slot:[index]>
-      <div class="pa-lg" v-if="tabLabel === 'example' && exampleComponent">
+      <div class="pa-lg" v-if="tabLabel === 'example' && exampleComponent" :key="tabLabel + index">
         <component :is="exampleComponent" />
       </div>
-      <div v-else-if="parts[tabLabel]" class="_planetar-code" v-html="parts[tabLabel]" />
+      <div
+        v-else-if="parts[tabLabel]"
+        class="_planetar-code"
+        v-html="parts[tabLabel]"
+        :key="tabLabel + index"
+      />
     </template>
   </PTabs>
 </template>
