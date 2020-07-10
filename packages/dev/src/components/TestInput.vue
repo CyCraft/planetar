@@ -56,6 +56,11 @@
 import { QInput, QIcon } from 'quasar'
 
 /**
+ * @typedef MyStringLitteral
+ * @type {'a' | 'b'}
+ */
+
+/**
  * This is the main input field.
  */
 export default {
@@ -65,6 +70,10 @@ export default {
     QIcon,
   },
   props: {
+    /**
+     * @type {MyStringLitteral}
+     */
+    myStringLitteral: { type: String },
     /**
      * To be used with v-model
      * @category model
@@ -118,19 +127,19 @@ export default {
       default: () => [],
     },
   },
-  data () {
+  data() {
     return { innerValue: '' }
   },
   watch: {
     value: {
       immediate: true,
-      handler (newValue) {
+      handler(newValue) {
         this.innerValue = newValue
       },
     },
   },
   computed: {
-    propsToPass () {
+    propsToPass() {
       const { $attrs, isSearch } = this
       const type = isSearch ? 'search' : $attrs.type
       const outlined = true
@@ -138,10 +147,10 @@ export default {
       return { ...$attrs, type, outlined, dense }
     },
     model: {
-      get () {
+      get() {
         return this.innerValue
       },
-      set (v) {
+      set(v) {
         this.innerValue = v
         /**
          * @param {number | string} value The input value
