@@ -1,8 +1,8 @@
 <template>
   <q-page padding>
     <div class="q-gutter-md">
-      <PInput v-model="model" />
-      <PInput :isCode="true" v-model="model" />
+      <pre>{{ model }}</pre>
+      <PSelect v-model="model" :options="['a', 'b']" />
     </div>
   </q-page>
 </template>

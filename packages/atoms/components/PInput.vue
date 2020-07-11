@@ -29,15 +29,16 @@
 .p-input
   .q-field__control
     border-radius: 8px
+    background-color: $c-stone-light
   .q-field__control:before
     border: 2px solid $c-stone-light
-    background-color: $c-stone-light
     transition: border-color 0.36s cubic-bezier(0.4, 0, 0.2, 1)
+  .q-field__control:hover
+    background-color: white
   .q-field__control:hover:before
     border-color: $c-blue-ribbon
-    background-color: white
   &.q-field--focused
-    .q-field__control:before
+    .q-field__control
       background-color: white
     .q-field__control:after
       border-color: $c-blue-ribbon
@@ -46,9 +47,10 @@
 .p-input._is-code
   .q-field__native
     color: white // the text colour
+  .q-field__control
+    background-color: $c-lucy-black
   .q-field__control:before
     border: 2px solid $c-lucy-black
-    background-color: $c-lucy-black
     transition: border-color 0.36s cubic-bezier(0.4, 0, 0.2, 1)
   .q-field__control:hover:before
     border-color: $c-sail-dark
@@ -87,7 +89,7 @@ export default {
     isSearch: { type: Boolean },
   },
   computed: {
-    propsToPass () {
+    propsToPass() {
       const { $attrs, isSearch } = this
       const type = isSearch ? 'search' : $attrs.type
       const outlined = true

@@ -1,9 +1,5 @@
 <template>
-  <QBtn
-    :class="['ef-button', isLg ? '_lg' : '']"
-    v-bind="propsToPass"
-    v-on="$listeners"
-  />
+  <QBtn :class="['ef-button', isLg ? '_lg' : '']" v-bind="propsToPass" v-on="$listeners" />
 </template>
 
 <style lang="sass">
@@ -34,10 +30,10 @@ export default {
      * @type {'primary' | 'onPrimary' | 'darkgrey'}
      */
     type: { type: String, default: 'primary' },
-    disable: { type: Boolean, default: false }
+    disable: { type: Boolean, default: false },
   },
   computed: {
-    propsToPass () {
+    propsToPass() {
       const { type, isLg } = this
       const buttonSize = isLg ? 'xl' : 'md'
       const isRounded = isLg
@@ -50,10 +46,10 @@ export default {
         unelevated: !isElevated,
         // props to pass
         label: this.btnLabel,
-        disable: this.disable
+        disable: this.disable,
       }
     },
-    buttonColor () {
+    buttonColor() {
       switch (this.type) {
         case 'darkgrey':
           return 'grey-dark'
@@ -62,8 +58,8 @@ export default {
         default:
           return 'primary'
       }
-    }
+    },
   },
-  methods: {}
+  methods: {},
 }
 </script>

@@ -9,16 +9,17 @@
 .p-select
   .q-field__control
     border-radius: 8px
+    background-color: $c-stone-light
   .q-field__control:before
     border: 2px solid $c-stone-light
-    background-color: $c-stone-light
     transition: border-color 0.36s cubic-bezier(0.4, 0, 0.2, 1)
+  .q-field__control:hover
+    background-color: white
   .q-field__control:hover:before
     border-color: $c-blue-ribbon
-    background-color: white
 
 .p-select.q-field--focused
-  .q-field__control:before
+  .q-field__control
     background-color: white
 </style>
 
@@ -35,7 +36,7 @@ export default {
   components: { QSelect },
   props: {},
   computed: {
-    propsToPass () {
+    propsToPass() {
       const { $attrs } = this
       const outlined = true
       const dense = true

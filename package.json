@@ -51,7 +51,6 @@
     "postcss": "^7.0.32",
     "postcss-rtl": "^1.7.3",
     "prettier": "^2.0.5",
-    "quasar": "^1.12.8",
     "replace-in-files-cli": "^0.3.1",
     "rimraf": "^3.0.2",
     "rollup": "^1.32.1",
