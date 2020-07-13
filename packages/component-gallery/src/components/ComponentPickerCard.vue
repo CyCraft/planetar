@@ -26,6 +26,8 @@
   border-radius: 18px
   background: white
   cursor: pointer
+.component-picker-card:hover
+  +shadow-2()
 </style>
 
 <script>
@@ -34,7 +36,7 @@ export default {
   props: {
     filePath: { type: String },
   },
-  data () {
+  data() {
     return {}
   },
   computed: {},
