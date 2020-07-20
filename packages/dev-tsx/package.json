@@ -18,7 +18,7 @@
     "@planetar/example-card": "^0.1.13",
     "@quasar/extras": "^1.8.2",
     "is-what": "^3.10.0",
-    "quasar": "^1.12.10",
+    "quasar": "^1.12.12",
     "vue-strict-prop": "^0.3.6"
   },
   "devDependencies": {
