@@ -1,6 +1,6 @@
 {
   "name": "dev",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "project used internally when developing for planetar",
   "productName": "dev",
   "author": "Luca Ban - mesqueeb",
@@ -11,10 +11,10 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
-    "@planetar/api-card": "^0.1.18",
-    "@planetar/atoms": "^0.0.6",
-    "@planetar/component-gallery": "^0.0.12",
-    "@planetar/example-card": "^0.1.13",
+    "@planetar/api-card": "^0.1.19",
+    "@planetar/atoms": "^0.0.7",
+    "@planetar/component-gallery": "^0.0.13",
+    "@planetar/example-card": "^0.1.14",
     "@planetar/styles": "^0.0.3",
     "@quasar/app": "^2.0.6",
     "@quasar/extras": "^1.8.2",
