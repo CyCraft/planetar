@@ -14,7 +14,10 @@ module.exports = {
     // Needed to make the parser take into account 'vue' files
     extraFileExtensions: ['.vue'],
     parser: '@typescript-eslint/parser',
-    project: resolve(__dirname, './tsconfig.json'),
+    project: [
+      resolve(__dirname, './tsconfig.json'),
+      resolve(__dirname, './packages/**/tsconfig.json'),
+    ],
     tsconfigRootDir: __dirname,
     ecmaVersion: 2018, // Allows for the parsing of modern ECMAScript features
     sourceType: 'module', // Allows for the use of imports
@@ -42,11 +45,11 @@ module.exports = {
     // 'plugin:vue/strongly-recommended', // Priority B: Strongly Recommended (Improving Readability)
     // 'plugin:vue/recommended', // Priority C: Recommended (Minimizing Arbitrary Choices and Cognitive Overhead)
 
-    // allow async-await
-    ('generator-star-spacing': 'off'),
-    // allow paren-less arrow functions
-    ('arrow-parens': 'off'),
-    ('one-var': 'off'),
+    // https://github.com/prettier/eslint-config-prettier#installation
+    // usage with Prettier, provided by 'eslint-config-prettier'.
+    'prettier',
+    'prettier/@typescript-eslint',
+    'prettier/vue',
   ],
 
   plugins: [
@@ -80,5 +83,11 @@ module.exports = {
 
     // allow debugger during development only
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+
+    // allow async-await
+    'generator-star-spacing': 'off',
+    // allow paren-less arrow functions
+    'arrow-parens': 'off',
+    'one-var': 'off',
   },
 }
