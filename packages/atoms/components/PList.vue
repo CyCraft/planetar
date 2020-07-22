@@ -22,7 +22,7 @@
 <style lang="sass">
 @import '@planetar/styles'
 
-/* global styles */
+/** global styles */
 .p-list
   .q-hoverable:hover
     background: $c-stone
@@ -68,7 +68,7 @@ export default {
     value: { type: String, default: '' },
   },
   computed: {
-    propsToPass () {
+    propsToPass() {
       const { $attrs } = this
       return { ...$attrs }
     },

@@ -65,22 +65,22 @@ export default {
     include: { type: Array },
   },
   computed: {
-    filePath () {
+    filePath() {
       const r = this.$route
       return r.query.filePath
     },
-    interactivePreviewForFilePath () {
+    interactivePreviewForFilePath() {
       const { componentFilesList, filePath, interactivePreviewFor, noInteractivePreviewFor } = this
 
-      function previewIncluded (filePath = '') {
+      function previewIncluded(filePath = '') {
         if (!interactivePreviewFor || !interactivePreviewFor.length) return true
-        return interactivePreviewFor.some(incl => filePath.includes(incl))
+        return interactivePreviewFor.some((incl) => filePath.includes(incl))
       }
-      function previewExcluded (filePath = '') {
+      function previewExcluded(filePath = '') {
         if (!noInteractivePreviewFor || !noInteractivePreviewFor.length) return false
-        return noInteractivePreviewFor.some(excl => filePath.includes(excl))
+        return noInteractivePreviewFor.some((excl) => filePath.includes(excl))
       }
-      function filePathOk (filePath = '') {
+      function filePathOk(filePath = '') {
         return previewIncluded(filePath) && !previewExcluded(filePath)
       }
       return filePathOk(filePath)

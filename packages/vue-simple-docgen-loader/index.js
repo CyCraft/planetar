@@ -2,18 +2,18 @@ const { parse } = require('vue-docgen-api')
 const { generate } = require('escodegen')
 const toAst = require('to-ast')
 
-function loaderDocgen (source) {
+function loaderDocgen(source) {
   const callback = this.async()
   const cb = callback ? callback : () => null
   asyncLoader
     .call(this, source)
-    .then(res => cb(undefined, res))
-    .catch(e => {
+    .then((res) => cb(undefined, res))
+    .catch((e) => {
       throw e
     })
 }
 
-async function asyncLoader (source) {
+async function asyncLoader(source) {
   const file = this.request.split('!').pop()
   try {
     if (!file.match(/\.vue|\.tsx|\.jsx/)) {
@@ -27,10 +27,7 @@ async function asyncLoader (source) {
       module.exports = ${generate(toAst(docs))}
   `
   } catch (error) {
-    console.error(
-      `[vue-docgen-loader] error during import of file: ${file}\nerror:`,
-      error
-    )
+    console.error(`[vue-docgen-loader] error during import of file: ${file}\nerror:`, error)
     return `module.exports = {}`
   }
 }

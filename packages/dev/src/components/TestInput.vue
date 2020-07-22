@@ -20,8 +20,8 @@
           stroke-linejoin="round"
           class="feather feather-search"
         >
-          <circle cx="11" cy="11" r="8"></circle>
-          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          <circle cx="11" cy="11" r="8" />
+          <line x1="21" y1="21" x2="16.65" y2="16.65" />
         </svg>
       </QIcon>
     </template>
@@ -31,7 +31,7 @@
 <style lang="sass">
 @import '@planetar/styles'
 
-/* global styles */
+/** global styles */
 .animate-blink
   animation: blink 1.3s infinite
 @keyframes blink

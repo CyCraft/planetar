@@ -6,11 +6,11 @@ import { PInput, PList, PSelect, PToggle, PTabs } from './components/index'
 // export { version }
 
 export default {
-  install (Vue) {
+  install(Vue) {
     Vue.component(PInput.name, PInput)
     Vue.component(PList.name, PList)
     Vue.component(PSelect.name, PSelect)
     Vue.component(PTabs.name, PTabs)
     Vue.component(PToggle.name, PToggle)
-  }
+  },
 }

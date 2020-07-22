@@ -12,7 +12,7 @@
 <style lang="sass">
 @import '@planetar/styles'
 
-/* global styles */
+/** global styles */
 .planetar-category-panel
   pre, code
     background-color: transparentize($c-stone, 0.3)
@@ -63,13 +63,13 @@ export default {
      */
     mode: { type: String, default: 'edit' },
   },
-  data () {
+  data() {
     return {}
   },
   computed: {
-    schemaCalculated () {
+    schemaCalculated() {
       if (this.mode === 'edit') return this.schema
-      return this.schema.map(s => ({ ...s, component: undefined }))
+      return this.schema.map((s) => ({ ...s, component: undefined }))
     },
   },
   methods: { isPlainObject },

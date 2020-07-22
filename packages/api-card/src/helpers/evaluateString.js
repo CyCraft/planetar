@@ -8,7 +8,7 @@ import { mapObject } from 'map-anything'
  * @param {string} str
  * @returns {*}
  */
-export function evaluateString (str) {
+export function evaluateString(str) {
   try {
     if (str[0] === '{' && str[str.length - 1] === '}') {
       return json5.parse(str)
@@ -29,6 +29,6 @@ export function evaluateString (str) {
  * @param {object} obj
  * @returns {object}
  */
-export function evaluateObject (obj) {
+export function evaluateObject(obj) {
   return mapObject(obj, evaluateString)
 }

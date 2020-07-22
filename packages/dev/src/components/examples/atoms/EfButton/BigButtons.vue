@@ -10,9 +10,7 @@
         <EfButton :isLg="true" :disable="true" btnLabel="次へ / Next" />
       </div>
     </div>
-    <div class="text-body1 text-text-light mb-xl">
-      ページ遷移を主としたメインボタン / Main button for page transition
-    </div>
+    <div class="text-body1 text-text-light mb-xl">ページ遷移を主としたメインボタン / Main button for page transition</div>
   </div>
 </template>
 

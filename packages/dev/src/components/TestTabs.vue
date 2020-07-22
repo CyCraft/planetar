@@ -28,9 +28,7 @@
           @slot Tab Panels are automatically added by adding them with their "index" number of each label passed in the 'tabLabels' prop.
           @example <div v-slot:0>first panel</div><div v-slot:1>second panel</div>
         -->
-        <slot :name="String(index)">
-          {{ defaultContent[index] }}
-        </slot>
+        <slot :name="String(index)">{{ defaultContent[index] }}</slot>
       </QTabPanel>
     </QTabPanels>
   </div>
@@ -39,7 +37,7 @@
 <style lang="sass">
 @import '@planetar/styles'
 
-/* global styles */
+/** global styles */
 </style>
 
 <style lang="sass" scoped>
@@ -139,7 +137,7 @@ export default {
      */
     fn: {
       type: Function,
-      default: a => ({ awesome: a }),
+      default: (a) => ({ awesome: a }),
     },
     /**
      * A complicated object test prop
@@ -160,16 +158,16 @@ export default {
       default: () => ({ '0': 'hi!' }),
     },
   },
-  data () {
+  data() {
     const innerActiveTab = String(this.value) || String(this.initialTabIndex)
     return { innerActiveTab }
   },
   computed: {
     activeTab: {
-      get () {
+      get() {
         return this.innerActiveTab
       },
-      set (newTab) {
+      set(newTab) {
         this.innerActiveTab = String(newTab)
         /**
          * Triggers when the tab changes
@@ -178,7 +176,7 @@ export default {
         this.$emit('input', String(newTab))
       },
     },
-    propsToPass () {
+    propsToPass() {
       const { $attrs } = this
       return { ...$attrs }
     },

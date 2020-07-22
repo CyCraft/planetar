@@ -19,7 +19,7 @@
 </template>
 
 <style lang="sass">
-/* global styles */
+/** global styles */
 @import '../helpers/prismTheme.scss'
 @import '@planetar/styles'
 

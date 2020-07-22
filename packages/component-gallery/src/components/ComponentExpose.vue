@@ -13,10 +13,10 @@
         stroke-linejoin="round"
         class="feather feather-chevron-left"
       >
-        <polyline points="15 18 9 12 15 6"></polyline>
+        <polyline points="15 18 9 12 15 6" />
       </svg>
-      back</router-link
-    >
+      back
+    </router-link>
     <ExampleSection
       v-for="exampleFilePath in exampleFilePaths"
       :key="exampleFilePath"
@@ -66,24 +66,24 @@ export default {
   },
   components: { ApiCard, ApiComponentExample, ExampleSection },
   computed: {
-    filePath () {
+    filePath() {
       const r = this.$route
       return r.query.filePath
     },
-    exampleFilePaths () {
+    exampleFilePaths() {
       const { componentFilesList, filePath } = this
       const { atomExamples, moleculeExamples } = getComponentPaths(componentFilesList)
       const examplePaths = atomExamples
         .concat(moleculeExamples)
-        .map(p => p.replace('examples/', ''))
-      const examplePathArrays = examplePaths.map(p => p.split('/'))
+        .map((p) => p.replace('examples/', ''))
+      const examplePathArrays = examplePaths.map((p) => p.split('/'))
       const componentPathArray = filePath.split('/')
       const [folder, component] = componentPathArray
       const componentExamples = examplePathArrays
         .filter(([_folder, _component]) => {
           return _folder === folder && _component.split('.')[0] === component.split('.')[0]
         })
-        .map(pathArray => pathArray.join('/'))
+        .map((pathArray) => pathArray.join('/'))
       return componentExamples
     },
   },

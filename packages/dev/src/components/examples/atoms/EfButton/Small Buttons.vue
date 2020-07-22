@@ -6,10 +6,7 @@
         <div class="flex q-gutter-md">
           <EfButton btnLabel="ボタン / Button" />
           <EfButton type="darkgrey" btnLabel="ボタン / Button" />
-          <EfButton
-            type="onPrimary"
-            btnLabel="選択肢を確認 / Confirm your choice"
-          />
+          <EfButton type="onPrimary" btnLabel="選択肢を確認 / Confirm your choice" />
         </div>
       </div>
       <div>

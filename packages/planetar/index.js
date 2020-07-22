@@ -9,7 +9,7 @@ export * from '@planetar/example-card'
 export * from '@planetar/component-gallery'
 
 export default {
-  install (Vue) {
+  install(Vue) {
     Vue.use(Atoms)
     Vue.use(ApiCard)
     Vue.use(ExampleCard)

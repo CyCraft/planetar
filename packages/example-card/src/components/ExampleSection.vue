@@ -7,7 +7,7 @@
 </template>
 
 <style lang="sass">
-/* global styles */
+/** global styles */
 @import '@planetar/styles'
 </style>
 
@@ -27,12 +27,12 @@ export default {
      */
     filePath: { type: String, required: true },
   },
-  created () {
+  created() {
     const { parseComponent, filePath, parseDescription } = this
     const extension = filePath.split('.').slice(-1)[0]
     dynamicImport(filePath, extension, 'vue-docgen').then(parseDescription)
   },
-  data () {
+  data() {
     const { filePath } = this
     const fileName = filePath
       .split('/')
@@ -49,7 +49,7 @@ export default {
   methods: {
     kebabCase,
     spaceCase,
-    parseDescription (vueDocgen) {
+    parseDescription(vueDocgen) {
       const { description: descriptionMd } = vueDocgen
       const descriptionHtml = mdToHtml(descriptionMd)
       this.exampleDescription = descriptionHtml

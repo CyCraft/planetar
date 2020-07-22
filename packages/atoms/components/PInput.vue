@@ -14,8 +14,8 @@
           stroke-linejoin="round"
           class="feather feather-search"
         >
-          <circle cx="11" cy="11" r="8"></circle>
-          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          <circle cx="11" cy="11" r="8" />
+          <line x1="21" y1="21" x2="16.65" y2="16.65" />
         </svg>
       </QIcon>
     </template>
@@ -25,7 +25,7 @@
 <style lang="sass">
 @import '@planetar/styles'
 
-/* global styles */
+/** global styles */
 .p-input
   .q-field__control
     border-radius: 8px
@@ -42,7 +42,6 @@
       background-color: white
     .q-field__control:after
       border-color: $c-blue-ribbon
-
 
 .p-input._is-code
   .q-field__native

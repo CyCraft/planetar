@@ -10,7 +10,7 @@ import { evaluateString } from './evaluateString'
 // 	name: string
 // }
 
-function parseExample (example) {
+function parseExample(example) {
   return `\`${example}\``
 }
 
@@ -18,7 +18,7 @@ function parseExample (example) {
  * @param {object} vueDocgenProp
  * @returns {{categories: string[], schema: object}} EasyForm schema blueprint
  */
-export function propToPropSchema (vueDocgenProp) {
+export function propToPropSchema(vueDocgenProp) {
   console.log(`vueDocgenProp → `, vueDocgenProp)
   // get the documentation I want to use from the vueDocgenProp
   const {
@@ -32,8 +32,8 @@ export function propToPropSchema (vueDocgenProp) {
     properties = [],
   } = vueDocgenProp
   // format the top level tags
-  const types = isString(type.name) ? type.name.split('|').map(s => s.trim()) : ['any']
-  function typeIs (_type) {
+  const types = isString(type.name) ? type.name.split('|').map((s) => s.trim()) : ['any']
+  function typeIs(_type) {
     const propType = types[0]
     const yes = propType === _type && types.length === 1
     if (yes) return yes
@@ -44,7 +44,7 @@ export function propToPropSchema (vueDocgenProp) {
   }
   // get the documentation I want to use from the custom tags
   const _typeTags = customTags.type || []
-  const typeTags = _typeTags.map(t => t.type.name)
+  const typeTags = _typeTags.map((t) => t.type.name)
 
   const _inheritedProp = customTags.inheritedProp || [{ description: false }]
   const inheritedProp = _inheritedProp[0].description
@@ -54,8 +54,8 @@ export function propToPropSchema (vueDocgenProp) {
     customTags.category ||
     (!inheritedProp ? [{ description: 'general' }] : [{ description: 'inheritedProp' }])
   // format the custom tags for usage
-  const examples = _examples.map(e => e.description)
-  const categories = _categories.map(c => c.description)
+  const examples = _examples.map((e) => e.description)
+  const categories = _categories.map((c) => c.description)
 
   const isSlot = categories.includes('slots')
   const isEvent = categories.includes('events')
@@ -120,8 +120,8 @@ export function propToPropSchema (vueDocgenProp) {
     : typeTags.length
     ? typeTags[0]
         .split('|')
-        .map(t => t.trim())
-        .filter(t => t[0] === `'` && t[t.length - 1] === `'`)
+        .map((t) => t.trim())
+        .filter((t) => t[0] === `'` && t[t.length - 1] === `'`)
     : []
   // if the prop has a fixed set of possible values, show this as an 'option' EasyField
   const propHasValues = isArray(valuesCalculated) && valuesCalculated.length > 1
@@ -134,7 +134,7 @@ export function propToPropSchema (vueDocgenProp) {
     typeIs('array') ||
     typeIs('object') ||
     typeIs('function') ||
-    (isArray(types) && ['array', 'object'].some(t => types.includes(t)) && types.length === 2)
+    (isArray(types) && ['array', 'object'].some((t) => types.includes(t)) && types.length === 2)
   ) {
     debounce = 500
     autogrow = true
@@ -143,7 +143,7 @@ export function propToPropSchema (vueDocgenProp) {
     const examplesParsed =
       examples.length === 1
         ? parseExample(examples[0])
-        : examples.map(e => `\n- ${parseExample(e)}`).join('')
+        : examples.map((e) => `\n- ${parseExample(e)}`).join('')
     subLabel += `\n\nExample${examples.length === 1 ? '' : 's'}: ${examplesParsed}`
   }
   // remove any "undefined" from the string

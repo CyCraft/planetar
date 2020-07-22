@@ -34,14 +34,14 @@ export default {
      */
     filePath: { type: String, required: true },
   },
-  created () {
+  created() {
     const { filePath } = this
     const extension = filePath.split('.').slice(-1)[0]
-    dynamicImport(filePath, extension, 'component').then(componentExport => {
+    dynamicImport(filePath, extension, 'component').then((componentExport) => {
       this.exampleComponent = componentExport.default
     })
   },
-  data () {
+  data() {
     return {
       exampleComponent: null,
       propsStringified: {},
@@ -51,17 +51,17 @@ export default {
     }
   },
   watch: {
-    model (newValue) {
+    model(newValue) {
       const newVal = JSON.stringify(newValue)
       if (this.propsStringified.value === newVal) return
       this.$set(this.propsStringified, 'value', newVal)
     },
-    propsToBind ({ value }) {
+    propsToBind({ value }) {
       this.model = value
     },
   },
   computed: {
-    propsToBind () {
+    propsToBind() {
       const { propsStringified, previewStyle } = this
       const style = previewStyle
       const propsEvaluated = evaluateObject(propsStringified)
@@ -69,7 +69,7 @@ export default {
     },
   },
   methods: {
-    togglePreviewStyle () {
+    togglePreviewStyle() {
       if (this.previewStyle === '') {
         this.previewStyle = 'width:100%'
       } else {

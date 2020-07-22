@@ -9,14 +9,14 @@ export default {
   name: 'PToggle',
   components: { QToggle },
   props: {
-    readonly: { type: Boolean, default: false }
+    readonly: { type: Boolean, default: false },
   },
   computed: {
-    propsToPass () {
+    propsToPass() {
       const { $attrs, readonly } = this
       return { disable: readonly, ...$attrs }
-    }
+    },
   },
-  methods: {}
+  methods: {},
 }
 </script>

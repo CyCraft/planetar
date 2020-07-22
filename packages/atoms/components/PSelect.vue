@@ -5,7 +5,7 @@
 <style lang="sass">
 @import '@planetar/styles'
 
-/* global styles */
+/** global styles */
 .p-select
   .q-field__control
     border-radius: 8px

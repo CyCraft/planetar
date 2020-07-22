@@ -11,9 +11,7 @@
       />
     </div>
     <!-- atoms other -->
-    <div class="t-h6" v-if="atomsFormElements.length && atomsOther.length">
-      Other
-    </div>
+    <div class="t-h6" v-if="atomsFormElements.length && atomsOther.length">Other</div>
     <div class="_grid-md py-lg" v-if="atomsOther.length">
       <ComponentPickerCard v-for="filePath in atomsOther" :key="filePath" :filePath="filePath" />
     </div>
@@ -77,19 +75,19 @@ export default {
      */
     include: { type: Array },
   },
-  data () {
+  data() {
     const { componentFilesList, formElementPrefix, exclude, include } = this
     const { atoms, molecules } = getComponentPaths(componentFilesList)
 
-    function filePathIncluded (filePath = '') {
+    function filePathIncluded(filePath = '') {
       if (!include || !include.length) return true
-      return include.some(incl => filePath.includes(incl))
+      return include.some((incl) => filePath.includes(incl))
     }
-    function filePathExcluded (filePath = '') {
+    function filePathExcluded(filePath = '') {
       if (!exclude || !exclude.length) return false
-      return include.some(excl => filePath.includes(excl))
+      return include.some((excl) => filePath.includes(excl))
     }
-    function filePathOk (filePath = '') {
+    function filePathOk(filePath = '') {
       return filePathIncluded(filePath) && !filePathExcluded(filePath)
     }
 
@@ -97,10 +95,10 @@ export default {
     const _molecules = molecules.filter(filePathOk)
     const atomsFormElements = !formElementPrefix
       ? []
-      : _atoms.filter(filePath => filePath.includes(formElementPrefix))
+      : _atoms.filter((filePath) => filePath.includes(formElementPrefix))
     const atomsOther = !formElementPrefix
       ? _atoms
-      : _atoms.filter(filePath => !filePath.includes(formElementPrefix))
+      : _atoms.filter((filePath) => !filePath.includes(formElementPrefix))
 
     return {
       atomsFormElements,

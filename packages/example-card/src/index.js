@@ -11,8 +11,8 @@ export default {
   ExampleCard,
   ExampleSection,
 
-  install (Vue) {
+  install(Vue) {
     Vue.component(ExampleCard.name, ExampleCard)
     Vue.component(ExampleSection.name, ExampleSection)
-  }
+  },
 }

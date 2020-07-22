@@ -36,7 +36,7 @@
 <style lang="sass">
 @import '@planetar/styles'
 
-/* global styles */
+/** global styles */
 </style>
 
 <style lang="sass" scoped>
@@ -84,12 +84,12 @@ export default {
       default: 0,
     },
   },
-  data () {
+  data() {
     const activeTab = this.initialTabIndex
     return { activeTab }
   },
   computed: {
-    propsToPass () {
+    propsToPass() {
       const { $attrs } = this
       return { ...$attrs }
     },

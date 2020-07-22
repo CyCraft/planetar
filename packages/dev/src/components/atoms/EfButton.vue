@@ -3,7 +3,6 @@
 </template>
 
 <style lang="sass">
-
 .ef-button
   min-width: 150px
   min-height: 40px

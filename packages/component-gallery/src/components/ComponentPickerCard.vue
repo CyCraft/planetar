@@ -10,10 +10,9 @@
     "
     :clickable="true"
   >
-    <!-- prettier-ignore -->
-    <div class="text-h6 text-wrap-all">{{
-      filePath.replace(/atoms\/|molecules\/|\.vue|\.jsx|\.tsx/g, '')
-    }}</div>
+    <div
+      class="text-h6 text-wrap-all"
+    >{{ filePath.replace(/atoms\/|molecules\/|\.vue|\.jsx|\.tsx/g, '') }}</div>
   </div>
 </template>
 
