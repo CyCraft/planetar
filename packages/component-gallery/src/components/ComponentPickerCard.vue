@@ -26,8 +26,11 @@
   border-radius: 18px
   background: white
   cursor: pointer
+  transition: box-shadow 300ms
 .component-picker-card:hover
   +shadow-2()
+.component-picker-card:active
+  +shadow--2()
 </style>
 
 <script>
