@@ -1,6 +1,6 @@
 {
   "name": "@planetar/atoms",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Atoms used throughout Planetar's packages.",
   "author": "Luca Ban - Mesqueeb",
   "main": "index.js",
