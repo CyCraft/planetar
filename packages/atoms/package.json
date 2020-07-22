@@ -1,6 +1,6 @@
 {
   "name": "@planetar/atoms",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Atoms used throughout Planetar's packages.",
   "author": "Luca Ban - Mesqueeb",
   "main": "index.js",
@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@planetar/styles": "^0.0.3",
+    "@planetar/styles": "^0.0.4",
     "quasar": "^1.12.12"
   },
   "keywords": [
