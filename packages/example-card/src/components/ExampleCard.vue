@@ -10,7 +10,7 @@
       </div>
       <div
         v-else-if="parts[tabLabel]"
-        class="_planetar-code"
+        class="_planetar-code t-body1"
         v-html="parts[tabLabel]"
         :key="tabLabel + index"
       />

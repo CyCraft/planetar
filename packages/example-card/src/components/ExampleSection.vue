@@ -1,7 +1,7 @@
 <template>
   <div :id="kebabCase(fileName) + `-example`">
     <div class="t-h6 mb-md">{{ spaceCase(fileName) }}</div>
-    <div class="mb-lg" v-if="exampleDescription" v-html="exampleDescription"></div>
+    <div class="mb-lg t-body1" v-if="exampleDescription" v-html="exampleDescription"></div>
     <ExampleCard :filePath="filePath" :stripJSDocDescription="true" />
   </div>
 </template>
