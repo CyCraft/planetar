@@ -10,6 +10,7 @@
     "build": "lerna run build",
     "with-compile-step--build": "npm run start-build && lerna run build",
     "build-api-card": "npm run start-build && cd packages/api-card && npm run build",
+    "build-api-card-NEW": "cd packages/api-card && vue-compile src -o dist",
     "build-example-card": "npm run start-build && cd packages/example-card && npm run build",
     "build-component-gallery": "npm run start-build && cd packages/component-gallery && npm run build",
     "publish": "lerna publish",
@@ -62,6 +63,7 @@
     "rollup": "^1.32.1",
     "rollup-plugin-vue": "^5.1.9",
     "uglify-es": "^3.3.10",
+    "vue-compile": "^0.6.0",
     "vue-template-compiler": "^2.6.11",
     "zlib": "^1.0.5"
   },
