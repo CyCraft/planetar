@@ -1,28 +1,14 @@
 # Planetar 🪐
 
-A framework that creates a centralised landing page of your design system ready for your apps and websites.
+A Vue framework for creating a design system with interactive component explorer.
 
-### Project setup
-
-```
-npm install --global lerna
+```sh
+npm i planetar
 ```
 
-- `lerna run`
-  Run an npm script in each package that contains that script
-- `lerna exec`
-  Execute an arbitrary command in each package
+## Meet the family
 
-Examples
-
-Add a new package to `@planetar/api-card`
-
-```
-lerna add some-package --scope @planetar/api-card
-```
-
-Add a local package to `@planetar/api-card`
-
-```
-lerna add @planetar/atoms --scope @planetar/api-card
-```
+|---|---|
+| [Magnetar](https://github.com/mesqueeb/magnetar) 🌟 | A framework-agnostic syncing solution that auto-connects any DB/API with your local data store and has optimistic-UI built in |
+| [Blitzar](https://github.com/mesqueeb/blitzar) ⚡️ | A Vue component collection for blitzing fast prototyping |
+| [Planetar](https://github.com/mesqueeb/planetar) 🪐 | A Vue framework for creating a design system with interactive component explorer |

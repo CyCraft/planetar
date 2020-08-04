@@ -2,7 +2,7 @@
   "name": "planetar",
   "version": "0.0.19",
   "author": "Luca Ban - Mesqueeb",
-  "description": "A framework that creates a centralised landing page of your design system ready for your apps and websites. 🪐",
+  "description": "A Vue framework for creating a design system with interactive component explorer 🪐",
   "license": "MIT",
   "module": "dist/index.js",
   "main": "dist/index.js",
