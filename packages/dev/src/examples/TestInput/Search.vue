@@ -14,14 +14,14 @@ import TestInput from '../../components/TestInput'
  * This is a search input example.
  * ```js
  * import { kebabCase } from 'case-anything'
- * import PTabs from '@planetar/atoms/PTabs.vue'
+ * import PlanetarTabs from '@planetar/atoms/PlanetarTabs.vue'
  * import { codeToHtml } from '../helpers/prism'
  * import { getTagHtmlFromCodeString } from '../helpers/regexp'
  * import { dynamicImport } from '../helpers/dynamicImport'
  *
  * export default {
  *   name: 'ExampleCard',
- *   components: { PTabs },
+ *   components: { PlanetarTabs },
  *   props: {
  *     filePath: { type: String, required: true }
  *   },
@@ -87,7 +87,7 @@ import TestInput from '../../components/TestInput'
  * That's the example!
  * Here's another one!
  * ```html
- * <PTabs
+ * <PlanetarTabs
  *   class="planetar-example-card"
  *   :id="kebabCase(fileName) + `-example-card`"
  *   :tabLabels="tabLabels"
@@ -102,12 +102,12 @@ import TestInput from '../../components/TestInput'
  *       v-html="parts[tabLabel]"
  *     />
  *   </template>
- * </PTabs>
+ * </PlanetarTabs>
  * ```
  */
 export default {
   components: { TestInput },
-  data () {
+  data() {
     return {
       isSearch: true,
       model: '',

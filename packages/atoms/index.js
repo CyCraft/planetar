@@ -1,16 +1,19 @@
 export * from './components/index'
 
-import { PInput, PList, PSelect, PToggle, PTabs } from './components/index'
-
-// import { version } from '../package.json'
-// export { version }
+import {
+  PlanetarInput,
+  PlanetarList,
+  PlanetarSelect,
+  PlanetarToggle,
+  PlanetarTabs,
+} from './components/index'
 
 export default {
   install(Vue) {
-    Vue.component(PInput.name, PInput)
-    Vue.component(PList.name, PList)
-    Vue.component(PSelect.name, PSelect)
-    Vue.component(PTabs.name, PTabs)
-    Vue.component(PToggle.name, PToggle)
+    Vue.component(PlanetarInput.name, PlanetarInput)
+    Vue.component(PlanetarList.name, PlanetarList)
+    Vue.component(PlanetarSelect.name, PlanetarSelect)
+    Vue.component(PlanetarTabs.name, PlanetarTabs)
+    Vue.component(PlanetarToggle.name, PlanetarToggle)
   },
 }

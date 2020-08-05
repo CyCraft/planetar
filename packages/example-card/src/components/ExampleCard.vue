@@ -1,5 +1,5 @@
 <template>
-  <PTabs
+  <PlanetarTabs
     class="planetar-example-card"
     :id="kebabCase(fileName) + `-example-card`"
     :tabLabels="tabLabels"
@@ -15,7 +15,7 @@
         :key="tabLabel + index"
       />
     </template>
-  </PTabs>
+  </PlanetarTabs>
 </template>
 
 <style lang="sass">
@@ -32,14 +32,14 @@
 
 <script>
 import { kebabCase } from 'case-anything'
-import { PTabs } from '@planetar/atoms'
+import { PlanetarTabs } from '@planetar/atoms'
 import { codeToHtml } from '../helpers/htmlHelpers'
 import { getTagHtmlFromCodeString, jsDocBlockNoIndentation } from '../helpers/regexp'
 import { dynamicImport } from '@planetar/utils'
 
 export default {
   name: 'ExampleCard',
-  components: { PTabs },
+  components: { PlanetarTabs },
   props: {
     /**
      * Relative from the `src` folder.

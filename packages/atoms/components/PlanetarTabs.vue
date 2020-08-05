@@ -1,5 +1,5 @@
 <template>
-  <div class="p-tabs">
+  <div class="planetar-tabs">
     <QTabs
       v-model="activeTab"
       dense
@@ -42,7 +42,7 @@
 <style lang="sass" scoped>
 @import '@planetar/styles'
 
-.p-tabs
+.planetar-tabs
   min-width: 150px
   display: flex
   flex-direction: column
@@ -55,7 +55,7 @@ import { QTabs, QTab, QTabPanels, QTabPanel } from 'quasar'
  * This is the main input field.
  */
 export default {
-  name: 'PTabs',
+  name: 'PlanetarTabs',
   components: {
     QTabs,
     QTab,

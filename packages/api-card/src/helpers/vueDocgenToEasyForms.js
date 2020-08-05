@@ -62,7 +62,7 @@ export function propToPropSchema(vueDocgenProp) {
   const isMethod = categories.includes('methods')
 
   // whatever the prop is, default to an 'input' EasyField
-  let component = isSlot || isEvent || isMethod ? undefined : 'PInput'
+  let component = isSlot || isEvent || isMethod ? undefined : 'PlanetarInput'
   let subLabel = description
   let options,
     disable,
@@ -107,7 +107,7 @@ export function propToPropSchema(vueDocgenProp) {
   }
   // if the prop is a Boolean, show this as a 'toggle' EasyField
   if (types.includes('boolean') || (typeTags.length && typeTags.includes('boolean'))) {
-    component = 'PToggle'
+    component = 'PlanetarToggle'
     _default = eval(_default)
   }
   // if it's a Number field
@@ -126,7 +126,7 @@ export function propToPropSchema(vueDocgenProp) {
   // if the prop has a fixed set of possible values, show this as an 'option' EasyField
   const propHasValues = isArray(valuesCalculated) && valuesCalculated.length > 1
   if (propHasValues) {
-    component = 'PSelect'
+    component = 'PlanetarSelect'
     options = valuesCalculated
   }
   // Create a special input for defining arrays and/or objects

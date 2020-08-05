@@ -26,12 +26,12 @@
     grid-template-columns: minmax(150px, min-content) 1fr
     .easy-field__label
       +t-subtitle2
-      justify-self: start
-      align-self: start
-      margin-bottom: 4px
+        justify-self: start
+        align-self: start
+        margin-bottom: 4px
     .easy-field__sub-label
       +t-body2
-      grid-column: 2 / 3
+        grid-column: 2 / 3
       br
         +mt($sm)
         display: block
@@ -46,12 +46,12 @@
 import vue from 'vue'
 import { EasyForm } from 'quasar-ui-easy-forms'
 import { isPlainObject } from 'is-what'
-import { PInput, PToggle, PSelect } from '@planetar/atoms'
+import { PlanetarInput, PlanetarToggle, PlanetarSelect } from '@planetar/atoms'
 
 // used in EasyForm
-vue.component('PInput', PInput)
-vue.component('PToggle', PToggle)
-vue.component('PSelect', PSelect)
+vue.component('PlanetarInput', PlanetarInput)
+vue.component('PlanetarToggle', PlanetarToggle)
+vue.component('PlanetarSelect', PlanetarSelect)
 
 export default {
   name: 'CategoryPanel',

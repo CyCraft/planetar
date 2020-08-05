@@ -1,14 +1,14 @@
-import _PInput from './PInput'
-export const PInput = _PInput
+import _PlanetarInput from './PlanetarInput'
+export const PlanetarInput = _PlanetarInput
 
-import _PList from './PList'
-export const PList = _PList
+import _PlanetarList from './PlanetarList'
+export const PlanetarList = _PlanetarList
 
-import _PSelect from './PSelect'
-export const PSelect = _PSelect
+import _PlanetarSelect from './PlanetarSelect'
+export const PlanetarSelect = _PlanetarSelect
 
-import _PTabs from './PTabs'
-export const PTabs = _PTabs
+import _PlanetarTabs from './PlanetarTabs'
+export const PlanetarTabs = _PlanetarTabs
 
-import _PToggle from './PToggle'
-export const PToggle = _PToggle
+import _PlanetarToggle from './PlanetarToggle'
+export const PlanetarToggle = _PlanetarToggle

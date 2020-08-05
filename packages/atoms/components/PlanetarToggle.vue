@@ -1,12 +1,12 @@
 <template>
-  <QToggle class="p-toggle" v-bind="propsToPass" v-on="$listeners" />
+  <QToggle class="planetar-toggle" v-bind="propsToPass" v-on="$listeners" />
 </template>
 
 <script>
 import { QToggle } from 'quasar'
 
 export default {
-  name: 'PToggle',
+  name: 'PlanetarToggle',
   components: { QToggle },
   props: {
     readonly: { type: Boolean, default: false },

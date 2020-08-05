@@ -2,10 +2,10 @@
   <div class="planetar-api-card" :id="kebabCase(fileName) + `-api`">
     <div class="_top">
       <div class="t-h4 mr-md">{{ fileName }} API</div>
-      <PInput v-model="searchValue" :isSearch="true" :debounce="300" />
+      <PlanetarInput v-model="searchValue" :isSearch="true" :debounce="300" />
     </div>
     <div class="_bottom">
-      <PList class="_tabs" v-model="activeTab" :items="categoryPListItems" />
+      <PlanetarList class="_tabs" v-model="activeTab" :items="categoryPlanetarListItems" />
       <QTabPanels class="_tab-panels" v-model="activeTab" animated vertical>
         <QTabPanel
           v-for="(schema, category) in categorySchemaMapFiltered"
@@ -29,13 +29,13 @@
 
 .planetar-api-card
   +shadow-3()
-  min-width: 400px
-  min-height: 400px
-  max-height: 50vh
-  border-radius: 18px
-  overflow: hidden
-  display: flex
-  flex-direction: column
+    min-width: 400px
+    min-height: 400px
+    max-height: 50vh
+    border-radius: 18px
+    overflow: hidden
+    display: flex
+    flex-direction: column
   ._top
     display: flex
     justify-content: space-between
@@ -56,7 +56,7 @@
 </style>
 
 <script>
-import { PInput, PList } from '@planetar/atoms'
+import { PlanetarInput, PlanetarList } from '@planetar/atoms'
 import CategoryPanel from './atoms/CategoryPanel.vue'
 import { QTabPanels, QTabPanel } from 'quasar'
 import { isArray, isFullString, isString, isPlainObject } from 'is-what'
@@ -79,7 +79,7 @@ const fixedCatToCustomTag = (cat) => ({
   tags: { category: [{ description: cat, title: 'category' }] },
 })
 
-function getCategoryPListItems(categorySchemaMap) {
+function getCategoryPlanetarListItems(categorySchemaMap) {
   // fixed cats
   const fixedCategories = fixedCategoryNames
     .filter((c) => isArray(categorySchemaMap[c]) && categorySchemaMap[c].length)
@@ -107,8 +107,8 @@ function checkIfContains(hay, needle) {
 export default {
   name: 'ApiCard',
   components: {
-    PInput,
-    PList,
+    PlanetarInput,
+    PlanetarList,
     QTabPanels,
     QTabPanel,
     CategoryPanel,
@@ -180,9 +180,9 @@ export default {
     /**
      * @type {{ name: string, isDivider?: boolean }[]}
      */
-    categoryPListItems() {
+    categoryPlanetarListItems() {
       const { categorySchemaMapFiltered } = this
-      return getCategoryPListItems(categorySchemaMapFiltered)
+      return getCategoryPlanetarListItems(categorySchemaMapFiltered)
     },
   },
   methods: {
@@ -225,7 +225,7 @@ export default {
           categorySchemaMap[category].push(schema)
         })
       })
-      if (!this.activeTab) this.activeTab = this.categoryPListItems[0].name
+      if (!this.activeTab) this.activeTab = this.categoryPlanetarListItems[0].name
       // use top level example props for generating api-card example
       const { examples = [] } = componentJSDocTags
       if (examples.length) {

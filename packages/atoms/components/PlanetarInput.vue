@@ -1,5 +1,9 @@
 <template>
-  <QInput :class="['p-input', isCode ? '_is-code' : '']" v-bind="propsToPass" v-on="$listeners">
+  <QInput
+    :class="['planetar-input', isCode ? '_is-code' : '']"
+    v-bind="propsToPass"
+    v-on="$listeners"
+  >
     <template v-slot:append v-if="isSearch">
       <QIcon class="c-primary">
         <svg
@@ -26,7 +30,7 @@
 @import '@planetar/styles'
 
 /** global styles */
-.p-input
+.planetar-input
   .q-field__control
     border-radius: 8px
     background-color: $c-stone-light
@@ -43,7 +47,7 @@
     .q-field__control:after
       border-color: $c-blue-ribbon
 
-.p-input._is-code
+.planetar-input._is-code
   .q-field__native
     color: white // the text colour
   .q-field__control
@@ -59,7 +63,7 @@
 </style>
 
 <style lang="sass" scoped>
-.p-input
+.planetar-input
   min-width: 150px
 </style>
 
@@ -70,7 +74,7 @@ import { QInput, QIcon } from 'quasar'
  * This is the main input field. Uses <QInput /> under the hood.
  */
 export default {
-  name: 'PInput',
+  name: 'PlanetarInput',
   components: { QInput, QIcon },
   props: {
     /**

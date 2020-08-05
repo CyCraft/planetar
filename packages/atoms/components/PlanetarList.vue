@@ -1,5 +1,5 @@
 <template>
-  <QList class="p-list" v-bind="propsToPass">
+  <QList class="planetar-list" v-bind="propsToPass">
     <QItem
       v-for="item in items"
       :key="item.name"
@@ -23,7 +23,7 @@
 @import '@planetar/styles'
 
 /** global styles */
-.p-list
+.planetar-list
   .q-hoverable:hover
     background: $c-stone
     > .q-focus-helper
@@ -33,15 +33,15 @@
 <style lang="sass" scoped>
 @import '@planetar/styles'
 
-.p-list
+.planetar-list
   ._item
     +t-body1
   ._is-divider
     +t-caption
-    background: $c-hint
-    color: white
-    height: 20px
-    min-height: 20px
+      background: $c-hint
+      color: white
+      height: 20px
+      min-height: 20px
   ._is-active
     background: $c-stone-dark
 </style>
@@ -50,7 +50,7 @@
 import { QList, QItem, QItemSection, QBadge } from 'quasar'
 
 export default {
-  name: 'PList',
+  name: 'PlanetarList',
   components: {
     QList,
     QItem,

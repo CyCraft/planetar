@@ -1,8 +1,8 @@
 <template>
   <q-page padding>
     <div class="q-gutter-md">
-      <PInput v-model="model" />
-      <PInput :isCode="true" v-model="model" />
+      <PlanetarInput v-model="model" />
+      <PlanetarInput :isCode="true" v-model="model" />
     </div>
   </q-page>
 </template>

@@ -1,12 +1,12 @@
 <template>
-  <QSelect class="p-select" v-bind="propsToPass" v-on="$listeners" />
+  <QSelect class="planetar-select" v-bind="propsToPass" v-on="$listeners" />
 </template>
 
 <style lang="sass">
 @import '@planetar/styles'
 
 /** global styles */
-.p-select
+.planetar-select
   .q-field__control
     border-radius: 8px
     background-color: $c-stone-light
@@ -18,13 +18,13 @@
   .q-field__control:hover:before
     border-color: $c-blue-ribbon
 
-.p-select.q-field--focused
+.planetar-select.q-field--focused
   .q-field__control
     background-color: white
 </style>
 
 <style lang="sass" scoped>
-.p-select
+.planetar-select
   min-width: 150px
 </style>
 
@@ -32,7 +32,7 @@
 import { QSelect } from 'quasar'
 
 export default {
-  name: 'PSelect',
+  name: 'PlanetarSelect',
   components: { QSelect },
   props: {},
   computed: {
