@@ -25,13 +25,13 @@
   .easy-field:not(.easy-field--no-label)
     grid-template-columns: minmax(150px, min-content) 1fr
     .easy-field__label
+      justify-self: start
+      align-self: start
+      margin-bottom: 4px
       +t-subtitle2
-        justify-self: start
-        align-self: start
-        margin-bottom: 4px
     .easy-field__sub-label
-      +t-body2
-        grid-column: 2 / 3
+      grid-column: 2 / 3
+      +t-body2()
       br
         +mt($sm)
         display: block

@@ -28,14 +28,14 @@
 @import '@planetar/styles'
 
 .planetar-api-card
+  min-width: 400px
+  min-height: 400px
+  max-height: 50vh
+  border-radius: 18px
+  overflow: hidden
+  display: flex
+  flex-direction: column
   +shadow-3()
-    min-width: 400px
-    min-height: 400px
-    max-height: 50vh
-    border-radius: 18px
-    overflow: hidden
-    display: flex
-    flex-direction: column
   ._top
     display: flex
     justify-content: space-between

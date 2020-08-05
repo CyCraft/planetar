@@ -37,11 +37,11 @@
   ._item
     +t-body1
   ._is-divider
+    background: $c-hint
+    color: white
+    height: 20px
+    min-height: 20px
     +t-caption
-      background: $c-hint
-      color: white
-      height: 20px
-      min-height: 20px
   ._is-active
     background: $c-stone-dark
 </style>
