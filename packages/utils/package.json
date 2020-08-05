@@ -1,6 +1,6 @@
 {
   "name": "@planetar/utils",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "author": "Luca Ban - Mesqueeb",
   "description": "Planetar utils",
   "license": "MIT",
@@ -9,7 +9,7 @@
   "scripts": {},
   "homepage": "https://github.com/mesqueeb/planetar",
   "dependencies": {
-    "@planetar/vue-simple-docgen-loader": "^0.1.6",
+    "@planetar/vue-simple-docgen-loader": "^0.2.0",
     "raw-loader": "^4.0.1"
   },
   "repository": {
