@@ -1,6 +1,6 @@
 {
   "name": "planetar",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "Luca Ban - Mesqueeb",
   "description": "A Vue framework for creating a design system with interactive component explorer 🪐",
   "license": "MIT",
@@ -9,9 +9,9 @@
   "scripts": {},
   "homepage": "https://github.com/mesqueeb/planetar",
   "dependencies": {
-    "@planetar/api-card": "^0.2.1",
+    "@planetar/api-card": "^0.2.2",
     "@planetar/atoms": "^0.1.1",
-    "@planetar/component-gallery": "^0.1.1",
+    "@planetar/component-gallery": "^0.1.2",
     "@planetar/example-card": "^0.2.1"
   },
   "repository": {
