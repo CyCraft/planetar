@@ -225,7 +225,6 @@ export default {
           categorySchemaMap[category].push(schema)
         })
       })
-      if (!this.activeTab) this.activeTab = this.categoryPlanetarListItems[0].name
       // use top level example props for generating api-card example
       const { examples = [] } = componentJSDocTags
       if (examples.length) {
@@ -236,6 +235,9 @@ export default {
       }
       this.$emit('input', modelToEmit)
       this.$emit('ready')
+      this.$nextTick(() => {
+        if (!this.activeTab) this.activeTab = (this.categoryPlanetarListItems[0] || {}).name || ''
+      })
     },
     /**
      * @param {PropDescriptor} prop
