@@ -201,7 +201,7 @@ export default {
         methods = [],
         slots = [],
         events = [],
-        tags: componentJSDocTags,
+        tags: componentJSDocTags = {},
       } = vueDocgenData
       if (isFullString(description)) {
         this.$set(categorySchemaMap, FIXED_CATS.description, [{ subLabel: description }])
