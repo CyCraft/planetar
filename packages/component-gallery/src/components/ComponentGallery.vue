@@ -11,6 +11,7 @@
       v-if="filePath"
       :interactivePreview="interactivePreviewForFilePath"
       :componentFilesList="componentFilesList"
+      :previewBg="previewBgForFilePath"
     />
   </div>
 </template>
@@ -46,6 +47,11 @@ export default {
      * @type {string[]}
      */
     noInteractivePreviewFor: { type: Array, default: () => [] },
+    /**
+     * You can give certain components a background for the "interactive preview" section, which will be applied like so: `style="background: ~~~"`
+     * @type {{ [componentName: string]: string }}
+     */
+    componentNamePreviewBgMap: { type: Object, default: () => ({}) },
     /**
      * If you want to separate form element atoms from others, you can pass a prefix like 'My' which will separate any component that starts with 'My', eg. 'MyButton', 'MyInput', etc.
      * @example 'My'
@@ -84,6 +90,11 @@ export default {
         return previewIncluded(filePath) && !previewExcluded(filePath)
       }
       return filePathOk(filePath)
+    },
+    previewBgForFilePath() {
+      const { filePath, componentNamePreviewBgMap } = this
+      const componentName = (filePath.split('/').slice(-1)[0] || "").replace(/\.vue|\.jsx|\.tsx/, '')
+      return componentNamePreviewBgMap[componentName]
     },
   },
 }

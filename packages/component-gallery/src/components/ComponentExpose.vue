@@ -22,7 +22,11 @@
       :key="exampleFilePath"
       :filePath="`components/examples/${exampleFilePath}`"
     />
-    <ApiComponentExample v-if="interactivePreview" :filePath="`components/${filePath}`" />
+    <ApiComponentExample
+      v-if="interactivePreview"
+      :previewBg="previewBg"
+      :filePath="`components/${filePath}`"
+    />
     <ApiCard v-if="!interactivePreview" :filePath="`components/${filePath}`" />
   </div>
 </template>
@@ -38,11 +42,11 @@
   > *:last-child
     +mb(0)
   ._back
-    +t-button
     display: flex
     align-items: center
     text-decoration: none
     color: $c-blue-ribbon
+    +t-button
 </style>
 
 <script>
@@ -63,6 +67,11 @@ export default {
      * If you don't want an interactive preview you can set this to false
      */
     interactivePreview: { type: Boolean, default: true },
+    /**
+     * Background color for the interactive preview section
+     * @example 'black'
+     */
+    previewBg: { type: String },
   },
   components: { ApiCard, ApiComponentExample, ExampleSection },
   computed: {

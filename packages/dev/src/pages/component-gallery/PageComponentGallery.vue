@@ -4,6 +4,7 @@
       :componentFilesList="
         require.context('src/components', true, /^\.\/.*(\.vue)$/).keys()
       "
+      :componentNamePreviewBgMap="{'EfButton': 'grey'}"
     />
   </q-page>
 </template>
@@ -14,6 +15,6 @@ import EfButton from '../../components/atoms/EfButton.vue'
 
 Vue.component('EfButton', EfButton)
 export default {
-  name: 'PageComponentGallery'
+  name: 'PageComponentGallery',
 }
 </script>

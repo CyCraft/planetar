@@ -1,22 +1,42 @@
 <template>
   <div class="planetar-api-component-example column flex-center">
-    <template v-if="exampleComponent && apiCardReady">
-      <div class="t-h6 mb-lg cursor-ew-resize" @click="togglePreviewStyle">Interactive preview</div>
-      <component :is="exampleComponent" v-bind="propsToBind" v-model="model" />
-    </template>
-    <div class="t-h6 my-lg">Info card</div>
-    <ApiCard
-      :filePath="filePath"
-      v-model="propsStringified"
-      @ready="() => (apiCardReady = true)"
+    <div class="t-h6 mb-lg cursor-ew-resize" @click="togglePreviewStyle">Interactive preview</div>
+    <div
+      v-if="exampleComponent && apiCardReady"
+      class="_interactive-preview-section column flex-center"
       style="width: 100%"
-    />
+    >
+      <component :is="exampleComponent" v-bind="propsToBind" v-model="model" />
+      <div class="_bg" v-if="previewBg" :style="`background: ${previewBg}`"></div>
+    </div>
+
+    <div class="t-h6 my-lg">Info card</div>
+    <div class="px-xs" style="width: 100%">
+      <ApiCard
+        :filePath="filePath"
+        v-model="propsStringified"
+        @ready="() => (apiCardReady = true)"
+      />
+    </div>
   </div>
 </template>
 
 <style lang="sass">
+._interactive-preview-section
+  position: relative
+  > *
+    z-index: 2
+  ._bg
+    z-index: 1
+    position: absolute
+    border-radius: 4px
+    top: -16px
+    bottom: -16px
+    left: 0
+    right: 0
 .cursor-ew-resize
   cursor: ew-resize
+  // transform: scale(10)
 </style>
 
 <script>
@@ -33,6 +53,11 @@ export default {
      * @example 'examples/MyBtn/Example1.vue'
      */
     filePath: { type: String, required: true },
+    /**
+     * Background color for the interactive preview section
+     * @example 'black'
+     */
+    previewBg: { type: String },
   },
   created() {
     const { filePath } = this
