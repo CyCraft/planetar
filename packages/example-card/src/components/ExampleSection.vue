@@ -1,6 +1,6 @@
 <template>
-  <div :id="kebabCase(fileName) + `-example`">
-    <div class="t-h6 mb-md">{{ spaceCase(fileName) }}</div>
+  <div :id="kebabCase(exampleTitle) + `-example`">
+    <div class="t-h6 mb-md" v-if="!hideTitle">{{ spaceCase(exampleTitle) }}</div>
     <div class="mb-lg t-body1" v-if="exampleDescription" v-html="exampleDescription"></div>
     <ExampleCard :filePath="filePath" :stripJSDocDescription="true" />
   </div>
@@ -26,6 +26,14 @@ export default {
      * @example 'examples/MyBtn/Example1.vue'
      */
     filePath: { type: String, required: true },
+    /**
+     * By default the filename is shown as title above the example. Can be overwritten with the title prop.
+     */
+    title: { type: String },
+    /**
+     * By default a title is shown above the example. Can be hidden with hideTitle.
+     */
+    hideTitle: { type: Boolean },
   },
   created() {
     const { parseComponent, filePath, parseDescription } = this
@@ -33,15 +41,16 @@ export default {
     dynamicImport(filePath, extension, 'vue-docgen').then(parseDescription)
   },
   data() {
-    const { filePath } = this
+    const { filePath, title } = this
     const fileName = filePath
       .split('/')
       .slice(-1)[0]
       .replace('.vue', '')
       .replace('.jsx', '')
       .replace('.tsx', '')
+    const exampleTitle = title || fileName
     return {
-      fileName,
+      exampleTitle,
       exampleDescription: '',
     }
   },
