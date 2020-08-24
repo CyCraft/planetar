@@ -18,12 +18,12 @@
     "@planetar/utils": "^0.1.0",
     "case-anything": "^1.1.1",
     "fast-sort": "^2.2.0",
-    "is-what": "^3.10.0",
+    "is-what": "^3.11.0",
     "json5": "^2.1.3",
     "map-anything": "0.0.3",
     "merge-anything": "^3.0.5",
-    "quasar": "^1.12.12",
-    "quasar-ui-easy-forms": "^2.3.4"
+    "quasar": "^1.13.1",
+    "quasar-ui-easy-forms": "^2.3.5"
   },
   "repository": {
     "type": "git",

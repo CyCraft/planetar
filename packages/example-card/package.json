@@ -16,7 +16,7 @@
     "@planetar/styles": "^0.0.5",
     "@planetar/utils": "^0.1.0",
     "case-anything": "^1.1.1",
-    "prismjs": "^1.20.0",
+    "prismjs": "^1.21.0",
     "snarkdown": "github:mesqueeb/snarkdown#dist"
   },
   "repository": {

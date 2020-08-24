@@ -16,12 +16,12 @@
     "@planetar/component-gallery": "^0.3.0",
     "@planetar/example-card": "^0.3.0",
     "@planetar/styles": "^0.0.5",
-    "@quasar/app": "^2.0.6",
-    "@quasar/extras": "^1.8.2",
+    "@quasar/app": "^2.0.8",
+    "@quasar/extras": "^1.9.4",
     "@vue/composition-api": "^0.6.7",
     "core-js": "^3.6.5",
-    "is-what": "^3.10.0",
-    "quasar": "^1.12.12"
+    "is-what": "^3.11.0",
+    "quasar": "^1.13.1"
   },
   "browserslist": [
     "last 10 Chrome versions",
