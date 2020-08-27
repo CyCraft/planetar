@@ -13,7 +13,7 @@
   "eslint.workingDirectories": [{ "pattern": "./packages/*/" }],
   // make sure vetur is enabled
   "eslint.validate": ["javascript", "javascriptreact", "typescript", "vue"],
-  "vetur.experimental.templateInterpolationService": true,
+  "vetur.experimental.templateInterpolationService": false,
   "vetur.format.enable": true,
   "vetur.validation.style": true,
   "vetur.validation.template": true,
