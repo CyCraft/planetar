@@ -14,3 +14,19 @@ npm i planetar
   > A Vue component collection for blitzing fast prototyping
 - [Planetar](https://github.com/mesqueeb/planetar) 🪐
   > A Vue framework for creating a design system with interactive component explorer
+
+## Add dependencies to certain packages
+
+add a "local" dependency
+
+```sh
+lerna add @planetar/atoms --scope=example-card
+lerna add @planetar/atoms --scope=@planetar/example-card
+```
+
+add an "external" dependency
+
+```sh
+lerna add snarkdown --scope=example-card
+lerna add snarkdown --scope=@planetar/example-card
+```
