@@ -7,7 +7,7 @@
   "module": "dist/index.js",
   "main": "dist/index.js",
   "scripts": {},
-  "homepage": "https://github.com/mesqueeb/planetar",
+  "homepage": "https://github.com/cycraft/planetar",
   "dependencies": {
     "@planetar/api-card": "^0.3.1",
     "@planetar/atoms": "^0.1.2",
@@ -16,9 +16,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mesqueeb/planetar"
+    "url": "https://github.com/cycraft/planetar"
   },
-  "bugs": "https://github.com/mesqueeb/planetar/issues",
+  "bugs": "https://github.com/cycraft/planetar/issues",
   "browserslist": [
     "last 1 version, not dead, ie >= 11"
   ],

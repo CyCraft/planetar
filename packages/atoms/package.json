@@ -18,13 +18,13 @@
     "Vue"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/mesqueeb/planetar#readme",
+  "homepage": "https://github.com/cycraft/planetar#readme",
   "bugs": {
-    "url": "https://github.com/mesqueeb/planetar/issues"
+    "url": "https://github.com/cycraft/planetar/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mesqueeb/planetar.git"
+    "url": "git+https://github.com/cycraft/planetar.git"
   },
   "gitHead": "85718ffe30117650d9cb9d3daef9ee5eb8a0b945"
 }

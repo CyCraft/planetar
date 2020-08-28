@@ -27,9 +27,9 @@
   "author": "Luca Ban - Mesqueeb",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mesqueeb/planetar/issues"
+    "url": "https://github.com/cycraft/planetar/issues"
   },
-  "homepage": "https://github.com/mesqueeb/planetar#readme",
+  "homepage": "https://github.com/cycraft/planetar#readme",
   "devDependencies": {
     "@rollup/plugin-buble": "^0.21.3",
     "@rollup/plugin-commonjs": "^13.0.2",
