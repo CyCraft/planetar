@@ -1,6 +1,6 @@
 {
   "name": "planetar",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "author": "Luca Ban - Mesqueeb",
   "description": "A Vue framework for creating a design system with interactive component explorer 🪐",
   "license": "MIT",
@@ -9,9 +9,9 @@
   "scripts": {},
   "homepage": "https://github.com/cycraft/planetar",
   "dependencies": {
-    "@planetar/api-card": "^0.3.2",
+    "@planetar/api-card": "^0.3.3",
     "@planetar/atoms": "^0.1.3",
-    "@planetar/component-gallery": "^0.3.2",
+    "@planetar/component-gallery": "^0.3.3",
     "@planetar/example-card": "^0.3.2"
   },
   "repository": {
