@@ -17,7 +17,7 @@
     "@planetar/example-card": "^0.3.2",
     "@planetar/styles": "^0.0.6",
     "@quasar/app": "^2.0.8",
-    "@quasar/extras": "^1.9.4",
+    "@quasar/extras": "^1.9.5",
     "@vue/composition-api": "^0.6.7",
     "core-js": "^3.6.5",
     "is-what": "^3.11.0",

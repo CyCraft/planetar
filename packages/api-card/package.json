@@ -23,7 +23,7 @@
     "map-anything": "0.0.3",
     "merge-anything": "^3.0.5",
     "quasar": "^1.13.1",
-    "quasar-ui-easy-forms": "^2.3.5"
+    "quasar-ui-easy-forms": "^2.4.1"
   },
   "repository": {
     "type": "git",
