@@ -20,7 +20,12 @@ export function replacer(matchedString, lang, content) {
   return recreatedBlock
 }
 
+/**
+ * @param {string} mdString
+ * @returns {string | undefined}
+ */
 export function mdToHtml(mdString) {
+  if (!mdString) return undefined
   const html = snarkdown(mdString)
   const codeBlock = /<pre.+?><code.+?language-(\w+?)".*?>([\s\S]+?)<\/code><\/pre>/g
   const htmlWithHighlighting = html
