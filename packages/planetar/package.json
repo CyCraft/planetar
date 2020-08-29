@@ -4,8 +4,8 @@
   "author": "Luca Ban - Mesqueeb",
   "description": "A Vue framework for creating a design system with interactive component explorer 🪐",
   "license": "MIT",
-  "module": "dist/index.js",
-  "main": "dist/index.js",
+  "module": "index.js",
+  "main": "index.js",
   "scripts": {},
   "homepage": "https://github.com/cycraft/planetar",
   "dependencies": {
@@ -19,8 +19,5 @@
     "url": "https://github.com/cycraft/planetar"
   },
   "bugs": "https://github.com/cycraft/planetar/issues",
-  "browserslist": [
-    "last 1 version, not dead, ie >= 11"
-  ],
   "gitHead": "85718ffe30117650d9cb9d3daef9ee5eb8a0b945"
 }
