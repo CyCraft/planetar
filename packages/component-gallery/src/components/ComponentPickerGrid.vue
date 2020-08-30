@@ -15,10 +15,7 @@
     <div class="_grid-md py-lg" v-if="atomsOther.length">
       <ComponentPickerCard v-for="filePath in atomsOther" :key="filePath" :filePath="filePath" />
     </div>
-    <div
-      class="py-lg column no-wrap flex-center"
-      v-if="!atomsOther.length && !atomsFormElements.length"
-    >
+    <div class="py-lg _no-components-yet" v-if="!atomsOther.length && !atomsFormElements.length">
       <div class="t-body1">No components yet! Start building!!</div>
       <h2 style="margin: 16px">🏝</h2>
     </div>
@@ -40,6 +37,8 @@
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr))
     grid-auto-flow: row
     grid-template-rows: 1fr
+  ._no-components-yet
+    +flex-center
 </style>
 
 <script>

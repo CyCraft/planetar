@@ -3,7 +3,7 @@
     <QTabs
       v-model="activeTab"
       dense
-      class="bg-stone c-grey-3"
+      class="bg-stone c-grey-3 _top"
       active-color="primary"
       indicator-color="stone"
       align="left"
@@ -17,7 +17,7 @@
         no-caps
       />
     </QTabs>
-    <QTabPanels v-model="activeTab" animated class="flex-1" v-bind="propsToPass" v-on="$listeners">
+    <QTabPanels v-model="activeTab" animated class="_bottom" v-bind="propsToPass" v-on="$listeners">
       <QTabPanel
         v-for="(label, index) in tabLabels"
         :key="label + index"
@@ -46,6 +46,10 @@
   min-width: 150px
   display: flex
   flex-direction: column
+  > ._top
+    min-height: fit-content // required on Safari to prevent _bottom to overtake space the parent div is set to a fixed height.
+  > ._bottom
+    flex: 1
 </style>
 
 <script>

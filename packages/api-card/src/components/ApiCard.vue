@@ -37,14 +37,15 @@
   flex-direction: column
   +shadow-3()
   ._top
+    min-height: fit-content // required on Safari to prevent _bottom to overtake space
     display: flex
     justify-content: space-between
     padding: $md
     padding-top: $lg
     border-bottom: 1px solid $c-stone-dark
   ._bottom
-    flex: 1
     min-height: 0 // required to force _bottom to stop at parent max-height
+    flex: 1
     display: flex
     ._tabs
       border-right: 1px solid $c-stone-dark

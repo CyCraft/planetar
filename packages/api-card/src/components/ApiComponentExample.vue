@@ -1,9 +1,9 @@
 <template>
-  <div class="planetar-api-component-example column flex-center">
+  <div class="planetar-api-component-example">
     <div class="t-h6 mb-lg cursor-ew-resize" @click="togglePreviewStyle">Interactive preview</div>
     <div
       v-if="exampleComponent && apiCardReady"
-      class="_interactive-preview-section column flex-center"
+      class="_interactive-preview-section"
       style="width: 100%"
     >
       <component :is="exampleComponent" v-bind="propsToBind" v-model="model" />
@@ -22,21 +22,25 @@
 </template>
 
 <style lang="sass">
-._interactive-preview-section
-  position: relative
-  > *
-    z-index: 2
-  ._bg
-    z-index: 1
-    position: absolute
-    border-radius: 4px
-    top: -16px
-    bottom: -16px
-    left: 0
-    right: 0
 .cursor-ew-resize
   cursor: ew-resize
-  // transform: scale(10)
+
+.planetar-api-component-example
+  +flex-center
+  ._interactive-preview-section
+    position: relative
+    +flex-center
+    > *
+      z-index: 2
+    ._bg
+      z-index: 1
+      position: absolute
+      border-radius: 4px
+      top: -16px
+      bottom: -16px
+      left: 0
+      right: 0
+    // transform: scale(10)
 </style>
 
 <script>
