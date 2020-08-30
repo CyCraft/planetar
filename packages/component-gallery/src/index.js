@@ -1,10 +1,9 @@
-import { version } from '../package.json'
 import ComponentGallery from './components/ComponentGallery.vue'
 import ComponentExpose from './components/ComponentExpose.vue'
 import ComponentPickerGrid from './components/ComponentPickerGrid.vue'
 import ComponentPickerCard from './components/ComponentPickerCard.vue'
 
-export { version, ComponentGallery, ComponentExpose, ComponentPickerGrid, ComponentPickerCard }
+export { ComponentGallery, ComponentExpose, ComponentPickerGrid, ComponentPickerCard }
 
 export default {
   install(Vue) {

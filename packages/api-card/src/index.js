@@ -1,9 +1,7 @@
-import { version } from '../package.json'
-
 import ApiCard from './components/ApiCard.vue'
 import ApiComponentExample from './components/ApiComponentExample.vue'
 
-export { version, ApiCard, ApiComponentExample }
+export { ApiCard, ApiComponentExample }
 
 export default {
   install(Vue) {

@@ -1,13 +1,9 @@
-import { version } from '../package.json'
-
 import ExampleCard from './components/ExampleCard.vue'
 import ExampleSection from './components/ExampleSection.vue'
 
-export { version, ExampleCard, ExampleSection }
+export { ExampleCard, ExampleSection }
 
 export default {
-  version,
-
   ExampleCard,
   ExampleSection,
 
