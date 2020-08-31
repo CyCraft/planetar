@@ -22,6 +22,8 @@
 </template>
 
 <style lang="sass">
+@import '@planetar/styles'
+
 .cursor-ew-resize
   cursor: ew-resize
 
