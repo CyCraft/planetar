@@ -8,12 +8,19 @@
       <div class="pa-lg" v-if="tabLabel === 'example' && exampleComponent" :key="tabLabel + index">
         <component :is="exampleComponent" />
       </div>
-      <div
+      <div v-else-if="parts[tabLabel]" class="_planetar-code t-body1" :key="tabLabel + index">
+        <pre>
+          {{ typeof parts[tabLabel] }}
+        {{ parts[tabLabel] }}
+      </pre>
+      </div>
+      <!-- v-html="parts[tabLabel]" -->
+      <!-- <CodeBlock
         v-else-if="parts[tabLabel]"
-        class="_planetar-code t-body1"
-        v-html="parts[tabLabel]"
+        :parts="parts"
+        :tabLabel="tabLabel"
         :key="tabLabel + index"
-      />
+      />-->
     </template>
   </PlanetarTabs>
 </template>

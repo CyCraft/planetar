@@ -2,6 +2,7 @@
   <div :id="kebabCase(exampleTitle) + `-example`">
     <div class="t-h6 mb-md" v-if="!hideTitle">{{ spaceCase(exampleTitle) }}</div>
     <div class="mb-lg t-body1" v-if="exampleDescription" v-html="exampleDescription"></div>
+    <!-- <Markdown :exampleDescription="exampleDescription" /> -->
     <ExampleCard :filePath="filePath" :stripJSDocDescription="true" />
   </div>
 </template>
@@ -61,6 +62,7 @@ export default {
     parseDescription(vueDocgen) {
       const { description: descriptionMd } = vueDocgen
       const descriptionHtml = mdToHtml(descriptionMd)
+      console.log('descriptionHtml: ', descriptionHtml)
       this.exampleDescription = descriptionHtml
     },
   },
