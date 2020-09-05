@@ -1,6 +1,6 @@
-# Planetar 🪐
+# Planetar
 
-A Vue framework for creating a design system with interactive component explorer.
+A Vue framework for creating a design system styleguide with interactive component explorer 🪐
 
 ```sh
 npm i planetar
@@ -20,13 +20,11 @@ npm i planetar
 add a "local" dependency
 
 ```sh
-lerna add @planetar/atoms --scope=example-card
 lerna add @planetar/atoms --scope=@planetar/example-card
 ```
 
 add an "external" dependency
 
 ```sh
-lerna add snarkdown --scope=example-card
 lerna add snarkdown --scope=@planetar/example-card
 ```

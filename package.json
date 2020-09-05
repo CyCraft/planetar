@@ -24,12 +24,6 @@
     "dep:check-for-updates": "ncu --semverLevel major && lerna exec 'ncu --semverLevel major'",
     "dep:reinstall-all": "rimraf node_modules && lerna clean -y && npm run dep:install"
   },
-  "author": "Luca Ban - Mesqueeb",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/cycraft/planetar/issues"
-  },
-  "homepage": "https://github.com/cycraft/planetar#readme",
   "devDependencies": {
     "@rollup/plugin-buble": "^0.21.3",
     "@rollup/plugin-commonjs": "^13.0.2",
@@ -59,6 +53,12 @@
     "vue-compile": "^0.6.0",
     "vue-template-compiler": "^2.6.12",
     "zlib": "^1.0.5"
+  },
+  "author": "Luca Ban - Mesqueeb",
+  "license": "MIT",
+  "homepage": "https://github.com/cycraft/planetar#readme",
+  "bugs": {
+    "url": "https://github.com/cycraft/planetar/issues"
   },
   "config": {
     "commitizen": {
