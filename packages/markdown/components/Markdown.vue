@@ -22,11 +22,6 @@ export default {
   props: {
     exampleDescription: String,
   },
-  computed: {
-    // markdownDescription: function () {
-    //   return this.parseDescription(this.exampleDescription)
-    // },
-  },
   methods: {
     /**
      * @param {string} mdString
@@ -57,7 +52,6 @@ export default {
       const { description: descriptionMd } = vueDocgen
       const descriptionHtml = this.mdToHtml(descriptionMd)
       this.exampleDescription = descriptionHtml
-      // return descriptionHtml
     },
 
     prismHighlight(str, lang) {

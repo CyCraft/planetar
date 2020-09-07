@@ -8,19 +8,12 @@
       <div class="pa-lg" v-if="tabLabel === 'example' && exampleComponent" :key="tabLabel + index">
         <component :is="exampleComponent" />
       </div>
-      <div v-else-if="parts[tabLabel]" class="_planetar-code t-body1" :key="tabLabel + index">
-        <pre>
-          {{ typeof parts[tabLabel] }}
-        {{ parts[tabLabel] }}
-      </pre>
-      </div>
-      <!-- v-html="parts[tabLabel]" -->
-      <!-- <CodeBlock
+      <CodeBlock
         v-else-if="parts[tabLabel]"
-        :parts="parts"
-        :tabLabel="tabLabel"
+        :lang="tabLabel === 'template' ? 'html' : tabLabel === 'script' ? 'js' : 'css'"
+        :content="parts[tabLabel]"
         :key="tabLabel + index"
-      />-->
+      />
     </template>
   </PlanetarTabs>
 </template>
@@ -61,6 +54,7 @@ export default {
   created() {
     const { parseComponent, filePath } = this
     const extension = filePath.split('.').slice(-1)[0]
+    this.lang = extension
     dynamicImport(filePath, extension, 'component').then((componentExport) => {
       this.exampleComponent = componentExport.default
     })
@@ -78,6 +72,7 @@ export default {
       fileName,
       activeTab: 'example',
       tabLabels: ['example'],
+      lang: '',
       exampleComponent: null,
       parts: {
         template: '',
@@ -105,18 +100,18 @@ export default {
         return
       }
       if (template) {
-        this.parts.template = codeToHtml(template, 'html')
+        this.parts.template = template
         this.tabLabels.push('template')
       }
       if (script) {
         if (stripJSDocDescription) {
           script = script.replace(jsDocBlockNoIndentation, '')
         }
-        this.parts.script = codeToHtml(script, 'html')
+        this.parts.script = script
         this.tabLabels.push('script')
       }
       if (style) {
-        this.parts.style = codeToHtml(style, 'html')
+        this.parts.style = style
         this.tabLabels.push('style')
       }
     },

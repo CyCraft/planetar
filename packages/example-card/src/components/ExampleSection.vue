@@ -2,7 +2,6 @@
   <div :id="kebabCase(exampleTitle) + `-example`">
     <div class="t-h6 mb-md" v-if="!hideTitle">{{ spaceCase(exampleTitle) }}</div>
     <div class="mb-lg t-body1" v-if="exampleDescription" v-html="exampleDescription"></div>
-    <!-- <Markdown :exampleDescription="exampleDescription" /> -->
     <ExampleCard :filePath="filePath" :stripJSDocDescription="true" />
   </div>
 </template>
@@ -15,7 +14,7 @@
 <script>
 import { kebabCase, spaceCase } from 'case-anything'
 import ExampleCard from './ExampleCard.vue'
-import { mdToHtml } from '../helpers/htmlHelpers'
+import { mdToHtml, codeToHtml } from '../helpers/htmlHelpers'
 import { dynamicImport } from '@planetar/utils'
 
 export default {
@@ -62,7 +61,6 @@ export default {
     parseDescription(vueDocgen) {
       const { description: descriptionMd } = vueDocgen
       const descriptionHtml = mdToHtml(descriptionMd)
-      console.log('descriptionHtml: ', descriptionHtml)
       this.exampleDescription = descriptionHtml
     },
   },

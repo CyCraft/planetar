@@ -1,8 +1,8 @@
 <template>
   <q-page padding class="q-gutter-lg">
     <CodeBlockSection filePath="pages/some/path/to.js" />
-    <CodeBlockSection filePath="pages/some/path/to.html" />
     <!-- show as html -->
+    <CodeBlockSection filePath="pages/some/path/to.html" />
     <CodeBlockSection filePath="pages/some/path/to.vue" />
 
     <CodeBlockSection filePath="pages/some/path/to.css" />
