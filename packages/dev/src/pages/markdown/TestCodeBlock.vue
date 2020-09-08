@@ -16,8 +16,6 @@
 <style lang="sass" scoped></style>
 
 <script>
-import { dynamicImport } from '@planetar/utils'
-
 export default {
   created() {},
   data() {
