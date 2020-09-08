@@ -1,51 +1,28 @@
 <template>
   <div class="markdown">
     <slot>
-      <div class="mb-lg t-body1" v-html="mdToHtml(exampleDescription)" />
+      <div class="mb-lg t-body1" v-html="mdAsString" />
     </slot>
   </div>
 </template>
 
 <script>
-import snarkdown from 'snarkdown'
-import Prism from 'prismjs'
+import {
+  prismHighlight,
+  codeToHtml,
+  mdToHtml,
+  replacer,
+} from '@planetar/markdown/helpers/htmlHelpers.js'
 
 export default {
   name: 'Markdown',
   props: {
     exampleDescription: String,
   },
-  methods: {
-    /**
-     * @param {string} mdString
-     * @returns {string | undefined}
-     */
-    mdToHtml(mdString) {
-      if (!mdString) return undefined
-      const html = snarkdown(mdString)
-      const codeBlock = /<pre.+?><code.+?language-(\w+?)".*?>([\s\S]+?)<\/code><\/pre>/g
-      const htmlWithHighlighting = html.replace(/&quot;/g, '"').replace(codeBlock, this.replacer)
-      return htmlWithHighlighting
-    },
-
-    replacer(matchedString, lang, content) {
-      content = content.replace(/&lt;/g, '<').replace(/&gt;/g, '>')
-      const htmlHighlighted = this.prismHighlight(content, lang)
-      const recreatedBlock = `<pre class="language-${lang}"><code class="language-${lang}">${htmlHighlighted}</code></pre>`
-      return recreatedBlock
-    },
-
-    parseDescription(vueDocgen) {
-      const { description: descriptionMd } = vueDocgen
-      const descriptionHtml = this.mdToHtml(descriptionMd)
-      this.exampleDescription = descriptionHtml
-    },
-
-    prismHighlight(str, lang) {
-      if (Prism.languages[lang] !== void 0) {
-        return Prism.highlight(str, Prism.languages[lang], lang)
-      }
-      return ''
+  computed: {
+    mdAsString() {
+      const { exampleDescription } = this
+      return mdToHtml(exampleDescription)
     },
   },
 }
