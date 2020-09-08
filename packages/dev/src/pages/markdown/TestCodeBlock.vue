@@ -22,7 +22,7 @@ export default {
   created() {},
   data() {
     return {
-      // the final / in the closing script tag breaks the following string
+      // Note: the final / in the closing script tag breaks the following string
       htmlContent: `<div>Hi</div>\n<br />\n<script lang="js">\nconst a = 1\n<\/script>`,
     }
   },

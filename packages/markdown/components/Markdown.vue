@@ -1,17 +1,10 @@
 <template>
   <div class="markdown">
     <slot>
-      <!-- <div class="mb-lg t-body1" v-html="markdownDescription" /> -->
       <div class="mb-lg t-body1" v-html="mdToHtml(exampleDescription)" />
     </slot>
   </div>
 </template>
-
-<style lang="sass" scoped>
-// $
-
-// .component-name
-</style>
 
 <script>
 import snarkdown from 'snarkdown'
@@ -28,7 +21,6 @@ export default {
      * @returns {string | undefined}
      */
     mdToHtml(mdString) {
-      console.log('mdString: ', mdString)
       if (!mdString) return undefined
       const html = snarkdown(mdString)
       const codeBlock = /<pre.+?><code.+?language-(\w+?)".*?>([\s\S]+?)<\/code><\/pre>/g
@@ -37,14 +29,12 @@ export default {
         .replace(/&lt;/g, '<')
         .replace(/&gt;/g, '>')
         .replace(codeBlock, this.replacer)
-      console.log('htmlWithHighlighting: ', htmlWithHighlighting)
       return htmlWithHighlighting
     },
 
     replacer(matchedString, lang, content) {
       const htmlHighlighted = this.prismHighlight(content, lang)
       const recreatedBlock = `<pre class="language-${lang}"><code class="language-${lang}">${htmlHighlighted}</code></pre>`
-      console.log('recreatedBlock: ', recreatedBlock)
       return recreatedBlock
     },
 

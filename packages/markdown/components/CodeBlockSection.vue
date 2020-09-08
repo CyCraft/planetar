@@ -1,6 +1,6 @@
 <template>
-  <div class="markdown-section">
-    <Markdown :exampleDescription="exampleDescription" />
+  <div class="code-block-section">
+    <CodeBlock :lang="lang" :content="exampleDescription" />
   </div>
 </template>
 
@@ -8,7 +8,7 @@
 import { dynamicImport } from '@planetar/utils'
 
 export default {
-  name: 'MarkdownSection',
+  name: 'CodeBlockSection',
   props: {
     /**
      * Relative from the `src` folder.
@@ -19,6 +19,7 @@ export default {
   created() {
     const { parseComponent, filePath, parseDescription } = this
     const extension = filePath.split('.').slice(-1)[0]
+    this.lang = extension
     dynamicImport(filePath, extension, 'string').then((markdownContent) => {
       this.setDescription(markdownContent)
     })
@@ -26,9 +27,9 @@ export default {
   data() {
     return {
       exampleDescription: '',
+      lang: '',
     }
   },
-  computed: {},
   methods: {
     setDescription(markdownContent) {
       this.exampleDescription = markdownContent

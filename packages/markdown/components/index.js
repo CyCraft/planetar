@@ -6,3 +6,6 @@ export const MarkdownSection = _MarkdownSection
 
 import _CodeBlock from './CodeBlock'
 export const CodeBlock = _CodeBlock
+
+import _CodeBlockSection from './CodeBlockSection'
+export const CodeBlockSection = _CodeBlockSection
