@@ -1,6 +1,6 @@
 {
   "name": "@planetar/markdown",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Markdown used throughout Planetar's packages.",
   "author": "Luca Ban - Mesqueeb",
   "main": "index.js",
@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@planetar/styles": "^0.0.7",
-    "@planetar/utils": "^0.1.2",
+    "@planetar/utils": "^0.1.3",
     "is-what": "^3.11.2",
     "prismjs": "^1.21.0",
     "quasar": "^1.13.1",
