@@ -7,7 +7,7 @@
   font-weight: 700
 </style>
 
-<script>
+<script lang="js">
 import TestInput from '../../components/TestInput'
 
 /**

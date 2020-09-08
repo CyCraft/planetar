@@ -8,10 +8,11 @@
       <div class="pa-lg" v-if="tabLabel === 'example' && exampleComponent" :key="tabLabel + index">
         <component :is="exampleComponent" />
       </div>
-      <div
+      <CodeBlock
+        class="t-body1"
         v-else-if="parts[tabLabel]"
-        class="_planetar-code t-body1"
-        v-html="parts[tabLabel]"
+        lang="html"
+        :content="parts[tabLabel]"
         :key="tabLabel + index"
       />
     </template>
@@ -20,20 +21,16 @@
 
 <style lang="sass">
 /** global styles */
-@import '../helpers/prismTheme.scss'
 @import '@planetar/styles'
 
 .planetar-example-card
   border: thin solid $c-stone-dark
   min-height: 127px
-  ._planetar-code > pre
-    margin: 0
 </style>
 
 <script>
 import { kebabCase } from 'case-anything'
 import { PlanetarTabs } from '@planetar/atoms'
-import { codeToHtml } from '../helpers/htmlHelpers'
 import { getTagHtmlFromCodeString, jsDocBlockNoIndentation } from '../helpers/regexp'
 import { dynamicImport } from '@planetar/utils'
 
@@ -54,6 +51,7 @@ export default {
   created() {
     const { parseComponent, filePath } = this
     const extension = filePath.split('.').slice(-1)[0]
+    this.lang = extension
     dynamicImport(filePath, extension, 'component').then((componentExport) => {
       this.exampleComponent = componentExport.default
     })
@@ -71,6 +69,7 @@ export default {
       fileName,
       activeTab: 'example',
       tabLabels: ['example'],
+      lang: '',
       exampleComponent: null,
       parts: {
         template: '',
@@ -93,23 +92,23 @@ export default {
         if (stripJSDocDescription) {
           script = script.replace(jsDocBlockNoIndentation, '')
         }
-        this.parts.script = codeToHtml(script, 'js')
+        this.parts.script = script
         this.tabLabels.push('script')
         return
       }
       if (template) {
-        this.parts.template = codeToHtml(template, 'html')
+        this.parts.template = template
         this.tabLabels.push('template')
       }
       if (script) {
         if (stripJSDocDescription) {
           script = script.replace(jsDocBlockNoIndentation, '')
         }
-        this.parts.script = codeToHtml(script, 'html')
+        this.parts.script = script
         this.tabLabels.push('script')
       }
       if (style) {
-        this.parts.style = codeToHtml(style, 'html')
+        this.parts.style = style
         this.tabLabels.push('style')
       }
     },

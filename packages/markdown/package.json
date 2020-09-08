@@ -1,0 +1,34 @@
+{
+  "name": "@planetar/markdown",
+  "version": "0.1.0",
+  "description": "Markdown used throughout Planetar's packages.",
+  "author": "Luca Ban - Mesqueeb",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@planetar/styles": "^0.0.7",
+    "@planetar/utils": "^0.1.2",
+    "is-what": "^3.11.2",
+    "prismjs": "^1.21.0",
+    "quasar": "^1.13.1",
+    "snarkdown": "^2.0.0"
+  },
+  "keywords": [
+    "Planetar",
+    "Style-guide",
+    "Vuejs",
+    "Vue"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/cycraft/planetar#readme",
+  "bugs": {
+    "url": "https://github.com/cycraft/planetar/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cycraft/planetar.git"
+  },
+  "gitHead": "85718ffe30117650d9cb9d3daef9ee5eb8a0b945"
+}
