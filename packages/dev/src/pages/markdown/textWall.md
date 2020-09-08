@@ -21,6 +21,8 @@ Don't need 2 but maybe later
 2. this is a self closing tag: `&lt;br /&gt;`
 3. this is a self closing tag: `&LT;br /&GT;`
 4. this is a self closing tag: `<br />`
+5. this is a self closing tag: `<script>`
+6. this is a self closing tag: `<script />`
 
 ```html
 <div>Hi</div>

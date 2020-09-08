@@ -24,15 +24,12 @@ export default {
       if (!mdString) return undefined
       const html = snarkdown(mdString)
       const codeBlock = /<pre.+?><code.+?language-(\w+?)".*?>([\s\S]+?)<\/code><\/pre>/g
-      const htmlWithHighlighting = html
-        .replace(/&quot;/g, '"')
-        .replace(/&lt;/g, '<')
-        .replace(/&gt;/g, '>')
-        .replace(codeBlock, this.replacer)
+      const htmlWithHighlighting = html.replace(/&quot;/g, '"').replace(codeBlock, this.replacer)
       return htmlWithHighlighting
     },
 
     replacer(matchedString, lang, content) {
+      content = content.replace(/&lt;/g, '<').replace(/&gt;/g, '>')
       const htmlHighlighted = this.prismHighlight(content, lang)
       const recreatedBlock = `<pre class="language-${lang}"><code class="language-${lang}">${htmlHighlighted}</code></pre>`
       return recreatedBlock
