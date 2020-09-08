@@ -1,13 +1,13 @@
 <template>
-  <div class="code-block _planetar-code t-body1">
-    <div class="_planetar-code t-body1" v-html="htmlAsString" />
-  </div>
+  <div class="code-block" v-html="htmlAsString" />
 </template>
 
-<style lang="sass" scoped>
+<style lang="sass">
 @import '../helpers/prismTheme'
 
-// .component-name
+.code-block
+  pre
+    margin: 0
 </style>
 
 <script>

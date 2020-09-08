@@ -25,8 +25,6 @@
 .planetar-example-card
   border: thin solid $c-stone-dark
   min-height: 127px
-  ._planetar-code > pre
-    margin: 0
 </style>
 
 <script>
