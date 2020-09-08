@@ -6,6 +6,11 @@
   </div>
 </template>
 
+<style lang="sass">
+/** global styles */
+@import '../helpers/prismTheme.scss'
+</style>
+
 <script>
 import {
   prismHighlight,

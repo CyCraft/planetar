@@ -20,7 +20,6 @@
 
 <style lang="sass">
 /** global styles */
-@import '../helpers/prismTheme.scss'
 @import '@planetar/styles'
 
 .planetar-example-card
