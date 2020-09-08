@@ -2,10 +2,8 @@ import snarkdown from 'snarkdown'
 import Prism from 'prismjs'
 
 export function prismHighlight(str, lang) {
-  if (Prism.languages[lang] !== void 0) {
-    return Prism.highlight(str, Prism.languages[lang], lang)
-  }
-  return ''
+  if (!(lang in Prism.languages)) return ''
+  return Prism.highlight(str, Prism.languages[lang], lang)
 }
 
 export function codeToHtml(str, lang) {
