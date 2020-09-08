@@ -9,8 +9,9 @@
         <component :is="exampleComponent" />
       </div>
       <CodeBlock
+        class="t-body1"
         v-else-if="parts[tabLabel]"
-        :lang="tabLabel === 'template' ? 'html' : tabLabel === 'script' ? 'js' : 'css'"
+        lang="html"
         :content="parts[tabLabel]"
         :key="tabLabel + index"
       />

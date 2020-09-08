@@ -1,7 +1,5 @@
 <template>
-  <div class="code-block-section">
-    <CodeBlock :lang="lang" :content="exampleDescription" />
-  </div>
+  <CodeBlock class="code-block-section" :lang="lang" :content="content" />
 </template>
 
 <script>
@@ -17,23 +15,18 @@ export default {
     filePath: { type: String, required: true },
   },
   created() {
-    const { parseComponent, filePath, parseDescription } = this
+    const { filePath } = this
     const extension = filePath.split('.').slice(-1)[0]
     this.lang = extension
     dynamicImport(filePath, extension, 'string').then((markdownContent) => {
-      this.setDescription(markdownContent)
+      this.content = markdownContent
     })
   },
   data() {
     return {
-      exampleDescription: '',
+      content: '',
       lang: '',
     }
-  },
-  methods: {
-    setDescription(markdownContent) {
-      this.exampleDescription = markdownContent
-    },
   },
 }
 </script>

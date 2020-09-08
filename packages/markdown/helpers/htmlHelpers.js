@@ -2,7 +2,10 @@ import snarkdown from 'snarkdown'
 import Prism from 'prismjs'
 
 export function prismHighlight(str, lang) {
-  if (!(lang in Prism.languages)) return ''
+  if (!str || !lang || Prism.languages[lang] === undefined) {
+    console.error('something went wrong', str, lang)
+    return ''
+  }
   return Prism.highlight(str, Prism.languages[lang], lang)
 }
 

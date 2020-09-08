@@ -3,14 +3,14 @@
 </template>
 
 <style lang="sass">
-@import '../helpers/prismTheme'
+@import '../helpers/prismTheme.scss'
 
 .code-block
   pre
     margin: 0
 </style>
 
-<script>
+<script lang="js">
 import { codeToHtml } from '../helpers/htmlHelpers.js'
 
 export default {

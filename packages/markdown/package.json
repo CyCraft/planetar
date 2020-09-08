@@ -10,6 +10,7 @@
   "dependencies": {
     "@planetar/styles": "^0.0.7",
     "@planetar/utils": "^0.1.2",
+    "is-what": "^3.11.2",
     "prismjs": "^1.21.0",
     "quasar": "^1.13.1",
     "snarkdown": "^2.0.0"

@@ -1,6 +1,9 @@
 <template>
   <q-page padding class="q-gutter-lg">
-    <Markdown :exampleDescription="textWall" />
+    <h6>Prop</h6>
+    <Markdown :content="textWall" />
+    <h6>Slot</h6>
+    <Markdown>{{ textWall }}</Markdown>
   </q-page>
 </template>
 
@@ -32,6 +35,13 @@ an html test:
   const a = 1
 <\/script>
 \`\`\`
+
+1. this is a self closing tag: \`&#60;br /&#62;\`
+2. this is a self closing tag: \`&lt;br /&gt;\`
+3. this is a self closing tag: \`&LT;br /&GT;\`
+4. this is a self closing tag: \`<br />\`
+5. this is a self closing tag: \`<script>\`
+6. this is a self closing tag: \`<script />\`
 `,
     }
   },

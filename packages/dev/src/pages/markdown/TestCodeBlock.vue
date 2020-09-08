@@ -3,6 +3,9 @@
     <h6>JavaScript</h6>
     <CodeBlock lang="js" content="const a = 1" />
 
+    <h6>TypeScript</h6>
+    <CodeBlock lang="ts" content="const a: number = 1" />
+
     <h6>HTML</h6>
     <CodeBlock lang="html" :content="htmlContent" />
 

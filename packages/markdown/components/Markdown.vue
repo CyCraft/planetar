@@ -1,8 +1,6 @@
 <template>
   <div class="markdown">
-    <slot>
-      <div class="mb-lg t-body1" v-html="mdAsString" />
-    </slot>
+    <div v-html="mdAsString" />
   </div>
 </template>
 
@@ -12,22 +10,34 @@
 </style>
 
 <script>
-import {
-  prismHighlight,
-  codeToHtml,
-  mdToHtml,
-  replacer,
-} from '@planetar/markdown/helpers/htmlHelpers.js'
+import { isArray } from 'is-what'
+import { mdToHtml } from '../helpers/htmlHelpers.js'
 
 export default {
   name: 'Markdown',
   props: {
-    exampleDescription: String,
+    /**
+     * Your markdown content.
+     * @example ## Hello
+     */
+    content: { type: String },
+  },
+  methods: {
+    /**
+     * @param {VNode[]} nodes
+     * @returns {string}
+     */
+    getTextFromSlot(nodes) {
+      if (!isArray(nodes)) return ''
+      const [node] = nodes
+      return (node && node.text) || ''
+    },
   },
   computed: {
     mdAsString() {
-      const { exampleDescription } = this
-      return mdToHtml(exampleDescription)
+      const { content, $slots, getTextFromDefaultSlot, getTextFromSlot } = this
+      const _content = getTextFromSlot($slots.default) || content || ''
+      return mdToHtml(_content)
     },
   },
 }
