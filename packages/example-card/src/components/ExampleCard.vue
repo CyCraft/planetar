@@ -33,7 +33,6 @@
 <script>
 import { kebabCase } from 'case-anything'
 import { PlanetarTabs } from '@planetar/atoms'
-import { codeToHtml } from '../helpers/htmlHelpers'
 import { getTagHtmlFromCodeString, jsDocBlockNoIndentation } from '../helpers/regexp'
 import { dynamicImport } from '@planetar/utils'
 
@@ -95,7 +94,7 @@ export default {
         if (stripJSDocDescription) {
           script = script.replace(jsDocBlockNoIndentation, '')
         }
-        this.parts.script = codeToHtml(script, 'js')
+        this.parts.script = script
         this.tabLabels.push('script')
         return
       }
