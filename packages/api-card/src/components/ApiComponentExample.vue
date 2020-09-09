@@ -1,6 +1,9 @@
 <template>
   <div class="planetar-api-component-example">
-    <div class="t-h6 mb-lg cursor-ew-resize" @click="togglePreviewStyle">Interactive preview</div>
+    <div
+      class="t-h6 mb-lg _interactive-preview-title"
+      @click="togglePreviewStyle"
+    >Interactive preview</div>
     <div
       v-if="exampleComponent && apiCardReady"
       class="_interactive-preview-section"
@@ -21,11 +24,8 @@
   </div>
 </template>
 
-<style lang="sass">
+<style lang="sass" scoped>
 @import '@planetar/styles'
-
-.cursor-ew-resize
-  cursor: ew-resize
 
 .planetar-api-component-example
   +flex-center
@@ -42,7 +42,18 @@
       bottom: -16px
       left: 0
       right: 0
-    // transform: scale(10)
+  ._interactive-preview-title
+    cursor: ew-resize
+  ._interactive-preview-title:hover + ._interactive-preview-section > *:first-child
+    position: relative
+  ._interactive-preview-title:hover + ._interactive-preview-section > *:first-child::after
+    content: ''
+    position: absolute
+    top: -10px
+    bottom: -10px
+    left: -10px
+    right: -10px
+    border: 3px dashed $c-stone-dark
 </style>
 
 <script>
