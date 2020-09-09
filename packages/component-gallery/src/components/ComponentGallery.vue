@@ -76,7 +76,7 @@ export default {
       return r.query.filePath
     },
     interactivePreviewForFilePath() {
-      const { componentFilesList, filePath, interactivePreviewFor, noInteractivePreviewFor } = this
+      const { filePath, interactivePreviewFor, noInteractivePreviewFor } = this
 
       function previewIncluded(filePath = '') {
         if (!interactivePreviewFor || !interactivePreviewFor.length) return true
@@ -93,7 +93,8 @@ export default {
     },
     previewBgForFilePath() {
       const { filePath, componentNamePreviewBgMap } = this
-      const componentName = (filePath.split('/').slice(-1)[0] || "").replace(/\.vue|\.jsx|\.tsx/, '')
+      const componentName = (filePath.split('/').slice(-1)[0] || "")
+        .replace(/\.vue|\.jsx|\.tsx/, '') // prettier-ignore
       return componentNamePreviewBgMap[componentName]
     },
   },
