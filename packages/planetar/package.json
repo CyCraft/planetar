@@ -24,7 +24,8 @@
     "@planetar/api-card": "^0.3.8",
     "@planetar/atoms": "^0.1.4",
     "@planetar/component-gallery": "^0.3.8",
-    "@planetar/example-card": "^0.3.5"
+    "@planetar/example-card": "^0.3.5",
+    "@planetar/markdown": "^0.0.1"
   },
   "repository": {
     "type": "git",
