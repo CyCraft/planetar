@@ -1,6 +1,6 @@
 {
   "name": "planetar",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "author": "Luca Ban - Mesqueeb",
   "description": "A Vue framework for creating a design system styleguide with interactive component explorer 🪐",
   "license": "MIT",
