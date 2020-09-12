@@ -1,5 +1,6 @@
 {
   "name": "planetar",
+  "private": true,
   "scripts": {
     "audit": "lerna-audit",
     "commit": "git-cz",
@@ -20,8 +21,8 @@
     "start-dev": "npm run replace-dist-src",
     "start-build": "npm run replace-src-dist",
     "dep:install": "npm i && lerna bootstrap",
-    "dep:update-all": "ncu --semverLevel major -u && lerna exec 'ncu --semverLevel major -u' && npm run dep:install",
-    "dep:check-for-updates": "ncu --semverLevel major && lerna exec 'ncu --semverLevel major'",
+    "dep:update-all": "ncu --target minor -u && lerna exec 'ncu --target minor -u' && npm run dep:install",
+    "dep:check-for-updates": "ncu --target minor && lerna exec 'ncu --target minor'",
     "dep:reinstall-all": "rimraf node_modules && lerna clean -y && npm run dep:install"
   },
   "devDependencies": {
@@ -40,7 +41,7 @@
     "lerna": "^3.22.1",
     "lerna-audit": "^1.2.0",
     "node-sass": "^4.14.1",
-    "npm-check-updates": "^7.1.1",
+    "npm-check-updates": "^9.0.1",
     "open": "^6.4.0",
     "postcss": "^7.0.32",
     "postcss-rtl": "^1.7.3",
