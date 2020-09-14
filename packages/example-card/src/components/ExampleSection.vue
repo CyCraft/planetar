@@ -13,12 +13,13 @@
 
 <script>
 import { kebabCase, spaceCase } from 'case-anything'
-import ExampleCard from './ExampleCard.vue'
 import { dynamicImport } from '@planetar/utils'
+import { Markdown } from '@planetar/markdown'
+import ExampleCard from './ExampleCard.vue'
 
 export default {
   name: 'ExampleSection',
-  components: { ExampleCard },
+  components: { ExampleCard, Markdown },
   props: {
     /**
      * Relative from the `src` folder.

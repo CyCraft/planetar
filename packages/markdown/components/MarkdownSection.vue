@@ -4,9 +4,11 @@
 
 <script>
 import { dynamicImport } from '@planetar/utils'
+import Markdown from './Markdown'
 
 export default {
   name: 'MarkdownSection',
+  components: { Markdown },
   props: {
     /**
      * Relative from the `src` folder.

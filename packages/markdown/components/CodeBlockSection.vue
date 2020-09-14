@@ -4,9 +4,11 @@
 
 <script>
 import { dynamicImport } from '@planetar/utils'
+import CodeBlock from './CodeBlock'
 
 export default {
   name: 'CodeBlockSection',
+  components: { CodeBlock },
   props: {
     /**
      * Relative from the `src` folder.

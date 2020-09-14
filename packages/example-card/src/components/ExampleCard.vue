@@ -31,12 +31,13 @@
 <script>
 import { kebabCase } from 'case-anything'
 import { PlanetarTabs } from '@planetar/atoms'
-import { getTagHtmlFromCodeString, jsDocBlockNoIndentation } from '../helpers/regexp'
 import { dynamicImport } from '@planetar/utils'
+import { CodeBlock } from '@planetar/markdown'
+import { getTagHtmlFromCodeString, jsDocBlockNoIndentation } from '../helpers/regexp'
 
 export default {
   name: 'ExampleCard',
-  components: { PlanetarTabs },
+  components: { PlanetarTabs, CodeBlock },
   props: {
     /**
      * Relative from the `src` folder.
