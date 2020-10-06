@@ -1,0 +1,29 @@
+{
+  "api-card/filePath": {
+    "type": "string",
+    "description": "Relative from the `src` folder."
+  },
+  "api-card/value": {
+    "type": "object|undefined",
+    "description": "The props object to be synced with whatever can be written in the API Card input fields\nThis object will be evaluated before emited via $emit('input', parse(value))\nIf `undefined` no edit controls will be shown, and the ApiCard will just work like a static information card."
+  },
+  "api-component-example/filePath": {
+    "type": "string",
+    "description": "Relative from the `src` folder."
+  },
+  "api-component-example/previewBg": {
+    "type": "string",
+    "description": "Background color for the interactive preview section"
+  },
+  "category-panel/schema": {
+    "type": "array"
+  },
+  "category-panel/mode": {
+    "type": "string",
+    "options": [
+      "edit",
+      "view",
+      "raw"
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "code-block/lang": {
+    "type": "string"
+  },
+  "code-block/content": {
+    "type": "string",
+    "description": "Because of how Vue parses strings, the forward slash in the closing script tag must be escaped\nor the component will fail to compile.\n\nFor more information, see these comments:\n* https://github.com/vuejs/vue/issues/4625\n* https://github.com/vuejs/vue-loader/issues/506"
+  },
+  "code-block-section/filePath": {
+    "type": "string",
+    "description": "Relative from the `src` folder."
+  },
+  "markdown/content": {
+    "type": "string",
+    "description": "Your markdown content."
+  },
+  "markdown-section/filePath": {
+    "type": "string",
+    "description": "Relative from the `src` folder."
+  }
+}

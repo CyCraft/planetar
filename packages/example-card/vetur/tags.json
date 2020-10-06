@@ -1,0 +1,17 @@
+{
+  "example-card": {
+    "attributes": [
+      "filePath",
+      "stripJSDocDescription"
+    ],
+    "description": ""
+  },
+  "example-section": {
+    "attributes": [
+      "filePath",
+      "title",
+      "hideTitle"
+    ],
+    "description": ""
+  }
+}

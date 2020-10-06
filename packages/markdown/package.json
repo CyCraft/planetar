@@ -5,7 +5,8 @@
   "author": "Luca Ban - Mesqueeb",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "vue-int": "vue-int -i src/components -r -o vetur"
   },
   "dependencies": {
     "@planetar/styles": "^0.0.7",
@@ -29,6 +30,10 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cycraft/planetar.git"
+  },
+  "vetur": {
+    "tags": "vetur/tags.json",
+    "attributes": "vetur/attributes.json"
   },
   "gitHead": "85718ffe30117650d9cb9d3daef9ee5eb8a0b945"
 }

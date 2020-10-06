@@ -1,0 +1,37 @@
+{
+  "planetar-input": {
+    "attributes": [
+      "isCode",
+      "isSearch"
+    ],
+    "description": "This is the main input field. Uses <QInput /> under the hood."
+  },
+  "planetar-list": {
+    "attributes": [
+      "items",
+      "value"
+    ],
+    "description": ""
+  },
+  "planetar-select": {
+    "attributes": [],
+    "description": ""
+  },
+  "planetar-tabs": {
+    "attributes": [
+      "tabLabels",
+      "initialTabIndex"
+    ],
+    "description": "This is the main input field."
+  },
+  "planetar-toggle": {
+    "attributes": [
+      "readonly"
+    ],
+    "description": ""
+  },
+  "component-name": {
+    "attributes": [],
+    "description": ""
+  }
+}

@@ -1,0 +1,161 @@
+{
+  "api-card/filePath": {
+    "type": "string",
+    "description": "Relative from the `src` folder."
+  },
+  "api-card/value": {
+    "type": "object|undefined",
+    "description": "The props object to be synced with whatever can be written in the API Card input fields\nThis object will be evaluated before emited via $emit('input', parse(value))\nIf `undefined` no edit controls will be shown, and the ApiCard will just work like a static information card."
+  },
+  "api-component-example/filePath": {
+    "type": "string",
+    "description": "Relative from the `src` folder."
+  },
+  "api-component-example/previewBg": {
+    "type": "string",
+    "description": "Background color for the interactive preview section"
+  },
+  "category-panel/schema": {
+    "type": "array"
+  },
+  "category-panel/mode": {
+    "type": "string",
+    "options": [
+      "edit",
+      "view",
+      "raw"
+    ]
+  },
+  "planetar-input/isCode": {
+    "type": "boolean",
+    "description": "When `true` it will have a dark background."
+  },
+  "planetar-input/isSearch": {
+    "type": "boolean",
+    "description": "When `true`, shows a search icon."
+  },
+  "planetar-list/items": {
+    "type": "array"
+  },
+  "planetar-list/value": {
+    "type": "string",
+    "description": "Must be used with v-model!"
+  },
+  "planetar-tabs/tabLabels": {
+    "type": "array",
+    "description": "The labels of the tabs."
+  },
+  "planetar-tabs/initialTabIndex": {
+    "type": "number",
+    "description": "The tab index which should be opened initially."
+  },
+  "planetar-toggle/readonly": {
+    "type": "boolean"
+  },
+  "component-expose/componentFilesList": {
+    "type": "array",
+    "description": "You need to pass whatever is returned by `require.context('src/components', true, /^\\.\\/.*(\\.vue)$/).keys()`"
+  },
+  "component-expose/interactivePreview": {
+    "type": "boolean",
+    "description": "If you don't want an interactive preview you can set this to false"
+  },
+  "component-expose/previewBg": {
+    "type": "string",
+    "description": "Background color for the interactive preview section"
+  },
+  "component-gallery/componentFilesList": {
+    "type": "array",
+    "description": "You need to pass whatever is returned by `require.context('src/components', true, /^\\.\\/.*(\\.vue)$/).keys()`"
+  },
+  "component-gallery/interactivePreviewFor": {
+    "type": "array",
+    "description": "If you only want to include the interactive preview for certain components, you can pass an array of strings with the component names. Eg. `['Button']` would include the interactive preview ONLY for components with `Button` in its name."
+  },
+  "component-gallery/noInteractivePreviewFor": {
+    "type": "array",
+    "description": "If you only want to exclude the interactive preview for certain components, you can pass an array of strings with the component names. Eg. `['Button']` would exclude the interactive preview for ALL components with `Button` in its name."
+  },
+  "component-gallery/componentNamePreviewBgMap": {
+    "type": "{ [componentName: string]: string }",
+    "description": "You can give certain components a background for the \"interactive preview\" section, which will be applied like so: `style=\"background: ~~~\"`"
+  },
+  "component-gallery/formElementPrefix": {
+    "type": "string",
+    "description": "If you want to separate form element atoms from others, you can pass a prefix like 'My' which will separate any component that starts with 'My', eg. 'MyButton', 'MyInput', etc."
+  },
+  "component-gallery/exclude": {
+    "type": "array",
+    "description": "An array of strings to exclude certain components that partially match whatever you define. Eg. `['Button']` would exclude any component with `Button` in its name from the grid."
+  },
+  "component-gallery/include": {
+    "type": "array",
+    "description": "An array of strings to include certain components that partially match whatever you define. Eg. `['Button']` would include ONLY components with `Button` in its name."
+  },
+  "component-picker-card/filePath": {
+    "type": "string"
+  },
+  "component-picker/componentFilesList": {
+    "type": "array",
+    "description": "You need to pass whatever is returned by `require.context('src/components', true, /^\\.\\/.*(\\.vue)$/).keys()`"
+  },
+  "component-picker/formElementPrefix": {
+    "type": "string",
+    "description": "If you want to separate form element atoms from others, you can pass a prefix like 'My' which will separate any component that starts with 'My', eg. 'MyButton', 'MyInput', etc."
+  },
+  "component-picker/exclude": {
+    "type": "array",
+    "description": "An array of strings to exclude certain components that partially match whatever you define. Eg. `['Button']` would exclude any component with `Button` in its name from the grid."
+  },
+  "component-picker/include": {
+    "type": "array",
+    "description": "An array of strings to include certain components that partially match whatever you define. Eg. `['Button']` would include ONLY components with `Button` in its name."
+  },
+  "doc-page/pathToDocPageFolder": {
+    "type": "string",
+    "description": "A path to a folder that will hold the files for this DocPage. It must be relative to the \"src\" folder."
+  },
+  "doc-page/chapterOrder": {
+    "type": "array",
+    "description": "The file names (with extension) inside the \"pathToDocPageFolder\". These files will become your rendered doc page.\n\nThe files array can be a combination of .vue and .md files. Whenever it's a .vue file, it's rendered with <ExampleSection />. Whenever it's an .md file, it's rendered with <MarkdownSection />."
+  },
+  "example-card/filePath": {
+    "type": "string",
+    "description": "Relative from the `src` folder."
+  },
+  "example-card/stripJSDocDescription": {
+    "type": "boolean",
+    "description": "When `true` the JSDoc above the default export will be stripped from displayed source code in the script tab."
+  },
+  "example-section/filePath": {
+    "type": "string",
+    "description": "Relative from the `src` folder."
+  },
+  "example-section/title": {
+    "type": "string",
+    "description": "By default the filename is shown as title above the example. Can be overwritten with the title prop."
+  },
+  "example-section/hideTitle": {
+    "type": "boolean",
+    "description": "By default a title is shown above the example. Can be hidden with hideTitle."
+  },
+  "code-block/lang": {
+    "type": "string"
+  },
+  "code-block/content": {
+    "type": "string",
+    "description": "Because of how Vue parses strings, the forward slash in the closing script tag must be escaped\nor the component will fail to compile.\n\nFor more information, see these comments:\n* https://github.com/vuejs/vue/issues/4625\n* https://github.com/vuejs/vue-loader/issues/506"
+  },
+  "code-block-section/filePath": {
+    "type": "string",
+    "description": "Relative from the `src` folder."
+  },
+  "markdown/content": {
+    "type": "string",
+    "description": "Your markdown content."
+  },
+  "markdown-section/filePath": {
+    "type": "string",
+    "description": "Relative from the `src` folder."
+  }
+}

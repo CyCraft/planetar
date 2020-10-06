@@ -8,7 +8,8 @@
   "main": "src/index.js",
   "scripts": {
     "build": "node build/index.js",
-    "build:js": "node build/script.javascript.js"
+    "build:js": "node build/script.javascript.js",
+    "vue-int": "vue-int -i src/components -r -o vetur"
   },
   "homepage": "https://github.com/cycraft/planetar",
   "dependencies": {
@@ -24,5 +25,9 @@
   "browserslist": [
     "last 1 version, not dead, ie >= 11"
   ],
+  "vetur": {
+    "tags": "vetur/tags.json",
+    "attributes": "vetur/attributes.json"
+  },
   "gitHead": "85718ffe30117650d9cb9d3daef9ee5eb8a0b945"
 }

@@ -1,0 +1,10 @@
+{
+  "doc-page/pathToDocPageFolder": {
+    "type": "string",
+    "description": "A path to a folder that will hold the files for this DocPage. It must be relative to the \"src\" folder."
+  },
+  "doc-page/chapterOrder": {
+    "type": "array",
+    "description": "The file names (with extension) inside the \"pathToDocPageFolder\". These files will become your rendered doc page.\n\nThe files array can be a combination of .vue and .md files. Whenever it's a .vue file, it's rendered with <ExampleSection />. Whenever it's an .md file, it's rendered with <MarkdownSection />."
+  }
+}

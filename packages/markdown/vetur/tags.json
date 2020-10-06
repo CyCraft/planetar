@@ -1,0 +1,31 @@
+{
+  "code-block": {
+    "attributes": [
+      "lang",
+      "content"
+    ],
+    "description": ""
+  },
+  "code-block-section": {
+    "attributes": [
+      "filePath"
+    ],
+    "description": ""
+  },
+  "markdown": {
+    "attributes": [
+      "content"
+    ],
+    "description": ""
+  },
+  "markdown-section": {
+    "attributes": [
+      "filePath"
+    ],
+    "description": ""
+  },
+  "component-name": {
+    "attributes": [],
+    "description": ""
+  }
+}

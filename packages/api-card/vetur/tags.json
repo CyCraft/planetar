@@ -1,0 +1,23 @@
+{
+  "api-card": {
+    "attributes": [
+      "filePath",
+      "value"
+    ],
+    "description": ""
+  },
+  "api-component-example": {
+    "attributes": [
+      "filePath",
+      "previewBg"
+    ],
+    "description": ""
+  },
+  "category-panel": {
+    "attributes": [
+      "schema",
+      "mode"
+    ],
+    "description": ""
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "example-card/filePath": {
+    "type": "string",
+    "description": "Relative from the `src` folder."
+  },
+  "example-card/stripJSDocDescription": {
+    "type": "boolean",
+    "description": "When `true` the JSDoc above the default export will be stripped from displayed source code in the script tab."
+  },
+  "example-section/filePath": {
+    "type": "string",
+    "description": "Relative from the `src` folder."
+  },
+  "example-section/title": {
+    "type": "string",
+    "description": "By default the filename is shown as title above the example. Can be overwritten with the title prop."
+  },
+  "example-section/hideTitle": {
+    "type": "boolean",
+    "description": "By default a title is shown above the example. Can be hidden with hideTitle."
+  }
+}

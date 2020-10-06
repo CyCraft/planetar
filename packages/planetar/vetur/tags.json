@@ -1,0 +1,140 @@
+{
+  "api-card": {
+    "attributes": [
+      "filePath",
+      "value"
+    ],
+    "description": ""
+  },
+  "api-component-example": {
+    "attributes": [
+      "filePath",
+      "previewBg"
+    ],
+    "description": ""
+  },
+  "category-panel": {
+    "attributes": [
+      "schema",
+      "mode"
+    ],
+    "description": ""
+  },
+  "planetar-input": {
+    "attributes": [
+      "isCode",
+      "isSearch"
+    ],
+    "description": "This is the main input field. Uses <QInput /> under the hood."
+  },
+  "planetar-list": {
+    "attributes": [
+      "items",
+      "value"
+    ],
+    "description": ""
+  },
+  "planetar-select": {
+    "attributes": [],
+    "description": ""
+  },
+  "planetar-tabs": {
+    "attributes": [
+      "tabLabels",
+      "initialTabIndex"
+    ],
+    "description": "This is the main input field."
+  },
+  "planetar-toggle": {
+    "attributes": [
+      "readonly"
+    ],
+    "description": ""
+  },
+  "component-name": {
+    "attributes": [],
+    "description": ""
+  },
+  "component-expose": {
+    "attributes": [
+      "componentFilesList",
+      "interactivePreview",
+      "previewBg"
+    ],
+    "description": ""
+  },
+  "component-gallery": {
+    "attributes": [
+      "componentFilesList",
+      "interactivePreviewFor",
+      "noInteractivePreviewFor",
+      "componentNamePreviewBgMap",
+      "formElementPrefix",
+      "exclude",
+      "include"
+    ],
+    "description": ""
+  },
+  "component-picker-card": {
+    "attributes": [
+      "filePath"
+    ],
+    "description": ""
+  },
+  "component-picker": {
+    "attributes": [
+      "componentFilesList",
+      "formElementPrefix",
+      "exclude",
+      "include"
+    ],
+    "description": ""
+  },
+  "doc-page": {
+    "attributes": [
+      "pathToDocPageFolder",
+      "chapterOrder"
+    ],
+    "description": ""
+  },
+  "example-card": {
+    "attributes": [
+      "filePath",
+      "stripJSDocDescription"
+    ],
+    "description": ""
+  },
+  "example-section": {
+    "attributes": [
+      "filePath",
+      "title",
+      "hideTitle"
+    ],
+    "description": ""
+  },
+  "code-block": {
+    "attributes": [
+      "lang",
+      "content"
+    ],
+    "description": ""
+  },
+  "code-block-section": {
+    "attributes": [
+      "filePath"
+    ],
+    "description": ""
+  },
+  "markdown": {
+    "attributes": [
+      "content"
+    ],
+    "description": ""
+  },
+  "markdown-section": {
+    "attributes": [
+      "filePath"
+    ],
+    "description": ""
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "doc-page": {
+    "attributes": [
+      "pathToDocPageFolder",
+      "chapterOrder"
+    ],
+    "description": ""
+  },
+  "component-name": {
+    "attributes": [],
+    "description": ""
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "planetar-input/isCode": {
+    "type": "boolean",
+    "description": "When `true` it will have a dark background."
+  },
+  "planetar-input/isSearch": {
+    "type": "boolean",
+    "description": "When `true`, shows a search icon."
+  },
+  "planetar-list/items": {
+    "type": "array"
+  },
+  "planetar-list/value": {
+    "type": "string",
+    "description": "Must be used with v-model!"
+  },
+  "planetar-tabs/tabLabels": {
+    "type": "array",
+    "description": "The labels of the tabs."
+  },
+  "planetar-tabs/initialTabIndex": {
+    "type": "number",
+    "description": "The tab index which should be opened initially."
+  },
+  "planetar-toggle/readonly": {
+    "type": "boolean"
+  }
+}

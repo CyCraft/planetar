@@ -1,0 +1,37 @@
+{
+  "component-expose": {
+    "attributes": [
+      "componentFilesList",
+      "interactivePreview",
+      "previewBg"
+    ],
+    "description": ""
+  },
+  "component-gallery": {
+    "attributes": [
+      "componentFilesList",
+      "interactivePreviewFor",
+      "noInteractivePreviewFor",
+      "componentNamePreviewBgMap",
+      "formElementPrefix",
+      "exclude",
+      "include"
+    ],
+    "description": ""
+  },
+  "component-picker-card": {
+    "attributes": [
+      "filePath"
+    ],
+    "description": ""
+  },
+  "component-picker": {
+    "attributes": [
+      "componentFilesList",
+      "formElementPrefix",
+      "exclude",
+      "include"
+    ],
+    "description": ""
+  }
+}
