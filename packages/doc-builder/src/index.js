@@ -1,6 +1,6 @@
-export * from './components/index'
+import DocPage from './components/DocPage.vue'
 
-import { DocPage } from './components/index'
+export { DocPage }
 
 export default {
   install(Vue) {

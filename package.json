@@ -14,6 +14,7 @@
     "build:api-card-NEW": "cd packages/api-card && vue-compile src -o dist",
     "build:example-card": "npm run start-build && cd packages/example-card && npm run build",
     "build:component-gallery": "npm run start-build && cd packages/component-gallery && npm run build",
+    "build:vue-int": "lerna exec \"vue-int -i src/components -r -o vetur\"",
     "publish": "lerna publish",
     "with-compile-step--publish": "npm run build && git add -u && git commit -m \"chore: build\" && lerna publish && npm run start-dev && git add -u && git commit -m \"chore: post-build\"",
     "replace-dist-src": "replace-in-files --string='\"module\": \"dist/index.esm.js\"' --replacement='\"module\": \"src/index.js\"' 'packages/(api-card|example-card|component-gallery)/package.json'",
@@ -52,6 +53,7 @@
     "rollup-plugin-vue": "^5.1.9",
     "uglify-es": "^3.3.10",
     "vue-compile": "^0.6.0",
+    "vue-intellisense": "^0.1.0",
     "vue-template-compiler": "^2.6.12",
     "zlib": "^1.0.5"
   },

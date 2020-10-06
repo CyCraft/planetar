@@ -3,7 +3,7 @@
   "version": "0.1.4",
   "description": "Atoms used throughout Planetar's packages.",
   "author": "Luca Ban - Mesqueeb",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
