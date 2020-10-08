@@ -21,6 +21,7 @@ export default {
     const extension = filePath.split('.').slice(-1)[0]
     dynamicImport(filePath, extension, 'string').then((markdownContent) => {
       this.content = markdownContent
+      this.$nextTick(() => this.$emit('mounted'))
     })
   },
   data() {

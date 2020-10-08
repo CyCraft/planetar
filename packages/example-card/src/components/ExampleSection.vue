@@ -2,7 +2,11 @@
   <div :id="kebabCase(exampleTitle) + `-example`">
     <div class="t-h6 mb-md" v-if="!hideTitle">{{ spaceCase(exampleTitle) }}</div>
     <Markdown class="mb-lg t-body1" :content="exampleDescription" />
-    <ExampleCard :filePath="filePath" :stripJSDocDescription="true" />
+    <ExampleCard
+      :filePath="filePath"
+      :stripJSDocDescription="true"
+      @mounted="() => dynamicImports++"
+    />
   </div>
 </template>
 
@@ -38,7 +42,15 @@ export default {
   created() {
     const { parseComponent, filePath, parseDescription } = this
     const extension = filePath.split('.').slice(-1)[0]
-    dynamicImport(filePath, extension, 'vue-docgen').then(parseDescription)
+    dynamicImport(filePath, extension, 'vue-docgen').then((vueDocgen) => {
+      this.dynamicImports++
+      parseDescription(vueDocgen)
+    })
+  },
+  watch: {
+    dynamicImports(count) {
+      if (count > 1) this.$nextTick(() => this.$emit('mounted'))
+    },
   },
   data() {
     const { filePath, title } = this
@@ -50,6 +62,7 @@ export default {
       .replace('.tsx', '')
     const exampleTitle = title || fileName
     return {
+      dynamicImports: 0,
       exampleTitle,
       exampleDescription: '',
     }

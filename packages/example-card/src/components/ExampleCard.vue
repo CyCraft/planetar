@@ -54,11 +54,18 @@ export default {
     const extension = filePath.split('.').slice(-1)[0]
     this.lang = extension
     dynamicImport(filePath, extension, 'component').then((componentExport) => {
+      this.dynamicImports++
       this.exampleComponent = componentExport.default
     })
     dynamicImport(filePath, extension, 'string').then((componentString) => {
+      this.dynamicImports++
       parseComponent(componentString)
     })
+  },
+  watch: {
+    dynamicImports(count) {
+      if (count > 1) this.$nextTick(() => this.$emit('mounted'))
+    },
   },
   data() {
     const { propsSeparateTab, filePath } = this
@@ -67,6 +74,7 @@ export default {
       .slice(-1)[0]
       .replace(/\.vue|\.tsx|\.jsx/, '')
     return {
+      dynamicImports: 0,
       fileName,
       activeTab: 'example',
       tabLabels: ['example'],

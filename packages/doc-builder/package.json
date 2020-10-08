@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "@planetar/example-card": "^0.4.0",
-    "@planetar/markdown": "^0.1.0"
+    "@planetar/markdown": "^0.1.0",
+    "case-anything": "^1.1.2"
   },
   "keywords": [
     "Planetar",

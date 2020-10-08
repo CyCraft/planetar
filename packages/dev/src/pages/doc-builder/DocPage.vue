@@ -1,6 +1,11 @@
 <template>
   <q-page padding>
-    <DocPage />
+    <DocPage
+      :chapterOrder="['CodeBlock examples.vue', 'textWall.md', 'Markdown examples.vue']"
+      pathToChapterFiles="pages/doc-builder/helpers"
+      pathToApiCardSourceFile="components/atoms/EfButton.vue"
+      @TOC="log"
+    />
   </q-page>
 </template>
 
@@ -9,7 +14,7 @@
 <script>
 export default {
   data() {
-    return {}
+    return { log: console.log }
   },
 }
 </script>
