@@ -1,4 +1,13 @@
 {
+  "planetar-anchor/content": {
+    "type": "string"
+  },
+  "planetar-anchor/href": {
+    "type": "string"
+  },
+  "planetar-anchor/external": {
+    "type": "boolean"
+  },
   "planetar-input/isCode": {
     "type": "boolean",
     "description": "When `true` it will have a dark background."

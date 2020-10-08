@@ -1,4 +1,12 @@
 {
+  "planetar-anchor": {
+    "attributes": [
+      "content",
+      "href",
+      "external"
+    ],
+    "description": ""
+  },
   "planetar-input": {
     "attributes": [
       "isCode",

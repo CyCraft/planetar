@@ -1,8 +1,15 @@
 {
   "doc-page": {
     "attributes": [
-      "pathToDocPageFolder",
-      "chapterOrder"
+      "pathToChapterFiles",
+      "chapterOrder",
+      "pathToApiCardSourceFile"
+    ],
+    "description": ""
+  },
+  "table-of-contents": {
+    "attributes": [
+      "TOC"
     ],
     "description": ""
   },
