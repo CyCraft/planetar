@@ -9,9 +9,13 @@
     "vue-int": "vue-int -i src/components -r -o vetur"
   },
   "dependencies": {
+    "@planetar/atoms": "^0.2.0",
     "@planetar/example-card": "^0.4.0",
     "@planetar/markdown": "^0.1.0",
-    "case-anything": "^1.1.2"
+    "@planetar/styles": "^0.0.7",
+    "case-anything": "^1.1.2",
+    "map-anything": "^1.0.0",
+    "vue-scrollactive": "^0.9.3"
   },
   "keywords": [
     "Planetar",
