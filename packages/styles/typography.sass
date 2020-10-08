@@ -14,99 +14,99 @@ $bold: 700
 
 =header-globals()
   font-family: 'Poppins', sans-serif
-  color: $c-primary
+  +c(color, blue-zodiac)
 =body-globals()
-  color: $c-primary
+  +c(color, blue-zodiac)
 
 =t-h1()
-  +header-globals
+  +header-globals()
   font-weight: $bold
   font-size: 56px
   line-height: 64px
   letter-spacing: 0.01em
 
 =t-h2()
-  +header-globals
+  +header-globals()
   font-weight: $semi-bold
   font-size: 40px
   line-height: 56px
 
 =t-h3()
-  +header-globals
+  +header-globals()
   font-weight: $bold
   font-size: 36px
   line-height: 40px
   letter-spacing: 0.01em
 
 =t-h4()
-  +header-globals
+  +header-globals()
   font-weight: $semi-bold
   font-size: 32px
   line-height: 40px
 
 =t-h5()
-  +header-globals
+  +header-globals()
   font-weight: $semi-bold
   font-size: 24px
   line-height: 30px
   letter-spacing: 0.01em
 
 =t-h6()
-  +header-globals
+  +header-globals()
   font-weight: $semi-bold
   font-size: 20px
   line-height: 24px
 
 =t-subtitle1()
-  +header-globals
+  +header-globals()
   font-weight: $semi-bold
   font-size: 16px
   line-height: 20px
 
 =t-subtitle2()
-  +header-globals
+  +header-globals()
   font-weight: $medium
   font-size: 14px
   line-height: 20px
   letter-spacing: 0.005em
 
 =t-body1()
-  +body-globals
+  +body-globals()
   font-family: 'Open Sans', sans-serif
   font-weight: $regular
   font-size: 16px
   line-height: 24px
 
 =t-body2()
-  +body-globals
+  +body-globals()
   font-weight: $regular
   font-size: 14px
   line-height: 20px
   letter-spacing: 0.01em
 
 =t-button()
-  +header-globals
+  +header-globals()
   font-weight: $semi-bold
   font-size: 14px
   line-height: 24px
   letter-spacing: 0.01em
 
 =t-caption()
-  +header-globals
+  +header-globals()
   font-weight: $regular
   font-size: 12px
   line-height: 16px
   letter-spacing: 0.02em
 
 =t-caption-semi-bold()
-  +header-globals
+  +header-globals()
   font-weight: $semi-bold
   font-size: 12px
   line-height: 16px
   letter-spacing: 0.02em
 
 =t-overline()
-  +header-globals
+  +header-globals()
   font-weight: $semi-bold
   font-size: 12px
   line-height: 16px
@@ -114,39 +114,41 @@ $bold: 700
   text-transform: uppercase
 
 =t-micro()
-  +header-globals
+  +header-globals()
   font-weight: $regular
   font-size: 10px
   line-height: 14px
   letter-spacing: 0.02em
 
-.t-h1
-  +t-h1
-.t-h2
-  +t-h2
-.t-h3
-  +t-h3
-.t-h4
-  +t-h4
-.t-h5
-  +t-h5
-.t-h6
-  +t-h6
-.t-subtitle1
-  +t-subtitle1
-.t-subtitle2
-  +t-subtitle2
-.t-body1
-  +t-body1
-.t-body2
-  +t-body2
-.t-button
-  +t-button
-.t-caption
-  +t-caption
-.t-caption-semi-bold
-  +t-caption-semi-bold
-.t-overline
-  +t-overline
-.t-micro
-  +t-micro
+h1, h2, h3, h4, h5, h6
+  margin: 0
+.text-h1, h1
+  +t-h1()
+.text-h2, h2
+  +t-h2()
+.text-h3, h3
+  +t-h3()
+.text-h4, h4
+  +t-h4()
+.text-h5, h5
+  +t-h5()
+.text-h6, h6
+  +t-h6()
+.text-subtitle1
+  +t-subtitle1()
+.text-subtitle2
+  +t-subtitle2()
+.text-body1
+  +t-body1()
+.text-body2
+  +t-body2()
+.text-button
+  +t-button()
+.text-caption
+  +t-caption()
+.text-caption-semi-bold
+  +t-caption-semi-bold()
+.text-overline
+  +t-overline()
+.text-micro
+  +t-micro()

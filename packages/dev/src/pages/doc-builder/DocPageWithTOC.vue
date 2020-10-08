@@ -17,7 +17,7 @@
 <style lang="sass" scoped>
 .example-page
   ._toc
-    top: 75px
+    top: 15px
     position: sticky
     align-self: flex-start
 </style>

@@ -28,7 +28,7 @@
       justify-self: start
       align-self: start
       margin-bottom: 4px
-      +t-subtitle2
+      +t-subtitle2()
     .easy-field__sub-label
       grid-column: 2 / 3
       +t-body2()

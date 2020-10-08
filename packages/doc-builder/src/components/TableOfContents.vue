@@ -59,7 +59,7 @@
       transition: all ease-in-out 160ms
     &.H1._has-active-child,
     &.H1.is-active
-      border-left: .25rem solid $c-blue-ribbon
+      +c(border-left, primary, .25rem solid)
     &.H3._has-active-parent,
     &.H3._has-active-sibling,
     &.H3.is-active

@@ -1,7 +1,7 @@
 <template>
   <div :id="kebabCase(exampleTitle) + `-example`">
-    <div class="t-h6 mb-md" v-if="!hideTitle">{{ spaceCase(exampleTitle) }}</div>
-    <Markdown class="mb-lg t-body1" :content="exampleDescription" />
+    <div class="t-h6 mb-md" v-if="!hideTitle && exampleTitle">{{ spaceCase(exampleTitle) }}</div>
+    <Markdown v-if="exampleDescription" class="mb-lg t-body1" :content="exampleDescription" />
     <ExampleCard
       :filePath="filePath"
       :stripJSDocDescription="true"

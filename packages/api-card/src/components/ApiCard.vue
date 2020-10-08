@@ -42,13 +42,13 @@
     justify-content: space-between
     padding: $md
     padding-top: $lg
-    border-bottom: 1px solid $c-stone-dark
+    +c(border-bottom, stone-dark, 1px solid)
   ._bottom
     min-height: 0 // required to force _bottom to stop at parent max-height
     flex: 1
     display: flex
     ._tabs
-      border-right: 1px solid $c-stone-dark
+      +c(border-right, stone-dark, 1px solid)
       overflow-y: scroll
     ._tab-panels
       flex: 1

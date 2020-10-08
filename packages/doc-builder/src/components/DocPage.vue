@@ -1,7 +1,8 @@
 <template>
-  <div class="doc-page pb-xxl">
+  <div class="doc-page">
     <template v-for="(filePath, i) in filesList">
       <ExampleSection
+        class="mb-xxxl"
         v-if="filePath.endsWith('.vue')"
         :filePath="filePath"
         hideTitle
@@ -9,6 +10,7 @@
         @mounted="() => mountCount++"
       />
       <MarkdownSection
+        class="mb-xxxl"
         v-if="filePath.endsWith('.md')"
         :filePath="filePath"
         :key="filePath + i"
@@ -16,7 +18,7 @@
       />
     </template>
     <!-- api card section -->
-    <div class="mt-xxxl" v-if="pathToApiCardSourceFile">
+    <div v-if="pathToApiCardSourceFile" class="mb-xxxl">
       <ApiComponentExample id="api-card" :filePath="pathToApiCardSourceFile" />
     </div>
   </div>

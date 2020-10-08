@@ -24,7 +24,7 @@
 @import '@planetar/styles'
 
 .planetar-example-card
-  border: thin solid $c-stone-dark
+  +c(border, stone-dark, thin solid)
   min-height: 127px
 </style>
 

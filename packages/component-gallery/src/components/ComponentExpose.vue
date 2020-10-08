@@ -45,8 +45,7 @@
     display: flex
     align-items: center
     text-decoration: none
-    color: $c-blue-ribbon
-    +t-button
+    +t-button()
 </style>
 
 <script>

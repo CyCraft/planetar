@@ -25,7 +25,7 @@
 /** global styles */
 .planetar-list
   .q-hoverable:hover
-    background: $c-stone
+    +c(background, stone)
     > .q-focus-helper
       opacity: 0 !important
 </style>
@@ -35,15 +35,15 @@
 
 .planetar-list
   ._item
-    +t-body1
+    +t-body1()
   ._is-divider
-    background: $c-hint
+    +c(background, hint)
     color: white
     height: 20px
     min-height: 20px
-    +t-caption
+    +t-caption()
   ._is-active
-    background: $c-stone-dark
+    +c(background, stone-dark)
 </style>
 
 <script>

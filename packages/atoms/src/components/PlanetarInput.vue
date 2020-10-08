@@ -5,7 +5,7 @@
     v-on="$listeners"
   >
     <template v-slot:append v-if="isSearch">
-      <QIcon class="c-primary">
+      <QIcon class="c-blue-zodiac">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -33,33 +33,33 @@
 .planetar-input
   .q-field__control
     border-radius: 8px
-    background-color: $c-stone-light
+    +c(background-color, stone-light)
   .q-field__control:before
-    border: 2px solid $c-stone-light
+    +c(border, stone-light, 2px solid)
     transition: border-color 0.36s cubic-bezier(0.4, 0, 0.2, 1)
   .q-field__control:hover
     background-color: white
   .q-field__control:hover:before
-    border-color: $c-blue-ribbon
+    +c(border-color, primary)
   &.q-field--focused
     .q-field__control
       background-color: white
     .q-field__control:after
-      border-color: $c-blue-ribbon
+      +c(border-color, primary)
 
 .planetar-input._is-code
   .q-field__native
     color: white // the text colour
   .q-field__control
-    background-color: $c-lucy-black
+    +c(background-color, lucy-black)
   .q-field__control:before
-    border: 2px solid $c-lucy-black
+    +c(border, lucy-black, 2px solid)
     transition: border-color 0.36s cubic-bezier(0.4, 0, 0.2, 1)
   .q-field__control:hover:before
-    border-color: $c-sail-dark
+    +c(border-color, sail-dark)
   &.q-field--focused
     .q-field__control:after
-      border-color: $c-sail-dark
+      +c(border-color, sail-dark)
 </style>
 
 <style lang="sass" scoped>

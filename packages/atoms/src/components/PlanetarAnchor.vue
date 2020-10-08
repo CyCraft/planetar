@@ -34,7 +34,7 @@
 @import '@planetar/styles'
 
 .planetar-anchor
-  color: $c-blue-ribbon
+  +c(color, primary)
   font-weight: 500
   text-decoration: none
   display: flex
@@ -44,7 +44,7 @@
     font-weight: 600
   &:hover,
   &.is-active
-    color: $c-blue-ribbon !important
+    +c(color, primary, !important)
   ._svg
     color: #aaa
 </style>

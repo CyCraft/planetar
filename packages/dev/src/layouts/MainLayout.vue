@@ -1,15 +1,8 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
+  <q-layout view="hhh Lpr lFf">
+    <q-header>
       <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          to="/"
-          icon="home"
-          v-if="$router.currentRoute.path !== '/'"
-        />
+        <q-btn flat dense round to="/" icon="home" v-if="$router.currentRoute.path !== '/'" />
 
         <q-toolbar-title>Planetar 🪐</q-toolbar-title>
       </q-toolbar>
@@ -25,10 +18,10 @@
 export default {
   name: 'MainLayout',
 
-  data () {
+  data() {
     return {
-      version: '0'
+      version: '0',
     }
-  }
+  },
 }
 </script>

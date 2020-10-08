@@ -9,14 +9,14 @@
 .planetar-select
   .q-field__control
     border-radius: 8px
-    background-color: $c-stone-light
+    +c(background-color, stone-light)
   .q-field__control:before
-    border: 2px solid $c-stone-light
+    +c(border, stone-light, 2px solid)
     transition: border-color 0.36s cubic-bezier(0.4, 0, 0.2, 1)
   .q-field__control:hover
     background-color: white
   .q-field__control:hover:before
-    border-color: $c-blue-ribbon
+    +c(border-color, primary)
 
 .planetar-select.q-field--focused
   .q-field__control

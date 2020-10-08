@@ -38,7 +38,7 @@
     grid-auto-flow: row
     grid-template-rows: 1fr
   ._no-components-yet
-    +flex-center
+    +flex-center()
 </style>
 
 <script>

@@ -1,9 +1,8 @@
 <template>
   <div class="planetar-api-component-example">
-    <div
-      class="t-h6 mb-lg _interactive-preview-title"
-      @click="togglePreviewStyle"
-    >Interactive preview</div>
+    <div class="t-h6 mb-lg _interactive-preview-title" @click="togglePreviewStyle">
+      Interactive preview
+    </div>
     <div
       v-if="exampleComponent && apiCardReady"
       class="_interactive-preview-section"
@@ -28,10 +27,10 @@
 @import '@planetar/styles'
 
 .planetar-api-component-example
-  +flex-center
+  +flex-center()
   ._interactive-preview-section
     position: relative
-    +flex-center
+    +flex-center()
     > *
       z-index: 2
     ._bg
@@ -53,7 +52,7 @@
     bottom: -10px
     left: -10px
     right: -10px
-    border: 3px dashed $c-stone-dark
+    +c(border, stone-dark, 3px dashed)
 </style>
 
 <script>
