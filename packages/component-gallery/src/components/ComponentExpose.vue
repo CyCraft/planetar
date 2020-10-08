@@ -55,6 +55,7 @@ import { ExampleSection } from '@planetar/example-card'
 import { getComponentPaths } from '../helpers/listOfComponents'
 export default {
   name: 'ComponentExpose',
+  components: { ApiCard, ApiComponentExample, ExampleSection },
   props: {
     /**
      * You need to pass whatever is returned by `require.context('src/components', true, /^\.\/.*(\.vue)$/).keys()`
@@ -73,7 +74,6 @@ export default {
      */
     previewBg: { type: String },
   },
-  components: { ApiCard, ApiComponentExample, ExampleSection },
   computed: {
     filePath() {
       const r = this.$route

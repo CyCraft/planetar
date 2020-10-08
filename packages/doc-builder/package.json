@@ -9,6 +9,7 @@
     "vue-int": "vue-int -i src/components -r -o vetur"
   },
   "dependencies": {
+    "@planetar/api-card": "^0.4.2",
     "@planetar/atoms": "^0.2.2",
     "@planetar/example-card": "^0.4.2",
     "@planetar/markdown": "^0.1.2",

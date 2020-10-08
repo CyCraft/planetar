@@ -31,9 +31,13 @@
 <script>
 import { kebabCase } from 'case-anything'
 import { DOMRegex } from '../helpers/domHelpers'
+import { ExampleSection } from '@planetar/example-card'
+import { MarkdownSection } from '@planetar/markdown'
+import { ApiComponentExample } from '@planetar/api-card'
 
 export default {
   name: 'DocPage',
+  components: { ExampleSection, MarkdownSection, ApiComponentExample },
   props: {
     /**
      * A path to a folder that will hold the files for this DocPage. It must be relative to the "src" folder.
