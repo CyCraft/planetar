@@ -17,9 +17,9 @@
   },
   "homepage": "https://vue-styleguidist.github.io",
   "dependencies": {
-    "escodegen": "^1.14.3",
+    "escodegen": "^2.0.0",
     "to-ast": "^1.0.0",
-    "vue-docgen-api": "^4.31.1"
+    "vue-docgen-api": "^4.32.4"
   },
   "gitHead": "85718ffe30117650d9cb9d3daef9ee5eb8a0b945"
 }

@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@planetar/styles": "^0.0.7",
-    "quasar": "^1.13.1"
+    "quasar": "^1.14.1"
   },
   "keywords": [
     "Planetar",
