@@ -1,6 +1,6 @@
 {
   "name": "@planetar/atoms",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "Atoms used throughout Planetar's packages.",
   "author": "Luca Ban - Mesqueeb",
   "main": "src/index.js",
@@ -9,7 +9,7 @@
     "vue-int": "vue-int -i src/components -r -o vetur"
   },
   "dependencies": {
-    "@planetar/styles": "^0.0.8",
+    "@planetar/styles": "^0.1.0",
     "quasar": "^1.14.1"
   },
   "keywords": [
