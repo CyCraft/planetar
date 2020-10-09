@@ -1,6 +1,6 @@
 {
   "name": "@planetar/doc-builder",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Doc build components for Planetar",
   "author": "Luca Ban - Mesqueeb",
   "main": "src/index.js",
