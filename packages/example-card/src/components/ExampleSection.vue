@@ -1,6 +1,6 @@
 <template>
   <div :id="kebabCase(exampleTitle) + `-example`">
-    <div class="t-h6 mb-md" v-if="!hideTitle && exampleTitle">{{ spaceCase(exampleTitle) }}</div>
+    <div class="text-h6 mb-md" v-if="!hideTitle && exampleTitle">{{ spaceCase(exampleTitle) }}</div>
     <Markdown v-if="exampleDescription" class="mb-lg t-body1" :content="exampleDescription" />
     <ExampleCard
       :filePath="filePath"

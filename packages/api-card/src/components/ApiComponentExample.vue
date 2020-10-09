@@ -1,6 +1,6 @@
 <template>
   <div class="planetar-api-component-example">
-    <div class="t-h6 mb-lg _interactive-preview-title" @click="togglePreviewStyle">
+    <div class="text-h6 mb-lg _interactive-preview-title" @click="togglePreviewStyle">
       Interactive preview
     </div>
     <div
@@ -12,7 +12,7 @@
       <div class="_bg" v-if="previewBg" :style="`background: ${previewBg}`"></div>
     </div>
 
-    <div class="t-h6 my-lg">Info card</div>
+    <div class="text-h6 my-lg">Info card</div>
     <div class="px-xs" style="width: 100%">
       <ApiCard
         :filePath="filePath"

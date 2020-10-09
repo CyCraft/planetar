@@ -1,8 +1,8 @@
 <template>
   <div class="component-picker">
     <!-- atoms form elements -->
-    <div class="t-h3 my-md">Atoms</div>
-    <div class="t-h6" v-if="atomsFormElements.length">Form Elements</div>
+    <div class="text-h3 my-md">Atoms</div>
+    <div class="text-h6" v-if="atomsFormElements.length">Form Elements</div>
     <div class="_grid-md py-lg" v-if="atomsFormElements.length">
       <ComponentPickerCard
         v-for="filePath in atomsFormElements"
@@ -11,7 +11,7 @@
       />
     </div>
     <!-- atoms other -->
-    <div class="t-h6" v-if="atomsFormElements.length && atomsOther.length">Other</div>
+    <div class="text-h6" v-if="atomsFormElements.length && atomsOther.length">Other</div>
     <div class="_grid-md py-lg" v-if="atomsOther.length">
       <ComponentPickerCard v-for="filePath in atomsOther" :key="filePath" :filePath="filePath" />
     </div>
@@ -20,7 +20,7 @@
       <h2 style="margin: 16px">🏝</h2>
     </div>
     <!-- molecules -->
-    <div class="t-h3 my-md" v-if="molecules.length">Molecules</div>
+    <div class="text-h3 my-md" v-if="molecules.length">Molecules</div>
     <div class="_grid-md py-lg" v-if="molecules.length">
       <ComponentPickerCard v-for="filePath in molecules" :key="filePath" :filePath="filePath" />
     </div>

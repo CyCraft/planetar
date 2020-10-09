@@ -1,7 +1,7 @@
 <template>
   <div class="planetar-api-card" :id="kebabCase(fileName) + `-api`">
     <div class="_top">
-      <div class="t-h4 mr-md">{{ fileName }} API</div>
+      <div class="text-h4 mr-md">{{ fileName }} API</div>
       <PlanetarInput v-model="searchValue" :isSearch="true" :debounce="300" />
     </div>
     <div class="_bottom">
