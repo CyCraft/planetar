@@ -10,14 +10,14 @@
     "
     :clickable="true"
   >
-    <div
-      class="text-h6 text-wrap-all"
-    >{{ filePath.replace(/atoms\/|molecules\/|\.vue|\.jsx|\.tsx/g, '') }}</div>
+    <div class="text-h6 text-wrap-all">
+      {{ filePath.replace(/atoms\/|molecules\/|\.vue|\.jsx|\.tsx/g, '') }}
+    </div>
   </div>
 </template>
 
 <style lang="sass" scoped>
-@import '@planetar/styles'
+@import '@planetar/styles/variables'
 
 .component-picker-card
   +shadow-1()

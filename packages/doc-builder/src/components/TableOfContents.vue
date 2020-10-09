@@ -29,7 +29,7 @@
 </template>
 
 <style lang="sass" scoped>
-@import '@planetar/styles'
+@import '@planetar/styles/variables'
 
 .table-of-contents
   // ._toc-wrapper

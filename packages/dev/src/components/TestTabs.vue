@@ -35,13 +35,13 @@
 </template>
 
 <style lang="sass">
-@import '@planetar/styles'
+@import '@planetar/styles/variables'
 
 /** global styles */
 </style>
 
 <style lang="sass" scoped>
-@import '@planetar/styles'
+@import '@planetar/styles/variables'
 
 .test-tabs
   min-width: 150px
@@ -155,7 +155,7 @@ export default {
      */
     defaultContent: {
       type: Object,
-      default: () => ({ '0': 'hi!' }),
+      default: () => ({ 0: 'hi!' }),
     },
   },
   data() {

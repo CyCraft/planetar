@@ -1,7 +1,4 @@
 
-// todo, delete this
-$c-mercury: #EAE9E9
-
 /**
  * There is no pure black in this interface, instead there is the awesomeness that is Blue-Zodiac.
  * Use blue-zodiac instead of black, and use it’s opacity variants for text and icon colors.
@@ -57,7 +54,7 @@ $c-lucy-black: #1a1d26
 /**
  * Color Map
  */
-$colors: ("mercury": $c-mercury, "blue-zodiac": $c-blue-zodiac, "science": $c-science, "hint": $c-hint, "disabled": $c-disabled, "primary": $c-primary, "primary-light": $c-primary-light, "primary-dark": $c-primary-dark, "sail": $c-sail, "sail-dark": $c-sail-dark, "blue-ribbon": $c-blue-ribbon, "azure-skies": $c-azure-skies, "endeavour": $c-endeavour, "stone": $c-stone, "stone-light": $c-stone-light, "stone-dark": $c-stone-dark, "error": $c-error, "success": $c-success)
+$colors: ("blue-zodiac": $c-blue-zodiac, "science": $c-science, "hint": $c-hint, "disabled": $c-disabled, "primary": $c-primary, "primary-light": $c-primary-light, "primary-dark": $c-primary-dark, "sail": $c-sail, "sail-dark": $c-sail-dark, "blue-ribbon": $c-blue-ribbon, "azure-skies": $c-azure-skies, "endeavour": $c-endeavour, "stone": $c-stone, "stone-light": $c-stone-light, "stone-dark": $c-stone-dark, "error": $c-error, "success": $c-success, "lucy-black": $c-lucy-black)
 
 /**
  * Color mixin to be used like:
@@ -66,25 +63,7 @@ $colors: ("mercury": $c-mercury, "blue-zodiac": $c-blue-zodiac, "science": $c-sc
  */
 =C($attr, $color-name, $extra-stuff: "")
   #{$attr}: map-get($colors, $color-name) #{$extra-stuff}
-  #{$attr}: var(--q-color-#{$color-name}) #{$extra-stuff}
-
-/**
- * Set native CSS variables
- */
-\:root
-  @each $name, $color in $colors
-    --q-color-#{$name}: #{$color}
-
-/**
- * Create helpers classes
- */
-@each $name, $color in $colors
-
-  .bg-#{$name}
-    +C(background, $name)
-  .text-#{$name},
-  .c-#{$name}
-    +C(color, $name)
+  #{$attr}: var(--q-color-#{$color-name}, map-get($colors, $color-name)) #{$extra-stuff}
 
 /**
  * For overwriting quasar variables

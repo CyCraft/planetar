@@ -12,7 +12,7 @@
 
 <style lang="sass">
 /** global styles */
-@import '@planetar/styles'
+@import '@planetar/styles/variables'
 </style>
 
 <script>
