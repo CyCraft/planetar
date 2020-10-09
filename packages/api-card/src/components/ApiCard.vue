@@ -25,7 +25,7 @@
 </template>
 
 <style lang="sass" scoped>
-@import '@planetar/styles'
+@import 'node_modules/@planetar/styles'
 
 .planetar-api-card
   min-width: 400px
@@ -42,13 +42,13 @@
     justify-content: space-between
     padding: $md
     padding-top: $lg
-    +c(border-bottom, stone-dark, 1px solid)
+    +C(border-bottom, stone-dark, 1px solid)
   ._bottom
     min-height: 0 // required to force _bottom to stop at parent max-height
     flex: 1
     display: flex
     ._tabs
-      +c(border-right, stone-dark, 1px solid)
+      +C(border-right, stone-dark, 1px solid)
       overflow-y: scroll
     ._tab-panels
       flex: 1

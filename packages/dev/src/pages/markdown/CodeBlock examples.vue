@@ -10,9 +10,12 @@
     <CodeBlock lang="html" :content="htmlContent" />
 
     <h6>CSS</h6>
-    <CodeBlock lang="css" :content="`.hello {
+    <CodeBlock
+      lang="css"
+      :content="`.hello {
   color: goldenrod;
-}`" />
+}`"
+    />
   </q-page>
 </template>
 
@@ -24,7 +27,7 @@ export default {
   data() {
     return {
       // Note: the final / in the closing script tag breaks the following string
-      htmlContent: `<div>Hi</div>\n<br />\n<script lang="js">\nconst a = 1\n<\/script>`,
+      htmlContent: `<div>Hi</div>\n<br />\n<script>\nconst a = 1\n<\/script>`,
     }
   },
 }

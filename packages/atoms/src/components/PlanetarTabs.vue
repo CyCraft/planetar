@@ -34,13 +34,13 @@
 </template>
 
 <style lang="sass">
-@import '@planetar/styles'
+@import 'node_modules/@planetar/styles'
 
 /** global styles */
 </style>
 
 <style lang="sass" scoped>
-@import '@planetar/styles'
+@import 'node_modules/@planetar/styles'
 
 .planetar-tabs
   min-width: 150px

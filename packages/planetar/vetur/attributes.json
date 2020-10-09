@@ -26,6 +26,15 @@
       "raw"
     ]
   },
+  "planetar-anchor/content": {
+    "type": "string"
+  },
+  "planetar-anchor/href": {
+    "type": "string"
+  },
+  "planetar-anchor/external": {
+    "type": "boolean"
+  },
   "planetar-input/isCode": {
     "type": "boolean",
     "description": "When `true` it will have a dark background."
@@ -111,13 +120,20 @@
     "type": "array",
     "description": "An array of strings to include certain components that partially match whatever you define. Eg. `['Button']` would include ONLY components with `Button` in its name."
   },
-  "doc-page/pathToDocPageFolder": {
+  "doc-page/pathToChapterFiles": {
     "type": "string",
     "description": "A path to a folder that will hold the files for this DocPage. It must be relative to the \"src\" folder."
   },
   "doc-page/chapterOrder": {
     "type": "array",
-    "description": "The file names (with extension) inside the \"pathToDocPageFolder\". These files will become your rendered doc page.\n\nThe files array can be a combination of .vue and .md files. Whenever it's a .vue file, it's rendered with <ExampleSection />. Whenever it's an .md file, it's rendered with <MarkdownSection />."
+    "description": "The file names (with extension) inside the \"pathToChapterFiles\". These files will become your rendered doc page.\n\nThe files array can be a combination of .vue and .md files. Whenever it's a .vue file, it's rendered with <ExampleSection />. Whenever it's an .md file, it's rendered with <MarkdownSection />."
+  },
+  "doc-page/pathToApiCardSourceFile": {
+    "type": "string",
+    "description": "(optional) A path to a vue file to generate an API Card at the bottom of the doc page."
+  },
+  "table-of-contents/TOC": {
+    "type": "array"
   },
   "example-card/filePath": {
     "type": "string",

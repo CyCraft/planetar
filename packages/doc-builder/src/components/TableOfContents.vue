@@ -29,7 +29,7 @@
 </template>
 
 <style lang="sass" scoped>
-@import '@planetar/styles'
+@import 'node_modules/@planetar/styles'
 
 .table-of-contents
   // ._toc-wrapper
@@ -59,7 +59,7 @@
       transition: all ease-in-out 160ms
     &.H1._has-active-child,
     &.H1.is-active
-      +c(border-left, primary, .25rem solid)
+      +C(border-left, primary, .25rem solid)
     &.H3._has-active-parent,
     &.H3._has-active-sibling,
     &.H3.is-active

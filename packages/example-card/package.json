@@ -4,10 +4,11 @@
   "author": "Luca Ban - Mesqueeb",
   "description": "Example Card based on a Vue file with automatic source extraction",
   "license": "MIT",
-  "module": "src/index.js",
-  "main": "src/index.js",
+  "module": "dist/index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "build": "node build/index.js",
+    "build": "rimraf dist && vue-compile src -o dist",
+    "build:q": "node build/index.js",
     "build:js": "node build/script.javascript.js",
     "vue-int": "vue-int -i src/components -r -o vetur"
   },
@@ -17,9 +18,7 @@
     "@planetar/markdown": "^0.2.0",
     "@planetar/styles": "^0.1.0",
     "@planetar/utils": "^0.1.4",
-    "case-anything": "^1.1.2",
-    "prismjs": "^1.21.0",
-    "snarkdown": "github:mesqueeb/snarkdown#dist"
+    "case-anything": "^1.1.2"
   },
   "repository": {
     "type": "git",

@@ -4,7 +4,7 @@
     "baseUrl": ".",
     // Relative to "baseUrl"
     "paths": {
-      "ui/*": ["src/*"]
+      "@planetar/*": ["node_modules/@planetar/*"]
     }
   }
 }

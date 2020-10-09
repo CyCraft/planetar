@@ -7,7 +7,7 @@
   font-weight: 700
 </style>
 
-<script lang="js">
+<script>
 import TestInput from '../../components/TestInput'
 
 /**
@@ -18,10 +18,10 @@ import TestInput from '../../components/TestInput'
  */
 export default {
   components: { TestInput },
-  data () {
+  data() {
     return {
-      model: ''
+      model: '',
     }
-  }
+  },
 }
 </script>

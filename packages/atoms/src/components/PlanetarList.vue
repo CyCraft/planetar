@@ -20,30 +20,30 @@
 </template>
 
 <style lang="sass">
-@import '@planetar/styles'
+@import 'node_modules/@planetar/styles'
 
 /** global styles */
 .planetar-list
   .q-hoverable:hover
-    +c(background, stone)
+    +C(background, stone)
     > .q-focus-helper
       opacity: 0 !important
 </style>
 
 <style lang="sass" scoped>
-@import '@planetar/styles'
+@import 'node_modules/@planetar/styles'
 
 .planetar-list
   ._item
     +t-body1()
   ._is-divider
-    +c(background, hint)
+    +C(background, hint)
     color: white
     height: 20px
     min-height: 20px
     +t-caption()
   ._is-active
-    +c(background, stone-dark)
+    +C(background, stone-dark)
 </style>
 
 <script>

@@ -3,20 +3,20 @@
 </template>
 
 <style lang="sass">
-@import '@planetar/styles'
+@import 'node_modules/@planetar/styles'
 
 /** global styles */
 .planetar-select
   .q-field__control
     border-radius: 8px
-    +c(background-color, stone-light)
+    +C(background-color, stone-light)
   .q-field__control:before
-    +c(border, stone-light, 2px solid)
+    +C(border, stone-light, 2px solid)
     transition: border-color 0.36s cubic-bezier(0.4, 0, 0.2, 1)
   .q-field__control:hover
     background-color: white
   .q-field__control:hover:before
-    +c(border-color, primary)
+    +C(border-color, primary)
 
 .planetar-select.q-field--focused
   .q-field__control

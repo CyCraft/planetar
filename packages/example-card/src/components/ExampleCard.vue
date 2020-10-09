@@ -21,10 +21,10 @@
 
 <style lang="sass">
 /** global styles */
-@import '@planetar/styles'
+@import 'node_modules/@planetar/styles'
 
 .planetar-example-card
-  +c(border, stone-dark, thin solid)
+  +C(border, stone-dark, thin solid)
   min-height: 127px
 </style>
 

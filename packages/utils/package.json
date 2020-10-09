@@ -4,7 +4,7 @@
   "author": "Luca Ban - Mesqueeb",
   "description": "Planetar utils",
   "license": "MIT",
-  "module": "src/index.js",
+  "module": "dist/index.js",
   "main": "src/index.js",
   "scripts": {},
   "homepage": "https://github.com/cycraft/planetar",

@@ -24,7 +24,7 @@
 </template>
 
 <style lang="sass" scoped>
-@import '@planetar/styles'
+@import 'node_modules/@planetar/styles'
 
 .planetar-api-component-example
   +flex-center()
@@ -52,7 +52,7 @@
     bottom: -10px
     left: -10px
     right: -10px
-    +c(border, stone-dark, 3px dashed)
+    +C(border, stone-dark, 3px dashed)
 </style>
 
 <script>

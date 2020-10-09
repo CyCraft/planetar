@@ -20,6 +20,14 @@
     ],
     "description": ""
   },
+  "planetar-anchor": {
+    "attributes": [
+      "content",
+      "href",
+      "external"
+    ],
+    "description": ""
+  },
   "planetar-input": {
     "attributes": [
       "isCode",
@@ -92,8 +100,15 @@
   },
   "doc-page": {
     "attributes": [
-      "pathToDocPageFolder",
-      "chapterOrder"
+      "pathToChapterFiles",
+      "chapterOrder",
+      "pathToApiCardSourceFile"
+    ],
+    "description": ""
+  },
+  "table-of-contents": {
+    "attributes": [
+      "TOC"
     ],
     "description": ""
   },

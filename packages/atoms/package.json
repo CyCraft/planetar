@@ -3,8 +3,10 @@
   "version": "0.3.0",
   "description": "Atoms used throughout Planetar's packages.",
   "author": "Luca Ban - Mesqueeb",
-  "main": "src/index.js",
+  "module": "dist/index.js",
+  "main": "dist/index.js",
   "scripts": {
+    "build": "rimraf dist && vue-compile src -o dist",
     "test": "echo \"Error: no test specified\" && exit 1",
     "vue-int": "vue-int -i src/components -r -o vetur"
   },

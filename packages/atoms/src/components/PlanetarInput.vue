@@ -27,39 +27,39 @@
 </template>
 
 <style lang="sass">
-@import '@planetar/styles'
+@import 'node_modules/@planetar/styles'
 
 /** global styles */
 .planetar-input
   .q-field__control
     border-radius: 8px
-    +c(background-color, stone-light)
+    +C(background-color, stone-light)
   .q-field__control:before
-    +c(border, stone-light, 2px solid)
+    +C(border, stone-light, 2px solid)
     transition: border-color 0.36s cubic-bezier(0.4, 0, 0.2, 1)
   .q-field__control:hover
     background-color: white
   .q-field__control:hover:before
-    +c(border-color, primary)
+    +C(border-color, primary)
   &.q-field--focused
     .q-field__control
       background-color: white
     .q-field__control:after
-      +c(border-color, primary)
+      +C(border-color, primary)
 
 .planetar-input._is-code
   .q-field__native
     color: white // the text colour
   .q-field__control
-    +c(background-color, lucy-black)
+    +C(background-color, lucy-black)
   .q-field__control:before
-    +c(border, lucy-black, 2px solid)
+    +C(border, lucy-black, 2px solid)
     transition: border-color 0.36s cubic-bezier(0.4, 0, 0.2, 1)
   .q-field__control:hover:before
-    +c(border-color, sail-dark)
+    +C(border-color, sail-dark)
   &.q-field--focused
     .q-field__control:after
-      +c(border-color, sail-dark)
+      +C(border-color, sail-dark)
 </style>
 
 <style lang="sass" scoped>

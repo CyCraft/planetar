@@ -10,7 +10,7 @@
     margin: 0
 </style>
 
-<script lang="js">
+<script>
 import { codeToHtml } from '../helpers/htmlHelpers.js'
 
 export default {
@@ -24,7 +24,7 @@ export default {
      * For more information, see these comments:
      * * https://github.com/vuejs/vue/issues/4625
      * * https://github.com/vuejs/vue-loader/issues/506
-     * @example `<div>Hi</div>\n<br />\n<script lang="js">\nconst a = 1\n<\/script>`
+     * @example `<div>Hi</div>\n<br />\n<script>\nconst a = 1\n<\/script>`
      */
     content: String,
   },

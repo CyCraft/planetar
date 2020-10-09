@@ -31,10 +31,10 @@
 </template>
 
 <style lang="sass">
-@import '@planetar/styles'
+@import 'node_modules/@planetar/styles'
 
 .planetar-anchor
-  +c(color, primary)
+  +C(color, primary)
   font-weight: 500
   text-decoration: none
   display: flex
@@ -44,7 +44,7 @@
     font-weight: 600
   &:hover,
   &.is-active
-    +c(color, primary, !important)
+    +C(color, primary, !important)
   ._svg
     color: #aaa
 </style>

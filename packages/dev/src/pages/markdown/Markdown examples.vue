@@ -31,7 +31,7 @@ an html test:
 \`\`\`html
 <div>Hi</div>
 <br />
-<script lang="js">
+<script>
   const a = 1
 <\/script>
 \`\`\`
