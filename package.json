@@ -10,6 +10,7 @@
     "test": "lerna run test",
     "build": "lerna run build",
     "with-compile-step--build": "npm run start-build && lerna run build",
+    "build:favicon": "copyfiles --up 1 'media' packages/docs/public",
     "build:api-card": "npm run start-build && cd packages/api-card && npm run build",
     "build:api-card-NEW": "cd packages/api-card && vue-compile src -o dist",
     "build:example-card": "npm run start-build && cd packages/example-card && npm run build",
