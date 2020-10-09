@@ -89,7 +89,7 @@ export default {
      */
     parseTitleEls(titleEls) {
       const payloadTOC = titleEls.map((el) => {
-        const text = el.innerText
+        const text = el.textContent
         if (!el.id) {
           el.id = kebabCase(text)
         }
