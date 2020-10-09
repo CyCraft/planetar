@@ -1,6 +1,6 @@
 {
   "name": "@planetar/component-gallery",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "author": "Luca Ban - Mesqueeb",
   "description": "Planetar Component Gallery",
   "license": "MIT",
@@ -14,9 +14,9 @@
   },
   "homepage": "https://github.com/cycraft/planetar",
   "dependencies": {
-    "@planetar/api-card": "^0.5.0",
-    "@planetar/example-card": "^0.5.0",
-    "@planetar/styles": "^0.1.0"
+    "@planetar/api-card": "^0.5.1",
+    "@planetar/example-card": "^0.5.1",
+    "@planetar/styles": "^0.1.1"
   },
   "repository": {
     "type": "git",

@@ -1,6 +1,6 @@
 {
   "name": "dev",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "project used internally when developing for planetar",
   "productName": "dev",
   "author": "Luca Ban - mesqueeb",
@@ -11,13 +11,13 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
-    "@planetar/styles": "^0.1.0",
+    "@planetar/styles": "^0.1.1",
     "@quasar/app": "^2.1.1",
     "@quasar/extras": "^1.9.7",
     "@vue/composition-api": "^0.6.7",
     "core-js": "^3.6.5",
     "is-what": "^3.11.2",
-    "planetar": "^0.6.1",
+    "planetar": "^0.6.2",
     "quasar": "^1.14.1"
   },
   "browserslist": [
