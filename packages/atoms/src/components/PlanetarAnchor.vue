@@ -31,7 +31,7 @@
 </template>
 
 <style lang="sass">
-@import 'node_modules/@planetar/styles'
+@import '@planetar/styles'
 
 .planetar-anchor
   +C(color, primary)

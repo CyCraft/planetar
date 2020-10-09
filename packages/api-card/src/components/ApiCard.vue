@@ -25,7 +25,7 @@
 </template>
 
 <style lang="sass" scoped>
-@import 'node_modules/@planetar/styles'
+@import '@planetar/styles'
 
 .planetar-api-card
   min-width: 400px

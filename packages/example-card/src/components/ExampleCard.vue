@@ -21,7 +21,7 @@
 
 <style lang="sass">
 /** global styles */
-@import 'node_modules/@planetar/styles'
+@import '@planetar/styles'
 
 .planetar-example-card
   +C(border, stone-dark, thin solid)
