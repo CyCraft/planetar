@@ -3,7 +3,7 @@
   "version": "0.2.3",
   "description": "Doc build components for Planetar",
   "author": "Luca Ban - Mesqueeb",
-  "module": "src/index.js",
+  "module": "dist/index.js",
   "main": "dist/index.js",
   "scripts": {
     "build": "rimraf dist && vue-compile src -o dist",
