@@ -38,5 +38,6 @@
   "vetur": {
     "tags": "vetur/tags.json",
     "attributes": "vetur/attributes.json"
-  }
+  },
+  "gitHead": "ee92e056b2964044ae41e63acb2e0670d483b7e2"
 }
