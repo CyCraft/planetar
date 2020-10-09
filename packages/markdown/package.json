@@ -1,6 +1,6 @@
 {
   "name": "@planetar/markdown",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "Markdown used throughout Planetar's packages.",
   "author": "Luca Ban - Mesqueeb",
   "module": "dist/index.js",
@@ -11,7 +11,7 @@
     "vue-int": "vue-int -i src/components -r -o vetur"
   },
   "dependencies": {
-    "@planetar/styles": "^0.1.2",
+    "@planetar/styles": "^0.2.0",
     "@planetar/utils": "^0.1.6",
     "is-what": "^3.11.2",
     "prismjs": "^1.21.0",
