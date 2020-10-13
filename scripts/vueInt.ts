@@ -1,5 +1,6 @@
 import * as fs from 'fs-extra'
 
+const mainFolder = 'packages/planetar'
 const folders = [
   'packages/api-card',
   'packages/atoms',
@@ -20,7 +21,7 @@ const tagsObject = folders.reduce((carry, folder) => {
 }, {} as Record<string, any>)
 
 fs.writeFileSync(
-  'packages/planetar/vetur/attributes.json',
+  `${mainFolder}/vetur/attributes.json`,
   JSON.stringify(attributesObject, undefined, 2)
 )
-fs.writeFileSync('packages/planetar/vetur/tags.json', JSON.stringify(tagsObject, undefined, 2))
+fs.writeFileSync(`${mainFolder}/vetur/tags.json`, JSON.stringify(tagsObject, undefined, 2))
