@@ -1,6 +1,6 @@
 {
   "name": "@planetar/doc-builder",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Doc build components for Planetar",
   "author": "Luca Ban - Mesqueeb",
   "module": "dist/index.js",
@@ -11,7 +11,7 @@
     "vue-int": "vue-int -i src/components -r -o vetur"
   },
   "dependencies": {
-    "@planetar/api-card": "^0.6.1",
+    "@planetar/api-card": "^0.6.2",
     "@planetar/atoms": "^0.4.1",
     "@planetar/example-card": "^0.6.1",
     "@planetar/markdown": "^0.3.1",
