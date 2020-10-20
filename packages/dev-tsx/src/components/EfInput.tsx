@@ -11,10 +11,7 @@ interface Events {
 interface ComponentData {}
 
 export default tsx.componentFactoryOf<Events>().create({
-  // the name EfInput automatically lets EasyForm know internalErrors is true
-  // https://github.com/mesqueeb/quasar-ui-easy-forms/blob/master/ui/src/components/EasyField.vue#L341
   name: 'EfInput',
-  // do not change the name "EfInput" !!
   props: {
     outlined: propType<boolean>(Boolean).default(true),
     valueType: propType(String).optional,
@@ -25,12 +22,12 @@ export default tsx.componentFactoryOf<Events>().create({
      */
     color: propType(String).default('primary'),
   },
-  data (): ComponentData {
+  data(): ComponentData {
     return {}
   },
   watch: {},
   computed: {
-    propsForQInput (): { [key: string]: any } {
+    propsForQInput(): { [key: string]: any } {
       // must make copy of original `rules` attr to avoid circular reactivity causing an endless loop
       let rules: any[] = isArray(this.$attrs.rules) ? [...this.$attrs.rules] : []
       if (this.valueType === 'number') {
@@ -42,22 +39,22 @@ export default tsx.componentFactoryOf<Events>().create({
         rules,
       }
     },
-    attrsForQInput (): { placeholder: string | undefined; [key: string]: any } {
+    attrsForQInput(): { placeholder: string | undefined; [key: string]: any } {
       const { propsForQInput } = this
       return { placeholder: propsForQInput.placeholder }
     },
   },
   methods: {
-    onInput (val: any) {
+    onInput(val: any) {
       if (this.valueType === 'number') val = Number(val)
       this.$emit('input', val)
     },
   },
-  render (): VNode {
+  render(): VNode {
     const { propsForQInput, attrsForQInput, $listeners, onInput } = this
     return (
       <QInput props={propsForQInput} attrs={attrsForQInput} on={{ ...$listeners, input: onInput }}>
-        <template slot='append'>{this.$slots.append}</template>
+        <template slot="append">{this.$slots.append}</template>
       </QInput>
     )
   },

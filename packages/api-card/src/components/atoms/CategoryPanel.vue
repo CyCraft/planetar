@@ -1,5 +1,5 @@
 <template>
-  <EasyForm
+  <BlitzForm
     class="planetar-category-panel"
     :schema="schemaCalculated"
     :mode="mode"
@@ -18,18 +18,18 @@
     background-color: transparentize($c-stone, 0.3)
     padding: 0.2em 0.6em
     border-radius: 4px
-  .easy-form__form
+  .blitz-form__form
     grid-gap: 6px !important
-  .easy-field
+  .blitz-field
     padding: 1em
-  .easy-field:not(.easy-field--no-label)
+  .blitz-field:not(.blitz-field--no-label)
     grid-template-columns: minmax(150px, min-content) 1fr
-    .easy-field__label
+    .blitz-field__label
       justify-self: start
       align-self: start
       margin-bottom: 4px
       +t-subtitle2()
-    .easy-field__sub-label
+    .blitz-field__sub-label
       grid-column: 2 / 3
       +t-body2()
       br
@@ -38,24 +38,24 @@
         content: ""
       li
         +mb($md)
-    .easy-field__component
+    .blitz-field__component
       grid-column: 2 / 3
 </style>
 
 <script>
 import vue from 'vue'
-import { EasyForm } from 'quasar-ui-easy-forms'
+import { BlitzForm } from '@blitzar/form'
 import { isPlainObject } from 'is-what'
 import { PlanetarInput, PlanetarToggle, PlanetarSelect } from '@planetar/atoms'
 
-// used in EasyForm
+// used in BlitzForm
 vue.component('PlanetarInput', PlanetarInput)
 vue.component('PlanetarToggle', PlanetarToggle)
 vue.component('PlanetarSelect', PlanetarSelect)
 
 export default {
   name: 'CategoryPanel',
-  components: { EasyForm },
+  components: { BlitzForm },
   props: {
     schema: { type: Array, required: true },
     /**

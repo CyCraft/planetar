@@ -1,4 +1,4 @@
-import { isUndefined, isFunction, isArray, isString } from 'is-what'
+import { isUndefined, isArray, isString } from 'is-what'
 import { evaluateString } from './evaluateString'
 // export interface PropDescriptor extends Descriptor {
 // 	type?: { name: string; func?: boolean }
@@ -16,10 +16,10 @@ function parseExample(example) {
 
 /**
  * @param {object} vueDocgenProp
- * @returns {{categories: string[], schema: object}} EasyForm schema blueprint
+ * @returns {{categories: string[], schema: object}} BlitzForm schema blueprint
  */
 export function propToPropSchema(vueDocgenProp) {
-  console.log(`vueDocgenProp → `, vueDocgenProp)
+  if (process && process.env && process.env.DEV) console.log(`vueDocgenProp → `, vueDocgenProp)
   // get the documentation I want to use from the vueDocgenProp
   const {
     required,
@@ -61,7 +61,7 @@ export function propToPropSchema(vueDocgenProp) {
   const isEvent = categories.includes('events')
   const isMethod = categories.includes('methods')
 
-  // whatever the prop is, default to an 'input' EasyField
+  // whatever the prop is, default to an 'input'
   let component = isSlot || isEvent || isMethod ? undefined : 'PlanetarInput'
   let subLabel = description
   let options,
@@ -105,7 +105,7 @@ export function propToPropSchema(vueDocgenProp) {
       subLabel += `\n\nDefault: \`${defaultValue.value}\``
     }
   }
-  // if the prop is a Boolean, show this as a 'toggle' EasyField
+  // if the prop is a Boolean, show this as a 'toggle'
   if (types.includes('boolean') || (typeTags.length && typeTags.includes('boolean'))) {
     component = 'PlanetarToggle'
     _default = eval(_default)
@@ -123,7 +123,7 @@ export function propToPropSchema(vueDocgenProp) {
         .map((t) => t.trim())
         .filter((t) => t[0] === `'` && t[t.length - 1] === `'`)
     : []
-  // if the prop has a fixed set of possible values, show this as an 'option' EasyField
+  // if the prop has a fixed set of possible values, show this as an 'option'
   const propHasValues = isArray(valuesCalculated) && valuesCalculated.length > 1
   if (propHasValues) {
     component = 'PlanetarSelect'
@@ -148,7 +148,7 @@ export function propToPropSchema(vueDocgenProp) {
   }
   // remove any "undefined" from the string
   if (subLabel) subLabel = subLabel.replace('undefined\n\n', '')
-  // Create the EasyField schema for the prop
+  // Create the blueprint for the prop
   const schema = {
     required,
     id: propName,
