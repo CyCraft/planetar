@@ -35,13 +35,13 @@
 </template>
 
 <style lang="sass">
-@import '@planetar/styles/variables'
+@import 'node_modules/@planetar/styles/variables'
 
 /** global styles */
 </style>
 
 <style lang="sass" scoped>
-@import '@planetar/styles/variables'
+@import 'node_modules/@planetar/styles/variables'
 
 .test-tabs
   min-width: 150px
