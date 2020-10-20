@@ -20,7 +20,7 @@
 </template>
 
 <style lang="sass">
-@import 'node_modules/@planetar/styles/variables'
+@import '@planetar/styles/variables'
 
 /** global styles */
 .planetar-list
@@ -31,7 +31,7 @@
 </style>
 
 <style lang="sass" scoped>
-@import 'node_modules/@planetar/styles/variables'
+@import '@planetar/styles/variables'
 
 .planetar-list
   ._item
