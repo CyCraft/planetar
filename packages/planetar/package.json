@@ -1,6 +1,6 @@
 {
   "name": "planetar",
-  "version": "0.7.4",
+  "version": "0.7.5",
   "author": "Luca Ban - Mesqueeb",
   "description": "A Vue framework for creating a design system styleguide with interactive component explorer 🪐",
   "license": "MIT",
@@ -24,7 +24,7 @@
     "@planetar/api-card": "^0.6.4",
     "@planetar/atoms": "^0.4.3",
     "@planetar/component-gallery": "^0.6.4",
-    "@planetar/doc-builder": "^0.3.4",
+    "@planetar/doc-builder": "^0.3.5",
     "@planetar/example-card": "^0.6.3",
     "@planetar/markdown": "^0.3.3"
   },
