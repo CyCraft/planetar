@@ -7,7 +7,7 @@
       <DocPage
         :chapterOrder="['CodeBlock examples.vue', 'textWall.md', 'Markdown examples.vue']"
         pathToChapterFiles="pages/doc-builder/helpers"
-        pathToApiCardSourceFile="components/atoms/EfButton.vue"
+        :pathsToApiCardSourceFile="['components/atoms/EfButton.vue']"
         @TOC="addTOC"
       />
     </div>

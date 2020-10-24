@@ -98,9 +98,10 @@ export default {
         const tag = el.tagName
         return { text, id, tag }
       })
-      if (this.pathToApiCardSourceFile) {
+      const apiCardCount = this.pathsToApiCardSourceFile.length
+      if (apiCardCount) {
         payloadTOC.push({
-          text: 'API Card',
+          text: apiCardCount === 1 ? 'API Card' : 'API Cards',
           id: 'api-card',
           tag: 'H1',
         })
