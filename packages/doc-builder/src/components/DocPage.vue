@@ -18,8 +18,13 @@
       />
     </template>
     <!-- api card section -->
-    <div v-if="pathsToApiCardSourceFile.length" id="api-card" class="mb-xxxl">
-      <ApiComponentExample v-for="path in pathsToApiCardSourceFile" :key="path" :filePath="path" />
+    <div v-if="pathsToApiCardSourceFile.length" id="api-card">
+      <ApiComponentExample
+        class="mb-xxxl"
+        v-for="path in pathsToApiCardSourceFile"
+        :key="path"
+        :filePath="path"
+      />
     </div>
   </div>
 </template>
