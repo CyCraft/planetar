@@ -4,7 +4,7 @@
   "author": "Luca Ban - Mesqueeb",
   "description": "Example Card based on a Vue file with automatic source extraction",
   "license": "MIT",
-  "module": "src/index.js",
+  "module": "dist/index.js",
   "main": "dist/index.js",
   "scripts": {
     "build": "rimraf dist && vue-compile src -o dist",
