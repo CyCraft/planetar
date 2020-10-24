@@ -18,8 +18,8 @@
       />
     </template>
     <!-- api card section -->
-    <div v-if="pathToApiCardSourceFile" class="mb-xxxl">
-      <ApiComponentExample id="api-card" :filePath="pathToApiCardSourceFile" />
+    <div v-if="pathsToApiCardSourceFile.length" id="api-card" class="mb-xxxl">
+      <ApiComponentExample v-for="path in pathsToApiCardSourceFile" :key="path" :filePath="path" />
     </div>
   </div>
 </template>
@@ -54,10 +54,11 @@ export default {
      */
     chapterOrder: { type: Array, required: true },
     /**
-     * (optional) A path to a vue file to generate an API Card at the bottom of the doc page.
-     * @example 'components/atoms/MyButton.vue'
+     * (optional) An array of paths to the Vue files to generate API Cards for at the bottom of the doc page.
+     * @type {string[]}
+     * @example ['components/atoms/MyButton.vue']
      */
-    pathToApiCardSourceFile: { type: String },
+    pathsToApiCardSourceFile: { type: Array, default: () => [] },
   },
   data() {
     return { mountCount: 0 }
