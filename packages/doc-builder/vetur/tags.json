@@ -3,7 +3,7 @@
     "attributes": [
       "pathToChapterFiles",
       "chapterOrder",
-      "pathToApiCardSourceFile"
+      "pathsToApiCardSourceFile"
     ],
     "description": ""
   },
