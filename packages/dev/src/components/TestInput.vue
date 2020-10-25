@@ -29,7 +29,7 @@
 </template>
 
 <style lang="sass">
-@import 'node_modules/@planetar/styles/variables'
+@import '@planetar/styles/variables'
 
 /** global styles */
 .animate-blink
@@ -46,7 +46,7 @@
 </style>
 
 <style lang="sass" scoped>
-@import 'node_modules/@planetar/styles/variables'
+@import '@planetar/styles/variables'
 
 .test-input
   min-width: 150px
