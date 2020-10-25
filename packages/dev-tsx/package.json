@@ -1,6 +1,6 @@
 {
   "name": "dev-tsx",
-  "version": "0.6.4",
+  "version": "0.6.5",
   "description": "project used internally when developing for planetar",
   "productName": "dev",
   "author": "Luca Ban - mesqueeb",
@@ -13,9 +13,9 @@
     "dev:electron": "quasar dev -m electron"
   },
   "dependencies": {
-    "@planetar/api-card": "^0.6.4",
-    "@planetar/atoms": "^0.4.3",
-    "@planetar/example-card": "^0.6.3",
+    "@planetar/api-card": "^0.6.5",
+    "@planetar/atoms": "^0.4.4",
+    "@planetar/example-card": "^0.6.4",
     "@quasar/extras": "^1.9.10",
     "is-what": "^3.11.2",
     "quasar": "^1.14.2",

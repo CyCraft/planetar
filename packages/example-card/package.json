@@ -1,6 +1,6 @@
 {
   "name": "@planetar/example-card",
-  "version": "0.6.3",
+  "version": "0.6.4",
   "author": "Luca Ban - Mesqueeb",
   "description": "Example Card based on a Vue file with automatic source extraction",
   "license": "MIT",
@@ -14,10 +14,10 @@
   },
   "homepage": "https://github.com/cycraft/planetar",
   "dependencies": {
-    "@planetar/atoms": "^0.4.3",
-    "@planetar/markdown": "^0.3.3",
+    "@planetar/atoms": "^0.4.4",
+    "@planetar/markdown": "^0.3.4",
     "@planetar/styles": "^0.2.1",
-    "@planetar/utils": "^0.1.8",
+    "@planetar/utils": "^0.1.9",
     "case-anything": "^1.1.2"
   },
   "repository": {
