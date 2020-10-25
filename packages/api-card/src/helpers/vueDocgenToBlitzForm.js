@@ -90,7 +90,9 @@ export function propToPropSchema(vueDocgenProp) {
   if (properties.length && isEvent) {
     subLabel += `\n\nParams:`
     properties.forEach(({ description, name, type }) => {
-      subLabel += `\n- **${name}** - ${description}<br />Type: \`${type.names.join(' | ')}\``
+      subLabel += `\n- **${name}**${description ? ' - ' : ''}${
+        description || ''
+      }<br />Type: \`${type.names.join(' | ')}\``
     })
   }
 
