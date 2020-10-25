@@ -28,6 +28,7 @@
 @import '@planetar/styles/variables'
 
 .planetar-api-card
+  +C(background, 'white')
   min-width: 400px
   min-height: 400px
   max-height: 50vh
