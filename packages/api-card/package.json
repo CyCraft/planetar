@@ -4,7 +4,7 @@
   "author": "Luca Ban - Mesqueeb",
   "description": "Planetar Api Card",
   "license": "MIT",
-  "module": "src/index.js",
+  "module": "dist/index.js",
   "main": "dist/index.js",
   "scripts": {
     "build": "rimraf dist && vue-compile src -o dist",

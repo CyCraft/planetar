@@ -10,7 +10,7 @@
 </template>
 
 <style lang="sass">
-@import '@planetar/styles/variables'
+@import 'node_modules/@planetar/styles/variables'
 
 /** global styles */
 .planetar-category-panel
