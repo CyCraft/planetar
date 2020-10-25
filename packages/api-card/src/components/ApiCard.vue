@@ -193,7 +193,7 @@ export default {
      * @param {ComponentDoc} vueDocgenData
      */
     parseVueDocgenData(vueDocgenData = {}) {
-      console.log(`vueDocgenData → `, vueDocgenData)
+      if (process?.env?.DEV) console.log(`vueDocgenData → `, vueDocgenData)
       const { categorySchemaMap, getExample, value } = this
       const modelToEmit = { ...value }
       const {
@@ -212,15 +212,21 @@ export default {
         ...events.map((e) => mergeAndConcat(e, fixedCatToCustomTag(FIXED_CATS.events))),
         ...methods.map((m) => mergeAndConcat(m, fixedCatToCustomTag(FIXED_CATS.methods))),
       ]
-      ;[...props, ...fixedCats].forEach((prop /* PropDescriptor */) => {
+      ;[...props, ...fixedCats].forEach((prop /* PropDescriptor */, index) => {
         const schemaInfo = propToPropSchema(prop)
         const { categories, schema } = schemaInfo
-        if (schema.default !== undefined) {
-          modelToEmit[schema.id] = schema.default
+
+        // only add to `modelToEmit` if it's an actual prop.
+        const isProp = index < props.length
+        if (isProp) {
+          if (schema.default !== undefined) {
+            modelToEmit[schema.id] = schema.default
+          }
+          if (schema.default === undefined) {
+            modelToEmit[schema.id] = getExample(prop, prop.required)
+          }
         }
-        if (schema.default === undefined) {
-          modelToEmit[schema.id] = getExample(prop, prop.required)
-        }
+
         categories.forEach((category) => {
           if (!(category in categorySchemaMap)) this.$set(categorySchemaMap, category, [])
           categorySchemaMap[category].push(schema)
