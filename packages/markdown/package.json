@@ -14,8 +14,8 @@
     "@planetar/styles": "^0.2.1",
     "@planetar/utils": "^0.1.8",
     "is-what": "^3.11.2",
-    "prismjs": "^1.21.0",
-    "quasar": "^1.14.1",
+    "prismjs": "^1.22.0",
+    "quasar": "^1.14.2",
     "snarkdown": "^2.0.0"
   },
   "keywords": [

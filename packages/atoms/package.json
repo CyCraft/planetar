@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@planetar/styles": "^0.2.1",
-    "quasar": "^1.14.1"
+    "quasar": "^1.14.2"
   },
   "keywords": [
     "Planetar",

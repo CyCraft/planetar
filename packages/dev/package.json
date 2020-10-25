@@ -12,13 +12,13 @@
   },
   "dependencies": {
     "@planetar/styles": "^0.2.1",
-    "@quasar/app": "^2.1.1",
-    "@quasar/extras": "^1.9.7",
+    "@quasar/app": "^2.1.5",
+    "@quasar/extras": "^1.9.10",
     "@vue/composition-api": "^0.6.7",
     "core-js": "^3.6.5",
     "is-what": "^3.11.2",
     "planetar": "^0.7.6",
-    "quasar": "^1.14.1"
+    "quasar": "^1.14.2"
   },
   "browserslist": [
     "last 10 Chrome versions",

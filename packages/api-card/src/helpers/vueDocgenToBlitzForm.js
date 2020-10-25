@@ -1,21 +1,25 @@
 import { isUndefined, isArray, isString } from 'is-what'
 import { evaluateString } from './evaluateString'
-// export interface PropDescriptor extends Descriptor {
-// 	type?: { name: string; func?: boolean }
-// 	description?: string
-// 	required?: boolean
-// 	defaultValue?: { value: string; func?: boolean }
-// 	tags?: { [title: string]: BlockTag[] }
-// 	values?: string[]
-// 	name: string
-// }
+
+/**
+ * @typedef PropDescriptor
+ * @type {{
+  type?: { name: string; func?: boolean }
+  description?: string
+  required?: boolean
+  defaultValue?: { value: string; func?: boolean }
+  tags?: { [title: string]: BlockTag[] }
+  values?: string[]
+  name: string
+}}
+ */
 
 function parseExample(example) {
   return `\`${example}\``
 }
 
 /**
- * @param {object} vueDocgenProp
+ * @param {PropDescriptor} vueDocgenProp
  * @returns {{categories: string[], schema: object}} BlitzForm schema blueprint
  */
 export function propToPropSchema(vueDocgenProp) {
@@ -25,7 +29,7 @@ export function propToPropSchema(vueDocgenProp) {
     required,
     description,
     type = { name: 'any' },
-    defaultValue = {},
+    defaultValue: defaultValueInfo = {},
     values = [],
     tags: customTags = {},
     name: propName,
@@ -73,7 +77,7 @@ export function propToPropSchema(vueDocgenProp) {
     span,
     emitValue,
     inputType,
-    _default
+    defaultValue
   let fieldClasses = []
 
   if (typeTags.length && !isEvent) {
@@ -90,25 +94,26 @@ export function propToPropSchema(vueDocgenProp) {
     })
   }
 
-  _default = defaultValue.value
-  const requiresNewline = defaultValue && defaultValue.value && defaultValue.value.includes('\n')
+  defaultValue = defaultValueInfo.value
+  const requiresNewline =
+    defaultValueInfo && defaultValueInfo.value && defaultValueInfo.value.includes('\n')
   if (requiresNewline) {
     inputType = 'textarea'
     autogrow = true
   }
-  const _df = evaluateString(defaultValue.value)
+  const _df = evaluateString(defaultValueInfo.value)
   // If it has a default, write it in the description
   if (!isUndefined(_df)) {
     if (requiresNewline) {
-      subLabel += `\n\nDefault:\n\`\`\`\n${defaultValue.value}\n\`\`\``
+      subLabel += `\n\nDefault:\n\`\`\`\n${defaultValueInfo.value}\n\`\`\``
     } else {
-      subLabel += `\n\nDefault: \`${defaultValue.value}\``
+      subLabel += `\n\nDefault: \`${defaultValueInfo.value}\``
     }
   }
   // if the prop is a Boolean, show this as a 'toggle'
   if (types.includes('boolean') || (typeTags.length && typeTags.includes('boolean'))) {
     component = 'PlanetarToggle'
-    _default = eval(_default)
+    defaultValue = eval(defaultValue)
   }
   // if it's a Number field
   if (typeIs('number')) {
@@ -167,7 +172,7 @@ export function propToPropSchema(vueDocgenProp) {
     span,
     emitValue,
     // if the prop is `true` by default, set to true
-    default: _default,
+    defaultValue,
     // defaults
     hasMarkdown: true,
     isCode: true,

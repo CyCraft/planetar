@@ -219,10 +219,10 @@ export default {
         // only add to `modelToEmit` if it's an actual prop.
         const isProp = index < props.length
         if (isProp) {
-          if (schema.default !== undefined) {
-            modelToEmit[schema.id] = schema.default
+          if (schema.defaultValue !== undefined) {
+            modelToEmit[schema.id] = schema.defaultValue
           }
-          if (schema.default === undefined) {
+          if (schema.defaultValue === undefined) {
             modelToEmit[schema.id] = getExample(prop, prop.required)
           }
         }
