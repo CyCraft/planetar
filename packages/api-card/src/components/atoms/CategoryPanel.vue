@@ -5,6 +5,7 @@
     :mode="mode"
     v-bind="$attrs"
     v-on="$listeners"
+    labelPosition="left"
     :key="isPlainObject($attrs.value) ? String($attrs.value.value) : '_'"
   />
 </template>
@@ -18,28 +19,34 @@
     background-color: transparentize($c-stone, 0.3)
     padding: 0.2em 0.6em
     border-radius: 4px
+  /** Spacing and layout */
   .blitz-form__form
     grid-gap: 6px !important
-  .blitz-field
-    padding: 1em
-  .blitz-field:not(.blitz-field--no-label)
-    grid-template-columns: minmax(150px, min-content) 1fr
-    .blitz-field__label
-      justify-self: start
-      align-self: start
-      margin-bottom: 4px
-      +t-subtitle2()
-    .blitz-field__sub-label
-      grid-column: 2 / 3
-      +t-body2()
-      br
-        +mt($sm)
-        display: block
-        content: ""
-      li
-        +mb($md)
-    .blitz-field__component
-      grid-column: 2 / 3
+    > .blitz-field
+      padding: 1em
+      > .blitz-field__label
+        justify-self: start
+        align-self: start
+        margin-bottom: 4px
+        min-width: 150px
+      > .blitz-field__sub-label
+        grid-row: 1 / 2
+      > .blitz-field__component,
+      > .q-field
+        grid-row: 2 / 3
+        grid-column: 2 / 3
+  /** Typography */
+  .blitz-field__label
+    +t-subtitle2()
+  .blitz-field__sub-label
+    grid-column: 2 / 3
+    +t-body2()
+    br
+      +mt($sm)
+      display: block
+      content: ""
+    li
+      +mb($md)
 </style>
 
 <script>

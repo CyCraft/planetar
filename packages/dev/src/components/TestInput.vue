@@ -84,7 +84,7 @@ export default {
     /**
      * @type {'primary' | 'secondary'}
      */
-    color: { type: String },
+    color: { type: String, required: true },
     /**
      * When `true`, shows a search icon.
      * @category content
