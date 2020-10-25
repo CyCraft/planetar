@@ -193,7 +193,7 @@ export default {
      * @param {ComponentDoc} vueDocgenData
      */
     parseVueDocgenData(vueDocgenData = {}) {
-      if (process?.env?.DEV) console.log(`vueDocgenData → `, vueDocgenData)
+      if (process && process.env && process.env.DEV) console.log(`vueDocgenData → `, vueDocgenData)
       const { categorySchemaMap, getExample, value } = this
       const modelToEmit = { ...value }
       const {
