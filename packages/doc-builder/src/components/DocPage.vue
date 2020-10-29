@@ -73,6 +73,7 @@ export default {
       if (count >= this.filesList.length) {
         const titleEls = DOMRegex(/H1|H2|H3/, this.$el)
         this.parseTitleEls(titleEls)
+        // todo: scroll to hash tag in URL
       }
     },
   },
