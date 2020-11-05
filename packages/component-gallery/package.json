@@ -4,7 +4,7 @@
   "author": "Luca Ban - Mesqueeb",
   "description": "Planetar Component Gallery",
   "license": "MIT",
-  "module": "dist/index.js",
+  "module": "src/index.js",
   "main": "dist/index.js",
   "scripts": {
     "build": "rimraf dist && vue-compile src -o dist",
