@@ -1,6 +1,6 @@
 {
   "name": "dev",
-  "version": "0.6.8",
+  "version": "0.6.9",
   "description": "project used internally when developing for planetar",
   "productName": "dev",
   "author": "Luca Ban - mesqueeb",
@@ -17,7 +17,7 @@
     "@vue/composition-api": "^0.6.7",
     "core-js": "^3.6.5",
     "is-what": "^3.11.3",
-    "planetar": "^0.7.8",
+    "planetar": "^0.7.9",
     "quasar": "^1.14.3"
   },
   "browserslist": [
