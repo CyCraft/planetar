@@ -3,7 +3,7 @@
   "version": "0.4.4",
   "description": "Atoms used throughout Planetar's packages.",
   "author": "Luca Ban - Mesqueeb",
-  "module": "src/index.js",
+  "module": "dist/index.js",
   "main": "dist/index.js",
   "scripts": {
     "build": "rimraf dist && vue-compile src -o dist",
@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@planetar/styles": "^0.2.1",
-    "quasar": "^1.14.2"
+    "quasar": "^1.14.3"
   },
   "keywords": [
     "Planetar",

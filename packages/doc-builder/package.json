@@ -3,7 +3,7 @@
   "version": "0.3.8",
   "description": "Doc build components for Planetar",
   "author": "Luca Ban - Mesqueeb",
-  "module": "src/index.js",
+  "module": "dist/index.js",
   "main": "dist/index.js",
   "scripts": {
     "build": "rimraf dist && vue-compile src -o dist",
@@ -17,7 +17,7 @@
     "@planetar/markdown": "^0.3.4",
     "@planetar/styles": "^0.2.1",
     "case-anything": "^1.1.2",
-    "map-anything": "^1.0.0",
+    "map-anything": "^1.0.1",
     "vue-scrollactive": "^0.9.3"
   },
   "keywords": [

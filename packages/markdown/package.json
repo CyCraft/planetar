@@ -3,7 +3,7 @@
   "version": "0.3.4",
   "description": "Markdown used throughout Planetar's packages.",
   "author": "Luca Ban - Mesqueeb",
-  "module": "src/index.js",
+  "module": "dist/index.js",
   "main": "dist/index.js",
   "scripts": {
     "build": "rimraf dist && vue-compile src -o dist",
@@ -13,9 +13,9 @@
   "dependencies": {
     "@planetar/styles": "^0.2.1",
     "@planetar/utils": "^0.1.9",
-    "is-what": "^3.11.2",
+    "is-what": "^3.11.3",
     "prismjs": "^1.22.0",
-    "quasar": "^1.14.2",
+    "quasar": "^1.14.3",
     "snarkdown": "^2.0.0"
   },
   "keywords": [

@@ -32,7 +32,7 @@
 </template>
 
 <style lang="sass" scoped>
-@import '@planetar/styles/variables'
+@import 'node_modules/@planetar/styles/variables'
 
 .component-expose
   > *
