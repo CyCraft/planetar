@@ -13,9 +13,9 @@
   "dependencies": {
     "@planetar/styles": "^0.2.1",
     "@planetar/utils": "^0.1.9",
-    "is-what": "^3.11.3",
+    "is-what": "^3.12.0",
     "prismjs": "^1.22.0",
-    "quasar": "^1.14.3",
+    "quasar": "^1.14.7",
     "snarkdown": "^2.0.0"
   },
   "keywords": [
