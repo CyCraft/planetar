@@ -54,9 +54,9 @@
     "type": "array",
     "description": "The labels of the tabs."
   },
-  "planetar-tabs/initialTabIndex": {
-    "type": "number",
-    "description": "The tab index which should be opened initially."
+  "planetar-tabs/activeTab": {
+    "type": "string",
+    "description": "The tab which should be opened initially. Can be used with `.sync`"
   },
   "planetar-toggle/readonly": {
     "type": "boolean"
@@ -143,6 +143,14 @@
     "type": "boolean",
     "description": "When `true` the JSDoc above the default export will be stripped from displayed source code in the script tab."
   },
+  "example-card/iframe": {
+    "type": "string",
+    "description": "If you want to host the actual example that's being rendered somewhere else and render it via iframe instead -- to be able to isolate all CSS -- you can do this by passing the iframe URL."
+  },
+  "example-card/iframeHeight": {
+    "type": "string",
+    "description": "The height you want to pass to the iframe. If pixels it must include 'px'."
+  },
   "example-section/filePath": {
     "type": "string",
     "description": "Relative from the `src` folder."
@@ -154,6 +162,14 @@
   "example-section/hideTitle": {
     "type": "boolean",
     "description": "By default a title is shown above the example. Can be hidden with hideTitle."
+  },
+  "example-section/iframe": {
+    "type": "string",
+    "description": "If you want to host the actual example that's being rendered somewhere else and render it via iframe instead -- to be able to isolate all CSS -- you can do this by passing the iframe URL."
+  },
+  "example-section/iframeHeight": {
+    "type": "string",
+    "description": "The height you want to pass to the iframe. If pixels it must include 'px'."
   },
   "code-block/lang": {
     "type": "string"

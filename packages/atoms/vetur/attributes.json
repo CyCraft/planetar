@@ -27,9 +27,9 @@
     "type": "array",
     "description": "The labels of the tabs."
   },
-  "planetar-tabs/initialTabIndex": {
-    "type": "number",
-    "description": "The tab index which should be opened initially."
+  "planetar-tabs/activeTab": {
+    "type": "string",
+    "description": "The tab which should be opened initially. Can be used with `.sync`"
   },
   "planetar-toggle/readonly": {
     "type": "boolean"

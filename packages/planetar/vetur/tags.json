@@ -49,7 +49,7 @@
   "planetar-tabs": {
     "attributes": [
       "tabLabels",
-      "initialTabIndex"
+      "activeTab"
     ],
     "description": "This is the main input field."
   },
@@ -115,7 +115,9 @@
   "example-card": {
     "attributes": [
       "filePath",
-      "stripJSDocDescription"
+      "stripJSDocDescription",
+      "iframe",
+      "iframeHeight"
     ],
     "description": ""
   },
@@ -123,7 +125,9 @@
     "attributes": [
       "filePath",
       "title",
-      "hideTitle"
+      "hideTitle",
+      "iframe",
+      "iframeHeight"
     ],
     "description": ""
   },

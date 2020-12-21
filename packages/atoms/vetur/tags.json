@@ -28,7 +28,7 @@
   "planetar-tabs": {
     "attributes": [
       "tabLabels",
-      "initialTabIndex"
+      "activeTab"
     ],
     "description": "This is the main input field."
   },

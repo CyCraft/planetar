@@ -4,7 +4,7 @@
   "author": "Luca Ban - Mesqueeb",
   "description": "Planetar utils",
   "license": "MIT",
-  "module": "src/index.js",
+  "module": "dist/index.js",
   "main": "dist/index.js",
   "scripts": {
     "build": "rimraf dist && copyfiles --up 1 'src/*' dist"
