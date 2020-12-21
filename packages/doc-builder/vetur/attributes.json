@@ -11,6 +11,10 @@
     "type": "array",
     "description": "(optional) An array of paths to the Vue files to generate API Cards for at the bottom of the doc page."
   },
+  "doc-page/chapterOptions": {
+    "type": "Record<string, Record<string, any>>",
+    "description": "(optional) If you want to pass extra props to either the `ExampleSection` or `MarkdownSection` you can do so with the filename from `chapterOrder` as key and the props as value."
+  },
   "table-of-contents/TOC": {
     "type": "array"
   }
