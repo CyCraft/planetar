@@ -65,6 +65,8 @@ module.exports = configure(function (ctx) {
 
       // https://quasar.dev/quasar-cli/handling-webpack
       extendWebpack(cfg) {
+        cfg.module.rules[0].exclude = /iframe-example\.vue/
+        // console.log(`cfg.module.rules[0] → `, cfg.module.rules[0])
         // linting is slow in TS projects, we execute it only for production builds
         if (ctx.prod) {
           cfg.module.rules.push({

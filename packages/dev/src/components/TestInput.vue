@@ -83,6 +83,7 @@ export default {
     },
     /**
      * @type {'primary' | 'secondary'}
+     * @example 'blue'
      */
     color: { type: String, required: true },
     /**

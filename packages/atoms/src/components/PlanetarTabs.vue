@@ -1,7 +1,7 @@
 <template>
   <div class="planetar-tabs">
     <QTabs
-      v-model="activeTab"
+      v-model="activeTabIndex"
       dense
       class="bg-stone c-grey-3 _top"
       active-color="primary"
@@ -17,7 +17,13 @@
         no-caps
       />
     </QTabs>
-    <QTabPanels v-model="activeTab" animated class="_bottom" v-bind="propsToPass" v-on="$listeners">
+    <QTabPanels
+      v-model="activeTabIndex"
+      animated
+      class="_bottom"
+      v-bind="propsToPass"
+      v-on="$listeners"
+    >
       <QTabPanel
         v-for="(label, index) in tabLabels"
         :key="label + index"
@@ -60,12 +66,7 @@ import { QTabs, QTab, QTabPanels, QTabPanel } from 'quasar'
  */
 export default {
   name: 'PlanetarTabs',
-  components: {
-    QTabs,
-    QTab,
-    QTabPanels,
-    QTabPanel,
-  },
+  components: { QTabs, QTab, QTabPanels, QTabPanel },
   props: {
     /**
      * The labels of the tabs.
@@ -73,26 +74,30 @@ export default {
      * @type {string[]}
      * @example ['First Tab', 'Second Tab']
      */
-    tabLabels: {
-      type: [Array],
-      default: () => [],
-      required: true,
-    },
+    tabLabels: { type: Array, default: () => [], required: true },
     /**
-     * The tab index which should be opened initially.
+     * The tab which should be opened initially. Can be used with `.sync`
      * @category content
-     * @type {number}
+     * @type {string}
      */
-    initialTabIndex: {
-      type: [Number],
-      default: 0,
-    },
+    activeTab: { type: String },
   },
   data() {
-    const activeTab = this.initialTabIndex
-    return { activeTab }
+    const i = this.tabLabels.findIndex((label) => label === this.activeTab)
+    const activeTabIndexInner = Math.max(0, i)
+    return { activeTabIndexInner }
   },
   computed: {
+    activeTabIndex: {
+      get() {
+        return this.activeTabIndexInner
+      },
+      set(newIndex) {
+        this.activeTabIndexInner = newIndex
+        const activeTab = this.tabLabels[newIndex]
+        this.$emit('update:active-tab', activeTab)
+      },
+    },
     propsToPass() {
       const { $attrs } = this
       return { ...$attrs }

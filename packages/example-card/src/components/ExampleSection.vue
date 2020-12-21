@@ -5,6 +5,8 @@
     <ExampleCard
       :filePath="filePath"
       :stripJSDocDescription="true"
+      :iframe="iframe"
+      :iframeHeight="iframeHeight"
       @mounted="() => dynamicImports++"
     />
   </div>
@@ -38,10 +40,20 @@ export default {
      * By default a title is shown above the example. Can be hidden with hideTitle.
      */
     hideTitle: { type: Boolean },
+    /**
+     * If you want to host the actual example that's being rendered somewhere else and render it via iframe instead -- to be able to isolate all CSS -- you can do this by passing the iframe URL.
+     */
+    iframe: { type: String },
+    /**
+     * The height you want to pass to the iframe. If pixels it must include 'px'.
+     * @example '800px'
+     */
+    iframeHeight: { type: String },
   },
   created() {
-    const { parseComponent, filePath, parseDescription } = this
+    const { parseComponent, filePath, parseDescription, iframe } = this
     const extension = filePath.split('.').slice(-1)[0]
+    if (iframe) return
     dynamicImport(filePath, extension, 'vue-docgen').then((vueDocgen) => {
       this.dynamicImports++
       parseDescription(vueDocgen)
@@ -49,7 +61,8 @@ export default {
   },
   watch: {
     dynamicImports(count) {
-      if (count > 1) this.$nextTick(() => this.$emit('mounted'))
+      const requiredImportsCount = this.iframe ? 1 : 2
+      if (count >= requiredImportsCount) this.$nextTick(() => this.$emit('mounted'))
     },
   },
   data() {
