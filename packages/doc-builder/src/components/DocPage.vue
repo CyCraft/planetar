@@ -5,7 +5,8 @@
         class="mb-xxxl"
         v-if="filePath.endsWith('.vue')"
         :filePath="filePath"
-        hideTitle
+        :hideTitle="true"
+        v-bind="chapterOptions[filePath.replace(pathToChapterFiles, '')] || {}"
         :key="filePath + i"
         @mounted="() => mountCount++"
       />
@@ -13,6 +14,7 @@
         class="mb-xxxl"
         v-if="filePath.endsWith('.md')"
         :filePath="filePath"
+        v-bind="chapterOptions[filePath.replace(pathToChapterFiles, '')] || {}"
         :key="filePath + i"
         @mounted="() => mountCount++"
       />
@@ -64,6 +66,11 @@ export default {
      * @example ['components/atoms/MyButton.vue']
      */
     pathsToApiCardSourceFile: { type: Array, default: () => [] },
+    /**
+     * (optional) If you want to pass extra props to either the `ExampleSection` or `MarkdownSection` you can do so with the filename from `chapterOrder` as key and the props as value.
+     * @type {Record<string, Record<string, any>>}
+     */
+    chapterOptions: { type: Object, default: () => ({}) },
   },
   data() {
     return { mountCount: 0 }
@@ -79,6 +86,9 @@ export default {
     },
   },
   computed: {
+    /**
+     * A list that combines `pathToChapterFiles` with each file in the `chapterOrder`.
+     */
     filesList() {
       const { pathToChapterFiles, chapterOrder } = this
       const parentPath = pathToChapterFiles.endsWith('/')
