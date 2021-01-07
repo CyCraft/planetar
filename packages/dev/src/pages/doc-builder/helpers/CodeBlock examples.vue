@@ -26,8 +26,9 @@
 # A met de Aba
 ## B met E be
 
-// todo: make this work
-[try me](#api-card)
+[goes to #api-card](#api-card)
+
+[goes to #api-card on page: doc-builder%2F-doc-page](#api-card)
 
 ## B-2 ook met twee
 ### C-1 is geen bom
