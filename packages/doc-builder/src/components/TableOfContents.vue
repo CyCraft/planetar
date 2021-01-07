@@ -207,8 +207,13 @@ export default {
       const activeTocId = activeTocHash.replace('#', '')
       this.willBecomeActiveTocId = activeTocId
       this.activeTocId = ''
+      const router = this.$router
       setTimeout(() => {
-        location.hash = activeTocId
+        if (router) {
+          router.push({ hash: `#${activeTocId}` })
+        } else {
+          location.hash = activeTocId
+        }
       }, SCROLL_DURATION)
     },
     /**
