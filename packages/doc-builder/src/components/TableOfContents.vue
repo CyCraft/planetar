@@ -4,6 +4,7 @@
       class="_toc-wrapper"
       :offset="80"
       :duration="SCROLL_DURATION"
+      :scrollOnStart="false"
       :modifyUrl="false"
       @itemchanged="tocItemChanged"
     >

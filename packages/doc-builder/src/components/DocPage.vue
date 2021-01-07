@@ -26,6 +26,7 @@
         v-for="path in pathsToApiCardSourceFile"
         :key="path"
         :filePath="path"
+        @mounted="() => mountCountApiCards++"
       />
     </div>
   </div>
@@ -38,11 +39,11 @@
 </style>
 
 <script>
-import { kebabCase } from 'case-anything'
-import { DOMRegex } from '../helpers/domHelpers'
+import { parseTitleEls } from '../helpers/domHelpers'
 import { ExampleSection } from '@planetar/example-card'
 import { MarkdownSection } from '@planetar/markdown'
 import { ApiComponentExample } from '@planetar/api-card'
+import { scrollToElId } from '@planetar/utils'
 
 export default {
   name: 'DocPage',
@@ -73,16 +74,22 @@ export default {
     chapterOptions: { type: Object, default: () => ({}) },
   },
   data() {
-    return { mountCount: 0 }
+    return { mountCount: 0, mountCountApiCards: 0 }
   },
   watch: {
     mountCount(count) {
-      if (count >= this.filesList.length) {
-        const titleEls = DOMRegex(/H1|H2|H3/, this.$el)
-        this.parseTitleEls(titleEls)
-        // todo: scroll to hash tag in URL
-        // todo: find the `a#something` elemnets and fix the scroll behaviour
+      const allChaptersMounted = count >= this.filesList.length
+      if (allChaptersMounted) {
+        const payloadTOC = parseTitleEls(this.$el, this.pathsToApiCardSourceFile)
+        this.$emit('TOC', payloadTOC)
       }
+      const allApiCardsMounted = this.mountCountApiCards >= this.pathsToApiCardSourceFile.length
+      if (allChaptersMounted && allApiCardsMounted) this.scrollToHashInUrl()
+    },
+    mountCountApiCards(count) {
+      const allChaptersMounted = this.mountCount >= this.filesList.length
+      const allApiCardsMounted = count >= this.pathsToApiCardSourceFile.length
+      if (allChaptersMounted && allApiCardsMounted) this.scrollToHashInUrl()
     },
   },
   computed: {
@@ -102,32 +109,9 @@ export default {
     },
   },
   methods: {
-    /**
-     * @param {HTMLElement[]} titleEls
-     */
-    parseTitleEls(titleEls) {
-      const payloadTOC = titleEls.map((el) => {
-        const text = el.textContent
-        if (!el.id) {
-          el.id = kebabCase(text)
-        }
-        const id = el.id
-        const tag = el.tagName
-        return { text, id, tag }
-      })
-      const apiCardCount = this.pathsToApiCardSourceFile.length
-      if (apiCardCount) {
-        payloadTOC.push({
-          text: apiCardCount === 1 ? 'API Card' : 'API Cards',
-          id: 'api-card',
-          tag: 'H1',
-        })
-      }
-      /**
-       * An array of objects with info on the H1, H2, H3 tags found on this DocPage after mounting. Emitted when all elements are mounted; it will await any dynamic imports.
-       * @param {{ text: string, id: string, tag: string }[]}
-       */
-      this.$emit('TOC', payloadTOC)
+    scrollToHashInUrl() {
+      const hash = document.location.hash.replace('#', '')
+      if (hash) this.$nextTick(() => scrollToElId(hash))
     },
   },
 }

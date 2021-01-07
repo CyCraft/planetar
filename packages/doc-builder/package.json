@@ -16,6 +16,7 @@
     "@planetar/example-card": "^0.7.0",
     "@planetar/markdown": "^0.3.6",
     "@planetar/styles": "^0.2.1",
+    "@planetar/utils": "^0.1.10",
     "case-anything": "^1.1.2",
     "map-anything": "^1.0.1",
     "vue-scrollactive": "^0.9.3"

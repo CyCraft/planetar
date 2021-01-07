@@ -242,7 +242,7 @@ export default {
         } catch (error) {}
       }
       this.$emit('input', modelToEmit)
-      this.$emit('ready')
+      this.$emit('mounted')
       this.$nextTick(() => {
         if (!this.activeTab) this.activeTab = (this.categoryPlanetarListItems[0] || {}).name || ''
       })

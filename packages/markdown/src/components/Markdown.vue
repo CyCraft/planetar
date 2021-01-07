@@ -11,41 +11,13 @@
 
 <script>
 import { isArray } from 'is-what'
+import { scrollToElId } from '@planetar/utils'
 import { mdToHtml } from '../helpers/htmlHelpers.js'
 import {
   isExternalLink,
   isSamePageHashLink,
   isSameSiteOtherPageLink,
 } from '../helpers/anchorHelpers.js'
-import { scroll } from 'quasar'
-const { getScrollTarget, setScrollPosition } = scroll
-
-/**
- * @param {string} id the id of an element without `#`
- * @returns {void}
- * @example scrollToElId('api-card')
- */
-function scrollToElId(id = '') {
-  const el = document.getElementById(id)
-  const target = getScrollTarget(el)
-  const offset = el.offsetTop
-  const duration = 400
-  setScrollPosition(target, offset, duration)
-}
-
-/**
- * Makes an element scroll to an id on click
- * @param {HTMLElement} el the element to which the click event listener much be attached
- * @param {string} targetId the id to which must be scrolled (without `#`)
- * @returns {void}
- */
-function addScrollToIdClickEvent(el, targetId) {
-  el.addEventListener('click', (e) => {
-    e.preventDefault()
-    e.stopPropagation()
-    scrollToElId(targetId)
-  })
-}
 
 export default {
   name: 'Markdown',
@@ -79,7 +51,9 @@ export default {
     parseAnchorEl(el) {
       if (isSamePageHashLink(el)) {
         const targetId = el.href.split('#')[1]
-        addScrollToIdClickEvent(el, targetId)
+        el.addEventListener('click', (e) => {
+          scrollToElId(targetId, this.$router, e)
+        })
         // todo: set route query
         return
       }
@@ -95,7 +69,7 @@ export default {
           // todo: set route query
           if (targetId) {
             await new Promise((resolve) => setTimeout(resolve, 100))
-            scrollToElId(targetId)
+            scrollToElId(targetId, router, e)
           }
         })
         return

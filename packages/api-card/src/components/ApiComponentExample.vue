@@ -4,7 +4,7 @@
       Interactive preview
     </div>
     <div
-      v-if="exampleComponent && apiCardReady"
+      v-if="exampleComponent && apiCardMounted"
       class="_interactive-preview-section"
       style="width: 100%"
     >
@@ -14,11 +14,7 @@
 
     <div class="text-h6 my-lg">Info card</div>
     <div class="px-xs" style="width: 100%">
-      <ApiCard
-        :filePath="filePath"
-        v-model="propsStringified"
-        @ready="() => (apiCardReady = true)"
-      />
+      <ApiCard :filePath="filePath" v-model="propsStringified" @mounted="onApiCardMounted" />
     </div>
   </div>
 </template>
@@ -88,7 +84,7 @@ export default {
       propsStringified: {},
       model: undefined,
       previewStyle: '',
-      apiCardReady: false,
+      apiCardMounted: false,
     }
   },
   watch: {
@@ -110,6 +106,10 @@ export default {
     },
   },
   methods: {
+    onApiCardMounted() {
+      this.apiCardMounted = true
+      this.$emit('mounted')
+    },
     togglePreviewStyle() {
       if (this.previewStyle === '') {
         this.previewStyle = 'width:100%'
