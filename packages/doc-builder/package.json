@@ -1,6 +1,6 @@
 {
   "name": "@planetar/doc-builder",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Doc build components for Planetar",
   "author": "Luca Ban - Mesqueeb",
   "module": "src/index.js",
@@ -11,12 +11,12 @@
     "vue-int": "vue-int -i src/components -r -o vetur"
   },
   "dependencies": {
-    "@planetar/api-card": "^0.6.8",
-    "@planetar/atoms": "^0.4.6",
-    "@planetar/example-card": "^0.7.0",
-    "@planetar/markdown": "^0.3.6",
+    "@planetar/api-card": "^0.6.9",
+    "@planetar/atoms": "^0.4.7",
+    "@planetar/example-card": "^0.7.1",
+    "@planetar/markdown": "^0.3.7",
     "@planetar/styles": "^0.2.1",
-    "@planetar/utils": "^0.1.10",
+    "@planetar/utils": "^0.1.11",
     "case-anything": "^1.1.2",
     "map-anything": "^1.0.1",
     "vue-scrollactive": "^0.9.3"
