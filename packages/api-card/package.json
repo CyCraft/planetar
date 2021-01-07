@@ -1,6 +1,6 @@
 {
   "name": "@planetar/api-card",
-  "version": "0.6.9",
+  "version": "0.6.10",
   "author": "Luca Ban - Mesqueeb",
   "description": "Planetar Api Card",
   "license": "MIT",
@@ -16,9 +16,9 @@
   "homepage": "https://github.com/cycraft/planetar",
   "dependencies": {
     "@blitzar/form": "^0.0.13",
-    "@planetar/atoms": "^0.4.7",
+    "@planetar/atoms": "^0.4.8",
     "@planetar/styles": "^0.2.1",
-    "@planetar/utils": "^0.1.11",
+    "@planetar/utils": "^0.1.12",
     "case-anything": "^1.1.2",
     "fast-sort": "^2.2.0",
     "is-what": "^3.12.0",
