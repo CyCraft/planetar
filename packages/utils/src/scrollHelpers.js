@@ -27,14 +27,12 @@ function attachHashAfterScrolling(id, vueRouter = undefined) {
  * @example scrollToElId('api-card')
  */
 export function scrollToElId(id = '', vueRouter = undefined, mouseEvent = undefined) {
-  console.log(`id → `, id)
   if (!id) return
   if (mouseEvent) {
     mouseEvent.preventDefault()
     mouseEvent.stopPropagation()
   }
   const el = document.getElementById(id)
-  console.log(`el → `, el)
   if (!el) return
   const target = getScrollTarget(el)
   const offset = el.offsetTop

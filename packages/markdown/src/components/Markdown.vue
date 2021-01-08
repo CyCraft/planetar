@@ -28,11 +28,18 @@ export default {
      */
     content: { type: String },
   },
-  mounted() {
-    this.$nextTick(() => {
-      const anchors = this.$el.querySelectorAll('a')
-      anchors.forEach(this.parseAnchorEl)
-    })
+  watch: {
+    content: {
+      immediate: true,
+      handler(content) {
+        this.$nextTick(() => {
+          const el = this.$el
+          if (!content || !el) return
+          const anchors = el.querySelectorAll('a')
+          anchors.forEach(this.parseAnchorEl)
+        })
+      },
+    },
   },
   methods: {
     /**
@@ -49,6 +56,10 @@ export default {
      * @param {HTMLElement} el
      */
     parseAnchorEl(el) {
+      console.log(`el → `, el)
+      console.log(`isSamePageHashLink(el) → `, isSamePageHashLink(el))
+      console.log(`isSameSiteOtherPageLink(el) → `, isSameSiteOtherPageLink(el))
+      console.log(`!isExternalLink(el) → `, !isExternalLink(el))
       if (isSamePageHashLink(el)) {
         const targetId = el.href.split('#')[1]
         el.addEventListener('click', (e) => {
