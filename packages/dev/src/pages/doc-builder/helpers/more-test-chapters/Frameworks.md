@@ -11,3 +11,5 @@ Click on your favorite framework to see an example:
 - _Nuxt (coming soon)_
 - _Tailwind (coming soon)_
 - _Bulma (coming soon)_
+
+[↑ advanced](#advanced-example)

@@ -56,10 +56,6 @@ export default {
      * @param {HTMLElement} el
      */
     parseAnchorEl(el) {
-      console.log(`el → `, el)
-      console.log(`isSamePageHashLink(el) → `, isSamePageHashLink(el))
-      console.log(`isSameSiteOtherPageLink(el) → `, isSameSiteOtherPageLink(el))
-      console.log(`!isExternalLink(el) → `, !isExternalLink(el))
       if (isSamePageHashLink(el)) {
         const targetId = el.href.split('#')[1]
         el.addEventListener('click', (e) => {

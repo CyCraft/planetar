@@ -1,5 +1,7 @@
 # Basics
 
+[Quasar](#quasar-framework)
+
 `<BlitzForm />` is a Vue component that allows you to easily create forms by passing a _**schema**_. Based on this schema the form is generated for you. No more writing clunky HTML forms! 🎉
 
 > <h6>BlitzForm is a BYOC form generator! (Bring Your Own Components)</h6>

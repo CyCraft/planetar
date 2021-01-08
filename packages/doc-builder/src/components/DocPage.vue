@@ -78,18 +78,20 @@ export default {
   },
   watch: {
     mountCount(count) {
-      const allChaptersMounted = count >= this.filesList.length
+      const { filesList, pathsToApiCardSourceFile, mountCountApiCards, scrollToHashInUrl } = this
+      const allChaptersMounted = count >= filesList.length
       if (allChaptersMounted) {
-        const payloadTOC = parseTitleEls(this.$el, this.pathsToApiCardSourceFile)
+        const payloadTOC = parseTitleEls(this.$el, pathsToApiCardSourceFile)
         this.$emit('TOC', payloadTOC)
       }
-      const allApiCardsMounted = this.mountCountApiCards >= this.pathsToApiCardSourceFile.length
-      if (allChaptersMounted && allApiCardsMounted) this.scrollToHashInUrl()
+      const allApiCardsMounted = mountCountApiCards >= pathsToApiCardSourceFile.length
+      if (allChaptersMounted && allApiCardsMounted) scrollToHashInUrl()
     },
     mountCountApiCards(count) {
-      const allChaptersMounted = this.mountCount >= this.filesList.length
-      const allApiCardsMounted = count >= this.pathsToApiCardSourceFile.length
-      if (allChaptersMounted && allApiCardsMounted) this.scrollToHashInUrl()
+      const { filesList, mountCount, pathsToApiCardSourceFile, scrollToHashInUrl } = this
+      const allChaptersMounted = mountCount >= filesList.length
+      const allApiCardsMounted = count >= pathsToApiCardSourceFile.length
+      if (allChaptersMounted && allApiCardsMounted) scrollToHashInUrl()
     },
   },
   computed: {
@@ -111,7 +113,9 @@ export default {
   methods: {
     scrollToHashInUrl() {
       const hash = document.location.hash.replace('#', '')
-      if (hash) this.$nextTick(() => scrollToElId(hash))
+      if (hash) this.$nextTick(() => scrollToElId(hash, this.$router))
+      // to make sure this is only called once, let's replace it with an empty function
+      this.scrollToHashInUrl = () => {}
     },
   },
 }

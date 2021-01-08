@@ -1,21 +1,19 @@
 import { scroll } from 'quasar'
 const { getScrollTarget, setScrollPosition } = scroll
 
-const SCROLL_DURATION = 400
-
 /**
- * Attaches `#` to the browser's URL. Should be called AFTER scrolling (to not mess with the scroll behaviour)
- * @param {string} id the id of an element without `#` which was scrolled to
- * @param {any} vueRouter the vue router instance eg. `this.$router`
+ * Pushes the given hash to the URL using primarily pushState if available to prevent the
+ * scroll from jumping to the hash element. Uses window.location.hash as a fallback.
+ *
+ * @param {String} hash The hash value to be pushed
  */
-function attachHashAfterScrolling(id, vueRouter = undefined) {
-  setTimeout(() => {
-    if (vueRouter) {
-      vueRouter.push({ hash: `#${id}` })
-    } else {
-      location.hash = id
-    }
-  }, SCROLL_DURATION)
+function pushHashToUrl(hash) {
+  if (window.history.pushState) {
+    const pathname = window.location.pathname
+    window.history.pushState(null, null, `${pathname}#${hash}`)
+    return
+  }
+  window.location.hash = hash
 }
 
 /**
@@ -34,9 +32,18 @@ export function scrollToElId(id = '', vueRouter = undefined, mouseEvent = undefi
   }
   const el = document.getElementById(id)
   if (!el) return
+  // for Vue router, need to push hash before scrolling to prevent jumping after scroll
+  if (vueRouter) {
+    vueRouter.push({ hash: `#${id}` })
+  }
   const target = getScrollTarget(el)
   const offset = el.offsetTop
-  const duration = SCROLL_DURATION
+  const duration = 400
   setScrollPosition(target, offset, duration)
-  attachHashAfterScrolling(id, vueRouter)
+  // that's all for vueRouter!
+  if (vueRouter) return
+  // otherwise, let's attach `#` to the browser's URL. Should be called AFTER scrolling (to not mess with the scroll behaviour)
+  setTimeout(() => {
+    pushHashToUrl(id)
+  }, duration + 1)
 }
