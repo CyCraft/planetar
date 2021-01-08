@@ -1,6 +1,6 @@
 {
   "name": "@planetar/api-card",
-  "version": "0.6.11",
+  "version": "0.6.12",
   "author": "Luca Ban - Mesqueeb",
   "description": "Planetar Api Card",
   "license": "MIT",
@@ -18,7 +18,7 @@
     "@blitzar/form": "^0.0.13",
     "@planetar/atoms": "^0.4.8",
     "@planetar/styles": "^0.2.1",
-    "@planetar/utils": "^0.1.13",
+    "@planetar/utils": "^0.1.14",
     "case-anything": "^1.1.2",
     "fast-sort": "^2.2.0",
     "is-what": "^3.12.0",
