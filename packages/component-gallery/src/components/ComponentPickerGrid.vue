@@ -28,7 +28,7 @@
 </template>
 
 <style lang="sass" scoped>
-@import 'node_modules/@planetar/styles/variables'
+@import '@planetar/styles/variables'
 
 .component-picker
   ._grid-md
