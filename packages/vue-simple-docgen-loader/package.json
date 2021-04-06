@@ -6,6 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "dependencies": {
+    "escodegen": "^2.0.0",
+    "to-ast": "^1.0.0",
+    "vue-docgen-api": "^4.37.0"
+  },
   "author": "elevatebart",
   "license": "MIT",
   "repository": {
@@ -16,10 +21,5 @@
     "url": "https://github.com/vue-styleguidist/vue-styleguidist/issues"
   },
   "homepage": "https://vue-styleguidist.github.io",
-  "dependencies": {
-    "escodegen": "^2.0.0",
-    "to-ast": "^1.0.0",
-    "vue-docgen-api": "^4.34.2"
-  },
   "gitHead": "85718ffe30117650d9cb9d3daef9ee5eb8a0b945"
 }

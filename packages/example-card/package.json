@@ -8,8 +8,6 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "rimraf dist && vue-compile src -o dist",
-    "build:q": "node build/index.js",
-    "build:js": "node build/script.javascript.js",
     "vue-int": "vue-int -i src/components -r -o vetur"
   },
   "homepage": "https://github.com/cycraft/planetar",
