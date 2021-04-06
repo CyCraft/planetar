@@ -3,12 +3,8 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[javascript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
   "[typescript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
-  "[vue]": {
-    "editor.defaultFormatter": "octref.vetur"
-  },
-  // syler.sass-indented is to be enabled after this is fixed:
-  // https://github.com/TheRealSyler/sass-formatter/issues/32
-  // "[sass]": { "editor.defaultFormatter": "syler.sass-indented" },
+  "[vue]": { "editor.defaultFormatter": "octref.vetur" },
+  "[sass]": { "editor.defaultFormatter": "syler.sass-indented" },
   // Lerna monorepo related settings
   "eslint.workingDirectories": [{ "pattern": "./packages/*/" }],
   // make sure vetur is enabled
@@ -26,6 +22,7 @@
   "editor.tabSize": 2, // make sure this is the same as .prettierrc
   "editor.insertSpaces": true,
   "files.trimFinalNewlines": true,
+  "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
   // script
   "vetur.format.defaultFormatter.ts": "prettier",
