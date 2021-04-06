@@ -20,7 +20,7 @@
 </template>
 
 <style lang="sass" scoped>
-@import 'node_modules/@planetar/styles/variables'
+@import '@planetar/styles/variables'
 
 .planetar-api-component-example
   +flex-center()
