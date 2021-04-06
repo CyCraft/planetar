@@ -30,7 +30,7 @@
 
 <style lang="sass">
 /** global styles */
-@import '@planetar/styles/variables'
+@import 'node_modules/@planetar/styles/variables'
 
 .planetar-example-card
   +C(border, stone-dark, thin solid)
