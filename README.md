@@ -8,6 +8,10 @@ A Vue framework for creating a design system styleguide with interactive compone
 npm i planetar
 ```
 
+## Documentation
+
+Coming soon
+
 ## Meet the family
 
 ![](media/familar-hero.png?raw=true)
