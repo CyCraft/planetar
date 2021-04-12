@@ -9,7 +9,7 @@
   "dependencies": {
     "escodegen": "^2.0.0",
     "to-ast": "^1.0.0",
-    "vue-docgen-api": "^4.37.0"
+    "vue-docgen-api": "^4.38.0"
   },
   "author": "elevatebart",
   "license": "MIT",
