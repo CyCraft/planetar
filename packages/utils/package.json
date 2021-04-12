@@ -1,6 +1,6 @@
 {
   "name": "@planetar/utils",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "author": "Luca Ban - Mesqueeb",
   "description": "Planetar utils",
   "license": "MIT",
@@ -11,7 +11,7 @@
   },
   "homepage": "https://github.com/cycraft/planetar",
   "dependencies": {
-    "@planetar/vue-simple-docgen-loader": "^0.2.4",
+    "@planetar/vue-simple-docgen-loader": "^0.2.5",
     "raw-loader": "^4.0.2"
   },
   "repository": {
