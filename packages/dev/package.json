@@ -1,0 +1,30 @@
+{
+  "name": "dev",
+  "version": "0.0.0",
+  "private": true,
+  "description": "project used internally for Planetar development",
+  "author": "Luca Ban - mesqueeb",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.0.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^1.2.5",
+    "@vue/compiler-sfc": "^3.0.5",
+    "typescript": "^4.3.2",
+    "vite": "^2.4.2",
+    "vue-tsc": "^0.0.24"
+  },
+  "engines": {
+    "node": ">= 16.0.0",
+    "npm": ">= 7.20.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cycraft/planetar.git"
+  }
+}

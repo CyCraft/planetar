@@ -2,12 +2,13 @@
   "name": "@planetar/monorepo",
   "private": true,
   "workspaces": [
-    "packages/*"
+    "packages/dev",
+    "packages/styles"
   ],
   "scripts": {
     "audit": "npm audit fix && lerna-audit && lerna bootstrap",
     "commit": "git-cz",
-    "dev": "npm run start:dev && cd packages/dev && npm run dev",
+    "dev": "npm run start:dev && npm run dev -w=dev",
     "dev-0.x": "npm run start:dev && cd packages/dev-0.x && npm run dev",
     "dev-tsx": "npm run start:dev && cd packages/dev-tsx && npm run dev",
     "test": "lerna run test",
@@ -58,8 +59,8 @@
     "zlib": "^1.0.5"
   },
   "engines": {
-    "node": ">= 14.0.0",
-    "npm": ">= 7.8.0"
+    "node": ">= 16.0.0",
+    "npm": ">= 7.20.0"
   },
   "author": "Luca Ban - Mesqueeb",
   "license": "MIT",
