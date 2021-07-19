@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "strict": true,
+    "target": "ES2020",
+    "lib": ["dom"],
+    "types": ["node"],
+    "moduleResolution": "node"
+  },
+  "exclude": ["/dist", "node_modules"]
+}

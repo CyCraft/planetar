@@ -1,19 +1,11 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+  <div class="">
+    <ComponentCodeBlock
+      :importComponentRawFn="() => import('./components/PTabs2.vue?raw')"
+      :importComponentInstanceFn="() => import('./components/PTabs2.vue')"
+    />
+  </div>
 </template>
-
-<script lang="ts">
-import { defineComponent } from 'vue'
-import HelloWorld from './components/HelloWorld.vue'
-
-export default defineComponent({
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-})
-</script>
 
 <style>
 #app {
@@ -23,5 +15,19 @@ export default defineComponent({
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  padding: 1rem;
 }
 </style>
+
+<script lang="ts">
+import { ComponentCodeBlock } from '@planetar/component-code-block'
+import { defineComponent } from 'vue'
+import 'prismjs/themes/prism-tomorrow.css'
+
+export default defineComponent({
+  name: 'App',
+  components: {
+    ComponentCodeBlock,
+  },
+})
+</script>
