@@ -12,7 +12,6 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import 'prismjs'
 import Prism from '@cycraft/vue-prism-component'
 
 export default defineComponent({
