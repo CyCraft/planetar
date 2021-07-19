@@ -3,26 +3,26 @@
     :class="`planetar-example-card planetar-example-card--${activeTab}`"
     :style="iframeHeight && activeTab === 'example' ? `height: ${iframeHeight}` : ''"
     :id="kebabCase(fileName) + `-example-card`"
-    :tabLabels="tabLabels"
+    :tabLabels="tabs"
     :activeTab.sync="activeTab"
   >
-    <template v-for="(tabLabel, index) in tabLabels" v-slot:[index]>
-      <div class="pa-lg" v-if="tabLabel === 'example' && exampleComponent" :key="tabLabel + index">
+    <template v-for="(tab, index) in tabs" v-slot:[index]>
+      <div class="pa-lg" v-if="tab === 'example' && exampleComponent" :key="tab + index">
         <component :is="exampleComponent" />
       </div>
       <iframe
-        v-if="tabLabel === 'example' && iframe"
+        v-if="tab === 'example' && iframe"
         style="width: 100%; height: 100%"
         :src="iframe"
         frameborder="0"
-        :key="tabLabel + index"
+        :key="tab + index"
       />
       <CodeBlock
         class="t-body1"
-        v-else-if="parts[tabLabel]"
+        v-else-if="parts[tab]"
         lang="html"
-        :content="parts[tabLabel]"
-        :key="tabLabel + index"
+        :content="parts[tab]"
+        :key="tab + index"
       />
     </template>
   </PlanetarTabs>
@@ -97,7 +97,7 @@ export default {
       dynamicImports: 0,
       fileName,
       activeTab: 'example',
-      tabLabels: ['example'],
+      tabs: ['example'],
       lang: '',
       exampleComponent: null,
       parts: {
@@ -122,23 +122,23 @@ export default {
           script = script.replace(jsDocBlockNoIndentation, '')
         }
         this.parts.script = script
-        this.tabLabels.push('script')
+        this.tabs.push('script')
         return
       }
       if (template) {
         this.parts.template = template
-        this.tabLabels.push('template')
+        this.tabs.push('template')
       }
       if (script) {
         if (stripJSDocDescription) {
           script = script.replace(jsDocBlockNoIndentation, '')
         }
         this.parts.script = script
-        this.tabLabels.push('script')
+        this.tabs.push('script')
       }
       if (style) {
         this.parts.style = style
-        this.tabLabels.push('style')
+        this.tabs.push('style')
       }
     },
   },
