@@ -1,19 +1,23 @@
 <template>
-  <div :class="`code-block language-${lang}`" v-html="htmlAsString" />
+  <div :class="`code-block language-${lang}`">
+    <Prism :language="lang">{{ content }}</Prism>
+  </div>
 </template>
 
 <style lang="sass">
 .code-block
+  margin: 0
   > *
     margin: 0 !important
 </style>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue'
-import { codeToHtml } from './helpers/htmlHelpers'
+import { defineComponent } from 'vue'
+import Prism from '@cycraft/vue-prism-component'
 
 export default defineComponent({
   name: 'CodeBlock',
+  components: { Prism },
   props: {
     lang: { type: String /* as PropType<'html' | 'js' | 'css'> */, required: true },
     /**
@@ -26,13 +30,6 @@ export default defineComponent({
      * @example `<div>Hi</div>\n<br />\n<script>\nconst a = 1\n<\/script>`
      */
     content: { type: String, required: true },
-  },
-  setup(props) {
-    const htmlAsString = computed(() => {
-      return codeToHtml(props.content, props.lang)
-    })
-
-    return { htmlAsString }
   },
 })
 </script>
