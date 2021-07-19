@@ -6,6 +6,7 @@
 
 <style lang="sass">
 .code-block
+  margin: 0
   > *
     margin: 0 !important
 </style>

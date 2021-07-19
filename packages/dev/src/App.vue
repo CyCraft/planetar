@@ -22,6 +22,7 @@
 <script lang="ts">
 import { ComponentCodeBlock } from '@planetar/component-code-block'
 import { defineComponent } from 'vue'
+import Prism from 'prismjs'
 import 'prismjs/themes/prism-tomorrow.css'
 
 export default defineComponent({
