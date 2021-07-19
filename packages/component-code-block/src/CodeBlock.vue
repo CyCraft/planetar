@@ -4,9 +4,10 @@
   </div>
 </template>
 
-<style lang="sass">
+<style lang="sass" scoped>
 .code-block
   margin: 0 !important
+  border-radius: 0 !important
   > *
     margin: 0 !important
 </style>

@@ -19,8 +19,10 @@
 .component-code-block
   --border-color: #efeff5
   --active-color: #42b983
-  min-height: 127px
+  min-height: 100px
   border: thin solid var(--border-color)
+  border-radius: 6px
+  overflow: hidden
 
   .component-code-block__tabs
     --tab-border-color: var(--border-color) !important
