@@ -1,12 +1,12 @@
 import snarkdown from 'snarkdown'
-import { languages, highlight } from 'prismjs'
+import Prism from './prism'
 
 export function prismHighlight(str: string, lang: string): string {
-  if (!str || !lang || languages[lang] === undefined) {
+  if (!str || !lang || Prism.languages[lang] === undefined) {
     console.error('something went wrong', str, lang)
     return ''
   }
-  return highlight(str, languages[lang], lang)
+  return Prism.highlight(str, Prism.languages[lang], lang)
 }
 
 export function codeToHtml(str: string, lang: string): string {
