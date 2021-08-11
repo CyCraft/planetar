@@ -17,18 +17,20 @@
 
 <style lang="sass">
 .component-code-block
-  --border-color: #efeff5
-  --active-color: #42b983
+  --c-active: #42b983
+  --c-text: #1f2225
+  --c-border: #efeff5
   min-height: 100px
-  border: thin solid var(--border-color)
+  border: thin solid var(--c-border)
   border-radius: 6px
   overflow: hidden
 
   .component-code-block__tabs
-    --tab-border-color: var(--border-color) !important
-    --tab-text-color-active: var(--active-color) !important
-    --bar-color: var(--active-color) !important
-    --tab-text-color-hover: var(--active-color) !important
+    --tab-text-color-active: var(--c-active) !important
+    --bar-color: var(--c-active) !important
+    --tab-text-color-hover: var(--c-active) !important
+    --tab-text-color: var(--c-text) !important
+    --tab-border-color: var(--c-border) !important
 
   .component-code-block__component
     padding: 1rem
@@ -42,10 +44,12 @@ import { getTagHtmlFromCodeString } from './helpers/regexp'
 
 /**
  * Changing the colors of the border and the active tab can be done by tweaking these CSS variables:
- * ```sass
- * .component-code-block
- *   --border-color: #efeff5
- *   --active-color: #42b983
+ * ```css
+ * .component-code-block {
+ *   --c-active: #42b983;
+ *   --c-text: #1f2225;
+ *   --c-border: #efeff5;
+ * }
  * ```
  */
 export default defineComponent({
