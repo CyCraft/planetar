@@ -1,6 +1,6 @@
 {
   "name": "@planetar/code-block",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "CodeBlock for code highlighting with PrismJS AND CodeBlockComponent to pass a Vue file which is generated as component preview along side the source code of template/style/script in tabs",
   "author": "Luca Ban - Mesqueeb",
   "module": "dist/index.js",

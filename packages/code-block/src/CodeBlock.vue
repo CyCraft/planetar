@@ -1,6 +1,6 @@
 <template>
   <div :class="`code-block language-${lang}`">
-    <Prism :language="lang">{{ content }}</Prism>
+    <Prism :language="lang" :key="content">{{ content }}</Prism>
   </div>
 </template>
 
@@ -20,7 +20,7 @@ export default defineComponent({
   name: 'CodeBlock',
   components: { Prism },
   props: {
-    lang: { type: String /* as PropType<'html' | 'js' | 'css'> */, required: true },
+    lang: { type: String /* as PropType<'html' | 'js' | 'css'> */, default: 'js' },
     /**
      * Because of how Vue parses strings, the forward slash in the closing script tag must be escaped
      * or the component will fail to compile.
