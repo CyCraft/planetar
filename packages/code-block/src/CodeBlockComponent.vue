@@ -3,13 +3,19 @@
     <NTabs class="code-block-component__tabs" type="line" :tabsPadding="16" paneStyle="padding: 0">
       <NTabPane v-for="(tab, index) in tabs" :key="tab" :name="tab" :tab="tab">
         <div
-          class="code-block-component__component"
           v-if="tab === 'example' && component"
+          class="code-block-component__component"
           :key="tab + index"
         >
           <component :is="component" />
         </div>
-        <CodeBlock v-else-if="parts[tab]" lang="html" :content="parts[tab]" :key="tab + index" />
+        <CodeBlock
+          v-else-if="parts[tab]"
+          class="code-block-component__code"
+          lang="html"
+          :content="parts[tab]"
+          :key="tab + index"
+        />
       </NTabPane>
     </NTabs>
   </div>
@@ -34,6 +40,12 @@
 
   .code-block-component__component
     padding: 1rem
+
+  .code-block-component__code
+    margin: 0 !important
+    border-radius: 0 !important
+    > *
+      margin: 0 !important
 </style>
 
 <script lang="ts">

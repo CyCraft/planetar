@@ -4,14 +4,6 @@
   </div>
 </template>
 
-<style lang="sass" scoped>
-.code-block
-  margin: 0 !important
-  border-radius: 0 !important
-  > *
-    margin: 0 !important
-</style>
-
 <script lang="ts">
 import { defineComponent } from 'vue'
 import Prism from '@cycraft/vue-prism-component'
