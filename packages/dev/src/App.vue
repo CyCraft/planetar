@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <ComponentCodeBlock
+    <CodeBlockComponent
       :importComponentRawFn="() => import('./components/PTabs2.vue?raw')"
       :importComponentInstanceFn="() => import('./components/PTabs2.vue')"
     />
@@ -20,7 +20,7 @@
 </style>
 
 <script lang="ts">
-import { ComponentCodeBlock } from '@planetar/component-code-block'
+import { CodeBlockComponent } from '@planetar/component-code-block'
 import { defineComponent } from 'vue'
 import Prism from 'prismjs'
 import 'prismjs/themes/prism-tomorrow.css'
@@ -28,7 +28,7 @@ import 'prismjs/themes/prism-tomorrow.css'
 export default defineComponent({
   name: 'App',
   components: {
-    ComponentCodeBlock,
+    CodeBlockComponent,
   },
 })
 </script>

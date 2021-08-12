@@ -1,9 +1,9 @@
 <template>
-  <div class="component-code-block">
-    <NTabs class="component-code-block__tabs" type="line" :tabsPadding="16" paneStyle="padding: 0">
+  <div class="code-block-component">
+    <NTabs class="code-block-component__tabs" type="line" :tabsPadding="16" paneStyle="padding: 0">
       <NTabPane v-for="(tab, index) in tabs" :key="tab" :name="tab" :tab="tab">
         <div
-          class="component-code-block__component"
+          class="code-block-component__component"
           v-if="tab === 'example' && component"
           :key="tab + index"
         >
@@ -16,7 +16,7 @@
 </template>
 
 <style lang="sass">
-.component-code-block
+.code-block-component
   --c-active: #42b983
   --c-text: #1f2225
   --c-border: #efeff5
@@ -25,14 +25,14 @@
   border-radius: 6px
   overflow: hidden
 
-  .component-code-block__tabs
+  .code-block-component__tabs
     --tab-text-color-active: var(--c-active) !important
     --bar-color: var(--c-active) !important
     --tab-text-color-hover: var(--c-active) !important
     --tab-text-color: var(--c-text) !important
     --tab-border-color: var(--c-border) !important
 
-  .component-code-block__component
+  .code-block-component__component
     padding: 1rem
 </style>
 
@@ -45,7 +45,7 @@ import { getTagHtmlFromCodeString } from './helpers/regexp'
 /**
  * Changing the colors of the border and the active tab can be done by tweaking these CSS variables:
  * ```css
- * .component-code-block {
+ * .code-block-component {
  *   --c-active: #42b983;
  *   --c-text: #1f2225;
  *   --c-border: #efeff5;
@@ -53,7 +53,7 @@ import { getTagHtmlFromCodeString } from './helpers/regexp'
  * ```
  */
 export default defineComponent({
-  name: 'ComponentCodeBlock',
+  name: 'CodeBlockComponent',
   components: { NTabs, NTabPane, CodeBlock },
   props: {
     importComponentInstanceFn: { type: Function, required: true },
