@@ -2,6 +2,7 @@
   "name": "@planetar/api-card",
   "version": "0.6.14",
   "author": "Luca Ban - Mesqueeb",
+  "funding": "https://github.com/sponsors/mesqueeb",
   "description": "Planetar Api Card",
   "license": "MIT",
   "module": "src/index.js",

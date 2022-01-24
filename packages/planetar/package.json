@@ -2,6 +2,7 @@
   "name": "planetar",
   "version": "0.7.17",
   "author": "Luca Ban - Mesqueeb",
+  "funding": "https://github.com/sponsors/mesqueeb",
   "description": "A Vue framework for creating a design system styleguide with interactive component explorer 🪐",
   "license": "MIT",
   "module": "index.js",

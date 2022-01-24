@@ -3,6 +3,7 @@
   "version": "0.4.6",
   "description": "Doc build components for Planetar",
   "author": "Luca Ban - Mesqueeb",
+  "funding": "https://github.com/sponsors/mesqueeb",
   "module": "src/index.js",
   "main": "dist/index.js",
   "scripts": {

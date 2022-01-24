@@ -2,6 +2,7 @@
   "name": "@planetar/example-card",
   "version": "0.7.5",
   "author": "Luca Ban - Mesqueeb",
+  "funding": "https://github.com/sponsors/mesqueeb",
   "description": "Example Card based on a Vue file with automatic source extraction",
   "license": "MIT",
   "module": "src/index.js",

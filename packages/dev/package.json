@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "description": "project used internally for Planetar development",
-  "author": "Luca Ban - mesqueeb",
+  "author": "Luca Ban - Mesqueeb",
+  "funding": "https://github.com/sponsors/mesqueeb",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",

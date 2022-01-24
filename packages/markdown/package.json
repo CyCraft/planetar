@@ -3,6 +3,7 @@
   "version": "0.3.11",
   "description": "Markdown used throughout Planetar's packages.",
   "author": "Luca Ban - Mesqueeb",
+  "funding": "https://github.com/sponsors/mesqueeb",
   "module": "src/index.js",
   "main": "dist/index.js",
   "scripts": {

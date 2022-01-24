@@ -2,6 +2,7 @@
   "name": "@planetar/utils",
   "version": "0.1.15",
   "author": "Luca Ban - Mesqueeb",
+  "funding": "https://github.com/sponsors/mesqueeb",
   "description": "Planetar utils",
   "license": "MIT",
   "module": "src/index.js",

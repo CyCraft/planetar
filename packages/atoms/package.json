@@ -3,6 +3,7 @@
   "version": "0.4.9",
   "description": "Atoms used throughout Planetar's packages.",
   "author": "Luca Ban - Mesqueeb",
+  "funding": "https://github.com/sponsors/mesqueeb",
   "module": "src/index.js",
   "main": "dist/index.js",
   "scripts": {
