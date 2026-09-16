@@ -53,8 +53,7 @@
     "uglify-es": "^3.3.10",
     "vue-compile": "^0.6.2",
     "vue-intellisense": "^0.2.1",
-    "vue-template-compiler": "^2.7.16",
-    "zlib": "^1.0.5"
+    "vue-template-compiler": "^2.7.16"
   },
   "engines": {
     "node": ">= 14.0.0",
